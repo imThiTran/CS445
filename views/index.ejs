@@ -35,6 +35,8 @@
                                         <input type="radio" class="btn-check" name="options-outlined" id="1-outlined"
                                             autocomplete="off">
                                         <label class="btn btn-outline-dark btn-time-index" for="1-outlined">
+                                            <% var day= (dw.getDate()<10)?("0"+dw.getDate()):dw.getDate();%>
+                                            <% var month= (dw.getMonth()<10)?("0"+(dw.getMonth()+1)):(dw.getMonth()+1);%>
                                             <%if(dw.getDay()==0){%>
                                                 SUNDAY
                                             <%}; if(dw.getDay()==1){%>
@@ -50,7 +52,7 @@
                                             <%};if(dw.getDay()==6){%>
                                                 SATURDAY
                                             <%}%>
-                                            <%=dw.getDate()+'/'+(dw.getMonth()+1)%></label>
+                                            <%=day+'/'+month%></label>
                                     </div>
                                 <%})%>
                                 
