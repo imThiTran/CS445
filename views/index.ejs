@@ -1,70 +1,133 @@
 <%- include ('./layouts/header') %>
 
-<body>
-<div class="nav-list">
-    <nav>
-        <div class="nav nav-tabs nav-tablist" id="nav-tab" role="tablist">
-            <button class="nav-link linklist active" id="nav-home-tab" data-bs-toggle="tab"
-                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                aria-selected="true">PHIM ĐANG CHIẾU</button>
-            <button class="nav-link linklist" id="nav-profile-tab" data-bs-toggle="tab"
-                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                aria-selected="false">PHIM SẮP CHIẾU</button>
-        </div>
-    </nav>
-    <span class="line-list"></span>
-    <div class="tab-content" id="nav-tabContent">
- <!-- noi dung trong phim dang chieu -->
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="flex-poster">
-                <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster.png" ></a>
-                <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
-                <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
-            </div>
-            <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster2.png" ></a>
-            </div>
-            <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster3.png" ></a>
-            </div>
-            <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster2.png" ></a>
-            </div>
-            <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster3.png" ></a>
-            </div>
-            <div class="poster-movie-div">
-                <a class="item-slide"><img class="poster-movie" src="img/poster.png" ></a>
-            </div>
-                
+    <body>
+        <!-- slide poster phim -->
+        <div class="poster-index">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+                <a class="item-slide"><img class="poster-slide" src="img/poster.png" alt="Owl Image"></a>
+                <a class="item-slide"><img class="poster-slide" src="img/poster2.png" alt="Owl Image"></a>
+                <a class="item-slide"><img class="poster-slide" src="img/poster3.png" alt="Owl Image"></a>
             </div>
         </div>
- <!-- noi dung trong phim sap chieu -->
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <!-- nav phim đang chiếu/phim sắp chiếu -->
+        <div class="nav-list">
+            <nav>
+                <div class="nav nav-tabs nav-tablist" id="nav-tab" role="tablist">
+                    <button class="nav-link linklist active" id="nav-home-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                        aria-selected="true">PHIM ĐANG CHIẾU</button>
+                    <button class="nav-link linklist" id="nav-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                        aria-selected="false">PHIM SẮP CHIẾU</button>
+                </div>
+            </nav>
+            <span class="line-list"></span>
+            <div class="tab-content" id="nav-tabContent">
+                <!-- noi dung trong phim dang chieu -->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="time-index">
+                        <button type="button" class="btn btn-outline-dark btn-time-index">MONDAY 8/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">TUESDAY 9/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">WEDNESDAY 10/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">THURSDAY 11/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">FRIDAY 12/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">SATURDAY 13/11</button>
+                        <button type="button" class="btn btn-outline-dark btn-time-index">SUNDAY 14/11</button>
+                    </div>
+                        <span class="line-list" style="width: 100%; max-width: 1180px;"></span>
+                    <div class="flex-poster">
+                        <div class="poster-movie-div">
+                            <div class="flex-title">
+                                <div class="flex-cs">
+                            <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
+                            <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
+                        </div>
+                        <div class="cs">
+                            <img class="img-cs" src="img/cs18.png" >
+                        </div>
+                        </div>
+                            <div class="flex-time">
+                                <a class="item-slide"><img class="poster-movie" src="img/poster.png"></a>
+                                <div class="flex-time-detail">
+                                    <button type="button" class="btn btn-outline-warning btn-time">08:25 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">12:00 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">14:00 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">15:20 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">17:45 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">19:15 PM</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="poster-movie-div">
+                            <div class="flex-title">
+                                <div class="flex-cs">
+                            <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
+                            <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
+                        </div>
+                        <div class="cs">
+                            <img class="img-cs"  src="img/cs16.png" >
+                        </div>
+                        </div>
+                            <div class="flex-time">
+                                <a class="item-slide"><img class="poster-movie" src="img/poster2.png"></a>
+                                <div class="flex-time-detail">
+                                    <button type="button" class="btn btn-outline-warning btn-time">08:25 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">12:00 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">14:00 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">15:20 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">17:45 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">19:15 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">21:35 PM</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="poster-movie-div">
+                            <div class="flex-title">
+                                <div class="flex-cs">
+                            <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
+                            <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
+                        </div>
+                        <div class="cs">
+                            <img class="img-cs"  src="img/cs13.png" >
+                        </div>
+                        </div>
+                            <div class="flex-time">
+                                <a class="item-slide"><img class="poster-movie" src="img/poster3.png"></a>
+                                <div class="flex-time-detail">
+                                    <button type="button" class="btn btn-outline-warning btn-time">08:25 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">12:00 AM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">14:00 PM</button>
+                                    <button type="button" class="btn btn-outline-warning btn-time">15:20 PM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- noi dung trong phim sap chieu -->
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/index.js"></script>
-<script>
-    $(document).ready(function () {
+    </body>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        $(document).ready(function () {
 
-        $("#owl-demo").owlCarousel({
+            $("#owl-demo").owlCarousel({
 
-            autoPlay: 4000,
+                autoPlay: 4000,
 
-            items: 1,
-            itemsDesktop: [1199, 3],
-            itemsDesktopSmall: [979, 3]
+                items: 1,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+
+            });
 
         });
-
-    });
-</script>
-<link rel="stylesheet" href="css/owl.carousel.css">
-<link rel="stylesheet" href="css/owl.theme.css">
-<script src="js/owl.carousel.js"></script>
+    </script>
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <script src="js/owl.carousel.js"></script>

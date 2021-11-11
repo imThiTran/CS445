@@ -86,7 +86,7 @@ object-position: 50% 50%;
   }
 .poster-slide{
     width: 100%;
-    height: 400px;
+    height: 420px;
   }
 .poster-index{
   width: 100%;
@@ -142,36 +142,100 @@ object-position: 50% 50%;
 }
 .line-list{
   height: 3px;
-    width: 30%;
+    width: 25%;
     background: rgb(254 199 88);
     position: absolute;
     margin-top: 10px;
 }
 
 .poster-movie{
+  max-width: 380px;
 width: 100%;
 padding: 0 10px 10px 0;
 }
 .poster-movie-div{
-  max-width: 380px;
   padding-bottom: 20px;
 }
 .flex-poster{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  flex-direction: column;
+  padding-top: 30px;
 }
 .tab-content{
-  padding: 50px 0px;
+  padding: 25px 0px;
 }
 .h6-poster{
-  font-size: .9rem;
+  font-size: 1.5rem;
   color: #eee;
+  font-weight: 500;
 }
 .side-poster{
-  font-size: .8rem;
+  font-size: 1.1rem;
   color: #ccc;
+  padding-bottom: 10px;
 }
+.time-index{
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-time-index{
+  max-width: 150px;
+  width: 100%;
+  height: 80px;
+  font-weight: 800;
+    flex-wrap: wrap;
+    font-size: 19px;
+    align-items: flex-start;
+    color: #eee !important;
+  border-color: #eeeeee42 !important;
+}
+.line-list1{
+  padding-bottom: 30px;
+}
+.flex-time{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.btn-time{
+  height: 40px;
+  margin: 10px;
+  width: 100%;
+  max-width: 160px;
+  color: #eee !important;
+  border-color: #eeeeee42 !important;
+}
+.btn-time:hover{
+  color: #333 !important;
+  border-color: rgb(254 199 88) !important;
+}
+.flex-time-detail{
+  display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    flex: 1;
+    margin-left: 20px;
+}
+.cs{
+  width: 100%;
+    flex: 1;
+}
+.flex-title{
+  display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.img-cs{
+  width: 10%;
+}
+
   .input-search{
     display: inline-flex;
     width: 28%;
