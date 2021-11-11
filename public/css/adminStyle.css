@@ -1,0 +1,16 @@
+.page-show tr:not(.home){
+ cursor: pointer;
+}
+
+.ui-state-hightlight{
+    border: 1px dashed #ccc;
+}
+
+#imgPreview{
+    margin: 16px 0;
+}
+
+#picture{
+    height: 100px;
+    width: 100px;
+}

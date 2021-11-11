@@ -1,3 +1,70 @@
-<a href="/auth/login">Đăng nhập</a>
-<a href="/auth/register">Đăng ký</a>
-<a href="/auth/forgot">Quên mật khẩu</a>
+<%- include ('./layouts/header') %>
+
+<body>
+<div class="nav-list">
+    <nav>
+        <div class="nav nav-tabs nav-tablist" id="nav-tab" role="tablist">
+            <button class="nav-link linklist active" id="nav-home-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                aria-selected="true">PHIM ĐANG CHIẾU</button>
+            <button class="nav-link linklist" id="nav-profile-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                aria-selected="false">PHIM SẮP CHIẾU</button>
+        </div>
+    </nav>
+    <span class="line-list"></span>
+    <div class="tab-content" id="nav-tabContent">
+ <!-- noi dung trong phim dang chieu -->
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="flex-poster">
+                <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster.png" ></a>
+                <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
+                <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
+            </div>
+            <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster2.png" ></a>
+            </div>
+            <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster3.png" ></a>
+            </div>
+            <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster2.png" ></a>
+            </div>
+            <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster3.png" ></a>
+            </div>
+            <div class="poster-movie-div">
+                <a class="item-slide"><img class="poster-movie" src="img/poster.png" ></a>
+            </div>
+                
+            </div>
+        </div>
+ <!-- noi dung trong phim sap chieu -->
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#owl-demo").owlCarousel({
+
+            autoPlay: 4000,
+
+            items: 1,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 3]
+
+        });
+
+    });
+</script>
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/owl.theme.css">
+<script src="js/owl.carousel.js"></script>
