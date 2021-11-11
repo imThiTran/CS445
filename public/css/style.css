@@ -142,7 +142,7 @@ object-position: 50% 50%;
 }
 .line-list{
   height: 3px;
-    width: 25%;
+    width: 29%;
     background: rgb(254 199 88);
     position: absolute;
     margin-top: 10px;
@@ -226,6 +226,7 @@ padding: 0 10px 10px 0;
 .cs{
   width: 100%;
     flex: 1;
+    max-width: 600px;
 }
 .flex-title{
   display: flex;
@@ -235,6 +236,23 @@ padding: 0 10px 10px 0;
 .img-cs{
   width: 10%;
 }
+.flex-coming{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+.title-coming{
+  flex-grow: 1;
+  max-width: 392px;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+
+
 
   .input-search{
     display: inline-flex;
