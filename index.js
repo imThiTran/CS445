@@ -2,6 +2,8 @@ var express = require('express');
 var path= require('path');
 var config = require('./config/database')
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 mongoose.connect(config.database);
 var db=mongoose.connection;
@@ -15,7 +17,24 @@ var app  = express();
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+//parse application/json
+app.use(bodyParser.json())
+
 app.use(express.static(path.join(__dirname,'public')));
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { 
+      secure: false,
+      maxAge: 1800000
+    }
+  }));
+
 var port = 3000;
 app.listen(port,function(){
     console.log('Server started on port '+ port);
@@ -23,7 +42,11 @@ app.listen(port,function(){
 
 
 var auth = require('./routes/auth');
-var site = require('./routes/sites')
+var site = require('./routes/sites');
+var film = require('./routes/film')
+
+var checkUser = require('./middleware/checkUser.middleware');
 
 app.use('/auth',auth);
-app.use('/',site);
+app.use('/',checkUser,site);
+app.use('/film',film);

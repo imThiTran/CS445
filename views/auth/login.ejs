@@ -4,24 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/login.css" />
     <title>Login/Register for an account</title>
 </head>
 <body>
 
     <div class="container">
+<<<<<<< HEAD
         <form action="" class="form " id="login">
             <div class="logo-auth">
                 <a href="/"><img class="logo" src="/img/MEGAS (2).png" alt=""></a></div>
+=======
+        <form action="/auth/login" method="post" class="form " id="login">
+>>>>>>> 1b462c5eac59c7218ac12d113e13c42eb1e716ee
             <h1 class="form-title">Đăng nhập</h1>
             <div class="form-message form-message-error"></div>
             <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Email">
+                <input type="text" class="form-input" autofocus placeholder="Email" name="email">
                 <div class="form-input-error-message"></div>
             </div>
             <div class="form-input-group">
-                <input type="password" class="form-input" autofocus placeholder="Mật khẩu">
+                <input type="password" class="form-input" autofocus placeholder="Mật khẩu" name="password">
                 <div class="form-input-error-message"></div>
             </div>
             <button class="form-button" type="Submit">Đăng nhập</button>
@@ -29,7 +33,31 @@
                 <a href="#" class="form-link">Quên mật khẩu?</a>
             </p>
             <p class="form-text">
-                <a class="form-link" href="/auth/register" id="linkCreateAccount" >Chưa có tài khoản? Đăng ký ngay!</a>
+                <a class="form-link" href="./" id="linkCreateAccount" >Chưa có tài khoản? Đăng ký ngay!</a>
+            </p>
+        </form>
+        <form action="/auth/register" method="post" class="form form-hidden" id="createAccount">
+            <h1 class="form-title">Đăng ký</h1>
+            <div class="form-message form-message-error"></div>
+            <div class="form-input-group">
+                <input type="text" class="form-input" autofocus placeholder="Họ tên" name="fullname">
+                <div class="form-input-error-message"></div>
+            </div>
+            <div class="form-input-group">
+                <input type="text" class="form-input" autofocus placeholder="Email" name="email">
+                <div class="form-input-error-message"></div>
+            </div>
+            <div class="form-input-group">
+                <input type="password" name="password" class="form-input" autofocus placeholder="Mật khẩu">
+                <div class="form-input-error-message"></div>
+            </div>
+            <div class="form-input-group">
+                <input type="password" class="form-input" autofocus placeholder="Nhập lại mật khẩu">
+                <div class="form-input-error-message"></div>
+            </div>
+            <button class="form-button" type="Submit">Đăng ký</button>
+            <p class="form-text">
+                <a class="form-link" href="./" id="linkLogin" >Đã có tài khoản? Đăng nhập ngay!</a>
             </p>
         </form>
         
