@@ -2,6 +2,7 @@ var express = require('express');
 var path= require('path');
 var config = require('./config/database')
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 mongoose.connect(config.database);
 var db=mongoose.connection;
@@ -14,6 +15,12 @@ var app  = express();
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
+
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+//parse application/json
+app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname,'public')));
 var port = 3000;
