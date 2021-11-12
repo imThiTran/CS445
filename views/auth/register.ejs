@@ -11,11 +11,11 @@
 <body>
 
     <div class="container">
-        <form action="/auth/register" method="post" class="form form-hidden" id="createAccount">
+        <form action="/auth/register" method="post" class="form " id="createAccount">
             <div class="logo-auth">
                 <a href="/"><img class="logo" src="/img/MEGAS (2).png" alt=""></a></div>
             <h1 class="form-title">Đăng ký</h1>
-            <div class="form-message form-message-error"></div>
+            <div class="form-message form-message-error">thông thị báo</div>
             <div class="form-input-group">
                 <input type="text" class="form-input" autofocus placeholder="Họ tên" name="fullname">
                 <div class="form-input-error-message"></div>
@@ -34,7 +34,7 @@
             </div>
             <button class="form-button" type="Submit">Đăng ký</button>
             <p class="form-text">
-                <a class="form-link" href="./" id="linkLogin" >Đã có tài khoản? Đăng nhập ngay!</a>
+                <a class="form-link" href="/auth/login" id="linkLogin" >Đã có tài khoản? Đăng nhập ngay!</a>
             </p>
         </form>
     </div>

@@ -39,6 +39,8 @@ body{
 .form-title{
     margin-bottom: 2rem;
     text-align: center;
+    margin-top: 1rem;
+    font-size: 33px;
 }
 .form-message{
     text-align: center;
@@ -114,4 +116,7 @@ body{
         margin-top: -50px;
         margin-bottom: -90px;
 
+}
+a:hover{
+    color: rgb(254 199 88);
 }
