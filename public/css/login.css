@@ -108,3 +108,10 @@ body{
 .form-text:hover{
     text-decoration: underline;
 } 
+.logo{
+    max-width: 300px;
+        max-height: 200px;
+        margin-top: -50px;
+        margin-bottom: -90px;
+
+}

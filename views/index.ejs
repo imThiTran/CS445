@@ -25,6 +25,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <!-- noi dung trong phim dang chieu -->
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="main" id="pdc">
                     <div class="time-index">
                         <button type="button" class="btn btn-outline-dark btn-time-index">MONDAY 8/11</button>
                         <button type="button" class="btn btn-outline-dark btn-time-index">TUESDAY 9/11</button>
@@ -38,16 +39,19 @@
                     <div class="flex-poster">
                         <div class="poster-movie-div">
                             <div class="flex-title">
+                                <a href="#">
                                 <div class="flex-cs">
                                     <div class="h6-poster">THE CONJURING: THE DEVIL MADE ME DO IT</div>
                                     <div class="side-poster">THE CONJURING: MA XUI QUỶ KHIẾN</div>
                                 </div>
+                            </a>
                                 <div class="cs">
                                     <img class="img-cs" src="img/cs18.png">
                                 </div>
+                            
                             </div>
                             <div class="flex-time">
-                                <a class="item-slide"><img class="poster-movie" src="img/poster.png"></a>
+                                <a href="/product/detail" class="item-slide"><img class="poster-movie" src="img/poster.png"></a>
                                 <div class="flex-time-detail">
                                     <button type="button" class="btn btn-outline-warning btn-time">08:25 AM</button>
                                     <button type="button" class="btn btn-outline-warning btn-time">12:00 AM</button>
@@ -103,9 +107,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <!-- noi dung trong phim sap chieu -->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="flex-coming">
+                    <div class="flex-coming" id="psc">
                         <div class="title-coming">
                            
                             <a class="item-slide"><img class="poster-movie" src="img/poster3.png"></a>
@@ -184,3 +189,10 @@
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.css">
     <script src="js/owl.carousel.js"></script>
+    <script>
+        $(".btn-psc").click(function (){
+    $('html, body').animate({
+        scrollTop: $("#nav-profile-tab #nav-profile").offset().top
+    }, 2000);
+});
+    </script>

@@ -12,6 +12,8 @@
 
     <div class="container">
         <form action="" class="form " id="login">
+            <div class="logo-auth">
+                <a href="/"><img class="logo" src="/img/MEGAS (2).png" alt=""></a></div>
             <h1 class="form-title">Đăng nhập</h1>
             <div class="form-message form-message-error"></div>
             <div class="form-input-group">
@@ -27,35 +29,11 @@
                 <a href="#" class="form-link">Quên mật khẩu?</a>
             </p>
             <p class="form-text">
-                <a class="form-link" href="./" id="linkCreateAccount" >Chưa có tài khoản? Đăng ký ngay!</a>
+                <a class="form-link" href="/auth/register" id="linkCreateAccount" >Chưa có tài khoản? Đăng ký ngay!</a>
             </p>
         </form>
-        <form action="" class="form form-hidden" id="createAccount">
-            <h1 class="form-title">Đăng ký</h1>
-            <div class="form-message form-message-error"></div>
-            <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Họ tên">
-                <div class="form-input-error-message"></div>
-            </div>
-            <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Email">
-                <div class="form-input-error-message"></div>
-            </div>
-            <div class="form-input-group">
-                <input type="password" class="form-input" autofocus placeholder="Mật khẩu">
-                <div class="form-input-error-message"></div>
-            </div>
-            <div class="form-input-group">
-                <input type="password" class="form-input" autofocus placeholder="Nhập lại mật khẩu">
-                <div class="form-input-error-message"></div>
-            </div>
-            <button class="form-button" type="Submit">Đăng ký</button>
-            <p class="form-text">
-                <a class="form-link" href="./" id="linkLogin" >Đã có tài khoản? Đăng nhập ngay!</a>
-            </p>
-        </form>
+        
     </div>
 
-    <script src="/js/login.js"></script>
 </body>
 </html>

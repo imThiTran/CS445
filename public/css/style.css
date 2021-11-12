@@ -282,6 +282,9 @@ padding: 0 10px 10px 0;
 .nav-tabs{
   border-bottom: 3px solid rgb(254 199 88);
 }
+html {
+  scroll-behavior: smooth;
+}
 
 
 
