@@ -104,6 +104,20 @@ object-position: 50% 50%;
   position: relative;
   display: inline-block;
 }
+.noidung_dropdown1 {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 10%);
+  z-index: 1;
+  color: #eee;
+}
+.dropdown1 {
+  min-width: 100px;
+  position: relative;
+  display: inline-block;
+}
 
 .noidung_dropdown a {
   padding: 5px 10px;
@@ -116,6 +130,21 @@ object-position: 50% 50%;
   background-color: rgb(255 183 88 / 65%);
 }
 .dropdown:hover .noidung_dropdown {
+  display: block;
+}
+
+
+.noidung_dropdown1 a {
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  color: #eee;
+}
+
+.noidung_dropdown1 a:hover {
+  background-color: rgb(255 183 88 / 65%);
+}
+.dropdown1:hover .noidung_dropdown1 {
   display: block;
 }
 .nav-list{
