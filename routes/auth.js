@@ -69,14 +69,6 @@ router.get('/login',function(req,res){
     });
 })
 
-function equalTopping(a,b){
-    if (a.length == b.length && b.length ==0) return true;
-    if (a.length != b.length) return false;
-    for (var i=0;i<a.length;i++){
-        if (a[i].title != b[i].title || a[i].price!=b[i].price) return false;
-    }
-    return true;
-}
 //post login
 router.post('/login',function(req,res){
     var email= req.body.email;

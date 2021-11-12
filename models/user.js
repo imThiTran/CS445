@@ -14,16 +14,12 @@ var UserSchema = mongoose.Schema({
     },
     birthday:{
         type: String,
-        required : true
     },
     admin:{
         type: Number,
     },
     gender:{
         type: Number
-    },
-    cart:{
-        type: Array
     },
     phone:{
         type:String

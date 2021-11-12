@@ -16,23 +16,28 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
             <div class="collapse navbar-collapse navnav" id="Mainnav">
                 <ul class="navbar-nav">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link " href="dangky.html">Đăng ký</a>
-                    </li> -->
-                    <div class="nav-cach"></div>
-                    <!-- <li class="nav-item">
+                    <% if (user==""){ %>
+                    <li class="nav-item active">
+                    <a class="nav-link " href="/auth/register">Đăng ký</a>
+                    </li> 
+                     <div class="nav-cach"></div> 
+                     <li class="nav-item">
                         <a class="nav-link" href="/auth/login">Đăng nhập</a>
-                    </li> -->
-                    <div class="dropdown1">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/login">Chào Ny</a>
+                    </li> 
+                    <% } else { %>
+                        <div class="nav-cach"></div>
+                        <div class="dropdown1">
+                        <li class="nav-item">
+                        <a class="nav-link">Chào <%=user.fullname%></a>
                         <div class="noidung_dropdown1">
                             <a href="#">Hồ sơ</a>
                             <a href="#">Đơn hàng</a>
-                            <a href="#">Đăng xuất</a>
+                            <a href="/auth/logout">Đăng xuất</a>
                         </div>
                     </li>
                 </div>
+                    <% } %>
+                       
                 </ul>
             </div>
         </nav>
