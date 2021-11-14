@@ -1,1 +1,125 @@
-<h1>chi tiết phim</h1>
+<%- include ('../layouts/header') %>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+            <div class="collapse navbar-collapse navnav" id="Mainnav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="dangky.html">Đăng ký</a>
+                    </li>
+                    <div class="nav-cach"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- menu -->
+    <div class="wrapper-index">
+        <div class="menu-index" id="menu">
+            <ul class="menu-ul">
+                <li>
+                    <a href="index.html"><img class="img-logo" src="img/MEGAS (2).png" /></a>
+                </li>
+                <div class="dropdown">
+                    <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Tất cả</a>
+                            <a href="#">Phim sắp chiếu</a>
+                            <a href="#">Phim đang chiếu</a>
+                        </div>
+                    </li>
+                </div>
+                <div class="dropdown">
+                    <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Kinh dị</a>
+                            <a href="#">Tình cảm</a>
+                            <a href="#">Hành động</a>
+                            <a href="#">Hài hước</a>
+                            <a href="#">Hoạt hình</a>
+                            <a href="#">Lịch sử</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a class="menu-a" href="menu.html">MUA VÉ</a></li>
+                <li><a class="menu-a" href="giohang.html">SỰ KIỆN</a></li>
+                <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
+            </ul>
+        </div>
+        <!-- nội dung -->
+        <div class="detail-title">
+            <div class="h5-detail">Nội dung phim</div>
+            <span class="line-detail"></span>
+            <div class="flex-detail">
+                <div class="flex-img">
+                    <div class="flex-title">
+                        <a href="#">
+                            <div class="flex-cs">
+                                <div class="h6-poster"><%=film.nameEN%></div>
+                                <div class="side-poster"><%=film.nameVN%></div>
+                            </div>
+                        </a>
+                        <div class="cs">
+                            <img class="img-cs" 
+                            <% if (film.agelimit==18){%>
+                                src="/img/cs18.png">
+                            <%} else if (film.agelimit==16){%>
+                                src="/img/cs16.png">
+                            <%}else {%>
+                                src="/img/cs13.png">
+                            <%}%>
+                        </div>
+
+                    </div>
+                    <div class="detail-noidung">
+                        <div class="detail-left ">
+                            <img class="detail-img" src="/img/films/<%=film._id%>/<%=film.photo%>">
+                            <button type="button" class="btn btn-danger btn-buy">Mua vé</button>
+                        </div>
+                        <div class="detail-right">
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Đạo diễn:</div>
+                                    <div class="sub2"><%=film.director%></div>
+                                </div>
+                            </div>
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Diễn viên:</div>
+                                    <div class="sub2"><%=film.actor%></div>
+                                </div>
+                            </div>
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Thể loại:</div>
+                                    <div class="sub2"><%=film.type%></div>
+                                </div>
+                            </div>
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Khởi chiếu:</div>
+                                    <div class="sub2"><%=film.showdate%></div>
+                                </div>
+                            </div>
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Thời lượng:</div>
+                                    <div class="sub2"><%=film.time%></div>
+                                </div>
+                            </div>
+                            <div class="detail-sub">
+                                <div class="subin">
+                                    <div class="sub1">Chi tiết:</div>
+                                    <div class="sub2-chitiet"><%=film.detail%></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</body>
+<%- include ('../layouts/footer') %>

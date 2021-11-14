@@ -5,15 +5,22 @@ var router = express.Router();
 // var checkUser = require('../middleware/checkUser.middleware');
 // var Product= require('../models/product');
 // var Category= require('../models/category');
-
+var Film = require('../models/film');
 
 
 router.get('/',function(req,res){
-    res.render('index');
+    Film.find({status:"showing"},function(err,fis){
+        Film.find({status:"coming"},function(err,fic){
+        if (err) return console.log(err);
+        res.render('index',{
+            films:fis,
+            filmc:fic,
+            });
+        })
+    })
 })
-router.get('/login',function(req,res){
-    res.render('auth/login');
-})
+
+
 
 
 

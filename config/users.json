@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "618e620e4813f121dfb8742b"
+  },
+  "email": "holipenta@gmail.com",
+  "password": "1234",
+  "fullname": "Thi Trần",
+  "admin": 0,
+  "block": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "618fd5b2d70b9d84948e1def"
+  },
+  "email": "hoanghai1910@gmail.com",
+  "password": "1234",
+  "fullname": "Thi Trần",
+  "admin": 0,
+  "block": 0,
+  "__v": 0
+}]

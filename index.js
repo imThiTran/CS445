@@ -49,4 +49,4 @@ var checkUser = require('./middleware/checkUser.middleware');
 
 app.use('/auth',auth);
 app.use('/',checkUser,site);
-app.use('/film',film);
+app.use('/film',checkUser,film);
