@@ -26,6 +26,9 @@ var FilmSchema = mongoose.Schema({
     showdate:{
         type:String
     },
+    type:{
+        type:String
+    },
     time:{
         type: String,
     },
