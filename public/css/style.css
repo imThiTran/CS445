@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 body{
     font-size: 18px;
-    background-color: #333;
+    background-color: #333 !important;
     height: 100%;
     margin: 0px;
 }
@@ -432,4 +432,65 @@ footer{
 .couple:active+.btn-pcouple, .couple:checked+.btn-couple, .btn-couple.active, .btn-couple:active, 
 .show>.btn-couple.dropdown-toggle{
   background: indianred !important;
+}
+.trailer-detail{
+  text-align: center;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+.trailer-title{
+  background: rgb(254 199 88);
+  width: 100%;
+  max-width: 200px;
+  margin: 10px 0px 30px 0px;
+  font-weight: 500;
+  border-radius: 20px;
+  font-size: 20px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  margin: 0 auto;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3rem;
+  outline: 0;
+
+}
+
+.modal-body {
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1px solid #aaaaaa;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #aaaaaa;
+  padding: 1rem;
+}
+
+.modal-footer>:not(:first-child) {
+  margin-left: .25rem;
 }
