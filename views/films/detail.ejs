@@ -1,5 +1,6 @@
 <%- include ('../layouts/header') %>
-<body>
+
+    <body>
         <!-- nội dung -->
         <div class="detail-title">
             <div class="h5-detail">Nội dung phim</div>
@@ -9,84 +10,147 @@
                     <div class="flex-title">
                         <a href="#">
                             <div class="flex-cs">
-                                <div class="h6-poster"><%=film.nameEN%></div>
-                                <div class="side-poster"><%=film.nameVN%></div>
+                                <div class="h6-poster">
+                                    <%=film.nameEN%>
+                                </div>
+                                <div class="side-poster">
+                                    <%=film.nameVN%>
+                                </div>
                             </div>
                         </a>
                         <div class="cs">
-                            <img class="img-cs" 
-                            <% if (film.agelimit==18){%>
-                                src="/img/cs18.png">
+                            <img class="img-cs" <% if (film.agelimit==18){%>
+                            src="/img/cs18.png">
                             <%} else if (film.agelimit==16){%>
                                 src="/img/cs16.png">
-                            <%}else {%>
-                                src="/img/cs13.png">
-                            <%}%>
+                                <%}else {%>
+                                    src="/img/cs13.png">
+                                    <%}%>
                         </div>
 
                     </div>
                     <div class="detail-noidung">
+
                         <div class="detail-left ">
                             <img class="detail-img" src="/img/films/<%=film._id%>/<%=film.photo%>">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=film.trailerId%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <button type="button" class="btn btn-danger btn-buy">Mua vé</button>
+                            <button type="button" class="btn btn-danger btn-buy" data-toggle="modal" data-target="#myModal">
+                                Mua vé
+                           </button>
+                     
+                           <!-- bảng pop up  -->
+                           <div class="modal" id="myModal">
+                              <div class="modal-dialog">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h4 class="modal-title">Chi tiết mua vé</h4>
+                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                   
+                                    <div class="modal-body">
+                                        <h6 class="modal-title">Chọn ngày</h6>
+                                        <div class="form-group">
+                                            <input name="birthday" id="birth" class="form-control input-login" type="date"
+                                                placeholder="Ngày sinh" aria-label="default input example">
+                                            <span class="span-error" id="birth_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6 class="modal-title">Chọn suất chiếu</h6>
+                                        <div class="flex-time-detail1">
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">7:30 AM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">10:20 AM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">13:15 PM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">15:45 PM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">17:30 PM</button>
+                                        </div>
+                                     </div>
+                                    
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-danger" >Tiếp tục</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+
                         <div class="detail-right">
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Đạo diễn:</div>
-                                    <div class="sub2"><%=film.director%></div>
+                                    <div class="sub2">
+                                        <%=film.director%>
+                                    </div>
                                 </div>
                             </div>
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Diễn viên:</div>
-                                    <div class="sub2"><%=film.actor%></div>
+                                    <div class="sub2">
+                                        <%=film.actor%>
+                                    </div>
                                 </div>
                             </div>
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Thể loại:</div>
                                     <div class="sub2">
-                                        <%if (film.type=="action"){%>
+                                        <%if (film.type=="action" ){%>
                                             Hành động
-                                        <%}else if (film.type=="honor"){%>
-                                            Kinh dị
-                                        <%}else if (film.type=="romance"){%>
-                                            Tình cảm
-                                        <%} else if (film.type=="humorous"){%>
-                                            Hài hước
-                                        <%}else if (film.type=="cartoon"){%>
-                                            Hoạt hình
-                                        <%}else {%>
-                                            Lịch sử
-                                        <%}%>
+                                            <%}else if (film.type=="honor" ){%>
+                                                Kinh dị
+                                                <%}else if (film.type=="romance" ){%>
+                                                    Tình cảm
+                                                    <%} else if (film.type=="humorous" ){%>
+                                                        Hài hước
+                                                        <%}else if (film.type=="cartoon" ){%>
+                                                            Hoạt hình
+                                                            <%}else {%>
+                                                                Lịch sử
+                                                                <%}%>
                                     </div>
                                 </div>
                             </div>
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Khởi chiếu:</div>
-                                    <div class="sub2"><%=film.showdate%></div>
+                                    <div class="sub2">
+                                        <%=film.showdate%>
+                                    </div>
                                 </div>
                             </div>
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Thời lượng:</div>
-                                    <div class="sub2"><%=film.time%></div>
+                                    <div class="sub2">
+                                        <%=film.time%>
+                                    </div>
                                 </div>
                             </div>
                             <div class="detail-sub">
                                 <div class="subin">
                                     <div class="sub1">Chi tiết:</div>
-                                    <div class="sub2-chitiet"><%=film.detail%></div>
+                                    <div class="sub2-chitiet">
+                                        <%=film.detail%>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="trailer-detail">
+                        <div class="trailer-title">Trailer</div>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=film.trailerId%>"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                        </iframe>
                     </div>
 
                 </div>
             </div>
         </div>
-</body>
-<%- include ('../layouts/footer') %>
+    </body>
+    <%- include ('../layouts/footer') %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
