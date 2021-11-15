@@ -62,9 +62,17 @@
                                 <div class="flex-time">
                                     <a href="/film/detail/<%=film.slug%>" class="item-slide"><img class="poster-movie" src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
                                     <div class="flex-time-detail">
+                                        <%var check=false;%>
                                         <% film.showtime.forEach(function(st){ %>
-                                            <button type="button" class="btn btn-outline-warning btn-time"><%=st%></button>
+                                            <%if (st.date==dateRq){ %>
+                                                <% check=true %>
+                                            <%st.time.forEach(function(ti){%>
+                                                <button type="button" class="btn btn-outline-warning btn-time"><%=ti%></button>
+                                            <%}) }%>
                                         <%})%>
+                                        <%if (check==false){%>
+                                            <h1>không có suất chiếu nào</h1>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>
