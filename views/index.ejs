@@ -30,13 +30,31 @@
                         <div class="time-index">
 
                             <!-- <div id="demo-detail" class="owl-carousel owl-theme"> -->
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="1-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="1-outlined">MONDAY
-                                        01/11</label>
-                                </div>
-                                <div>
+                                <%dayWeek.forEach(function(dw){%>
+                                    <div>
+                                        <input type="radio" class="btn-check" name="options-outlined" id="1-outlined"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-dark btn-time-index" for="1-outlined">
+                                            <%if(dw.getDay()==0){%>
+                                                SUNDAY
+                                            <%}; if(dw.getDay()==1){%>
+                                                MONDAY
+                                            <%};if(dw.getDay()==2){%>
+                                                TUESDAY
+                                            <%};if(dw.getDay()==3){%>
+                                                WEDNESDAY
+                                            <%};if(dw.getDay()==4){%>
+                                                THURSDAY
+                                            <%};if(dw.getDay()==5){%>
+                                                FRIDAY
+                                            <%};if(dw.getDay()==6){%>
+                                                SATURDAY
+                                            <%}%>
+                                            <%=dw.getDate()+'/'+(dw.getMonth()+1)%></label>
+                                    </div>
+                                <%})%>
+                                
+                                <!-- <div>
                                     <input type="radio" class="btn-check" name="options-outlined" id="2-outlined"
                                         autocomplete="off">
                                     <label class="btn btn-outline-dark btn-time-index" for="2-outlined">TUESDAY
@@ -71,7 +89,7 @@
                                         autocomplete="off">
                                     <label class="btn btn-outline-dark btn-time-index" for="7-outlined">SUNDAY
                                         07/11</label>
-                                </div>
+                                </div> -->
                                 <!-- <div>
                                     <input type="radio" class="btn-check" name="options-outlined" id="8-outlined"
                                         autocomplete="off">
