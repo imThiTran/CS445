@@ -500,7 +500,7 @@ footer{
 }
 .flex-time-detail1{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: row;
   align-content: flex-start;
@@ -511,9 +511,23 @@ footer{
   background: rgb(254 199 88) !important;
   color: #333 !important;
   width: 100px;
-  margin: 5px 0px;
+  margin: 5px 10px;
 }
 .btn-timedetail:hover{
   background: #333 !important;
+  color: #eee !important;
+}
+.btn-seat1{
+  background: rgb(254 199 88) !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    width: 100px;
+    margin-right: 10px;
+    
+}
+.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, 
+.show>.btn-primary.dropdown-toggle{
+  background: #333!important;
   color: #eee !important;
 }
