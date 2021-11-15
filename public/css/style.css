@@ -494,3 +494,26 @@ footer{
 .modal-footer>:not(:first-child) {
   margin-left: .25rem;
 }
+.form-group{
+  margin-top: 0.4rem;
+  margin-bottom: -10px !important;
+}
+.flex-time-detail1{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+  flex: 1;
+  margin-top: 0.4rem;
+}
+.btn-timedetail{
+  background: rgb(254 199 88) !important;
+  color: #333 !important;
+  width: 100px;
+  margin: 5px 0px;
+}
+.btn-timedetail:hover{
+  background: #333 !important;
+  color: #eee !important;
+}

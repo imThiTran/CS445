@@ -37,22 +37,36 @@
                                 Mua vé
                            </button>
                      
-                           <!-- The Modal -->
+                           <!-- bảng pop up  -->
                            <div class="modal" id="myModal">
                               <div class="modal-dialog">
                                  <div class="modal-content">
-                                    <!-- Modal Header -->
                                     <div class="modal-header">
                                        <h4 class="modal-title">Chi tiết mua vé</h4>
                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
-                                    <!-- Modal body -->
+                                   
                                     <div class="modal-body">
-                                       Modal body..
+                                        <h6 class="modal-title">Chọn ngày</h6>
+                                        <div class="form-group">
+                                            <input name="birthday" id="birth" class="form-control input-login" type="date"
+                                                placeholder="Ngày sinh" aria-label="default input example">
+                                            <span class="span-error" id="birth_error"></span>
+                                        </div>
                                     </div>
-                                    <!-- Modal footer -->
+                                    <div class="modal-body">
+                                        <h6 class="modal-title">Chọn suất chiếu</h6>
+                                        <div class="flex-time-detail1">
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">7:30 AM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">10:20 AM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">13:15 PM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">15:45 PM</button>
+                                                <button type="button" class="btn btn-outline-warning btn-timedetail">17:30 PM</button>
+                                        </div>
+                                     </div>
+                                    
                                     <div class="modal-footer">
-                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                       <button type="button" class="btn btn-danger" >Tiếp tục</button>
                                     </div>
                                  </div>
                               </div>
