@@ -41,6 +41,9 @@ var FilmSchema = mongoose.Schema({
     agelimit:{
         type:Number,
     },
+    trailerId:{
+        type:String
+    },
 })
 
 var Film = module.exports = mongoose.model('films',FilmSchema);
