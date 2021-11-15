@@ -6,12 +6,37 @@
   "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
   "slug": "the-conjuring:-the-devil-made-me-do-it",
   "showtime": [
-    "08:25 AM",
-    "12:00 AM",
-    "02:00 PM",
-    "03:20 PM",
-    "05:45 PM",
-    "07:15 PM"
+    {
+      "date": "15/11/2021",
+      "time": [
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM",
+        "07:15 PM"
+      ]
+    },
+    {
+      "date": "09/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM",
+        "07:15 PM"
+      ]
+    },
+    {
+      "date": "10/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM"
+      ]
+    }
   ],
   "photo": "poster.png",
   "director": "Taylor Sheridan",
@@ -21,7 +46,8 @@
   "time": "100 phút",
   "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
   "status": "showing",
-  "agelimit": "16"
+  "agelimit": "16",
+  "trailerId": "tbs3XRt0hhI"
 },{
   "_id": {
     "$oid": "61908bdcc60c240f6bfe6640"
@@ -30,13 +56,36 @@
   "nameEN": "THOSE WHO WISH ME DEAD",
   "slug": "those-who-wish-me-dead",
   "showtime": [
-    "08:25 AM",
-    "12:00 AM",
-    "02:00 PM",
-    "03:20 PM",
-    "05:45 PM",
-    "07:15 PM",
-    "09:35 PM"
+    {
+      "date": "08/11/2021",
+      "time": [
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM"
+      ]
+    },
+    {
+      "date": "09/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM",
+        "07:15 PM"
+      ]
+    },
+    {
+      "date": "10/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM"
+      ]
+    }
   ],
   "status": "showing",
   "photo": "poster2.png",
@@ -46,7 +95,8 @@
   "showdate": "05/11/2021",
   "time": "100 phút",
   "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
-  "agelimit": "18"
+  "agelimit": "18",
+  "trailerId": "s9boPsyrehg"
 },{
   "_id": {
     "$oid": "6190941ec60c240f6bfe6642"
@@ -55,14 +105,39 @@
   "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
   "slug": "the-conjuring:-the-devil-made-me-do-it",
   "showtime": [
-    "08:25 AM",
-    "12:00 AM",
-    "02:00 PM",
-    "03:20 PM",
-    "05:45 PM",
-    "07:15 PM"
+    {
+      "date": "08/11/2021",
+      "time": [
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM",
+        "07:15 PM"
+      ]
+    },
+    {
+      "date": "09/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM",
+        "07:15 PM"
+      ]
+    },
+    {
+      "date": "10/11/2021",
+      "time": [
+        "08:25 AM",
+        "12:00 AM",
+        "02:00 PM",
+        "03:20 PM",
+        "05:45 PM"
+      ]
+    }
   ],
-  "photo": "poster.png",
+  "photo": "poster3.png",
   "director": "Taylor Sheridan",
   "actor": "Angelina Jolie, Jon Bernthal, Nicholas Hoult",
   "type": "action",
@@ -70,5 +145,6 @@
   "time": "100 phút",
   "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
   "status": "coming",
-  "agelimit": "16"
+  "agelimit": "16",
+  "trailerId": "tbs3XRt0hhI"
 }]
