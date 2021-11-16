@@ -4,7 +4,7 @@
         <!-- slide poster phim -->
         <div class="poster-index">
             <div id="owl-demo" class="owl-carousel owl-theme">
-                <%films.forEach(function(film){%>
+                <%filmslide.forEach(function(film){%>
                     <a class="item-slide" href="/film/detail/<%=film.slug%>"><img class="poster-slide"
                             src="/img/films/<%=film._id%>/<%=film.photo%>" alt="Owl Image"></a>
                     <%})%>
@@ -29,14 +29,15 @@
                     <div class="main" id="pdc">
                         <div class="time-index">
 
-                            <!-- <div id="demo-detail" class="owl-carousel owl-theme"> -->
+                            <div id="demo-detail" class="owl-carousel owl-theme">
                                 <%dayWeek.forEach(function(dw){%>
                                     <div>
+                                        <% var day= (dw.getDate()<10)?("0"+dw.getDate()):dw.getDate();%>
+                                        <% var month= (dw.getMonth()<10)?("0"+(dw.getMonth()+1)):(dw.getMonth()+1);%>
+                                        <a href="/<%=dw.getTime()%>">
                                         <input type="radio" class="btn-check" name="options-outlined" id="1-outlined"
                                             autocomplete="off">
-                                        <label class="btn btn-outline-dark btn-time-index" for="1-outlined">
-                                            <% var day= (dw.getDate()<10)?("0"+dw.getDate()):dw.getDate();%>
-                                            <% var month= (dw.getMonth()<10)?("0"+(dw.getMonth()+1)):(dw.getMonth()+1);%>
+                                        <label class="btn btn-outline-dark btn-time-index" > 
                                             <%if(dw.getDay()==0){%>
                                                 SUNDAY
                                             <%}; if(dw.getDay()==1){%>
@@ -53,231 +54,67 @@
                                                 SATURDAY
                                             <%}%>
                                             <%=day+'/'+month%></label>
-                                    </div>
+                                        </a>
+                                    </div> 
                                 <%})%>
-                                
-                                <!-- <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="2-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="2-outlined">TUESDAY
-                                        01/11</label>
                                 </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="3-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="3-outlined">WEDNESDAY
-                                        03/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="4-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="4-outlined">THURSDAY
-                                        04/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="5-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="5-outlined">FRIDAY
-                                        05/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="6-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="6-outlined">SATURDAY
-                                        06/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="7-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="7-outlined">SUNDAY
-                                        07/11</label>
-                                </div> -->
-                                <!-- <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="8-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="8-outlined">MONDAY
-                                        08/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="9-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="9-outlined">TUESDAY
-                                        09/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="10-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="10-outlined">WEDNESDAY
-                                        10/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="11-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="11-outlined">THURSDAY
-                                        11/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="12-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="12-outlined">FRIDAY
-                                        12/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="13-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="13-outlined">SATURDAY
-                                        13/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="14-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="14-outlined">SUNDAY
-                                        14/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="15-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="15-outlined">MONDAY 15/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="16-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="16-outlined">TUESDAY 16/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="17-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="17-outlined">WEDNESDAY
-                                        17/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="18-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="18-outlined">THURSDAY
-                                        18/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="19-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="19-outlined">FRIDAY 19/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="20-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="20-outlined">SATURDAY
-                                        20/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="21-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="21-outlined">SUNDAY 21/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="22-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="22-outlined">MONDAY 22/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="23-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="23-outlined">TUESDAY 23/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="24-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="24-outlined">WEDNESDAY
-                                        24/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="25-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="25-outlined">THURSDAY
-                                        25/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="26-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="26-outlined">FRIDAY 26/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="27-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="27-outlined">SATURDAY
-                                        27/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="28-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="28-outlined">SUNDAY 28/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="29-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="29-outlined">MONDAY 29/11</label>
-                                </div>
-                                <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="30-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="30-outlined">TUESDAY
-                                        30/11</label>
-                                    </div>
-                                    <div>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="31-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-dark btn-time-index" for="31-outlined">THURSDAY 31/11</label>
-                                </div> -->
-                            <!-- </div> -->
+                                 
                         </div>
                         <span class="line-list" style="width: 94%"></span>
                         <div class="flex-poster">
-                            <% films.forEach(function(film){ %>
-                                <div class="poster-movie-div">
-                                    <div class="flex-title">
-                                        <a href="#">
-                                            <div class="flex-cs">
-                                                <div class="h6-poster">
-                                                    <%=film.nameEN%>
+                            <% if (films.length !=0){%>
+                                <% films.forEach(function(film){ %>
+                                    <div class="poster-movie-div">
+                                        <div class="flex-title">
+                                            <a href="#">
+                                                <div class="flex-cs">
+                                                    <div class="h6-poster">
+                                                        <%=film.nameEN%>
+                                                    </div>
+                                                    <div class="side-poster">
+                                                        <%=film.nameVN%>
+                                                    </div>
                                                 </div>
-                                                <div class="side-poster">
-                                                    <%=film.nameVN%>
-                                                </div>
+                                            </a>
+                                            <div class="cs">
+                                                <img class="img-cs" <% if (film.agelimit==18){%>
+                                                src="/img/cs18.png">
+                                                <%} else if (film.agelimit==16){%>
+                                                    src="/img/cs16.png">
+                                                    <%}else {%>
+                                                        src="/img/cs13.png">
+                                                        <%}%>
+    
                                             </div>
-                                        </a>
-                                        <div class="cs">
-                                            <img class="img-cs" <% if (film.agelimit==18){%>
-                                            src="/img/cs18.png">
-                                            <%} else if (film.agelimit==16){%>
-                                                src="/img/cs16.png">
-                                                <%}else {%>
-                                                    src="/img/cs13.png">
-                                                    <%}%>
-
+    
                                         </div>
-
-                                    </div>
-                                    <div class="flex-time">
-                                        <a href="/film/detail/<%=film.slug%>" class="item-slide"><img
-                                                class="poster-movie" src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
-                                        <div class="flex-time-detail">
-                                            <%var check=false;%>
-                                                <% film.showtime.forEach(function(st){ %>
-                                                    <%if (st.date==dateRq){ %>
-                                                        <% check=true %>
-                                                            <%st.time.forEach(function(ti){%>
-                                                                <button type="button"
-                                                                    class="btn btn-outline-warning btn-time">
-                                                                    <%=ti%>
-                                                                </button>
-                                                                <%}) }%>
-                                                                    <%})%>
-                                                                        <%if (check==false){%>
-                                                                            <h1>không có suất chiếu nào</h1>
-                                                                            <%}%>
+                                        <div class="flex-time">
+                                            <a href="/film/detail/<%=film.slug%>" class="item-slide"><img
+                                                    class="poster-movie" src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
+                                            <div class="flex-time-detail">
+                                                <%var check=false;%>
+                                                    <% film.showtime.forEach(function(st){ %>
+                                                        <%if (st.date==dateRq){ %>
+                                                            <% check=true %>
+                                                                <%st.time.forEach(function(ti){%>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-warning btn-time">
+                                                                        <%=ti%>
+                                                                    </button>
+                                                                    <%}) }%>
+                                                                        <%})%>
+                                                                            <%if (check==false){%>
+                                                                                <h1>không có suất chiếu nào</h1>
+                                                                                <%}%>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <%}) %>
-
+                                    <%}) %>
+    
+                            <%} else {%>
+                               <h1>Không có phim nào được chiếu trong ngày</h1> 
+                            <%}%>
+                            
                         </div>
                     </div>
                 </div>
@@ -337,7 +174,7 @@
                 }, 2000);
             });
         </script>
-        <!-- <script>
+        <script>
             $(document).ready(function () {
 
                 $("#demo-detail").owlCarousel({
@@ -350,4 +187,4 @@
                 });
 
             });
-        </script> -->
+        </script>
