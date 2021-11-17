@@ -531,3 +531,20 @@ footer{
   background: #333!important;
   color: #eee !important;
 }
+.ad-movie{
+  padding: 50px;
+      width: 100%;
+      background: #eee;
+}
+.admin-suatchieu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.ad-phim{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
