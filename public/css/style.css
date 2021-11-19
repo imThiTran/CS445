@@ -638,3 +638,46 @@ input[type="checkbox"][id^="cb"] {
   background-color: #333;
   box-shadow: 0 0 0 0.25rem rgb(184, 180, 180) !important;
 }
+.modal-left{
+  flex: 1;
+}
+.modal-body-plus{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.modal-right{
+  width: 100%;
+  max-width: 500px;
+  margin-right: 20px;
+}
+.img-add{
+  max-width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-addimg{
+  background-color: rgb(254 199 88);
+  border-color: rgb(254 199 88);
+  padding: 5px;
+      border-radius: 5px;
+      margin-top: 10px;
+      
+}
+.ad-btn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lc-date{
+  border-bottom: 1px solid;
+  margin-top: 10px;
+}
+.lc-suatchieu{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 80%;
+}
