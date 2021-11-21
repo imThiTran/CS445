@@ -4,6 +4,7 @@ var config = require('./config/database')
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var fileUpload = require('express-fileupload');
 
 mongoose.connect(config.database);
 var db=mongoose.connection;
@@ -17,13 +18,16 @@ var app  = express();
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
+app.use(express.static(path.join(__dirname,'public')));
+
+app.use(fileUpload());
+
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
 //parse application/json
 app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname,'public')));
 
 app.use(session({
     secret: 'keyboard cat',
@@ -43,10 +47,14 @@ app.listen(port,function(){
 
 var auth = require('./routes/auth');
 var site = require('./routes/sites');
-var film = require('./routes/film')
+var film = require('./routes/film');
+var adminFilm = require('./routes/admin-film');
+var adminShowtime = require('./routes/admin-showtime');
 
 var checkUser = require('./middleware/checkUser.middleware');
 
 app.use('/auth',auth);
 app.use('/',checkUser,site);
 app.use('/film',checkUser,film);
+app.use('/admin/film',checkUser,adminFilm);
+app.use('/admin/showtime',checkUser,adminShowtime);

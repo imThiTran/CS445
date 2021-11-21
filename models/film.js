@@ -3,10 +3,10 @@ var mongoose = require('mongoose')
 var FilmSchema = mongoose.Schema({
     nameVN:{
         type : String,
-        required : true
     },
     nameEN:{
-        type: String
+        type: String,
+        require:true,
     },
     slug:{
         type: String,

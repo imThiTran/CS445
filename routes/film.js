@@ -6,7 +6,8 @@ router.get('/detail/:slug',function(req,res){
     var slug = req.params.slug;
     Film.findOne({slug:slug},function(err,fi){
         res.render('films/detail',{
-            film:fi
+            film:fi,
+            showtime:fi.showtime,
         });
     })
 })

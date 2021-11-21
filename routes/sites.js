@@ -6,7 +6,7 @@ var router = express.Router();
 // var Product= require('../models/product');
 // var Category= require('../models/category');
 var Film = require('../models/film');
-
+var Showtime= require('../models/showtime');
 
 router.get('/',function(req,res){
     var today = new Date();
@@ -38,6 +38,7 @@ router.get('/',function(req,res){
         })
     })
 })
+
 
 router.get('/:time',function(req,res){
     var today = new Date();
