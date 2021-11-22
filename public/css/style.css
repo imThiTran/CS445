@@ -494,10 +494,7 @@ footer{
 .modal-footer>:not(:first-child) {
   margin-left: .25rem;
 }
-.form-group{
-  margin-top: 0.4rem;
-  margin-bottom: -10px !important;
-}
+
 .flex-time-detail1{
   display: flex;
   justify-content: flex-start;
@@ -756,4 +753,7 @@ input[type="checkbox"][id^="cb"] {
 }
 .modal-body-plus{
   font-size: 16px;
+}
+.modal-body{
+  font-size: 14px;
 }
