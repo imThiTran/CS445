@@ -30,7 +30,7 @@ router.post('/add-showtime',function(req , res){
         })
     }
     setTimeout(() => {
-        if (check.length!=0) return console.log("suat chieu da ton tai");
+        if (check.length>0) return console.log("suat chieu da ton tai");
         else {
                 for(var i=0;i<time.length;i++){
                 var newst= new Showtime({
@@ -48,10 +48,10 @@ router.post('/add-showtime',function(req , res){
                             nameEN:nameEN,
                             date:date,
                             time:time[i],
-                            room:room[i]
+                            room:room[i],
+                            available:1,
                         })
                         chair.save(function(err){
-                            
                         })
                     }
                 }
