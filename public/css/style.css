@@ -416,6 +416,7 @@ footer{
     border-radius: 10px;
 }
 .btn-seat{
+
   background: #333 !important;
     box-shadow: none !important;
     border: none !important;
@@ -425,6 +426,7 @@ footer{
 .btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, 
 .show>.btn-primary.dropdown-toggle{
   background: rgb(254 199 88) !important;
+  
 }
 .td-order{
   padding-bottom: 5px;
@@ -515,7 +517,7 @@ footer{
   color: #eee !important;
 }
 .btn-seat1{
-  background: rgb(254 199 88) !important;
+
     box-shadow: none !important;
     border: none !important;
     padding: 5px 10px !important;
@@ -523,9 +525,10 @@ footer{
     margin-right: 10px;
     
 }
+
 .btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, 
 .show>.btn-primary.dropdown-toggle{
-  background: #333!important;
+  background: rgb(254 199 88);
   color: #eee !important;
 }
 .ad-movie{
