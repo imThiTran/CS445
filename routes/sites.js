@@ -18,12 +18,12 @@ router.get('/',function(req,res){
         dayWeek.push(newMonday);
         monday=monday+daylength;
     }
-    var dateRq=today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+    var dateRq=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var newFis=[];
     Film.find({status:"showing"},function(err,fis){
         for(var i=0;i<fis.length;i++){
             for(var j=0;j<fis[i].showtime.length;j++){
-                if (fis[i].showtime[j].date==dateRq) newFis.push(fis[i]);
+                if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
             }
         }
         Film.find({status:"coming"},function(err,fic){
@@ -52,12 +52,12 @@ router.get('/:time',function(req,res){
             dayWeek.push(newMonday);
             monday=monday+daylength;
         }
-        var dateRq=time.getDate()+'/'+(time.getMonth()+1)+'/'+time.getFullYear();
+        var dateRq=time.getFullYear()+'-'+(time.getMonth()+1)+'-'+time.getDate();
         var newFis=[];
         Film.find({status:"showing"},function(err,fis){
             for(var i=0;i<fis.length;i++){
                 for(var j=0;j<fis[i].showtime.length;j++){
-                    if (fis[i].showtime[j].date==dateRq) newFis.push(fis[i]);
+                    if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
                 }
             }
             Film.find({status:"coming"},function(err,fic){

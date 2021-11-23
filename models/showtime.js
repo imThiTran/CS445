@@ -4,6 +4,9 @@ var ShowtimeSchema = mongoose.Schema({
     nameEN:{
         type: String
     },
+    idSt:{
+        type:String,
+    },
     date:{
         type:String,
     },

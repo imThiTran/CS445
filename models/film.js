@@ -13,6 +13,7 @@ var FilmSchema = mongoose.Schema({
     },
     showtime:{
         type: Array,
+        default:[],
     },
     photo:{
         type: String,

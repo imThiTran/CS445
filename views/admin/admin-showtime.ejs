@@ -118,8 +118,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <select id="room" name="room" class="select-pc">
-                                                                    <option value="0" selected>Chọn phòng chiếu</option>
-                                                                    <option value="1">CINEMA 1</option>
+                                                                    <option value="1" selected>CINEMA 1</option>
                                                                     <option value="2">CINEMA 2</option>
                                                                     <option value="3">CINEMA 3</option>
                                                                 </select>
@@ -135,8 +134,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <select id="room" name="room" class="select-pc">
-                                                                    <option value="0" selected>Chọn phòng chiếu</option>
-                                                                    <option value="1">CINEMA 1</option>
+                                                                    <option value="1" selected>CINEMA 1</option>
                                                                     <option value="2">CINEMA 2</option>
                                                                     <option value="3">CINEMA 3</option>
                                                                 </select>
@@ -152,8 +150,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <select name="room" class="select-pc">
-                                                                    <option value="0" selected>Chọn phòng chiếu</option>
-                                                                    <option value="1">CINEMA 1</option>
+                                                                    <option value="1" selected>CINEMA 1</option>
                                                                     <option value="2">CINEMA 2</option>
                                                                     <option value="3">CINEMA 3</option>
                                                                 </select>
@@ -169,8 +166,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <select name="room" class="select-pc">
-                                                                    <option value="0" selected>Chọn phòng chiếu</option>
-                                                                    <option value="1">CINEMA 1</option>
+                                                                    <option value="1" selected>CINEMA 1</option>
                                                                     <option value="2">CINEMA 2</option>
                                                                     <option value="3">CINEMA 3</option>
                                                                 </select>
@@ -186,8 +182,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <select name="room" class="select-pc">
-                                                                    <option value="0" selected>Chọn phòng chiếu</option>
-                                                                    <option value="1">CINEMA 1</option>
+                                                                    <option value="1" selected>CINEMA 1</option>
                                                                     <option value="2">CINEMA 2</option>
                                                                     <option value="3">CINEMA 3</option>
                                                                 </select>
@@ -209,158 +204,162 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">
-                            TCR01
-                        </th>
-                        <td style="width: 20%;">
-                            <div>THE DEVIL MADE ME DO IT</div>
-                            <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                        </td>
-                        <td>
-                            15/11/2021
-                        </td>
-                        <td>
-                            07:30 Am
-                        </td>
-                        <td>
-                            CINEMA 1
-                        </td>
-
-                        <td>
-                            <div class="ad-btn" style="    width: 60px;">
-                                <button type="button" class="btn-close btn-xoa" aria-label="Close"
-                                    style="margin-top: 30px;" data-target="#exampleModal"></button>
-                                <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
-                                    data-target=".bd-example-modal-lg1"
-                                    style="width:100%; margin-top: 20px">Sửa</button>
-                            </div>
-                        </td>
-
-                        <form action="">
-                            <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog"
-                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Sửa lịch chiếu</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <div class="modal-body">
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Tên phim</label>
-                                                <label for="">
-                                                    <div>THE DEVIL MADE ME DO IT</div>
-                                                    <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                                                </label>
+                    <%showtimes.forEach(function(showtime){%>
+                        <tr>
+                            <th scope="row">
+                                <%=showtime.idSt%>
+                            </th>
+                            <td style="width: 20%;">
+                                <div><%=showtime.nameEN%></div>
+                                <!-- <div>showtime.nameVN></div> -->
+                            </td>
+                            <td>
+                                <%=showtime.date%>
+                            </td>
+                            <td>
+                                <%=showtime.time%>
+                            </td>
+                            <td>
+                                CINEMA <%=showtime.room%>
+                            </td>
+    
+                            <td>
+                                <div class="ad-btn" style="    width: 60px;">
+                                    <button type="button" class="btn-close btn-xoa" aria-label="Close"
+                                        style="margin-top: 30px;" data-target="#exampleModal"></button>
+                                    <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
+                                        data-target=".bd-example-modal-lg1"
+                                        style="width:100%; margin-top: 20px">Sửa</button>
+                                </div>
+                            </td>
+    
+                            <form action="">
+                                <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog"
+                                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Sửa lịch chiếu</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
-                                         
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Ngày chiếu</label>
-                                                <input name="date" class="date-lc" type="date">
-                                            </div>
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Suất chiếu</label>
-                                                <div class="lc-suatchieu">
-                                                    <div class="sc-check">
-                                                        <div class="form-check">
-                                                            <input name="time" class="form-check-input"
-                                                                type="checkbox" value="09:00"
-                                                                id="flexCheckDefault" onclick="toggleSelect(this)">
-                                                            <label name="suat1" class="form-check-label"
-                                                                for="flexCheckDefault">
-                                                                09:00 AM
-                                                            </label>
+    
+                                            <div class="modal-body">
+                                                <div class="ad-phim1">
+                                                    <label class="label-chitiet" for="">Tên phim</label>
+                                                    <label for="">
+                                                        <div>THE DEVIL MADE ME DO IT</div>
+                                                        <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
+                                                    </label>
+                                                </div>
+                                             
+                                                <div class="ad-phim1">
+                                                    <label class="label-chitiet" for="">Ngày chiếu</label>
+                                                    <input name="date" class="date-lc" type="date">
+                                                </div>
+                                                <div class="ad-phim1">
+                                                    <label class="label-chitiet" for="">Suất chiếu</label>
+                                                    <div class="lc-suatchieu">
+                                                        <div class="sc-check">
+                                                            <div class="form-check">
+                                                                <input name="time" class="form-check-input"
+                                                                    type="checkbox" value="09:00"
+                                                                    id="flexCheckDefault" onclick="toggleSelect(this)">
+                                                                <label name="suat1" class="form-check-label"
+                                                                    for="flexCheckDefault">
+                                                                    09:00 AM
+                                                                </label>
+                                                            </div>
+                                                            <select id="room" name="room" class="select-pc">
+                                                                <option value="0" selected>Chọn phòng chiếu</option>
+                                                                <option value="1">CINEMA 1</option>
+                                                                <option value="2">CINEMA 2</option>
+                                                                <option value="3">CINEMA 3</option>
+                                                            </select>
                                                         </div>
-                                                        <select id="room" name="room" class="select-pc">
-                                                            <option value="0" selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2</option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sc-check">
-                                                        <div class="form-check">
-                                                            <input name="time" class="form-check-input"
-                                                                type="checkbox" value="11:00"
-                                                                id="flexCheckDefault" onclick="toggleSelect(this)">
-                                                            <label name="suat2" class="form-check-label"
-                                                                for="flexCheckDefault">
-                                                                11:00 AM
-                                                            </label>
+                                                        <div class="sc-check">
+                                                            <div class="form-check">
+                                                                <input name="time" class="form-check-input"
+                                                                    type="checkbox" value="11:00"
+                                                                    id="flexCheckDefault" onclick="toggleSelect(this)">
+                                                                <label name="suat2" class="form-check-label"
+                                                                    for="flexCheckDefault">
+                                                                    11:00 AM
+                                                                </label>
+                                                            </div>
+                                                            <select id="room" name="room" class="select-pc">
+                                                                <option value="0" selected>Chọn phòng chiếu</option>
+                                                                <option value="1">CINEMA 1</option>
+                                                                <option value="2">CINEMA 2</option>
+                                                                <option value="3">CINEMA 3</option>
+                                                            </select>
                                                         </div>
-                                                        <select id="room" name="room" class="select-pc">
-                                                            <option value="0" selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2</option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sc-check">
-                                                        <div class="form-check">
-                                                            <input name="time" class="form-check-input"
-                                                                type="checkbox" value="13:00"
-                                                                id="flexCheckDefault" onclick="toggleSelect(this)">
-                                                            <label name="suat3" class="form-check-label"
-                                                                for="flexCheckDefault">
-                                                                13:00 PM
-                                                            </label>
+                                                        <div class="sc-check">
+                                                            <div class="form-check">
+                                                                <input name="time" class="form-check-input"
+                                                                    type="checkbox" value="13:00"
+                                                                    id="flexCheckDefault" onclick="toggleSelect(this)">
+                                                                <label name="suat3" class="form-check-label"
+                                                                    for="flexCheckDefault">
+                                                                    13:00 PM
+                                                                </label>
+                                                            </div>
+                                                            <select name="room" class="select-pc">
+                                                                <option value="0" selected>Chọn phòng chiếu</option>
+                                                                <option value="1">CINEMA 1</option>
+                                                                <option value="2">CINEMA 2</option>
+                                                                <option value="3">CINEMA 3</option>
+                                                            </select>
                                                         </div>
-                                                        <select name="room" class="select-pc">
-                                                            <option value="0" selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2</option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sc-check">
-                                                        <div class="form-check">
-                                                            <input name="time" class="form-check-input"
-                                                                type="checkbox" value="15:00"
-                                                                id="flexCheckDefault" onclick="toggleSelect(this)">
-                                                            <label name="suat4" class="form-check-label"
-                                                                for="flexCheckDefault">
-                                                                15:00 PM
-                                                            </label>
+                                                        <div class="sc-check">
+                                                            <div class="form-check">
+                                                                <input name="time" class="form-check-input"
+                                                                    type="checkbox" value="15:00"
+                                                                    id="flexCheckDefault" onclick="toggleSelect(this)">
+                                                                <label name="suat4" class="form-check-label"
+                                                                    for="flexCheckDefault">
+                                                                    15:00 PM
+                                                                </label>
+                                                            </div>
+                                                            <select name="room" class="select-pc">
+                                                                <option value="0" selected>Chọn phòng chiếu</option>
+                                                                <option value="1">CINEMA 1</option>
+                                                                <option value="2">CINEMA 2</option>
+                                                                <option value="3">CINEMA 3</option>
+                                                            </select>
                                                         </div>
-                                                        <select name="room" class="select-pc">
-                                                            <option value="0" selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2</option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sc-check">
-                                                        <div name="suat5" class="form-check">
-                                                            <input name="time" class="form-check-input"
-                                                                type="checkbox" value="17:00"
-                                                                id="flexCheckDefault" onclick="toggleSelect(this)">
-                                                            <label class="form-check-label"
-                                                                for="flexCheckDefault">
-                                                                17:00 PM
-                                                            </label>
+                                                        <div class="sc-check">
+                                                            <div name="suat5" class="form-check">
+                                                                <input name="time" class="form-check-input"
+                                                                    type="checkbox" value="17:00"
+                                                                    id="flexCheckDefault" onclick="toggleSelect(this)">
+                                                                <label class="form-check-label"
+                                                                    for="flexCheckDefault">
+                                                                    17:00 PM
+                                                                </label>
+                                                            </div>
+                                                            <select name="room" class="select-pc">
+                                                                <option value="0" selected>Chọn phòng chiếu</option>
+                                                                <option value="1">CINEMA 1</option>
+                                                                <option value="2">CINEMA 2</option>
+                                                                <option value="3">CINEMA 3</option>
+                                                            </select>
                                                         </div>
-                                                        <select name="room" class="select-pc">
-                                                            <option value="0" selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2</option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
                                                     </div>
                                                 </div>
+    
                                             </div>
-
-                                        </div>
-
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger">Thêm</button>
+    
+    
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger">Thêm</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                            </tr>
+                    <%})%>
+                    
                 </tbody>
             </table>
         </div>

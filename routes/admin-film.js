@@ -28,7 +28,7 @@ router.post('/add-film',function(req , res){
     var director=req.body.director;
     var type = req.body.type;
     var detail=req.body.detail;
-
+    var showdate= req.body.showdate;
     var trailerArr = (req.body.trailerId).split('=');
     var trailerId = trailerArr[1];
     Film.findOne({slug: slug},function(err,fi){

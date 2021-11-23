@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router();
 var fs = require('fs-extra');
+var shortid= require('shortid');
 
 
 var Film= require('../models/film');
@@ -24,44 +25,108 @@ router.post('/add-showtime',function(req , res){
     var time=req.body.time;
     var room=req.body.room;
     var check=[];
-    for(i=0;i<time.length;i++){
-        Showtime.findOne({$and:[{date:date},{time:time[i]},{room:room[i]}]},function(err,st){   
-            if (st)  check.push(st);
-        })
-    }
-    setTimeout(() => {
-        if (check.length>0) return console.log("suat chieu da ton tai");
-        else {
-                for(var i=0;i<time.length;i++){
+    if (typeof time == "string"){
+        Film.findOne({nameEN:nameEN},function(err,fi){
+            var fiShowtime=fi.showtime;
+        Showtime.findOne({$and:[{date:date},{time:time},{room:room}]},function(err,st){
+            if (st) return console.log("suat chieu da ton tai");
+            else{
+                var id=shortid.generate()
+                    fiShowtime.push({
+                    idSt:id,
+                    nameEN:nameEN,
+                    date:date,
+                    time:time,
+                    room:room,
+                })
+                fi.showtime = fiShowtime;
+                fi.save(function(err){
+                    if (err) return console.log(err);
+                });
                 var newst= new Showtime({
+                    idSt:id,
+                    nameEN:nameEN,
+                    date:date,
+                    time:time,
+                    room:room,
+                })
+                newst.save(function(err){
+                    if (err) return console.log(err);
+                }) 
+                for (var j=0;j<114;j++){
+                    var chair=new Chair({
+                        nameChair:j,
+                        showtimeId:id,
                         nameEN:nameEN,
                         date:date,
-                        time:time[i],
-                        room:room[i],
+                        time:time,
+                        room:room,
+                        available:1,
                     })
-                    newst.save(function(err){
+                    chair.save(function(err){
                         if (err) return console.log(err);
-                    }) 
-                    for (var j=0;j<114;j++){
-                        var chair=new Chair({
-                            nameChair:j,
+                    })
+                }
+            }
+        })
+    })
+    } else {
+        for(i=0;i<time.length;i++){
+            Showtime.findOne({$and:[{date:date},{time:time[i]},{room:room[i]}]},function(err,st){   
+                if (st)  check.push(st);
+            })
+        }
+        setTimeout(() => {
+            Film.findOne({nameEN:nameEN},function(err,fi){
+            if (check.length>0) return console.log("suat chieu da ton tai");
+            else {
+                    for(var i=0;i<time.length;i++){
+                        var fiShowtime = fi.showtime;
+                        var id =shortid.generate();
+                        fiShowtime.push({
+                            idSt:id,
                             nameEN:nameEN,
                             date:date,
                             time:time[i],
                             room:room[i],
-                            available:1,
+                        })   
+                        var newst= new Showtime({
+                            idSt:id,
+                            nameEN:nameEN,
+                            date:date,
+                            time:time[i],
+                            room:room[i],
                         })
-                        chair.save(function(err){
-                        })
+                        newst.save(function(err){
+                            if (err) return console.log(err);
+                        }) 
+                        for (var j=0;j<114;j++){
+                            var chair=new Chair({
+                                nameChair:j,
+                                showtimeId:id,
+                                nameEN:nameEN,
+                                date:date,
+                                time:time[i],
+                                room:room[i],
+                                available:1,
+                            })
+                            chair.save(function(err){
+                            })
+                        }
                     }
-                }
-                
-        }
-    }, 50);
-    
-    setTimeout(() => {
-        res.redirect('/admin/showtime')
-    }, 100);
+                        fi.showtime=fiShowtime;
+                        fi.save(function(err){
+                            if (err) return console.log(err);
+                        });
+                    
+            }
+        })
+        }, 50);
+    }
+        setTimeout(() => {
+        res.redirect('/admin/showtime');
+        }, 50); 
+        
 })
 
 //get edit product

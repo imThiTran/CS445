@@ -93,15 +93,19 @@
                                                     class="poster-movie" src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
                                             <div class="flex-time-detail">
                                                 <%var check=false;%>
+                                                <%film.showtime.sort(function(a, b){%>
+                                                    <%if (a.time.toLowerCase() < b.time.toLowerCase()) {return -1;}%>
+                                                    <%if (a.time.toLowerCase() > b.time.toLowerCase()) {return 1;}%>
+                                                    <%return 0;%>
+                                                <%});%>
                                                     <% film.showtime.forEach(function(st){ %>
                                                         <%if (st.date==dateRq){ %>
                                                             <% check=true %>
-                                                                <%st.time.forEach(function(ti){%>
                                                                     <button type="button"
                                                                         class="btn btn-outline-warning btn-time">
-                                                                        Suất chiếu: <%=ti%>         
+                                                                        Suất chiếu: <%=st.time%>         
                                                                     </button>
-                                                                    <%}) }%>
+                                                                    <% }%>
                                                                         <%})%>
                                                                             <%if (check==false){%>
                                                                                 <h1>không có suất chiếu nào</h1>
