@@ -98,12 +98,13 @@
                                                     <%if (a.time.toLowerCase() > b.time.toLowerCase()) {return 1;}%>
                                                     <%return 0;%>
                                                 <%});%>
+                                                             
                                                     <% film.showtime.forEach(function(st){ %>
                                                         <%if (st.date==dateRq){ %>
                                                             <% check=true %>
                                                                     <button type="button"
                                                                         class="btn btn-outline-warning btn-time">
-                                                                        Suất chiếu: <%=st.time%>         
+                                                                        <%=st.time%> CINEMA <%=st.room%>     
                                                                     </button>
                                                                     <% }%>
                                                                         <%})%>

@@ -53,15 +53,27 @@ router.post('/add-showtime',function(req , res){
                 newst.save(function(err){
                     if (err) return console.log(err);
                 }) 
-                for (var j=0;j<114;j++){
+                for (var j=1;j<115;j++){
+                    var nameChair="";
+                    if (j<13) nameChair="A"+j;
+                    else if(j<25) nameChair="B"+(j-12);
+                    else if(j<37) nameChair="C"+(j-24);
+                    else if(j<49) nameChair="D"+(j-36);
+                    else if(j<61) nameChair="E"+(j-48);
+                    else if(j<73) nameChair="F"+(j-60);
+                    else if(j<85) nameChair="G"+(j-72);
+                    else if(j<97) nameChair="H"+(j-84);
+                    else if(j<109) nameChair="J"+(j-96);
+                    else if(j<121) nameChair="K"+(j-108);
                     var chair=new Chair({
-                        nameChair:j,
+                        nameChair:nameChair,
                         showtimeId:id,
                         nameEN:nameEN,
                         date:date,
                         time:time,
                         room:room,
                         available:1,
+                        sorting:j,
                     })
                     chair.save(function(err){
                         if (err) return console.log(err);
@@ -100,15 +112,27 @@ router.post('/add-showtime',function(req , res){
                         newst.save(function(err){
                             if (err) return console.log(err);
                         }) 
-                        for (var j=0;j<114;j++){
+                        for (var j=1;j<115;j++){
+                            var nameChair="";
+                            if (j<13) nameChair="A"+j;
+                            else if(j<25) nameChair="B"+(j-12);
+                            else if(j<37) nameChair="C"+(j-24);
+                            else if(j<49) nameChair="D"+(j-36);
+                            else if(j<61) nameChair="E"+(j-48);
+                            else if(j<73) nameChair="F"+(j-60);
+                            else if(j<85) nameChair="G"+(j-72);
+                            else if(j<97) nameChair="H"+(j-84);
+                            else if(j<109) nameChair="J"+(j-96);
+                            else if(j<121) nameChair="K"+(j-108);
                             var chair=new Chair({
-                                nameChair:j,
+                                nameChair:nameChair,
                                 showtimeId:id,
                                 nameEN:nameEN,
                                 date:date,
                                 time:time[i],
                                 room:room[i],
                                 available:1,
+                                sorting:j,
                             })
                             chair.save(function(err){
                             })
@@ -125,7 +149,7 @@ router.post('/add-showtime',function(req , res){
     }
         setTimeout(() => {
         res.redirect('/admin/showtime');
-        }, 50); 
+        }, 100); 
         
 })
 

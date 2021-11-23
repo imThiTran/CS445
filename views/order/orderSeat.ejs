@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>MEGAS CINEMA</title>
+</head>
+<!-- navbar -->
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+            <div class="collapse navbar-collapse navnav" id="Mainnav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="dangky.html">Đăng ký</a>
+                    </li>
+                    <div class="nav-cach"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="frame-order">
+        <table class="table  table-bordered">
+            <tr class="book-title">
+                <th>BOOKING ONLINE</th>
+            </tr>
+            <tr class="book-sub">
+                <td>
+                    <div class="book-info">PHIM: <%=chairA[0].nameEN%></div>
+                    <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: 89/120</div>
+                    <div class="book-info-sub"><%=chairA[0].date%> <%=chairA[0].time%> </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="frame-ghe">
+        <form action="">
+            <div class="frame-sub">
+                <div class="screen">
+                    <div>Màn hình</div>
+                </div>
+                <table>
+                    <tr class="row">
+                        <td class="td-order">
+                            <%chairA.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-a<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-a<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                            
+                            
+                        </td>
+                        <td class="td-order">
+                            <%chairB.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-b<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-b<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                            
+                        </td>
+                        <td class="td-order">
+                            <%chairC.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-c<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-c<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairD.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-d<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-d<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairE.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-e<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-e<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairF.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-f<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-f<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairG.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-g<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-g<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairH.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-h<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-h<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairJ.forEach(function(c){%>
+                                <%var i=1;%>
+                            <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-j<%=i%>" checked autocomplete="off">
+                            <label class="btn btn-primary btn-seat" for="btn-check-j<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                        </td>
+                        <td class="td-order">
+                            <%chairK.forEach(function(c){%>
+                                <%var i=1;%>
+                                <input type="checkbox" class="btn-check couple" id="btn-check-k<%=i%>" checked
+                                autocomplete="off">
+                            <label class="btn btn-primary btn-couple btn-seat" for="btn-check-k<%=i%>"><%=c.nameChair%></label>
+                            <%i++%>
+                            <%})%>
+                            
+                            
+
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </form>
+        <form action="">
+            <div class="frame-sub" style="margin-top: 40px">
+                <div class="menu">
+
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb1">
+                        <label class="check-img" for="cb1">
+                            <img src="img/bap-2nuoc.jpg" class="img-menu-item"></label>
+                        <div class="item-name">Combo COUPLE</div>
+                        <div class="item-price">Giá: 90.000 VNĐ</div>
+                    </div>
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb2">
+                        <label class="check-img" for="cb2">
+                            <img src="img/bap-nuoc.jpg" class="img-menu-item"></label>
+                        <div class="item-name">Combo SINGLE</div>
+                        <div class="item-price">Giá: 70.000 VNĐ</div>
+                    </div>
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb3">
+                        <label class="check-img" for="cb3">
+                            <img src="img/baplon-2nuoc.jpeg" class="img-menu-item"></label>
+                        <div class="item-name">Combo BIGSIZE</div>
+                        <div class="item-price">Giá: 110.000 VNĐ</div>
+                    </div>
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb4">
+                        <label class="check-img" for="cb4">
+                            <img src="img/bap.jpg" class="img-menu-item"></label>
+                        <div class="item-name">Bắp</div>
+                        <div class="item-price">Giá: 40.000 VNĐ</div>
+                    </div>
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb5">
+                        <label class="check-img" for="cb5">
+                            <img src="img/nuoc.jpg" class="img-menu-item"></label>
+                        <div class="item-name">Nước ngọt</div>
+                        <div class="item-price">Giá: 20.000 VNĐ</div>
+                    </div>
+
+                    <div class="menu-item" class="menu-item">
+                        <input type="checkbox" class="btn-check couple" id="cb6">
+                        <label class="check-img" for="cb6">
+                            <img src="img/trasua.jpg" class="img-menu-item"></label>
+                        <div class="item-name">Trà sữa</div>
+                        <div class="item-price">Giá: 30.000 VNĐ</div>
+                    </div>
+                </div>
+                <div class="btn-dathang">
+                    <button type="button" class="btn btn-danger btn-buy btn-back">Trở lại</button>
+                    <button type="button" class="btn btn-danger btn-buy">Đặt vé</button>
+                </div>
+        </form>
+    </div>
+</body>

@@ -19,6 +19,13 @@ var ChairSchema = mongoose.Schema({
     room:{
         type: Number
     },
+    price:{
+        type: Number,
+        default:45000
+    },
+    sorting:{
+        type:Number,
+    },
 })
 
 var Chair = module.exports = mongoose.model('chairs',ChairSchema);

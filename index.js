@@ -50,11 +50,15 @@ var site = require('./routes/sites');
 var film = require('./routes/film');
 var adminFilm = require('./routes/admin-film');
 var adminShowtime = require('./routes/admin-showtime');
+var order = require('./routes/order');
 
 var checkUser = require('./middleware/checkUser.middleware');
 
 app.use('/auth',auth);
-app.use('/',checkUser,site);
 app.use('/film',checkUser,film);
+app.use('/order',checkUser,order);
 app.use('/admin/film',checkUser,adminFilm);
 app.use('/admin/showtime',checkUser,adminShowtime);
+app.use('/',checkUser,site);
+
+
