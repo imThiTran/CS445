@@ -49,10 +49,10 @@
                                     <div class="modal-body">
                                         <h6 class="modal-title">Chọn ngày</h6>
                                         <div class="form-group">
-                                            <select id="dateShow" class="form-select" aria-label="Default select example">
+                                            <select id="dateShow" film="<%=film.nameEN%>" class="form-select" aria-label="Default select example">
                                                 <option selected>Chọn ngày chiếu</option>
-                                                <%showtime.forEach(function(st){%>
-                                                    <option value=<%=st.date%>><%=st.date%></option>
+                                                <%date.forEach(function(dt){%>
+                                                    <option value=<%=dt%>><%=dt%></option>
                                                 <%})%>
                                               </select>
                                             <span class="span-error" id="birth_error"></span>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h6 class="modal-title">Chọn suất chiếu</h6>
-                                        <div class="flex-time-detail1">
+                                        <div id="showtime" class="flex-time-detail1">
                                             <input type="radio" class="btn-check" name="options-outlined" id="1-outlined" autocomplete="off">
                                             <label class="btn btn-primary  btn-seat1" for="1-outlined">07:30 AM</label>
                                             <input type="radio" class="btn-check" name="options-outlined" id="2-outlined" autocomplete="off">
@@ -162,9 +162,23 @@
     </body>
     <%- include ('../layouts/footer') %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
-        
+        $('#dateShow').change(function(e){
+            var value= $(this).val();
+            var nameEN= $(this).attr('film');
+            $.ajax({
+                    url: "/film/loadTime",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ value: value, nameEN: nameEN }),
+                    success: function (result) {
+                        $('#showtime').html(result.timeCode);
+                     }
+                })
+        })
     </script>
