@@ -57,7 +57,7 @@
                                               </select>
                                             <span class="span-error" id="birth_error"></span>
                                         </div>
-                                        
+                                        <input type="hidden" name="nameEN" value="<%=film.nameEN%>">
                                     </div>
                                     <div class="modal-body">
                                         <h6 class="modal-title">Chọn suất chiếu</h6>
@@ -65,7 +65,7 @@
                                             
                                         </div>
                                      </div>
-                                     <div class="modal-body">
+                                     <!-- <div class="modal-body">
                                         <h6 class="modal-title">Chọn phòng</h6>
                                         <div class="form-group">
                                             <select name="room" id="roomShow" film="<%=film.nameEN%>" class="form-select" aria-label="Default select example">  
@@ -74,7 +74,7 @@
                                             <span class="span-error" id="birth_error"></span>
                                         </div>
                                         
-                                    </div>
+                                    </div> -->
                                     <div class="modal-footer">
                                        <button type="submit" class="btn btn-danger" >Tiếp tục</button>
                                     </div>
@@ -182,18 +182,18 @@
                 })
         })
 
-        function handleClick(myrdo){
-            var date=$('#dateShow').val();
-            var nameEN= $('#dateShow').attr('film');
-            var time=myrdo.value;
-            $.ajax({
-                    url: "/film/loadRoom",
-                    method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({ time: time, nameEN: nameEN,date:date }),
-                    success: function (result) {
-                        $('#roomShow').html(result.roomCode);
-                     }
-                })
-        }
+        // function handleClick(myrdo){
+        //     var date=$('#dateShow').val();
+        //     var nameEN= $('#dateShow').attr('film');
+        //     var time=myrdo.value;
+        //     $.ajax({
+        //             url: "/film/loadRoom",
+        //             method: "POST",
+        //             contentType: "application/json",
+        //             data: JSON.stringify({ time: time, nameEN: nameEN,date:date }),
+        //             success: function (result) {
+        //                 $('#roomShow').html(result.roomCode);
+        //              }
+        //         })
+        // }
     </script>

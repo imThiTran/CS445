@@ -102,10 +102,16 @@
                                                     <% film.showtime.forEach(function(st){ %>
                                                         <%if (st.date==dateRq){ %>
                                                             <% check=true %>
-                                                                    <button type="button"
+                                                                    <a href="/order?date=<%=st.date%>&time=<%=st.time%>&nameEN=<%=st.nameEN%>"
                                                                         class="btn btn-outline-warning btn-time">
-                                                                        <%=st.time%> CINEMA <%=st.room%>     
-                                                                    </button>
+                                                                        <%var Ctime=(st.time.split(':'))[0];%>
+                                                                        <%if (Ctime>=12){%>
+                                                                            <%=st.time%> PM
+                                                                        <%} else {%>
+                                                                            <%=st.time%> AM
+                                                                        <%}%>
+                                                                          
+                                                                    </a>
                                                                     <% }%>
                                                                         <%})%>
                                                                             <%if (check==false){%>

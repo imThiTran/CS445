@@ -7,9 +7,9 @@ var Showtime = require('../models/showtime');
 router.get('/',function(req,res){
     var time= req.query.time;
     var date = req.query.date;
-    var room=req.query.room;
+    var nameEN=req.query.nameEN;
     var chairA=[],chairB=[],chairC=[],chairD=[],chairE=[],chairF=[],chairG=[],chairH=[],chairJ=[],chairK=[];
-    Chair.find({$and:[{date:date},{time:time},{room:room}]}).sort({sorting:1}).exec(function(err,ch){
+    Chair.find({$and:[{date:date},{time:time},{nameEN:nameEN}]}).sort({sorting:1}).exec(function(err,ch){
         for(var i=0;i<114;i++){
             if (i<12) chairA.push(ch[i]);
            else if (i<24) chairB.push(ch[i]);

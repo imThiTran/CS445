@@ -16,6 +16,7 @@ router.get('/',function(req,res){
             })
         })
     })
+    
 })
 
 
@@ -28,7 +29,7 @@ router.post('/add-showtime',function(req , res){
     if (typeof time == "string"){
         Film.findOne({nameEN:nameEN},function(err,fi){
             var fiShowtime=fi.showtime;
-        Showtime.findOne({$and:[{date:date},{time:time},{room:room}]},function(err,st){
+        Showtime.findOne({$or:[{$and:[{date:date},{time:time},{room:room}]},{$and:[{date:date},{time:time},{nameEN:nameEN}]}]},function(err,st){
             if (st) return console.log("suat chieu da ton tai");
             else{
                 var id=shortid.generate()
@@ -55,6 +56,7 @@ router.post('/add-showtime',function(req , res){
                 }) 
                 for (var j=1;j<115;j++){
                     var nameChair="";
+                    var price=45000;
                     if (j<13) nameChair="A"+j;
                     else if(j<25) nameChair="B"+(j-12);
                     else if(j<37) nameChair="C"+(j-24);
@@ -64,7 +66,7 @@ router.post('/add-showtime',function(req , res){
                     else if(j<85) nameChair="G"+(j-72);
                     else if(j<97) nameChair="H"+(j-84);
                     else if(j<109) nameChair="J"+(j-96);
-                    else if(j<121) nameChair="K"+(j-108);
+                    else if(j<121) {nameChair="K"+(j-108);price=80000}
                     var chair=new Chair({
                         nameChair:nameChair,
                         showtimeId:id,
@@ -74,6 +76,7 @@ router.post('/add-showtime',function(req , res){
                         room:room,
                         available:1,
                         sorting:j,
+                        price:price,
                     })
                     chair.save(function(err){
                         if (err) return console.log(err);
@@ -84,7 +87,7 @@ router.post('/add-showtime',function(req , res){
     })
     } else {
         for(i=0;i<time.length;i++){
-            Showtime.findOne({$and:[{date:date},{time:time[i]},{room:room[i]}]},function(err,st){   
+            Showtime.findOne({$or:[{$and:[{date:date},{time:time},{room:room}]},{$and:[{date:date},{time:time},{nameEN:nameEN}]}]},function(err,st){   
                 if (st)  check.push(st);
             })
         }

@@ -26,6 +26,10 @@ var ChairSchema = mongoose.Schema({
     sorting:{
         type:Number,
     },
+    available:{
+        type:Number,
+        default:1
+    }
 })
 
 var Chair = module.exports = mongoose.model('chairs',ChairSchema);
