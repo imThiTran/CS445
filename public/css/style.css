@@ -760,3 +760,28 @@ input[type="checkbox"][id^="cb"] {
 .modal-body{
   font-size: 14px;
 }
+.dathang{
+  padding: 50px;
+}
+.input-dathang{
+  padding: 50px 90px;
+  background: rgb(255 255 255 / 49%);
+  margin-top: 50px;
+  border-radius: 20px;
+}
+.label-dathang{
+  width: 150px;
+  font-size: 16px;
+    font-weight: 700;
+    color: #eee;
+}
+.combo-dathang{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 150px;
+  margin-right: 10px;
+}
+.dathang-left{
+  padding: 0px 200px;
+}
