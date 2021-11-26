@@ -766,15 +766,14 @@ input[type="checkbox"][id^="cb"] {
 }
 .input-dathang{
   padding: 50px 90px;
-  background: rgb(255 255 255 / 49%);
-  margin-top: 50px;
+  background: beige;
   border-radius: 20px;
 }
 .label-dathang{
   width: 150px;
   font-size: 16px;
     font-weight: 700;
-    color: #eee;
+    color: #333;
 }
 .combo-dathang{
   display: flex;
