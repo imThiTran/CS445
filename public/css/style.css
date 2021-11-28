@@ -417,7 +417,7 @@ footer{
 }
 .btn-seat{
 
-  background: #333 !important;
+  background: rgb(254 199 88) !important;
     box-shadow: none !important;
     border: none !important;
     padding: 5px 10px !important;
@@ -425,15 +425,16 @@ footer{
 }
 .btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, 
 .show>.btn-primary.dropdown-toggle{
-  background: rgb(254 199 88) !important;
+  background: #333 !important;
   
 }
 .td-order{
   padding-bottom: 5px;
 }
+
 .couple:active+.btn-pcouple, .couple:checked+.btn-couple, .btn-couple.active, .btn-couple:active, 
 .show>.btn-couple.dropdown-toggle{
-  background: indianred !important;
+  background: #333 !important;
 }
 .trailer-detail{
   text-align: center;
@@ -549,11 +550,14 @@ footer{
   margin-bottom: 10px;
 }
 .btn-couple{
-  background: #333 !important;
+  background: indianred !important;
     box-shadow: none !important;
     border: none !important;
     padding: 5px 10px !important;
   width: 105px;
+}
+.btn-check:disabled+.btn,.btn-check[disabled]+ .btn{
+  background: rgb(136, 135, 135) !important;
 }
 .menu-item{
   width: 25%;    
@@ -783,7 +787,7 @@ input[type="checkbox"][id^="cb"] {
   margin-right: 10px;
 }
 .dathang-left{
-  padding: 0px 200px;
+  padding: 50px 200px;
 }
 .buttons_added {
   opacity:1;
@@ -829,4 +833,13 @@ input[type="checkbox"][id^="cb"] {
 .input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
   -webkit-appearance:none;
   margin:0;
+}
+.color-chair{
+  background: rgb(254 199 88);
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+.ghe{
+  display: flex;
 }

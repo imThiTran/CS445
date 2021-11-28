@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
-    
+
     <title>MEGAS CINEMA</title>
 </head>
 <!-- navbar -->
@@ -70,85 +70,87 @@
             <div class="input-dathang">
                 <form action="/order/ordered" method="post">
                     <input type="hidden" name="seat" value="<%=seat%>">
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Tên khách hàng</label>
-                    <input class="input-sua" name="username" type="text">
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Số điện thoại</label>
-                    <input class="input-sua" name="phone" type="text">
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Tên phim</label>
-                    <div>
-                        <div><%=nameEN%></div>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Tên khách hàng</label>
+                        <input class="input-sua" name="username" type="text">
                     </div>
-
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Suất chiếu</label>
-                    <div><%=date%> <%=time%> </div>
-                </div>
-                <div class="ad-phim">
-                    <%var total=0;%>
-                    <label class="label-dathang" for="">Ghế/Vé</label>
-                    <div>
-                        <%chair.forEach(function(ch){%>
-                            <%total=total+ch.price;%>
-                            <%=ch.nameChair%> 
-                        <%})%>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Số điện thoại</label>
+                        <input class="input-sua" name="phone" type="text">
+                    </div>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Tên phim</label>
+                        <div>
+                            <div>
+                                <%=nameEN%>
+                            </div>
                         </div>
-                </div>
-                <div class="ad-phim">
-                    <label style="font-size: 14px; font-style: italic;">*Vé hàng ghế K giá 80000VNĐ/vé, các vé còn lại giá 45000VNĐ/vé</label>
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Phòng</label>
-                    <div>CINEMA <%=room%></div>
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Món gọi kèm</label>
-                    <%for(var i=0;i<photoSn.length;i++){%>
-                        <div class="combo-dathang">
-                            <img src="/img/snacks/<%=photoSn[i].id%>/<%=photoSn[i].photo%>" style="width: 100%; margin-top: 10px;">
-                            <label style="font-size: 16px; font-style: italic;"><%=snacks[i].name%> x<%=snacks[i].quantity%></label>
-                            <label style="font-size: 16px; font-style: italic;"><%=photoSn[i].price%> VNĐ</label>
 
-                            <input type="hidden" name="snacks" value="<%=snacks[i].name%>">
-                            <input type="hidden" name="quantitySn" value="<%=snacks[i].quantity%>">
-                            <input type="hidden" name="priceSn" value="<%=photoSn[i].price%>">
+                    </div>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Suất chiếu</label>
+                        <div>
+                            <%=date%>
+                                <%=time%>
                         </div>
-                        <%total=total+photoSn[i].price*snacks[i].quantity%>
-                    <%}%>
-                </div>
-                <div class="ad-phim">
-                    <label class="label-dathang" for="">Tổng tiền</label>
-                    <div><%=total%> VNĐ</div>
-                </div>
-                <div class="ad-phim">
+                    </div>
+                    <div class="ad-phim">
+                        <%var total=0;%>
+                            <label class="label-dathang" for="">Ghế/Vé</label>
+                            <div>
+                                <%chair.forEach(function(ch){%>
+                                    <%total=total+ch.price;%>
+                                        <%=ch.nameChair%>
+                                            <%})%>
+                            </div>
+                    </div>
+                    
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Phòng</label>
+                        <div>CINEMA <%=room%>
+                        </div>
+                    </div>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Món gọi kèm</label>
+                        <%for(var i=0;i<photoSn.length;i++){%>
+                            <div class="combo-dathang">
+                                <img src="/img/snacks/<%=photoSn[i].id%>/<%=photoSn[i].photo%>"
+                                    style="width: 100%; margin-top: 10px;">
+                                <label style="font-size: 16px; font-style: italic;">
+                                    <%=snacks[i].name%> x<%=snacks[i].quantity%>
+                                </label>
+                                <label style="font-size: 16px; font-style: italic;">
+                                    <%=photoSn[i].price%> VNĐ
+                                </label>
 
-                    <div style="font-style: italic; font-size: 14px; margin-top: 20px;">*Vui lòng kiểm tra lại thông tin
-                        suất chiếu trước khi tiến hành đặt vé</div>
-                </div>
-                <div class="ad-phim" style="justify-content: center;">
-                    <button style="margin-top: 10px" type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
-                </div>
-                <input type="hidden" name="total" value=<%=total%>>
-            </form>
+                                <input type="hidden" name="snacks" value="<%=snacks[i].name%>">
+                                <input type="hidden" name="quantitySn" value="<%=snacks[i].quantity%>">
+                                <input type="hidden" name="priceSn" value="<%=photoSn[i].price%>">
+                            </div>
+                            <%total=total+photoSn[i].price*snacks[i].quantity%>
+                                <%}%>
+                    </div>
+                    <div class="ad-phim">
+                        <label class="label-dathang" for="">Tổng tiền</label>
+                        <div>
+                            <%=total%> VNĐ
+                        </div>
+                    </div>
+                    <div class="ad-phim">
 
-                <!-- đặt vé thành công thì hiện ra cái mòe này, đống thông tin đằng trên sẽ biến mất thay vào đó là cái này -->
-                <div class="ad-phim">
-                    <h3 style="margin-top: 20px;">Đặt vé thành công
-                </div>
-                <div class="ad-phim" style="display: block">
-                    <div style="width:100% ; padding: 0 150px;" qrvalue="thi tran" id="qrcode"></div>
-                  
-                    <div style="font-size: 16px; font-style: italic; margin-top: 20px;">*Vui lòng đưa mã QR cho nhân viên khi bạn đến xem phim</div>
-                    <div style="font-size: 16px; font-style: italic; ">*Mã QR chỉ có giá trị sử dụng 30 phút trước giờ chiếu phim</div>
-    
-                </div>
+                        <div style="font-style: italic; font-size: 14px; margin-top: 20px;">*Vui lòng kiểm tra lại thông
+                            tin
+                            suất chiếu trước khi tiến hành đặt vé</div>
+                    </div>
+                    <div class="ad-phim" style="justify-content: center;">
+                        <button style="margin-top: 10px" type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
+                    </div>
+                    <input type="hidden" name="total" value=<%=total%>>
+                </form>
+
+                
             </div>
-           
+
         </div>
 
 
@@ -156,17 +158,19 @@
     </div>
 </body>
 <script src="/js/qrcode.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
 <script>
     var value = $('#qrcode').attr('qrvalue');
     var qrcode = new QRCode(document.getElementById('qrcode'), {
-    text: value,
-    width: 300,
-    height: 300,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-});
+        text: value,
+        width: 300,
+        height: 300,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
 </script>
 
 </html>
