@@ -7,6 +7,8 @@ var router = express.Router();
 // var Category= require('../models/category');
 var Film = require('../models/film');
 var Showtime= require('../models/showtime');
+var Bill=require('../models/bill');
+var Chair= require('../models/chair');
 
 router.get('/',function(req,res){
     var today = new Date();
@@ -39,6 +41,27 @@ router.get('/',function(req,res){
     })
 })
 
+router.get('/bill',function(req,res){
+    var billid=req.query.billid;
+    var chair=[];
+    Bill.findOne({idB:billid},function(err,b){
+        chair=b.seat;
+        b.type="checked";
+        b.save();
+        res.render('order/ordered',{
+            billid:billid
+        });
+    })
+    setTimeout(() => {
+        for(var i=0;i<chair.length;i++){
+            Chair.findOne({_id:chair[i].idChair},function(err,ch){
+                ch.available=0;
+                ch.save();
+            })
+        }
+    }, 5);
+    
+})
 
 router.get('/:time',function(req,res){
     var today = new Date();

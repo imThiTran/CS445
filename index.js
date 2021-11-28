@@ -5,12 +5,19 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var fileUpload = require('express-fileupload');
+var paypal= require('paypal-rest-sdk');
 
 mongoose.connect(config.database);
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,'connection error'));
 db.once('open',function(){
     console.log('connected to mongodb')
+});
+
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'AcvQ4vyhZF0I1bw3q52XUxCXlYjfMFHDFyiskavEazQvZcgggUiVCVoXQjVCf8Kz7AwKeWhkkUb2rmSi',
+  'client_secret': 'EBNrKHPqA6g-cfyRukheStWEnTicCBdeV8j0hSqvkNOuxg4k-Neht5lU3umfa49ZUj4CPzM1yXBsdpBr'
 });
 
 var app  = express();
@@ -44,7 +51,47 @@ app.listen(port,function(){
     console.log('Server started on port '+ port);
 })
 
+// app.post('/pay',function(req,res){
+//   var create_payment_json = {
+//     "intent": "sale",
+//     "payer": {
+//         "payment_method": "paypal"
+//     },
+//     "redirect_urls": {
+//         "return_url": "http://localhost:3000",
+//         "cancel_url": "http://localhost:3000/cancle"
+//     },
+//     "transactions": [{
+//         "item_list": {
+//             "items": [{
+//                 "name": "item",
+//                 "sku": "item",
+//                 "price": "1.00",
+//                 "currency": "USD",
+//                 "quantity": 1
+//             }]
+//         },
+//         "amount": {
+//             "currency": "USD",
+//             "total": "1.00"
+//         },
+//         "description": "This is the payment description."
+//     }]
+// };
 
+
+// paypal.payment.create(create_payment_json, function (error, payment) {
+//     if (error) {
+//         throw error;
+//     } else {
+//         for(let i=0;i<payment.links.length;i++){
+//             if(payment.links[i].rel==='approval_url'){
+//                 res.redirect(payment.links[i].href);
+//             }
+//         }
+//     }
+// });
+// })
 var auth = require('./routes/auth');
 var site = require('./routes/sites');
 var film = require('./routes/film');

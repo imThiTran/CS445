@@ -36,7 +36,7 @@
                 <td>
                     <div class="book-info">PHIM: <%=chairA[0].nameEN%>
                     </div>
-                    <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: 89/120</div>
+                    <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: <%=countAvai%>/114</div>
                     <div class="book-info-sub">
                         <%=chairA[0].date%>
                             <%=chairA[0].time%>
@@ -46,7 +46,7 @@
         </table>
     </div>
     <div class="frame-ghe">
-        <form action="">
+        <form action="/order/ordering" method="post">
             <div class="frame-sub">
                 <div class="screen">
                     <div>Màn hình</div>
@@ -58,8 +58,8 @@
                             <%var i=1%>
                                 <%chairA.forEach(function(c){%>
 
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-a<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-a<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-a<%=i%>">
@@ -72,8 +72,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairB.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-b<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-b<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-b<%=i%>">
@@ -86,8 +86,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairC.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-c<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-c<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-c<%=i%>">
@@ -99,8 +99,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairD.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-d<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-d<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-d<%=i%>">
@@ -112,8 +112,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairE.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-e<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-e<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-e<%=i%>">
@@ -125,8 +125,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairF.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-f<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-f<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-f<%=i%>">
@@ -138,8 +138,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairG.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-g<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-g<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-g<%=i%>">
@@ -151,8 +151,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairH.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-h<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-h<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-h<%=i%>">
@@ -164,8 +164,8 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairJ.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check" value="<%=c._id%>" id="btn-check-j<%=i%>"
-                                        checked autocomplete="off" <%if (c.available==0){%>
+                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-j<%=i%>"
+                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
                                         <label class="btn btn-primary btn-seat" for="btn-check-j<%=i%>">
@@ -177,7 +177,7 @@
                         <td class="td-order">
                             <%i=1%>
                                 <%chairK.forEach(function(c){%>
-                                    <input type="checkbox" class="btn-check couple" id="btn-check-k<%=i%>" checked
+                                    <input type="checkbox" value="<%=c._id%>" name="seat" class="btn-check couple" id="btn-check-k<%=i%>" 
                                         autocomplete="off" <%if (c.available==0){%>
                                     disabled
                                     <%}%> >
@@ -194,93 +194,30 @@
 
                 </table>
             </div>
-        </form>
-        <form action="">
             <div class="frame-sub" style="margin-top: 40px">
                 <div class="menu">
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/bap-2nuoc.jpg" class="img-menu-item"></label>
-                        <div class="item-name">Combo COUPLE</div>
-                        <div class="item-price">Giá: 90.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
+                    <%snack.forEach(function(sn){%>
+                        <div class="menu-item" class="menu-item">
+                            <img src="/img/snacks/<%=sn._id%>/<%=sn.photo%>" class="img-menu-item"></label>
+                            <div class="item-name"><%=sn.name%></div>
+                            <div class="item-price">Giá: <%=sn.price%> VNĐ</div>
+                            <div>
+                                <div class="buttons_added">
+                                    <input class="minus is-form" type="button" value="-">
+                                    <input type="hidden" name="snack" value="<%=sn.name%>">
+                                    <input aria-label="quantity" name="quantity" class="input-qty" max="114" min="0" name="" type="number"
+                                        value=0>
+                                    <input class="plus is-form" type="button" value="+">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/bap-nuoc.jpg" class="img-menu-item"></label>
-                        <div class="item-name">Combo SINGLE</div>
-                        <div class="item-price">Giá: 70.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/baplon-2nuoc.jpeg" class="img-menu-item"></label>
-                        <div class="item-name">Combo BIGSIZE</div>
-                        <div class="item-price">Giá: 110.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/bap.jpg" class="img-menu-item"></label>
-                        <div class="item-name">Bắp</div>
-                        <div class="item-price">Giá: 50.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/nuoc.jpg" class="img-menu-item"></label>
-                        <div class="item-name">Nước ngọt</div>
-                        <div class="item-price">Giá: 30.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-item" class="menu-item">
-                        <img src="img/trasua.jpg" class="img-menu-item"></label>
-                        <div class="item-name">Trà sữa</div>
-                        <div class="item-price">Giá: 40.000 VNĐ</div>
-                        <div>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                    value="">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
-                        </div>
-                    </div>
+                    <%})%>
+                    
+                    
                 </div>
                 <div class="btn-dathang">
                     <button type="button" class="btn btn-danger btn-buy btn-back">Trở lại</button>
-                    <button type="button" class="btn btn-danger btn-buy">Đặt vé</button>
+                    <button type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
                 </div>
         </form>
     </div>
@@ -300,9 +237,13 @@
                 if (d > min) d += -1
             } else if ($(this).hasClass('plus')) {
                 var x = Number($this.val()) + 1
+                d=Number($this.val())
                 if (x <= max) d += 1
             }
             $this.attr('value', d).val(d)
         });
+        $this.blur(function(){
+            if ($this.val()=="") $this.val(0);
+        })
     });
 </script>
