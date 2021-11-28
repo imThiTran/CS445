@@ -1,37 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include ('../layouts/header') %>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <body>
+        <div class="dathang">
+            <div class="dathang-left">
+                <div class="input-dathang">
+                    <div class="ad-phim">
+                        <h3 style="margin-top: 20px;     font-size: 40px;
+                        font-weight: 700;">Đặt vé thành công
+                    </div>
+                    <div class="ad-phim" style="display: block">
+                        <div style="width:100% ; padding: 0 200px;" qrvalue="<%=billid%>" id="qrcode"></div>
 
-    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" /> -->
-    
-    <title>MEGAS CINEMA</title>
-</head>
-<body>
-    <div class="ad-phim">
-        <h3 style="margin-top: 20px;">Đặt vé thành công
-    </div>
-    <div class="ad-phim" style="display: block">
-        <div style="width:100% ; padding: 0 150px;" qrvalue="<%=billid%>" id="qrcode"></div>
-      
-        <div style="font-size: 16px; font-style: italic; margin-top: 20px;">*Vui lòng đưa mã QR cho nhân viên khi bạn đến xem phim</div>
-        <div style="font-size: 16px; font-style: italic; ">*Mã QR chỉ có giá trị sử dụng 30 phút trước giờ chiếu phim</div>
+                        <div style="font-size: 16px; font-style: italic; margin-top: 20px;">*Vui lòng đưa mã QR cho nhân
+                            viên
+                            khi bạn đến xem phim</div>
+                        <div style="font-size: 16px; font-style: italic; ">*Mã QR chỉ có giá trị sử dụng 30 phút trước
+                            giờ chiếu
+                            phim</div>
 
-    </div>
-</body>
-<script src="/js/qrcode.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script>
-    var value = $('#qrcode').attr('qrvalue');
-    var qrcode = new QRCode(document.getElementById('qrcode'), {
-    text: value,
-    width: 300,
-    height: 300,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-});
-</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script src="/js/qrcode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <script>
+        var value = $('#qrcode').attr('qrvalue');
+        var qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: value,
+            width: 300,
+            height: 300,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
