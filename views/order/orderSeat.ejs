@@ -1,248 +1,255 @@
 <%- include ('../layouts/header') %>
-<body>
-   
-    <div class="frame-order">
-        <table class="table  table-bordered">
-            <tr class="book-title">
-                <th>BOOKING ONLINE</th>
-            </tr>
-            <tr class="book-sub">
-                <td>
-                    <div class="book-info">PHIM: <%=chairA[0].nameEN%>
+
+    <body>
+
+        <div class="frame-order">
+            <table class="table  table-bordered">
+                <tr class="book-title">
+                    <th>BOOKING ONLINE</th>
+                </tr>
+                <tr class="book-sub">
+                    <td>
+                        <div class="book-info">PHIM: <%=chairA[0].nameEN%>
+                        </div>
+                        <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: <%=countAvai%>/114
+                        </div>
+                        <div class="book-info-sub">
+                            <%=chairA[0].date%>
+                                <%=chairA[0].time%>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="frame-ghe">
+            <form action="/order/ordering" method="post">
+                <div class="frame-sub">
+                    <div class="screen">
+                        <div>Màn hình</div>
                     </div>
-                    <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: <%=countAvai%>/114</div>
-                    <div class="book-info-sub">
-                        <%=chairA[0].date%>
-                            <%=chairA[0].time%>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="frame-ghe">
-        <form action="/order/ordering" method="post">
-            <div class="frame-sub">
-                <div class="screen">
-                    <div>Màn hình</div>
+                    <table style="text-align: center;">
+                        <tr class="row">
+
+                            <td class="td-order">
+                                <%var i=1%>
+                                    <%chairA.forEach(function(c){%>
+
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-a<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-a<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairB.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-b<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-b<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairC.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-c<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-c<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairD.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-d<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-d<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairE.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-e<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-e<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairF.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-f<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-f<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairG.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-g<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-g<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairH.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-h<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-h<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairJ.forEach(function(c){%>
+                                        <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>"
+                                            id="btn-check-j<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-seat" for="btn-check-j<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+                            </td>
+                            <td class="td-order">
+                                <%i=1%>
+                                    <%chairK.forEach(function(c){%>
+                                        <input type="checkbox" value="<%=c._id%>" name="seat" class="btn-check couple"
+                                            id="btn-check-k<%=i%>" autocomplete="off" <%if (c.available==0){%>
+                                        disabled
+                                        <%}%> >
+                                            <label class="btn btn-primary btn-couple btn-seat" for="btn-check-k<%=i%>">
+                                                <%=c.nameChair%>
+                                            </label>
+                                            <%i=i+1%>
+                                                <%})%>
+
+
+
+                            </td>
+                            <td>
+                                <div class="ad-phim">
+                                    <label style="font-size: 14px; font-style: italic; margin-top: 20px;">*Hàng vé
+                                        couple giá 80000VNĐ/vé, các hàng ghế còn
+                                        lại đồng giá 45000VNĐ/vé</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="ad-phim">
+                                    <div class="ghe">
+                                        <div class="color-chair"></div>
+                                        <div class="color-chair" style="background: indianred;"></div>
+                                        <label style="font-style: italic; margin-right: 40px;">Ghế trống</label>
+                                    </div>
+                                    <div class="ghe">
+                                        <div class="color-chair" style="background: #333"></div>
+                                        <label style="font-style: italic; margin-right: 40px;">Ghế được chọn</label>
+                                    </div>
+                                    <div class="ghe">
+                                        <div class="color-chair" style="background: rgb(136, 135, 135);"></div>
+                                        <label style="font-style: italic; margin-right: 40px;">Ghế đã đặt</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
                 </div>
-                <table style="text-align: center;">
-                    <tr class="row">
-
-                        <td class="td-order">
-                            <%var i=1%>
-                                <%chairA.forEach(function(c){%>
-
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-a<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-a<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairB.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-b<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-b<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairC.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-c<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-c<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairD.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-d<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-d<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairE.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-e<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-e<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairF.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-f<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-f<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairG.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-g<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-g<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairH.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-h<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-h<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairJ.forEach(function(c){%>
-                                    <input type="checkbox" name="seat" class="btn-check" value="<%=c._id%>" id="btn-check-j<%=i%>"
-                                         autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-seat" for="btn-check-j<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-                        </td>
-                        <td class="td-order">
-                            <%i=1%>
-                                <%chairK.forEach(function(c){%>
-                                    <input type="checkbox" value="<%=c._id%>" name="seat" class="btn-check couple" id="btn-check-k<%=i%>" 
-                                        autocomplete="off" <%if (c.available==0){%>
-                                    disabled
-                                    <%}%> >
-                                        <label class="btn btn-primary btn-couple btn-seat" for="btn-check-k<%=i%>">
-                                            <%=c.nameChair%>
-                                        </label>
-                                        <%i=i+1%>
-                                            <%})%>
-
-
-
-                        </td>
-                        <td>
-                            <div class="ad-phim">
-                                <label style="font-size: 14px; font-style: italic; margin-top: 20px;">*Hàng vé couple giá 80000VNĐ/vé, các hàng ghế còn
-                                    lại đồng giá 45000VNĐ/vé</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="ad-phim">
-                                <div class="ghe">
-                            <div class="color-chair"></div>
-                            <div class="color-chair" style="background: indianred;"></div>
-                            <label style="font-style: italic; margin-right: 40px;">Ghế trống</label>
-                        </div>
-                        <div class="ghe">
-                            <div class="color-chair" style="background: #333"></div>
-                            <label style="font-style: italic; margin-right: 40px;">Ghế được chọn</label>
-                        </div>
-                        <div class="ghe">
-                            <div class="color-chair" style="background: rgb(136, 135, 135);"></div>
-                            <label style="font-style: italic; margin-right: 40px;">Ghế đã đặt</label>
-                        </div>
-                        </div>
-                        </td>
-                    </tr>
-
-                </table>
-            </div>
-            <div class="frame-sub" style="margin-top: 40px">
-                <div class="menu">
-                    <%snack.forEach(function(sn){%>
-                        <div class="menu-item" class="menu-item">
-                            <img src="/img/snacks/<%=sn._id%>/<%=sn.photo%>" class="img-menu-item"></label>
-                            <div class="item-name"><%=sn.name%></div>
-                            <div class="item-price">Giá: <%=sn.price%> VNĐ</div>
-                            <div>
-                                <div class="buttons_added">
-                                    <input class="minus is-form" type="button" value="-">
-                                    <input type="hidden" name="snack" value="<%=sn.name%>">
-                                    <input aria-label="quantity" name="quantity" class="input-qty" max="114" min="0" name="" type="number"
-                                        value=0>
-                                    <input class="plus is-form" type="button" value="+">
+                <div class="frame-sub" style="margin-top: 40px">
+                    <div class="menu">
+                        <%snack.forEach(function(sn){%>
+                            <div class="menu-item" class="menu-item">
+                                <img src="/img/snacks/<%=sn._id%>/<%=sn.photo%>" class="img-menu-item"></label>
+                                <div class="item-name">
+                                    <%=sn.name%>
+                                </div>
+                                <div class="item-price">Giá: <%=sn.price%> VNĐ</div>
+                                <div>
+                                    <div class="buttons_added">
+                                        <input class="minus is-form" type="button" value="-">
+                                        <input type="hidden" name="snack" value="<%=sn.name%>">
+                                        <input aria-label="quantity" name="quantity" class="input-qty" max="114" min="0"
+                                            name="" type="number" value=0>
+                                        <input class="plus is-form" type="button" value="+">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <%})%>
-                    
-                    
-                </div>
-                <div class="btn-dathang">
-                    <button type="button" class="btn btn-danger btn-buy btn-back">Trở lại</button>
-                    <button type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
-                </div>
-        </form>
-    </div>
-</body>
-<%- include ('../layouts/footer') %>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script>
-    $('input.input-qty').each(function () {
-        var $this = $(this),
-            qty = $this.parent().find('.is-form'),
-            min = Number($this.attr('min')),
-            max = Number($this.attr('max'))
-        if (min == 0) {
-            var d = 0
-        } else d = min
-        $(qty).on('click', function () {
-            if ($(this).hasClass('minus')) {
-                if (d > min) d += -1
-            } else if ($(this).hasClass('plus')) {
-                var x = Number($this.val()) + 1
-                d=Number($this.val())
-                if (x <= max) d += 1
-            }
-            $this.attr('value', d).val(d)
-        });
-        $this.blur(function(){
-            if ($this.val()=="") $this.val(0);
-        })
-    });
-</script>
+                            <%})%>
 
+
+                    </div>
+                    <div class="btn-dathang">
+                        <button type="button" class="btn btn-danger btn-buy btn-back">Trở lại</button>
+                        <button type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    <%- include ('../layouts/footer') %>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+        <script>
+            $('input.input-qty').each(function () {
+                var $this = $(this),
+                    qty = $this.parent().find('.is-form'),
+                    min = Number($this.attr('min')),
+                    max = Number($this.attr('max'))
+                if (min == 0) {
+                    var d = 0
+                } else d = min
+                $(qty).on('click', function () {
+                    if ($(this).hasClass('minus')) {
+                        if (d > min) d += -1
+                    } else if ($(this).hasClass('plus')) {
+                        var x = Number($this.val()) + 1
+                        d = Number($this.val())
+                        if (x <= max) d += 1
+                    }
+                    $this.attr('value', d).val(d)
+                });
+                $this.blur(function () {
+                    if ($this.val() == "") $this.val(0);
+                })
+            });
+        </script>

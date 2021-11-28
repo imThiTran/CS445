@@ -175,7 +175,7 @@ router.post('/ordered',function(req,res){
             nameEN=ch.nameEN;
             time=ch.time;
             date=ch.date;
-            seatB.pushseatB.push({nameChair:ch.nameChair, priceChair:ch.price,idChair:ch._id},
+            seatB.push({nameChair:ch.nameChair, priceChair:ch.price,idChair:ch._id},
                 )
         })
     }
