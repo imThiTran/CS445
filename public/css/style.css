@@ -307,7 +307,7 @@ html {
 .line-detail{
   height: 3px;
       background: rgb(254 199 88);
-      width: 90%;
+      width: 93%;
       position: absolute;
 }
 .flex-img{
@@ -861,4 +861,19 @@ input[type="checkbox"][id^="cb"] {
 .close1{
   border: none;
   background: none;
+}
+.date-lc1{
+  width: 210px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+.label-date{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+.labeltime{
+  padding: 10px;
 }
