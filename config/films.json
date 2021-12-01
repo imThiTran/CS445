@@ -1,0 +1,237 @@
+[{
+  "_id": {
+    "$oid": "61908a8ac60c240f6bfe663f"
+  },
+  "nameVN": "THE CONJURING: MA XUI QUỶ KHIẾN",
+  "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+  "slug": "the-conjuring:-the-devil-made-me-do-it",
+  "showtime": [
+    {
+      "idSt": "mP8jb3EZK",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-23",
+      "time": "09:00",
+      "room": "1"
+    },
+    {
+      "idSt": "JzW9tEiSla",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-23",
+      "time": "11:00",
+      "room": "2"
+    },
+    {
+      "idSt": "063FyDkHUQ",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-23",
+      "time": "13:00",
+      "room": "1"
+    },
+    {
+      "idSt": "u---Ywi0p",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-23",
+      "time": "15:00",
+      "room": "1"
+    },
+    {
+      "idSt": "rFZ3YvwW44",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-23",
+      "time": "17:00",
+      "room": "3"
+    },
+    {
+      "idSt": "mBB178e7v",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-11-27",
+      "time": "13:00",
+      "room": "3"
+    },
+    {
+      "idSt": "WWcuPxEAZ",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-12-02",
+      "time": "09:00",
+      "room": "1"
+    },
+    {
+      "idSt": "P2K60CSk21",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-12-02",
+      "time": "11:00",
+      "room": "1"
+    },
+    {
+      "idSt": "e6h-TPfI_K",
+      "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT",
+      "date": "2021-12-02",
+      "time": "13:00",
+      "room": "1"
+    }
+  ],
+  "photo": "poster.png",
+  "director": "Taylor Sheridan",
+  "actor": "Angelina Jolie, Jon Bernthal, Nicholas Hoult",
+  "type": "action",
+  "showdate": "05/11/2021",
+  "time": "100 phút",
+  "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
+  "status": "showing",
+  "agelimit": "16",
+  "trailerId": "tbs3XRt0hhI",
+  "__v": 18
+},{
+  "_id": {
+    "$oid": "61908bdcc60c240f6bfe6640"
+  },
+  "nameVN": "KẺ NGUYỀN TA CHẾT",
+  "nameEN": "THOSE WHO WISH ME DEAD",
+  "slug": "those-who-wish-me-dead",
+  "showtime": [
+    {
+      "idSt": "37QBHC4oJ",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-23",
+      "time": "09:00",
+      "room": "3"
+    },
+    {
+      "idSt": "rtzW6cj4WV",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-23",
+      "time": "13:00",
+      "room": "2"
+    },
+    {
+      "idSt": "p-KVUTe1fs",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-23",
+      "time": "15:00",
+      "room": "2"
+    },
+    {
+      "idSt": "1ybC7514FQ",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-23",
+      "time": "17:00",
+      "room": "1"
+    },
+    {
+      "idSt": "nZPrqSHRW",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-25",
+      "time": "09:00",
+      "room": "3"
+    },
+    {
+      "idSt": "WOQFOnlmXm",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-11-25",
+      "time": "17:00",
+      "room": "3"
+    },
+    {
+      "idSt": "ElyWPyDX5",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-12-01",
+      "time": "09:00",
+      "room": "3"
+    },
+    {
+      "idSt": "lFjnaNwyWm",
+      "nameEN": "THOSE WHO WISH ME DEAD",
+      "date": "2021-12-01",
+      "time": "21:00",
+      "room": "2"
+    }
+  ],
+  "status": "showing",
+  "photo": "poster2.png",
+  "director": "Taylor Sheridan",
+  "actor": "Angelina Jolie, Jon Bernthal, Nicholas Hoult",
+  "type": "action",
+  "showdate": "12/11/2021",
+  "time": "100 phút",
+  "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
+  "agelimit": "18",
+  "trailerId": "s9boPsyrehg",
+  "__v": 13
+},{
+  "_id": {
+    "$oid": "6190941ec60c240f6bfe6642"
+  },
+  "nameVN": "THE CONJURING: MA XUI QUỶ KHIẾN",
+  "nameEN": "THE CONJURING: THE DEVIL MADE ME DO IT sap chieu",
+  "slug": "the-conjuring:-the-devil-made-me-do-it-sapchieu",
+  "showtime": [],
+  "photo": "poster3.png",
+  "director": "Taylor Sheridan",
+  "actor": "Angelina Jolie, Jon Bernthal, Nicholas Hoult",
+  "type": "action",
+  "showdate": "19/11/2021",
+  "time": "100 phút",
+  "detail": "Angelina Jolie tái xuất với siêu phẩm hành động nghẹt thở cùng biên kịch được đề cử Oscar - Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor - nhân chứng cuối cùng của một vụ trọng án. Với mục tiêu truy cùng giết tận, những kẻ giết người máu lạnh đã phóng hỏa khu rừng để đánh lạc hướng cảnh sát và săn lùng cậu bé. Vô tình bị uốn vào cuộc chiến, lính cứu hỏa Hannah (Angelina Jolie) phải tìm mọi cách để giúp Connor thoát khỏi tình thế nghìn cân treo sợi tóc trước lưỡi hái tử thần của những kẻ giết người và sự chết chóc của biển lửa kinh hoàng.",
+  "status": "coming",
+  "agelimit": "16",
+  "trailerId": "tbs3XRt0hhI"
+},{
+  "_id": {
+    "$oid": "619c67cf92844affec4dd60a"
+  },
+  "nameVN": "",
+  "nameEN": "",
+  "showtime": [],
+  "photo": "",
+  "director": "12132",
+  "showdate": "2021-11-24",
+  "type": "kd",
+  "time": "120",
+  "detail": "123",
+  "status": "1",
+  "agelimit": 18,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61a62a39ef3b0c8d160ff1c0"
+  },
+  "nameVN": "thi tran",
+  "nameEN": "Thi Tran",
+  "slug": "thi-tran",
+  "showtime": [
+    {
+      "nameEN": "Thi Tran",
+      "idSt": "qoZx5VFhx",
+      "date": "2021-12-22",
+      "time": "19:00",
+      "room": "1",
+      "closed": 0
+    },
+    {
+      "nameEN": "Thi tran",
+      "idSt": "ixd_jMNw1",
+      "date": "2022-01-01",
+      "time": "23:00",
+      "room": "2",
+      "closed": 0
+    },
+    {
+      "nameEN": "Thi Tran",
+      "idSt": "cCi_XQDLjH",
+      "date": "2021-12-15",
+      "time": "19:00",
+      "room": "1",
+      "closed": 0
+    }
+  ],
+  "photo": "av.jpg",
+  "director": "123",
+  "actor": "123",
+  "showdate": "2021-12-03",
+  "type": "hd",
+  "time": "122",
+  "detail": "123",
+  "status": "showing",
+  "agelimit": 18,
+  "__v": 1
+}]

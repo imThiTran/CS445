@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "61a199937faad20f4686fc2b"
+  },
+  "name": "Trà Sữa",
+  "slug": "trà-sữa",
+  "price": 30000,
+  "block": 0,
+  "photo": "trasua.jpg"
+},{
+  "_id": {
+    "$oid": "61a199e37faad20f4686fc2c"
+  },
+  "name": "Nước ngọt",
+  "slug": "nước-ngọt",
+  "price": 15000,
+  "block": 0,
+  "photo": "nuoc.jpg"
+},{
+  "_id": {
+    "$oid": "61a199fc7faad20f4686fc2d"
+  },
+  "name": "Combo SINGLE",
+  "slug": "combo-single",
+  "price": 50000,
+  "block": 0,
+  "photo": "bap-nuoc.jpg"
+},{
+  "_id": {
+    "$oid": "61a19a267faad20f4686fc2e"
+  },
+  "name": "Combo BIGSIZE",
+  "slug": "combo-bigsize",
+  "price": 80000,
+  "block": 0,
+  "photo": "bap-2nuoc.jpg"
+},{
+  "_id": {
+    "$oid": "61a19efd7faad20f4686fc30"
+  },
+  "name": "Khoai tây lắc phô mai",
+  "slug": "khoai-tây-lắc-phô-mai",
+  "price": 30000,
+  "block": 0,
+  "photo": "khoaitay.jpg"
+},{
+  "_id": {
+    "$oid": "61a1a19d7faad20f4686fc32"
+  },
+  "name": "Bắp",
+  "slug": "bắp",
+  "price": 30000,
+  "block": 0,
+  "photo": "bap.jpg"
+}]
