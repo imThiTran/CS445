@@ -894,3 +894,14 @@ input[type="checkbox"][id^="cb"] {
   font-size: 18px;
   font-weight: 700;
 }
+.form-check-input{
+  width: 20px;
+    height: 20px;
+    position: unset !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+}
+.form-check-input:checked{
+  background-color: rgb(254 199 88) !important;
+  border-color: rgb(254 199 88) !important;
+}
