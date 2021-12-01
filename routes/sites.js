@@ -46,7 +46,7 @@ router.get('/bill',function(req,res){
     var chair=[];
     Bill.findOne({idB:billid},function(err,b){
         chair=b.seat;
-        b.type="checked";
+        b.checkout=1;
         b.save();
         res.render('order/ordered',{
             billid:billid

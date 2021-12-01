@@ -6,11 +6,13 @@ var span = document.querySelector(".closeBtn");
     // }
     span.onclick = function () {
         modal.style.display = "none";
+        $('.alertAdd').html(null);
     }
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        $('.alertAdd').html(null);
     }
     var nameEN= $('.nameEN');
     var date= $('.date');
@@ -56,6 +58,11 @@ var span = document.querySelector(".closeBtn");
             })
             
             })
+
+            $('a.confirmDeletion').on('click', function () {
+              if (!confirm('Confirm Deletion ? '))
+                  return false;
+          })
         }
     })
   })

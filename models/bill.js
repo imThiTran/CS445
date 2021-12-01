@@ -29,6 +29,10 @@ var BillSchema = mongoose.Schema({
     totalPrice:{
         type:String
     },
+    checkout:{
+        type:Number,
+        default:0
+    },
     createdAt:{
         type:Date,
         default:Date.now
