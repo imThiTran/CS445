@@ -28,7 +28,15 @@ var BillSchema = mongoose.Schema({
     },
     totalPrice:{
         type:String
-    }
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
+    },
+    updateddAr:{
+        type:Date,
+        default:Date.now
+    },
 })
 
 var Bill = module.exports = mongoose.model('bills',BillSchema);

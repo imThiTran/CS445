@@ -6,9 +6,10 @@ var shortid= require('shortid');
 
 var Film= require('../models/film');
 var Showtime= require('../models/showtime');
-var Chair = require('../models/chair')
+var Chair = require('../models/chair');
+
 router.get('/',function(req,res){
-    Film.find({},function(err,fi){
+    Film.find({status:"showing"},function(err,fi){
     Showtime.find({},function(err,st){
         res.render('admin/admin-showtime',{
             films:fi,
@@ -117,6 +118,7 @@ router.post('/add-showtime',function(req , res){
                         }) 
                         for (var j=1;j<115;j++){
                             var nameChair="";
+                            var price=45000;
                             if (j<13) nameChair="A"+j;
                             else if(j<25) nameChair="B"+(j-12);
                             else if(j<37) nameChair="C"+(j-24);
@@ -126,7 +128,7 @@ router.post('/add-showtime',function(req , res){
                             else if(j<85) nameChair="G"+(j-72);
                             else if(j<97) nameChair="H"+(j-84);
                             else if(j<109) nameChair="J"+(j-96);
-                            else if(j<121) nameChair="K"+(j-108);
+                            else if(j<121) {nameChair="K"+(j-108);price=80000}
                             var chair=new Chair({
                                 nameChair:nameChair,
                                 showtimeId:id,
@@ -136,6 +138,7 @@ router.post('/add-showtime',function(req , res){
                                 room:room[i],
                                 available:1,
                                 sorting:j,
+                                price:price,
                             })
                             chair.save(function(err){
                             })
@@ -156,34 +159,7 @@ router.post('/add-showtime',function(req , res){
         
 })
 
-//get edit product
 
-// router.get('/edit-product/:id',function(req,res){
-
-//     var errors;
-//     if (req.session.errors) errors =req.session.errors;
-//     req.session.errors = null;
-   
-//     Category.find(function(err,cat){
-//         Product.findById(req.params.id, function(err,p){
-//             if (err) {
-//                 console.log(err);
-//                 res.redirect('admin/products');
-//             } else {
-//                 res.render('admin/edit-product',{
-//                     id: p._id,
-//                     title: p.title,
-//                     categories: cat,
-//                     price: p.price,
-//                     category: p.category.replace(/\s+/g,'-').toLowerCase(),
-//                     image:p.image
-//                 });
-//             }
-//         })
-        
-//     })
-
-// })
 router.post('/editBlock',function(req,res){
     var id = req.body.id;
     var block = req.body.block;
@@ -198,89 +174,125 @@ router.post('/editBlock',function(req,res){
 
 router.post('/editBtn',function(req,res){
     var id = req.body.id;
-    Category.find({slug:{'$ne':'size'}},function(err,cats){
-    Product.findById(id,function(err,p){
+    var selectTime="";
+    var selectRoom="";
+    Showtime.findOne({idSt:id},function(err,st){
         if (err) return console.log(err);
-        var htmlSelect ;
-        cats.forEach(function(cat){ 
-            htmlSelect=htmlSelect+`<option value="`+ cat.slug+ (cat.slug == p.category?`" selected="selected" >`:`"> `)+  cat.title+
-            `</option>
-         }); `
-        })
-        res.send({
-            product : p,
-            htmlSelect: htmlSelect
-            })
-        })
+        selectTime=`<select class="time form-select" style="width:210px">
+        <option >Chọn giờ</option>
+        <option value="9:00"`+((st.time=="09:00")?`selected`:``)+`>09:00 AM</option>
+        <option value="11:00"`+((st.time=="11:00")?`selected`:``)+`>11:00 AM</option>
+        <option value="13:00"`+((st.time=="13:00")?`selected`:``)+`>13:00 PM</option>
+        <option value="15:00"`+((st.time=="15:00")?`selected`:``)+`>15:00 PM</option>
+        <option value="17:00"`+((st.time=="17:00")?`selected`:``)+`>17:00 PM</option>
+        <option value="19:00"`+((st.time=="19:00")?`selected`:``)+`>19:00 PM</option>
+        <option value="21:00"`+((st.time=="21:00")?`selected`:``)+`>21:00 PM</option>
+        <option value="23:00"`+((st.time=="23:00")?`selected`:``)+`>23:00 PM</option>
+    </select>`
+        selectRoom=`<select class="form-select room" style="width:210px">
+        <option >Chọn phòng chiếu</option>
+        <option value="1"`+((st.room==1)?`selected`:``)+`>CINEMA 1</option>
+        <option value="2"`+((st.room==2)?`selected`:``)+`>CINEMA 2 </option>
+        <option value="3"`+((st.room==3)?`selected`:``)+`>CINEMA 3</option>
+        </select>`
+            res.send({
+                nameEN : st.nameEN,
+                date:st.date,
+                room:selectRoom,
+                time:selectTime,
+                })
     })
 })
 
-router.post('/edit-product/:id',function(req,res){
-    var imageFile =  (req.files != null)? req.files.image.name:""; 
-    var title=req.body.title;
-    var slug = title.replace(/\s+/g,'-').toLowerCase();
-    var price=req.body.price;
-    var category = req.body.category;
-    var pimage = req.body.pimage;
-    var id = req.params.id;
-    var quantity = req.body.quantity;
-    Product.findOne({slug: slug,_id : {'$ne':id}},function(err,p){
-        if (err) console.log(err);
-        if (p){
-            var noti='Sản phẩm này đã tồn tại' ;
-            res.send({noti: noti});
+router.post('/edit-showtime/:id',function(req,res){
+    var id=req.params.id;
+    var date=req.body.date;
+    var time=req.body.time;
+    var room=req.body.room;
+    var updateSt=[];
+    Showtime.findOne({$and:[{date:date},{time:time},{room:room},{idSt:{'$ne':id}}]},function(err,st){
+        if (err) return console.log(err);
+        if (st){
+            var noti='Bị trùng thời gian chiếu';
+            res.send({noti:noti});
         } else {
-            Product.findById(id,function(err,p){
-                if (err) console.log(err);
-                p.title= title;
-                p.slug = slug;
-                p.price=price;
-                p.category = category;
-                p.quantity = quantity;
-                if (imageFile != ""){
-                    p.image= imageFile;
-                }
-                p.save(function(err){
-                    if (err)
-                        console.log(err);
-                    if (imageFile != ""){
-                        if (pimage != "" && pimage != imageFile){
-                            fs.remove('public/img/product_imgs/'+id +'/'+ pimage,function(err){
-                                if (err) console.log(err);
-
-                            });
-                        }
-
-                        var productImage =req.files.image;
-                        var path= 'public/img/product_imgs/'+ id +'/' + imageFile;
-
-                        productImage.mv(path,function(err){
-                            if (err)return console.log(err)
-                        });
-                        }
-                        var imageAjax;
-                        if (imageFile==""){
-                            if (pimage != ""){
-                                 imageAjax= "/img/product_imgs/"+id+"/"+pimage;
-                            }
-                            else imageAjax="/img/noimage.jpg"
-                        }
-                        else {
-                            imageAjax= "/img/product_imgs/"+id+"/"+imageFile;
-                        }
-                            
-                        res.send({
-                            noti : "",
-                            imageAjax:imageAjax,
-                    })
-                        req.flash('succsess','Product editted');
-                })
+            Film.findOne({"showtime.idSt":id},function(err,fi){
+                if (err) return console.log(err);
+                if (fi){
+                updateSt=fi.showtime;
+                for(var i=0;i<fi.showtime.length;i++){
+                    if (updateSt[i].idSt==id) {
+                        updateSt[i].time=time;
+                        updateSt[i].room=room;
+                        updateSt[i].date=date;
+                    }
+                }  
+            } 
             })
+            Showtime.findOne({idSt:id},function(err,st){
+                if (err) return console.log(err);
+                st.date=date;
+                st.time=time;
+                st.room=room;
+                st.save();
+            })
+            Chair.updateMany({showtimeId:id},{$set: {  
+                room: room,
+                date:date,
+                time:time,
+        }},{multi:true},function(err,rs){
+            if (err) return console.log(err);
+        });
+        setTimeout(() => {
+            Film.updateOne({"showtime.idSt":id},{$set: {  
+                showtime: updateSt, 
+        }},function(err,rs){
+            if(err) return console.log(err);
+        })
+        }, 10);
+        res.send({noti:""});
         }
     })
 
 })
 
+router.post('/load-bynameEN',function(req,res){
+    var nameEN=req.body.nameEN;
+    var htmlCode="";
+    Showtime.find({nameEN:nameEN},function(err,st){
+        for (var i=0;i<st.length;i++){
+            htmlCode=htmlCode+`<tr class="trClosest">
+            <th scope="row">
+                `+st[i].idSt+`
+            </th>
+            <td class="tdName" style="width: 20%;">
+                <div>`+st[i].nameEN+`</div>
+            </td>
+            <td class="tdDate">
+                `+st[i].date+`
+            </td>
+            <td class="tdTime">
+                `+st[i].time+`
+            </td>
+            <td class="tdRoom">
+                CINEMA `+st[i].room+`
+            </td>
+
+            <td>
+                <div class="ad-btn" style="    width: 60px;">
+                    <button type="button" class="btn-close btn-xoa" aria-label="Close"
+                        style="margin-top: 30px;"></button>
+                    <button type="button" class="btn btn-danger btn-buy editBtn" id="`+st[i].idSt+`"
+                        style="width:100%; margin-top: 20px">Sửa</button>
+                </div>
+            </td>
+        </tr>`
+        }
+    })
+    setTimeout(() => {
+        res.send({htmlCode:htmlCode});
+    }, 3);
+})
 router.get('/search-product',function(req,res){
     var name=req.query.search;
     Product.find({category:{'$ne':'size'}},function(err,products){

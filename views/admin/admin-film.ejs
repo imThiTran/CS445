@@ -68,7 +68,7 @@
                                                                         <option value="kd">Kinh dị</option>
                                                                         <option value="tc">Tình cảm</option>
                                                                         <option value="hd">Hành động</option>
-                                                                        <option value="hh">Hài hước</option>
+                                                                        <option value="hhc">Hài hước</option>
                                                                         <option value="hhh">Hoạt hình</option>
                                                                         <option value="ls">Lịch sử</option>
                                                                     </select>
@@ -99,9 +99,9 @@
                                                                 <div class="ad-phim">
                                                                     <label class="label-chitiet" for="">Tình trạng</label>
                                                                     <select class="input-sua" name="status" id="">
-                                                                        <option value="1">Đang khởi chiếu</option>
-                                                                        <option value="2">Sắp khởi chiếu</option>
-                                                                        <option value="3">Đã chiếu xong</option>
+                                                                        <option value="showing">Đang khởi chiếu</option>
+                                                                        <option value="coming">Sắp khởi chiếu</option>
+                                                                        <option value="showed">Đã chiếu xong</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="ad-phim">
@@ -116,6 +116,7 @@
                                                                 
                                                             </div>
                                                         <div class="modal-footer">
+                                                            <p style="color: red;" class="alertFilm"></p>
                                                             <button type="button" id="btn-save-new-item" class="btn btn-danger">Thêm</button>
                                                         </div>
                                                     </div>
@@ -195,7 +196,7 @@
                                                                 </div>
                                                                 <div class="ad-phim">
                                                                     <label class="label-chitiet" for="">Diễn viên</label>
-                                                                    <input class="input-sua" type="text">
+                                                                    <input name="actor" class="input-sua" type="text">
                                                                 </div>
                                                                 <div class="ad-phim">
                                                                     <label class="label-chitiet" for="">Khởi chiếu</label>
@@ -258,7 +259,7 @@
                                                             </div>
                                                                 
                                                             </div>
-                                                        <div class="modal-footer">
+                                                        <div class="modal-footer">                                                      
                                                             <button type="button" class="btn btn-danger">Thêm</button>
                                                         </div>
                                                     </div>
@@ -373,15 +374,15 @@
     contentType: false,
     data: data,
     success: function (result) {
-        //  if ( result.noti != "") ;
-        //   else {
+          if ( result.noti != "") $('.alertFilm').text(result.noti) ;
+           else {
              // Set the URL to whatever it was plus "#".
              url = document.URL+"#";
              location = "#";
 
              //Reload the page
               location.reload(true);
-        //   }
+           }
       }
   });
   e.preventDefault();

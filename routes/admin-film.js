@@ -31,9 +31,9 @@ router.post('/add-film',function(req , res){
     var showdate= req.body.showdate;
     var trailerArr = (req.body.trailerId).split('=');
     var trailerId = trailerArr[1];
-    Film.findOne({slug: slug},function(err,fi){
+    var actor=req.body.actor;
+    Film.findOne({$or:[{slug: slug},{nameVN:nameVN}]},function(err,fi){
         if (fi){
-            req.flash('danger','Product title exists, choose another');
             var noti='Phim này đã tồn tại' ;
             res.send({noti: noti});
         }
@@ -50,6 +50,8 @@ router.post('/add-film',function(req , res){
                 type: type,
                 detail: detail,
                 photo:imageFile,
+                slug:slug,
+                actor:actor
             });
             film.save(function(err){
                 if (err) return console.log(err);

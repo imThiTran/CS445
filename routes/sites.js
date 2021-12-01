@@ -75,7 +75,7 @@ router.get('/:time',function(req,res){
             dayWeek.push(newMonday);
             monday=monday+daylength;
         }
-        var dateRq=time.getFullYear()+'-'+(time.getMonth()+1)+'-'+time.getDate();
+        var dateRq=time.getFullYear()+'-'+(time.getMonth()+1)+'-'+(time.getDate()<10?"0"+time.getDate():time.getDate());
         var newFis=[];
         Film.find({status:"showing"},function(err,fis){
             for(var i=0;i<fis.length;i++){

@@ -68,11 +68,11 @@
                         <tr>
                             <form action="">
                             <div class="ad-phim1" style="    justify-content: space-between; margin-top: 20px;">
-                            <select name="" class="form-select" style="width: 50%;">
+                            <select name="" class="form-select filmSelect" style="width: 50%;">
                                     <option value="1" > Chọn tên phim </option>
-                                    <option value="2" > THE DEVIL MADE ME DO IT | THE CONJURING: MA XUI QUỶ KHIẾN </option>
-                                    <option value="3"> KẺ NGUYỀN RỦA CÁI DÌ ĐÓ ÉO NHỚ </option>
-                                    <option value="4"> THE DEVIL MADE ME DO IT | THE CONJURING: MA XUI QUỶ KHIẾN </option>
+                                    <%films.forEach(function(fi){%>
+                                        <option value="<%=fi.nameEN%>" > <%=fi.nameEN%> </option>
+                                    <%})%>                  
                             </select>
                         </form>
                             <form action="" method="POST">
@@ -125,7 +125,7 @@
                                                                 <select name="nameEN" class="form-select">
                                                                     <%films.forEach(function(fi){%>
                                                                         <option value="<%=fi.nameEN%>">
-                                                                            <%=fi.nameVN%>
+                                                                            <%=fi.nameEN%>
                                                                         </option>
                                                                         <%})%>
                                                                 </select>
@@ -224,6 +224,57 @@
                                                                         <option value="3">CINEMA 3</option>
                                                                     </select>
                                                                 </div>
+                                                                <div class="sc-check">
+                                                                    <div name="suat6" class="form-check">
+                                                                        <input name="time" class="form-check-input"
+                                                                            type="checkbox" value="19:00"
+                                                                            id="flexCheckDefault"
+                                                                            onclick="toggleSelect(this)">
+                                                                        <label class="form-check-label"
+                                                                            for="flexCheckDefault">
+                                                                            19:00 PM
+                                                                        </label>
+                                                                    </div>
+                                                                    <select name="room" class="select-pc">
+                                                                        <option value="1" selected>CINEMA 1</option>
+                                                                        <option value="2">CINEMA 2</option>
+                                                                        <option value="3">CINEMA 3</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="sc-check">
+                                                                    <div name="suat7" class="form-check">
+                                                                        <input name="time" class="form-check-input"
+                                                                            type="checkbox" value="21:00"
+                                                                            id="flexCheckDefault"
+                                                                            onclick="toggleSelect(this)">
+                                                                        <label class="form-check-label"
+                                                                            for="flexCheckDefault">
+                                                                            21:00 PM
+                                                                        </label>
+                                                                    </div>
+                                                                    <select name="room" class="select-pc">
+                                                                        <option value="1" selected>CINEMA 1</option>
+                                                                        <option value="2">CINEMA 2</option>
+                                                                        <option value="3">CINEMA 3</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="sc-check">
+                                                                    <div name="suat8" class="form-check">
+                                                                        <input name="time" class="form-check-input"
+                                                                            type="checkbox" value="23:00"
+                                                                            id="flexCheckDefault"
+                                                                            onclick="toggleSelect(this)">
+                                                                        <label class="form-check-label"
+                                                                            for="flexCheckDefault">
+                                                                            23:00 PM
+                                                                        </label>
+                                                                    </div>
+                                                                    <select name="room" class="select-pc">
+                                                                        <option value="1" selected>CINEMA 1</option>
+                                                                        <option value="2">CINEMA 2</option>
+                                                                        <option value="3">CINEMA 3</option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -240,186 +291,100 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                TCR01
-                            </th>
-                            <td style="width: 20%;">
-                                <div>THE DEVIL MADE ME DO IT</div>
-                                <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                            </td>
-                            <td>
-                                15/11/2021
-                            </td>
-                            <td>
-                                07:30 Am
-                            </td>
-                            <td>
-                                CINEMA 1
-                            </td>
-
-                            <td>
-                                <div class="ad-btn" style="    width: 60px;">
-                                    <button type="button" class="btn-close btn-xoa" aria-label="Close"
-                                        style="margin-top: 30px;"></button>
-                                    <button type="button" class="btn btn-danger btn-buy" id="myBtn"
-                                        style="width:100%; margin-top: 20px">Sửa</button>
-                                </div>
-                            </td>
-
-                            <div id="myModal" class="modal">
-                                
-                                <div class="modal-content" style="width: 30%; font-size: 16px;">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Sửa lịch chiếu</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <tbody id="containTr">
+                        <%showtimes.forEach(function(st){%>
+                            <tr class="trClosest">
+                                <th scope="row">
+                                    <%=st.idSt%>
+                                </th>
+                                <td class="tdName" style="width: 20%;">
+                                    <div><%=st.nameEN%></div>
+                                </td>
+                                <td class="tdDate">
+                                    <%=st.date%>
+                                </td>
+                                <td class="tdTime">
+                                    <%=st.time%>
+                                </td>
+                                <td class="tdRoom">
+                                    CINEMA <%=st.room%>
+                                </td>
+    
+                                <td>
+                                    <div class="ad-btn" style="    width: 60px;">
+                                        <button type="button" class="btn-close btn-xoa" aria-label="Close"
+                                            style="margin-top: 30px;"></button>
+                                        <button type="button" class="btn btn-danger btn-buy editBtn" id="<%=st.idSt%>"
+                                            style="width:100%; margin-top: 20px">Sửa</button>
                                     </div>
-                                    <form action="">
-                                        <div class="modal-body">
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Tên phim</label>
-                                                <label for="">
-                                                    <div>THE DEVIL MADE ME DO IT</div>
-                                                    <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                                                </label>
-                                            </div>
-
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Ngày chiếu</label>
-                                                <input name="date" class="date-lc1" type="date">
-                                            </div>
-                                            <div class="ad-phim1" >
-                                                <label class="label-chitiet" for="">Suất chiếu</label>
-                                                <div class="lc-suatchieu" style="    margin-left: 18px;">
-                                                    <div class="form-group" style="margin-bottom: 0px;">
-                                                        <select class="form-select" style="width:210px">
-                                                            <option selected>Chọn giờ</option>
-                                                            <option value="1">9:00 AM</option>
-                                                            <option value="2">10:00 AM</option>
-                                                            <option value="3">13:00 PM</option>
-                                                            <option value="4">15:00 PM</option>
-                                                            <option value="5">17:00 PM</option>
-                                                        </select>
-                                                        <span class="span-error" id="birth_error"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Phòng chiếu</label>
-                                                <div class="lc-suatchieu" style="    margin-left: 18px;">
-                                                    <div class="form-group">
-                                                        <select class="form-select" style="width:210px">
-                                                            <option selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2 </option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                        <span class="span-error" id="birth_error"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger">Thêm</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                TCR01
-                            </th>
-                            <td style="width: 20%;">
-                                <div>THE DEVIL MADE ME DO IT</div>
-                                <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                            </td>
-                            <td>
-                                15/11/2021
-                            </td>
-                            <td>
-                                07:30 Am
-                            </td>
-                            <td>
-                                CINEMA 1
-                            </td>
-
-                            <td>
-                                <div class="ad-btn" style="    width: 60px;">
-                                    <button type="button" class="btn-close btn-xoa" aria-label="Close"
-                                        style="margin-top: 30px;"></button>
-                                    <button type="button" class="btn btn-danger btn-buy" id="myBtn1"
-                                        style="width:100%; margin-top: 20px">Sửa</button>
-                                </div>
-                            </td>
-
-                            <div id="myModal1" class="modal">
-                                
-                                <div class="modal-content" style="width: 30%; font-size: 16px;">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Sửa lịch chiếu</h4>
-                                        <button type="button" class="close1" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <form action="">
-                                        <div class="modal-body">
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Tên phim</label>
-                                                <label for="">
-                                                    <div>THE DEVIL MADE ME DO IT</div>
-                                                    <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                                                </label>
-                                            </div>
-
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Ngày chiếu</label>
-                                                <input name="date" class="date-lc1" type="date">
-                                            </div>
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Suất chiếu</label>
-                                                <div class="lc-suatchieu" style="    margin-left: 18px;">
-                                                    <div class="form-group" style="margin-bottom: 0px;">
-                                                        <select class="form-select" style="width:210px">
-                                                            <option selected>Chọn giờ</option>
-                                                            <option value="1">9:00 AM</option>
-                                                            <option value="2">10:00 AM</option>
-                                                            <option value="3">13:00 PM</option>
-                                                            <option value="4">15:00 PM</option>
-                                                            <option value="5">17:00 PM</option>
-                                                        </select>
-                                                        <span class="span-error" id="birth_error"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ad-phim1">
-                                                <label class="label-chitiet" for="">Phòng chiếu</label>
-                                                <div class="lc-suatchieu" style="    margin-left: 18px;">
-                                                    <div class="form-group">
-                                                        <select class="form-select" style="width:210px">
-                                                            <option selected>Chọn phòng chiếu</option>
-                                                            <option value="1">CINEMA 1</option>
-                                                            <option value="2">CINEMA 2 </option>
-                                                            <option value="3">CINEMA 3</option>
-                                                        </select>
-                                                        <span class="span-error" id="birth_error"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger">Thêm</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </tr>
+                                </td>
+                            </tr>
+                        <%})%>
                     </tbody>
+                    <div id="myModal" class="modal">
+                                    
+                        <div class="modal-content" style="width: 30%; font-size: 16px;">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Sửa lịch chiếu</h4>
+                                <button type="button" class="closeBtn" data-dismiss="modal">&times;</button>
+                            </div>
+                            <form class="formEdit" action="/admin/showtime/edit-showtime">
+                                <div class="modal-body">
+                                    <div class="ad-phim1">
+                                        <label class="label-chitiet" for="">Tên phim</label>
+                                        <label for="">
+                                            <div class="nameEN">THE DEVIL MADE ME DO IT</div>
+                                        </label>
+                                    </div>
+
+                                    <div class="ad-phim1">
+                                        <label class="label-chitiet" for="">Ngày chiếu</label>
+                                        <input name="date" class="date date-lc1" type="date">
+                                    </div>
+                                    <div class="ad-phim1" >
+                                        <label class="label-chitie " for="">Suất chiếu</label>
+                                        <div class="lc-suatchieu" style="    margin-left: 18px;">
+                                            <div class="form-group" style="margin-bottom: 0px;">
+                                                <select name="time" class="time form-select" style="width:210px">
+                                                    <option selected>Chọn giờ</option>
+                                                    <option value="09:00">09:00 AM</option>
+                                                    <option value="11:00">11:00 AM</option>
+                                                    <option value="13:00">13:00 PM</option>
+                                                    <option value="15:00">15:00 PM</option>
+                                                    <option value="17:00">17:00 PM</option>
+                                                    <option value="19:00">19:00 PM</option>
+                                                    <option value="21:00">21:00 PM</option>
+                                                    <option value="23:00">23:00 PM</option>
+                                                </select>
+                                                <span class="span-error" id="birth_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ad-phim1">
+                                        <label class="label-chitiet" for="">Phòng chiếu</label>
+                                        <div class="lc-suatchieu" style="    margin-left: 18px;">
+                                            <div class="form-group">
+                                                <select name="room" class="form-select room" style="width:210px">
+                                                    <option selected>Chọn phòng chiếu</option>
+                                                    <option value="1">CINEMA 1</option>
+                                                    <option value="2">CINEMA 2 </option>
+                                                    <option value="3">CINEMA 3</option>
+                                                </select>
+                                                <span class="span-error" id="birth_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <p style="color: red;" class="alertEdit"></p>
+                                    <button type="button" id="btn-save-change-item" class="btn btn-danger">Sửa</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </table>
             </form>
 
@@ -431,13 +396,13 @@
 
 
 </body>
-<script src="/js/modal.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="/js/modal.js"></script>
 <script>
     $('a.confirmDeletion').on('click', function () {
         if (!confirm('Confirm Deletion ? '))

@@ -16,6 +16,10 @@ var ShowtimeSchema = mongoose.Schema({
     room:{
         type:Number,
     },
+    closed:{
+        type:Number,
+        default:0,
+    },
 })
 
 var Showtime = module.exports = mongoose.model('showtime',ShowtimeSchema);
