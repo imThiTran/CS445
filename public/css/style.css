@@ -863,7 +863,7 @@ input[type="checkbox"][id^="cb"] {
   background: none;
 }
 .date-lc1{
-  width: 210px;
+  width: 400px;
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 5px;
@@ -876,4 +876,21 @@ input[type="checkbox"][id^="cb"] {
 }
 .labeltime{
   padding: 10px;
+}
+.modal-body-plus{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 260px);
+}
+.closeBtn{
+  background: white;
+  border: none;
+  -webkit-text-stroke-width: medium;
+}
+.nameEN{
+  font-size: 18px;
+  font-weight: 700;
 }
