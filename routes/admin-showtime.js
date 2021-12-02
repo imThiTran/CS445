@@ -182,7 +182,7 @@ router.post('/editBtn',function(req,res){
         if (err) return console.log(err);
         selectTime=`<select class="time form-select" style="width:210px">
         <option >Chọn giờ</option>
-        <option value="9:00"`+((st.time=="09:00")?`selected`:``)+`>09:00 AM</option>
+        <option value="09:00"`+((st.time=="09:00")?`selected`:``)+`>09:00 AM</option>
         <option value="11:00"`+((st.time=="11:00")?`selected`:``)+`>11:00 AM</option>
         <option value="13:00"`+((st.time=="13:00")?`selected`:``)+`>13:00 PM</option>
         <option value="15:00"`+((st.time=="15:00")?`selected`:``)+`>15:00 PM</option>

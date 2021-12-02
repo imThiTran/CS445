@@ -419,28 +419,6 @@
         if (!confirm('Confirm Deletion ? '))
             return false;
     })
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $(".imgEditPreview").attr('src', e.target.result);
-                $(".imgAddPreview").attr('src', e.target.result);
-
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-
-
-    $(".imgChangeAdd").change(function () {
-        readURL(this);
-    })
-
-    $(".imgChangeEdit").change(function () {
-        readURL(this);
-    })
 
     $('.btnAdd').on('click',function(e){
     var formm=$('.formAdd')[0];

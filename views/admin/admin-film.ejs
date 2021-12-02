@@ -130,7 +130,12 @@
                         <%films.forEach(function(film){%>
                             <tr>
                                 <th scope="row" style="width: 15%"> 
-                                    <img style="width: 100%" src="/img/films/<%=film._id%>/<%=film.photo%>" alt="">
+                                    <%if (film.photo!=""){%>
+                                        <img style="width: 100%" src="/img/films/<%=film._id%>/<%=film.photo%>" alt="">
+                                    <%} else {%>
+                                        <img style="width: 100%" src="/img/noimage.png" alt="">
+                                    <%}%>
+                                    
                                 </th>
                                 <td style="width: 20%;">
                                     <div><%=film.nameEN%></div>

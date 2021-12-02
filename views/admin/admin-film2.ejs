@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>MEGAS CINEMA</title>
+</head>
+<!-- navbar -->
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+            <div class="collapse navbar-collapse navnav" id="Mainnav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="dangky.html">Đăng ký</a>
+                    </li>
+                    <div class="nav-cach"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper-index">
+        <div class="menu-index" id="menu">
+            <ul class="menu-ul">
+                <li>
+                    <a href="/"><img class="img-logo" src="/img/MEGAS (2).png" /></a>
+                </li>
+                <div class="dropdown">
+                    <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Tất cả</a>
+                            <a href="#">Phim sắp chiếu</a>
+                            <a href="#">Phim đang chiếu</a>
+                        </div>
+                    </li>
+                </div>
+                <div class="dropdown">
+                    <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Kinh dị</a>
+                            <a href="#">Tình cảm</a>
+                            <a href="#">Hành động</a>
+                            <a href="#">Hài hước</a>
+                            <a href="#">Hoạt hình</a>
+                            <a href="#">Lịch sử</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a class="menu-a" href="menu.html">MUA VÉ</a></li>
+                <li><a class="menu-a" href="giohang.html">SỰ KIỆN</a></li>
+                <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
+            </ul>
+        </div>
+        <div class="ad-movie">
+            <div class="h5-detail">Quản lý phim</div>
+            <span class="line-detail"></span>
+                <table class="table table-striped  table-bordered" style="font-size: 15px;">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Tên phim</th>
+                            <th scope="col">Đạo diễn</th>
+                            <th scope="col">Khởi chiếu</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Tình trạng</th>
+                            <th scope="col" style="width: 1%;">
+                                <div class="btn-admin">
+                                    <button type="button" class="btn btn-danger btn-buy btn-sua" data-toggle="modal" data-target=".bd-example-modal-lg" 
+                                    >+</button>
+                                    
+                                        <form action="" class="formAdd">
+                                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                  <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Thêm phim</h4>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                        </div>
+        
+                                                        <div class="modal-body-plus">
+                                                            <div class="modal-left">
+                                                                <div class="col-5 img-add">
+                                                                    <img id="img-edit-item" class="imgAddPreview"
+                                                                        src="/img/noimage.png" style="width: 100%;">
+                                                                    <input type="file" class="form-control imgChangeAdd" name="image"
+                                                                        id="img1" accept="image/png, image/jpeg, image/jpg"
+                                                                        style="display: none;">
+                                                                    <label class="btn-addimg" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-right">
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Tên phim</label>
+                                                                    <div class="input-ten">
+                                                                        <input class="input-sua" placeholder="Tên tiếng anh" name="nameEN" type="text">
+                                                                        <input class="input-sua" placeholder="Tên tiếng việt" name="nameVN" type="text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Đạo diễn</label>
+                                                                    <input class="input-sua" name="director" type="text">
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Diễn viên</label>
+                                                                    <input class="input-sua" name="actor" type="text">
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Khởi chiếu</label>
+                                                                    <input class="input-sua" name="showdate" type="date">
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Thời gian</label>
+                                                                    <input class="input-sua" name="time" type="number">
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Thể loại</label>
+                                                                    <select class="input-sua" name="type" id="">
+                                                                        <option value="Kinh dị">Kinh dị</option>
+                                                                        <option value="Tình cảm">Tình cảm</option>
+                                                                        <option value="Hành động">Hành động</option>
+                                                                        <option value="Hài hước">Hài hước</option>
+                                                                        <option value="Hoạt hình">Hoạt hình</option>
+                                                                        <option value="Lịch sử">Lịch sử</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Rating</label>
+                                                                    <div style="display: flex; justify-content: center;">
+                                                                    <div class="form-check rating">
+                                                                        <input class="form-check-input" value="18" type="radio" name="agelimit" id="flexRadioDefault1">
+                                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                                            <img class="img-cs" style="width: 50%;" src="/img/cs18.png">
+                                                                        </label>
+                                                                      </div>
+                                                                      <div class="form-check rating">
+                                                                        <input class="form-check-input" value="16" type="radio" name="agelimit" id="flexRadioDefault1">
+                                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                                            <img class="img-cs" style="width: 50%;" src="/img/cs16.png">
+                                                                        </label>
+                                                                      </div>
+                                                                      <div class="form-check rating">
+                                                                        <input class="form-check-input" value="13" type="radio" name="agelimit" id="flexRadioDefault1">
+                                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                                            <img class="img-cs" style="width: 50%;" src="/img/cs13.png">
+                                                                        </label>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Tình trạng</label>
+                                                                    <select class="input-sua" name="status" id="">
+                                                                        <option value="showing">Đang khởi chiếu</option>
+                                                                        <option value="coming">Sắp khởi chiếu</option>
+                                                                        <option value="showed">Đã chiếu xong</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Chi tiết</label>
+                                                                    <textarea class="input-sua-area" name="detail" id="" cols="20" rows="10"></textarea>
+                                                                </div>
+                                                                <div class="ad-phim">
+                                                                    <label class="label-chitiet" for="">Link Trailer</label>
+                                                                    <input class="input-sua" name="trailerId" type="url">
+                                                                </div>
+                                                            </div>
+                                                                
+                                                            </div>
+                                                        <div class="modal-footer">
+                                                            <p style="color: red;" class="alertAdd"></p>
+                                                            <button type="button" id="btn-save-new-item" class="btn btn-danger">Thêm</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%films.forEach(function(fi){%>
+                            <tr>
+                                <th scope="row" style="width: 15%">
+                                    <%if (fi.photo!=""){%>
+                                        <img style="width: 100%" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="">
+                                    <%} else {%>
+                                        <img style="width: 100%" src="/img/noimage.png" alt="">
+                                    <%}%>
+                                </th>
+                                <td style="width: 20%;">
+                                    <div><%=fi.nameEN%></div>
+                                    <div><%=fi.nameVN%></div>
+                                </td>
+                                <td><%=fi.director%></td>
+                                <td><%=fi.showdate%></td>
+                                <td><%=fi.type%></td>
+                                <td>
+                                    <img class="img-cs" style="width:50px" src="/img/cs<%=fi.agelimit%>.png">
+                                </td>
+                                <td>
+                                    <div><%=fi.status%></div>
+                                </td>
+                                <td>
+                                    <div class="ad-btn" style="width:60px">
+                                        <button type="button" class="btn-close btn-xoa" aria-label="Close"></button>
+                                        <button type="button" class="btn btn-danger btn-buy" id="myBtn"
+                                            style="width:100%; margin-top: 20px">Sửa</button>
+                                        <button type="button" class="btn btn-danger btn-buy detailBtn" id="<%=fi._id%>" style="    margin-top: 20px;
+                                            padding: 5px;
+                                            width: 80px;">Chi tiết</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <%})%>
+                    </tbody>
+                    <!-- form nút sửa -->
+                    <div id="myModal" class="modal" style="margin-top: -50px">
+                        <div class="modal-content" style="width: 70%; font-size: 16px;">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Sửa phim</h4>
+                                <button type="button" class="suaclose"
+                                data-dismiss="modal">&times;</button>
+                            </div>
+                            <form action="">
+                                <div class="modal-body-plus">
+                                    <div class="modal-left">
+                                        <div class="col-5 img-add">
+                                            <img id="img-edit-item" class="imgAddPreview"
+                                                src="img/trasua.jpg" style="width: 100%;">
+                                            <input type="file" class="form-control imgChangeAdd"
+                                                name="image" id="img1"
+                                                accept="image/png, image/jpeg, image/jpg"
+                                                style="display: none;">
+                                            <label style="font-weight: 700;" class="btn-addimg"
+                                                id="btn-edit-img-item" for="img1">Chọn ảnh</label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-right">
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tên phim</label>
+                                            <div class="input-ten">
+                                                <input class="input-sua" placeholder="Tên tiếng anh"
+                                                    type="text">
+                                                <input class="input-sua" placeholder="Tên tiếng việt"
+                                                    type="text">
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Đạo diễn</label>
+                                            <input class="input-sua" type="text">
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Diễn viên</label>
+                                            <input class="input-sua" type="text">
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Khởi chiếu</label>
+                                            <input class="input-sua" type="date">
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thời gian</label>
+                                            <input class="input-sua" type="number">
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thể loại</label>
+                                            <select class="input-sua" name="" id="">
+                                                <option value="1">Kinh dị</option>
+                                                <option value="2">Tình cảm</option>
+                                                <option value="3">Hành động</option>
+                                                <option value="4">Hài hước</option>
+                                                <option value="5">Hoạt hình</option>
+                                                <option value="6">Lịch sử</option>
+                                            </select>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Rating</label>
+                                            <div style="display: flex; justify-content: center;">
+                                                <div class="form-check rating">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label"
+                                                        for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;"
+                                                            src="img/cs18.png">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check rating">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label"
+                                                        for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;"
+                                                            src="img/cs16.png">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check rating">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label"
+                                                        for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;"
+                                                            src="img/cs13.png">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tình trạng</label>
+                                            <select class="input-sua" name="" id="">
+                                                <option value="1">Đang khởi chiếu</option>
+                                                <option value="2">Sắp khởi chiếu</option>
+                                                <option value="3">Đã chiếu xong</option>
+                                            </select>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Chi tiết</label>
+                                            <textarea class="input-sua-area" name="" id="" cols="20"
+                                                rows="10"></textarea>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Trailer</label>
+                                            <input class="input-sua" type="url">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger">Thêm</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- form nút chi tiết -->
+                    <div id="chitietModal" class="modal" style="margin-top: -50px">
+                        <div class="modal-content" style="width: 70%; font-size: 16px;">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Chi tiết phim</h4>
+                                <button type="button" class="chitietclose"
+                                    data-dismiss="modal">&times;</button>
+                            </div>
+                                <div class="modal-body-plus">
+                                    <div class="modal-left">
+                                        <div class="col-5 img-add">
+                                            <img id="img-edit-item" class="photoDetail"
+                                                src="img/trasua.jpg" style="width: 100%;">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-right">
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tên phim</label>
+                                            <div>
+                                                <div class="nameENdetail">THE DEVIL MADE ME DO IT</div>
+                                                <div class="nameVNdetail">THE CONJURING: MA XUI QUỶ KHIẾN</div>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Đạo diễn</label>
+                                            <div class="directorDetail">Taylor Sheridan</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Diễn viên</label>
+                                            <div class="actorDetail">Taylor Sheridan, Angelina Jolie</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Khởi chiếu</label>
+                                            <div class="dateshowDetail">15/11/2021</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thời gian</label>
+                                            <div class="timeDetail">100 phút</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thể loại</label>
+                                            <div class="typeDetail">Hành động</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Rating</label>
+                                            <div>
+                                                <img class="agelimitDetail img-cs" style="width:50px"
+                                                    src="img/cs18.png">
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tình trạng</label>
+                                            <div class="statusDetail">Đang khởi chiếu</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Chi tiết</label>
+                                            <div class="detailDetail" style="width: 75%">Angelina Jolie tái xuất với siêu
+                                                phẩm
+                                                hành động nghẹt thở cùng biên kịch được đề cử Oscar -
+                                                Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy
+                                                sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor
+                                                -
+                                                nhân chứng cuối cùng của một vụ trọng án.</div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Trailer</label>
+                                            <iframe class="trailerIdDetail" width="560" height="315"
+                                                src="https://www.youtube.com/embed/i71pUqFLZis"
+                                                title="YouTube video player" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                            </iframe>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                  
+                                </div>
+
+                        </div>
+                    </div>
+                </table>
+
+        </div>
+</body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" 
+integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    var modal = document.getElementById('myModal');
+    var modalchitiet = document.getElementById('chitietModal');
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("suaclose")[0];
+    var spanchitiet = document.getElementsByClassName("chitietclose")[0];
+    var photoDetail=$('.photoDetail')
+    var nameENdetail=$('.nameENdetail');
+    var nameVNdetail=$('.nameVNdetail');
+    var directorDetail=$('.directorDetail');
+    var actorDetail=$('.actorDetail');
+    var dateshowDetail=$('.dateshowDetail');
+    var timeDetail=$('.timeDetail');
+    var statusDetail=$('.statusDetail');
+    var agelimitDetail=$('.agelimitDetail');
+    var detailDetail=$('.detailDetail');
+    var trailerIdDetail=$('.trailerIdDetail');
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    // btnchitiet.onclick = function () {
+    //     modalchitiet.style.display = "block";
+    // }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    spanchitiet.onclick = function () {
+        modalchitiet.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        } else if (event.target == modalchitiet){
+            modalchitiet.style.display = "none";
+        }
+    }
+
+    //nut chi tiet ajax
+    
+    $('.detailBtn').each(function () {
+        var $this = $(this);
+        var id = $this.attr('id');
+        $this.on('click',function(){
+          $.ajax({
+            url: "/admin/film/detailBtn",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ id: id }),
+            success: function (result) {
+                if (result.film.photo!=""){
+                photoDetail.attr('src','/img/films/'+id+'/'+result.film.photo)
+                } else {
+                photoDetail.attr('src','/img/noimage.png')
+                }
+                nameENdetail.text(result.film.nameEN);
+                nameVNdetail.text(result.film.nameVN);
+                directorDetail.text(result.film.director);
+                actorDetail.text(result.film.actor);
+                dateshowDetail.text(result.film.dateshow);
+                timeDetail.text(result.film.time);
+                statusDetail.text(result.film.status);
+                agelimitDetail.attr('src','/img/'+'cs'+result.film.agelimit+'.png');
+                detailDetail.text(result.film.detail);
+                trailerIdDetail.attr('src','https://www.youtube.com/embed/'+result.film.trailerId);
+                modalchitiet.style.display = "block";
+            }
+        }) 
+      })
+      
+      })
+
+$('#btn-save-new-item').on('click',function(e){
+  var formm=$('.formAdd')[0];
+  var data = new FormData(formm);
+  $.ajax({
+    url: "/admin/film/add-film/",
+    type: "POST",
+    enctype: "multipart/form-data",
+    cache:false,
+    processData: false,
+    contentType: false,
+    data: data,
+    success: function (result) {
+          if ( result.noti != "") $('.alertAdd').text(result.noti) ;
+           else {
+             // Set the URL to whatever it was plus "#".
+             url = document.URL+"#";
+             location = "#";
+
+             //Reload the page
+              location.reload(true);
+           }
+      }
+  });
+  e.preventDefault();
+}) 
+
+</script>
+<script>
+    $('a.confirmDeletion').on('click', function () {
+        if (!confirm('Confirm Deletion ? '))
+            return false;
+    })
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(".imgEditPreview").attr('src', e.target.result);
+                $(".imgAddPreview").attr('src', e.target.result);
+
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+    $(".imgChangeAdd").change(function () {
+        readURL(this);
+    })
+
+    $(".imgChangeEdit").change(function () {
+        readURL(this);
+    })
+
+
+
+
+</script>
+
+</html>
