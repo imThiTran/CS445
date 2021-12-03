@@ -10,7 +10,7 @@ var Film= require('../models/film');
 
 router.get('/',function(req,res){
     Film.find({},function(err,fi){
-        res.render('admin/admin-film',{
+        res.render('admin/admin-film2',{
             films:fi
         })
     })
@@ -135,6 +135,14 @@ router.post('/editBtn',function(req,res){
     })
 })
 
+router.post('/detailBtn',function(req,res){
+    var id=req.body.id;
+    Film.findById(id,function(err,fi){
+        if (fi){
+            res.send({film:fi})
+        }
+    })
+})
 router.post('/edit-product/:id',function(req,res){
     var imageFile =  (req.files != null)? req.files.image.name:""; 
     var title=req.body.title;

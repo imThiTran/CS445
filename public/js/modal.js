@@ -6,11 +6,15 @@ var span = document.querySelector(".closeBtn");
     // }
     span.onclick = function () {
         modal.style.display = "none";
+        // $('.alertAdd').html(null);
+        // $('.alertEdit').html(null);
     }
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        $('.alertEdit').html(null);
+        $('.alertAdd').html(null);
     }
     var nameEN= $('.nameEN');
     var date= $('.date');
@@ -56,6 +60,11 @@ var span = document.querySelector(".closeBtn");
             })
             
             })
+
+            $('a.confirmDeletion').on('click', function () {
+              if (!confirm('Confirm Deletion ? '))
+                  return false;
+          })
         }
     })
   })
@@ -98,15 +107,15 @@ var span = document.querySelector(".closeBtn");
           contentType: false,
           data: data,
           success: function (result) {
-                if ( result.noti != "") $('.alertFilm').text(result.noti) ;
+                if ( result.noti != "") $('.alertEdit').text(result.noti) ;
                  else {
                    tdTime.text(time.val());
                    tdRoom.text("CINEMA "+room.val());
                    tdDate.text(date.val());   
+                   modal.style.display = "none";
                  }
             }
         });
-        modal.style.display = "none";
         e.preventDefault();
       }) 
  

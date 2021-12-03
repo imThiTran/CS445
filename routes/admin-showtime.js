@@ -31,7 +31,7 @@ router.post('/add-showtime',function(req , res){
         Film.findOne({nameEN:nameEN},function(err,fi){
             var fiShowtime=fi.showtime;
         Showtime.findOne({$or:[{$and:[{date:date},{time:time},{room:room}]},{$and:[{date:date},{time:time},{nameEN:nameEN}]}]},function(err,st){
-            if (st) return console.log("suat chieu da ton tai");
+            if (st) res.send({noti:"suất chiếu này đã tồn tại"});
             else{
                 var id=shortid.generate()
                     fiShowtime.push({
@@ -83,6 +83,9 @@ router.post('/add-showtime',function(req , res){
                         if (err) return console.log(err);
                     })
                 }
+                setTimeout(() => {
+                    res.send({noti:""});
+                }, 20);
             }
         })
     })
@@ -94,7 +97,7 @@ router.post('/add-showtime',function(req , res){
         }
         setTimeout(() => {
             Film.findOne({nameEN:nameEN},function(err,fi){
-            if (check.length>0) return console.log("suat chieu da ton tai");
+            if (check.length>0) res.send({noti:"trong các suất này có suất chiếu đã tồn tại"});
             else {
                     for(var i=0;i<time.length;i++){
                         var fiShowtime = fi.showtime;
@@ -148,14 +151,13 @@ router.post('/add-showtime',function(req , res){
                         fi.save(function(err){
                             if (err) return console.log(err);
                         });
-                    
+                        setTimeout(() => {
+                            res.send({noti:""});
+                        }, 20);
             }
         })
         }, 50);
     }
-        setTimeout(() => {
-        res.redirect('/admin/showtime');
-        }, 100); 
         
 })
 
@@ -180,7 +182,7 @@ router.post('/editBtn',function(req,res){
         if (err) return console.log(err);
         selectTime=`<select class="time form-select" style="width:210px">
         <option >Chọn giờ</option>
-        <option value="9:00"`+((st.time=="09:00")?`selected`:``)+`>09:00 AM</option>
+        <option value="09:00"`+((st.time=="09:00")?`selected`:``)+`>09:00 AM</option>
         <option value="11:00"`+((st.time=="11:00")?`selected`:``)+`>11:00 AM</option>
         <option value="13:00"`+((st.time=="13:00")?`selected`:``)+`>13:00 PM</option>
         <option value="15:00"`+((st.time=="15:00")?`selected`:``)+`>15:00 PM</option>
@@ -213,7 +215,7 @@ router.post('/edit-showtime/:id',function(req,res){
     Showtime.findOne({$and:[{date:date},{time:time},{room:room},{idSt:{'$ne':id}}]},function(err,st){
         if (err) return console.log(err);
         if (st){
-            var noti='Bị trùng thời gian chiếu';
+            var noti='Trùng thời gian chiếu';
             res.send({noti:noti});
         } else {
             Film.findOne({"showtime.idSt":id},function(err,fi){
@@ -262,6 +264,8 @@ router.post('/load-bynameEN',function(req,res){
     Showtime.find({nameEN:nameEN},function(err,st){
         for (var i=0;i<st.length;i++){
             htmlCode=htmlCode+`<tr class="trClosest">
+            <td><input class="form-check-input" type="checkbox" value=""></td>
+            <th style="    width: 20px;">`+(i+1)+`</th>
             <th scope="row">
                 `+st[i].idSt+`
             </th>
@@ -280,8 +284,8 @@ router.post('/load-bynameEN',function(req,res){
 
             <td>
                 <div class="ad-btn" style="    width: 60px;">
-                    <button type="button" class="btn-close btn-xoa" aria-label="Close"
-                        style="margin-top: 30px;"></button>
+                <a class="confirmDeletion" href="/admin/showtime/delete-showtime/`+st[i].idSt+`"><button type="button" id="`+st[i].idSt+`" class="btnDelete btn-close btn-xoa" aria-label="Close"
+                style="margin-top: 30px;"></button></a>
                     <button type="button" class="btn btn-danger btn-buy editBtn" id="`+st[i].idSt+`"
                         style="width:100%; margin-top: 20px">Sửa</button>
                 </div>
@@ -310,19 +314,31 @@ router.get('/search-product',function(req,res){
   })
 })
 
-router.get('/delete-product/:id',function(req,res){
+router.get('/delete-showtime/:id',function(req,res){
     var id =req.params.id;
-    var path = 'public/img/product_imgs/'+ id;
-    fs.remove(path,function(err){
-        if (err) console.log(err);
-        else {
-            Product.findByIdAndRemove(id,function(err){
-                if (err) console.log(err);
-            });
-            req.flash('success','Product deleted ');
-            res.redirect('/admin/products');
-        }
+    var updateSt=[];
+    Showtime.deleteOne({idSt:id},function(err,rs){
+        if (err) return console.log(err);
     })
+    Chair.deleteMany({showtimeId:id},function(err,rs){
+        if (err) return console.log(err);
+    });
+    Film.findOne({"showtime.idSt":id},function(err,fi){
+        if (fi){
+        updateSt=fi.showtime.filter(function(rs){
+            return (rs.idSt!=id);
+        });
+ 
+        setTimeout(() => {
+            Film.updateOne({"showtime.idSt":id},{$set: {  
+                showtime: updateSt, 
+        }},function(err,rs){
+            if(err) return console.log(err);
+        })
+        }, 5);
+    }
+    })
+    res.redirect('back');
 })
 
 module.exports = router;

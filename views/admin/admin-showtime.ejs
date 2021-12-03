@@ -111,7 +111,7 @@
                                         data-target=".bd-example-modal-lg"
                                         style="width:50px; margin-top: 0px">+</button>
 
-                                    <form action="/admin/showtime/add-showtime" method="POST">
+                                    <form class="formAdd" action="/admin/showtime/add-showtime" method="POST">
                                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
@@ -285,7 +285,8 @@
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger">Thêm</button>
+                                                        <p class="alertAdd" style="color: red;"></p>
+                                                        <button type="submit" class="btnAdd btn btn-danger">Thêm</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -296,10 +297,12 @@
                         </tr>
                     </thead>
                     <tbody id="containTr">
+                        <%var i=1%>
                         <%showtimes.forEach(function(st){%>
                             <tr class="trClosest">
                                 <td><input class="form-check-input" type="checkbox" value=""></td>
-                                <th style="    width: 20px;">1</th>
+                                <th style="    width: 20px;"><%=i%></th>
+                                <%i++%>
                                 <th scope="row">
                                     <%=st.idSt%>
                                 </th>
@@ -318,8 +321,10 @@
     
                                 <td>
                                     <div class="ad-btn" style="    width: 60px;">
-                                        <button type="button" class="btn-close btn-xoa" aria-label="Close"
-                                            style="margin-top: 30px;"></button>
+                                        <!-- <button type="button" id="<%=st.idSt%>" class="btnDelete btn-close btn-xoa" aria-label="Close"
+                                            style="margin-top: 30px;"></button> -->
+                                            <a class="confirmDeletion" href="/admin/showtime/delete-showtime/<%=st.idSt%>"><button type="button" id="<%=st.idSt%>" class="btnDelete btn-close btn-xoa" aria-label="Close"
+                                                style="margin-top: 30px;"></button></a>
                                         <button type="button" class="btn btn-danger btn-buy editBtn" id="<%=st.idSt%>"
                                             style="width:100%; margin-top: 20px">Sửa</button>
                                     </div>
@@ -414,31 +419,53 @@
         if (!confirm('Confirm Deletion ? '))
             return false;
     })
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $(".imgEditPreview").attr('src', e.target.result);
-                $(".imgAddPreview").attr('src', e.target.result);
+    $('.btnAdd').on('click',function(e){
+    var formm=$('.formAdd')[0];
+    var data = new FormData(formm);
+    $.ajax({
+        url: "/admin/showtime/add-showtime/",
+        type: "POST",
+        enctype: "multipart/form-data",
+        cache:false,
+        processData: false,
+        contentType: false,
+        data: data,
+        success: function (result) {
+          if ( result.noti != "") $('.alertAdd').html(result.noti) ;
+           else {
+             // Set the URL to whatever it was plus "#".
+             url = document.URL+"#";
+             location = "#";
 
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+             //Reload the page
+              location.reload(true);
+           }
+      }
+  });
+  e.preventDefault();
+}) 
 
+// $('.btnDelete').on('click',function(e){
+//     var id=$(this).attr('id');
+//     var trContain=$(this).closest('.trClosest')
+//     if (confirm('Confirm Deletion ? ')){
+//     $.ajax({
+//             url: "/admin/showtime/delete-showtime/"+id,
+//             method: "GET",
+//             contentType: "application/json",
+//             data: JSON.stringify(),
+//             success: function (result) {
+//                 // Set the URL to whatever it was plus "#".
+//              url = document.URL+"#";
+//              location = "#";
 
-
-    $(".imgChangeAdd").change(function () {
-        readURL(this);
-    })
-
-    $(".imgChangeEdit").change(function () {
-        readURL(this);
-    })
-
-
-
+//              //Reload the page
+//               location.reload(true);
+//             }
+//         })
+//     }
+// })
 
 </script>
 <script>
