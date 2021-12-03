@@ -905,3 +905,54 @@ input[type="checkbox"][id^="cb"] {
   background-color: rgb(254 199 88) !important;
   border-color: rgb(254 199 88) !important;
 }
+.theloai-body{
+  padding: 20px 50px;
+}
+.theloai-sub{
+  font-size: 25px;
+    color: #eee;
+    font-weight: 500;
+    
+    padding: 10px 30px;
+}
+.theloai-sub:hover{
+  background: rgb(254 199 88);
+  color: #333;
+}
+.theloai-list{
+  display: flex;
+    justify-content: space-evenly;;
+    align-items: center;
+    padding: 20px;
+}
+.ten-theloai{
+  position: absolute;
+  background: rgb(254 199 88);
+  margin-top: 10px;
+  padding: 2px 10px;
+  color: #333;
+  font-size: 16px;
+    border-radius: 0 10px 10px 0px;
+}
+.ten-theloai:hover{
+  color: #333 !important;
+}
+.flex-poster-theloai{
+  display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ten-theloai-skc{
+  position: absolute;
+  background: #f93838;
+  margin-top: 10px;
+  padding: 2px 10px;
+  color: #333;
+  font-size: 16px;
+    border-radius: 0 10px 10px 0px;
+}
+.ten-theloai-skc:hover{
+  color: #333 !important;
+}
