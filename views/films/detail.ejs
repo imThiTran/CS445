@@ -52,7 +52,9 @@
                                             <select name="date" id="dateShow" film="<%=film.nameEN%>" class="form-select" aria-label="Default select example">
                                                 <option selected>Chọn ngày chiếu</option>
                                                 <%date.forEach(function(dt){%>
-                                                    <option value=<%=dt%>><%=dt%></option>
+                                                    <% var newDateArr = dt.split('-') %>
+                                                    <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                                    <option value=<%=dt%>><%=newDate%></option>
                                                 <%})%>
                                               </select>
                                             <span class="span-error" id="birth_error"></span>
@@ -125,7 +127,9 @@
                                 <div class="subin">
                                     <div class="sub1">Khởi chiếu:</div>
                                     <div class="sub2">
-                                        <%=film.showdate%>
+                                        <% var newDateArr = film.showdate.split('-') %>
+                                        <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                        <%=newDate%>
                                     </div>
                                 </div>
                             </div>

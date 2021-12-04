@@ -22,13 +22,13 @@ router.get('/',function(req,res){
     }
     var dateRq=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var newFis=[];
-    Film.find({status:"showing"},function(err,fis){
+    Film.find({status:"Đang khởi chiếu"},function(err,fis){
         for(var i=0;i<fis.length;i++){
             for(var j=0;j<fis[i].showtime.length;j++){
                 if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
             }
         }
-        Film.find({status:"coming"},function(err,fic){
+        Film.find({status:"Sắp khởi chiếu"},function(err,fic){
             if (err) return console.log(err);
             res.render('index',{
             filmslide:fis,
@@ -77,13 +77,13 @@ router.get('/:time',function(req,res){
         }
         var dateRq=time.getFullYear()+'-'+(time.getMonth()+1)+'-'+(time.getDate()<10?"0"+time.getDate():time.getDate());
         var newFis=[];
-        Film.find({status:"showing"},function(err,fis){
+        Film.find({status:"Đang khởi chiếu"},function(err,fis){
             for(var i=0;i<fis.length;i++){
                 for(var j=0;j<fis[i].showtime.length;j++){
                     if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
                 }
             }
-            Film.find({status:"coming"},function(err,fic){
+            Film.find({status:"Sắp khởi chiếu"},function(err,fic){
                 if (err) return console.log(err);
             res.render('index',{
                 filmslide:fis,

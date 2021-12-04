@@ -14,7 +14,9 @@
                         <div class="book-info">MEGAS ĐÀ NẴNG | CINEMA <%=chairA[0].room%> | Số ghế: <%=countAvai%>/114
                         </div>
                         <div class="book-info-sub">
-                            <%=chairA[0].date%>
+                            <% var newDateArr = chairA[0].date.split('-') %>
+                            <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                            <%=newDate%>
                                 <%=chairA[0].time%>
                         </div>
                     </td>

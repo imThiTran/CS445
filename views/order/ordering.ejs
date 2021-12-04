@@ -30,7 +30,9 @@
                         <div class="ad-phim">
                             <label class="label-dathang" for="">Suất chiếu</label>
                             <div>
-                                <%=date%>
+                                <% var newDateArr = date.split('-') %>
+                                <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                <%=newDate%>
                                     <%=time%>
                             </div>
                         </div>

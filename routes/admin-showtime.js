@@ -9,7 +9,7 @@ var Showtime= require('../models/showtime');
 var Chair = require('../models/chair');
 
 router.get('/',function(req,res){
-    Film.find({status:"showing"},function(err,fi){
+    Film.find({status:"Đang khởi chiếu"},function(err,fi){
     Showtime.find({},function(err,st){
         res.render('admin/admin-showtime',{
             films:fi,

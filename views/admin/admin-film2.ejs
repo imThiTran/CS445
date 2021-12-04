@@ -159,9 +159,9 @@
                                                                 <div class="ad-phim">
                                                                     <label class="label-chitiet" for="">Tình trạng</label>
                                                                     <select class="input-sua" name="status" id="">
-                                                                        <option value="showing">Đang khởi chiếu</option>
-                                                                        <option value="coming">Sắp khởi chiếu</option>
-                                                                        <option value="showed">Đã chiếu xong</option>
+                                                                        <option value="Đang khởi chiếu">Đang khởi chiếu</option>
+                                                                        <option value="Sắp khởi chiếu">Sắp khởi chiếu</option>
+                                                                        <option value="Đã chiếu xong">Đã chiếu xong</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="ad-phim">
@@ -212,7 +212,7 @@
                                 <td>
                                     <div class="ad-btn" style="width:60px">
                                         <button type="button" class="btn-close btn-xoa" aria-label="Close"></button>
-                                        <button type="button" class="btn btn-danger btn-buy" id="myBtn"
+                                        <button type="button" class="btn btn-danger btn-buy editBtn" id="<%=fi._id%>"
                                             style="width:100%; margin-top: 20px">Sửa</button>
                                         <button type="button" class="btn btn-danger btn-buy detailBtn" id="<%=fi._id%>" style="    margin-top: 20px;
                                             padding: 5px;
@@ -234,101 +234,101 @@
                                 <div class="modal-body-plus">
                                     <div class="modal-left">
                                         <div class="col-5 img-add">
-                                            <img id="img-edit-item" class="imgAddPreview"
-                                                src="img/trasua.jpg" style="width: 100%;">
-                                            <input type="file" class="form-control imgChangeAdd"
-                                                name="image" id="img1"
+                                            <img id="img-edit-item" class="photoEdit imgEditPreview"
+                                                src="/img/noimage.png" style="width: 100%;">
+                                            <input type="file" class="form-control imgChangeEdit"
+                                                name="image" id="img2"
                                                 accept="image/png, image/jpeg, image/jpg"
                                                 style="display: none;">
                                             <label style="font-weight: 700;" class="btn-addimg"
-                                                id="btn-edit-img-item" for="img1">Chọn ảnh</label>
+                                                id="btn-edit-img-item" for="img2">Chọn ảnh</label>
                                         </div>
                                     </div>
                                     <div class="modal-right">
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Tên phim</label>
                                             <div class="input-ten">
-                                                <input class="input-sua" placeholder="Tên tiếng anh"
+                                                <input class="nameENedit input-sua" name="nameEN" placeholder="Tên tiếng anh"
                                                     type="text">
-                                                <input class="input-sua" placeholder="Tên tiếng việt"
+                                                <input class="nameVNedit input-sua" name="nameVN" placeholder="Tên tiếng việt"
                                                     type="text">
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Đạo diễn</label>
-                                            <input class="input-sua" type="text">
+                                            <input class="directorEdit input-sua" name="director" type="text">
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Diễn viên</label>
-                                            <input class="input-sua" type="text">
+                                            <input class="actorEdit input-sua" name="actor" type="text">
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Khởi chiếu</label>
-                                            <input class="input-sua" type="date">
+                                            <input class="showdateEdit input-sua" name="showdate" type="date">
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thời gian</label>
-                                            <input class="input-sua" type="number">
+                                            <input class="timeEdit input-sua" name="time" type="number">
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thể loại</label>
-                                            <select class="input-sua" name="" id="">
-                                                <option value="1">Kinh dị</option>
-                                                <option value="2">Tình cảm</option>
-                                                <option value="3">Hành động</option>
-                                                <option value="4">Hài hước</option>
-                                                <option value="5">Hoạt hình</option>
-                                                <option value="6">Lịch sử</option>
+                                            <select class="typeEdit input-sua" name="" id="">
+                                                <option value="Kinh dị">Kinh dị</option>
+                                                <option value="Tình cảm">Tình cảm</option>
+                                                <option value="Hành động">Hành động</option>
+                                                <option value="Hài hước">Hài hước</option>
+                                                <option value="Hoạt hình">Hoạt hình</option>
+                                                <option value="Lịch sử">Lịch sử</option>
                                             </select>
                                         </div>
-                                        <div class="ad-phim">
+                                        <div class="agelimitEdit ad-phim">
                                             <label class="label-chitiet" for="">Rating</label>
-                                            <div style="display: flex; justify-content: center;">
+                                            <div class="" style="display: flex; justify-content: center;">
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <input class="form-check-input" value="18" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1" checked>
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
                                                         <img class="img-cs" style="width: 50%;"
-                                                            src="img/cs18.png">
+                                                            src="/img/cs18.png">
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <input class="form-check-input" value="16" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1">
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
                                                         <img class="img-cs" style="width: 50%;"
-                                                            src="img/cs16.png">
+                                                            src="/img/cs16.png">
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <input class="form-check-input" value="13" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1">
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
                                                         <img class="img-cs" style="width: 50%;"
-                                                            src="img/cs13.png">
+                                                            src="/img/cs13.png">
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Tình trạng</label>
-                                            <select class="input-sua" name="" id="">
-                                                <option value="1">Đang khởi chiếu</option>
-                                                <option value="2">Sắp khởi chiếu</option>
-                                                <option value="3">Đã chiếu xong</option>
+                                            <select class="statusEdit input-sua" name="status" id="">
+                                                <option value="Đang khởi chiếu">Đang khởi chiếu</option>
+                                                <option value="Sắp khởi chiếu">Sắp khởi chiếu</option>
+                                                <option value="Đã chiếu xong">Đã chiếu xong</option>
                                             </select>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Chi tiết</label>
-                                            <textarea class="input-sua-area" name="" id="" cols="20"
+                                            <textarea class="input-sua-area detailEdit" name="detail" id="" cols="20"
                                                 rows="10"></textarea>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Trailer</label>
-                                            <input class="input-sua" type="url">
+                                            <input class="input-sua trailerIdEdit" name="trailerId" type="url">
                                         </div>
                                     </div>
 
@@ -352,7 +352,7 @@
                                     <div class="modal-left">
                                         <div class="col-5 img-add">
                                             <img id="img-edit-item" class="photoDetail"
-                                                src="img/trasua.jpg" style="width: 100%;">
+                                                src="" style="width: 100%;">
 
                                         </div>
                                     </div>
@@ -388,7 +388,7 @@
                                             <label class="label-chitiet" for="">Rating</label>
                                             <div>
                                                 <img class="agelimitDetail img-cs" style="width:50px"
-                                                    src="img/cs18.png">
+                                                    src="">
                                             </div>
                                         </div>
                                         <div class="ad-phim">
@@ -435,7 +435,6 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
 <script>
     var modal = document.getElementById('myModal');
     var modalchitiet = document.getElementById('chitietModal');
-    var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("suaclose")[0];
     var spanchitiet = document.getElementsByClassName("chitietclose")[0];
     var photoDetail=$('.photoDetail')
@@ -449,9 +448,23 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
     var agelimitDetail=$('.agelimitDetail');
     var detailDetail=$('.detailDetail');
     var trailerIdDetail=$('.trailerIdDetail');
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
+    var typeDetail=$('.typeDetail');
+
+    var photoEdit=$('.photoEdit')
+    var nameENedit=$('.nameENedit');
+    var nameVNedit=$('.nameVNedit');
+    var directorEdit=$('.directorEdit');
+    var actorEdit=$('.actorEdit');
+    var dateshowEdit=$('.showdateEdit');
+    var timeEdit=$('.timeEdit');
+    var statusEdit=$('.statusEdit');
+    var agelimitEdit=$('.agelimitEdit');
+    var detailEdit=$('.detailEdit');
+    var trailerIdEdit=$('.trailerIdEdit');
+    var typeEdit=$('.typeEdit');
+    // btn.onclick = function () {
+    //     modal.style.display = "block";
+    // }
     // btnchitiet.onclick = function () {
     //     modalchitiet.style.display = "block";
     // }
@@ -490,7 +503,10 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
                 nameVNdetail.text(result.film.nameVN);
                 directorDetail.text(result.film.director);
                 actorDetail.text(result.film.actor);
-                dateshowDetail.text(result.film.dateshow);
+                typeDetail.text(result.film.type);
+                var newDateArr = result.film.showdate.split('-') ;
+                var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
+                dateshowDetail.text(newDate);
                 timeDetail.text(result.film.time);
                 statusDetail.text(result.film.status);
                 agelimitDetail.attr('src','/img/'+'cs'+result.film.agelimit+'.png');
@@ -502,7 +518,40 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
       })
       
       })
-
+      
+      //nut sua ajax
+      $('.editBtn').each(function () {
+        var $this = $(this);
+        var id = $this.attr('id');
+        $this.on('click',function(){
+          $.ajax({
+            url: "/admin/film/editBtn",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ id: id }),
+            success: function (result) {
+                 if (result.film.photo!=""){
+                 photoEdit.attr('src','/img/films/'+id+'/'+result.film.photo)
+                 } else {
+                 photoEdit.attr('src','/img/noimage.png')
+             }
+                nameENedit.val(result.film.nameEN);
+                nameVNedit.val(result.film.nameVN);
+                directorEdit.val(result.film.director);
+                actorEdit.val(result.film.actor);
+                dateshowEdit.val(result.film.showdate);
+                timeEdit.val(result.film.time);
+                statusEdit.val(result.film.status);
+                detailEdit.val(result.film.detail);
+                trailerIdEdit.val('https://www.youtube.com/embed/'+result.film.trailerId);
+                agelimitEdit.html(result.agelimitAjax);
+                statusEdit.html(result.statusAjax);
+                modal.style.display = "block";
+            }
+        }) 
+      })
+      
+      })
 $('#btn-save-new-item').on('click',function(e){
   var formm=$('.formAdd')[0];
   var data = new FormData(formm);

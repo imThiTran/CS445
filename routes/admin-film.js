@@ -118,21 +118,55 @@ router.post('/editBlock',function(req,res){
 
 router.post('/editBtn',function(req,res){
     var id = req.body.id;
-    Category.find({slug:{'$ne':'size'}},function(err,cats){
-    Product.findById(id,function(err,p){
+    var statusAjax="";
+    var agelimitAjax="";
+    var fi2;
+    Film.findById(id,function(err,fi){
         if (err) return console.log(err);
-        var htmlSelect ;
-        cats.forEach(function(cat){ 
-            htmlSelect=htmlSelect+`<option value="`+ cat.slug+ (cat.slug == p.category?`" selected="selected" >`:`"> `)+  cat.title+
-            `</option>
-         }); `
-        })
-        res.send({
-            product : p,
-            htmlSelect: htmlSelect
-            })
-        })
+        if (fi){
+            fi2=fi;
+            statusAjax=`<option value="Đang khởi chiếu"`+((fi.status=="Đang khởi chiếu")?`selected`:``)+`>Đang khởi chiếu</option>
+            <option value="Sắp khởi chiếu"`+((fi.status=="Sắp khởi chiếu")?`selected`:``)+`>Sắp khởi chiếu</option>
+            <option value="Đã chiếu xong"`+((fi.status=="Đã chiếu xong")?`selected`:``)+`>Đã chiếu xong</option>`
+            agelimitAjax=`<label class="label-chitiet" for="">Rating</label>
+            <div class="" style="display: flex; justify-content: center;">
+            <div class="form-check rating">
+            <input class="form-check-input" value="18" type="radio"
+                name="agelimit" id="flexRadioDefault1"`+((fi.agelimit==18)?`checked`:``)+`>
+            <label class="form-check-label"
+                for="flexRadioDefault1">
+                <img class="img-cs" style="width: 50%;"
+                    src="/img/cs18.png">
+            </label>
+        </div>
+        <div class="form-check rating">
+            <input class="form-check-input" value="16" type="radio"
+                name="agelimit" id="flexRadioDefault1" `+((fi.agelimit==16)?`checked`:``)+`>
+            <label class="form-check-label"
+                for="flexRadioDefault1">
+                <img class="img-cs" style="width: 50%;"
+                    src="/img/cs16.png">
+            </label>
+        </div>
+        <div class="form-check rating">
+            <input class="form-check-input" value="13" type="radio"
+                name="agelimit" id="flexRadioDefault1" `+((fi.agelimit==13)?`checked`:``)+`>
+            <label class="form-check-label"
+                for="flexRadioDefault1">
+                <img class="img-cs" style="width: 50%;"
+                    src="/img/cs13.png">
+            </label>
+        </div>
+        </div>`
+        }
     })
+    setTimeout(() => {
+        res.send({
+            film:fi2,
+            agelimitAjax:agelimitAjax,
+            statusAjax:statusAjax
+        });
+    }, 5);
 })
 
 router.post('/detailBtn',function(req,res){
