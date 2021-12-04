@@ -19,6 +19,8 @@ router.get('/',function(req,res){
 
 router.post('/add-film',function(req , res){
     var imageFile =(req.files != null)? req.files.image.name:"";
+    if (imageFile=="") res.send({noti:'Bạn chưa thêm hình ảnh'}); 
+    else {
     var nameEN= req.body.nameEN;
     var nameVN= req.body.nameVN;
     var time= req.body.time;
@@ -29,8 +31,8 @@ router.post('/add-film',function(req , res){
     var type = req.body.type;
     var detail=req.body.detail;
     var showdate= req.body.showdate;
-    var trailerArr = (req.body.trailerId).split('=');
-    var trailerId = trailerArr[1];
+    var trailerArr = (req.body.trailerId).split('/');
+    var trailerId = trailerArr[trailerArr.length-1];
     var actor=req.body.actor;
     Film.findOne({$or:[{slug: slug},{nameVN:nameVN}]},function(err,fi){
         if (fi){
@@ -73,7 +75,7 @@ router.post('/add-film',function(req , res){
             })
         }
     })
-
+    }
 })
 
 //get edit product
@@ -119,7 +121,6 @@ router.post('/editBlock',function(req,res){
 router.post('/editBtn',function(req,res){
     var id = req.body.id;
     var statusAjax="";
-    var agelimitAjax="";
     var fi2;
     Film.findById(id,function(err,fi){
         if (err) return console.log(err);
@@ -128,42 +129,11 @@ router.post('/editBtn',function(req,res){
             statusAjax=`<option value="Đang khởi chiếu"`+((fi.status=="Đang khởi chiếu")?`selected`:``)+`>Đang khởi chiếu</option>
             <option value="Sắp khởi chiếu"`+((fi.status=="Sắp khởi chiếu")?`selected`:``)+`>Sắp khởi chiếu</option>
             <option value="Đã chiếu xong"`+((fi.status=="Đã chiếu xong")?`selected`:``)+`>Đã chiếu xong</option>`
-            agelimitAjax=`<label class="label-chitiet" for="">Rating</label>
-            <div class="" style="display: flex; justify-content: center;">
-            <div class="form-check rating">
-            <input class="form-check-input" value="18" type="radio"
-                name="agelimit" id="flexRadioDefault1"`+((fi.agelimit==18)?`checked`:``)+`>
-            <label class="form-check-label"
-                for="flexRadioDefault1">
-                <img class="img-cs" style="width: 50%;"
-                    src="/img/cs18.png">
-            </label>
-        </div>
-        <div class="form-check rating">
-            <input class="form-check-input" value="16" type="radio"
-                name="agelimit" id="flexRadioDefault1" `+((fi.agelimit==16)?`checked`:``)+`>
-            <label class="form-check-label"
-                for="flexRadioDefault1">
-                <img class="img-cs" style="width: 50%;"
-                    src="/img/cs16.png">
-            </label>
-        </div>
-        <div class="form-check rating">
-            <input class="form-check-input" value="13" type="radio"
-                name="agelimit" id="flexRadioDefault1" `+((fi.agelimit==13)?`checked`:``)+`>
-            <label class="form-check-label"
-                for="flexRadioDefault1">
-                <img class="img-cs" style="width: 50%;"
-                    src="/img/cs13.png">
-            </label>
-        </div>
-        </div>`
         }
     })
     setTimeout(() => {
         res.send({
             film:fi2,
-            agelimitAjax:agelimitAjax,
             statusAjax:statusAjax
         });
     }, 5);
@@ -177,65 +147,80 @@ router.post('/detailBtn',function(req,res){
         }
     })
 })
-router.post('/edit-product/:id',function(req,res){
-    var imageFile =  (req.files != null)? req.files.image.name:""; 
-    var title=req.body.title;
-    var slug = title.replace(/\s+/g,'-').toLowerCase();
-    var price=req.body.price;
-    var category = req.body.category;
-    var pimage = req.body.pimage;
-    var id = req.params.id;
-    var quantity = req.body.quantity;
-    Product.findOne({slug: slug,_id : {'$ne':id}},function(err,p){
+router.post('/edit-film',function(req,res){
+    var imageFile =  (req.files != null)? req.files.image.name:"";
+    var pimage=req.body.pimage;
+    var id=req.body.id;
+    var nameEN= req.body.nameEN;
+    var nameVN= req.body.nameVN;
+    var time= req.body.time;
+    var agelimit=req.body.agelimit;
+    var status= req.body.status;
+    var slug = nameEN.replace(/\s+/g,'-').toLowerCase();
+    var director=req.body.director;
+    var type = req.body.type;
+    var detail=req.body.detail;
+    var showdate= req.body.showdate;
+    var trailerArr = (req.body.trailerId).split('/');
+    var trailerId = trailerArr[trailerArr.length-1];
+    var actor=req.body.actor;
+    Film.findOne({slug: slug,_id : {'$ne':id}},function(err,f){
         if (err) console.log(err);
-        if (p){
-            var noti='Sản phẩm này đã tồn tại' ;
+        if (f){
+            var noti='Phim này đã tồn tại' ;
             res.send({noti: noti});
         } else {
-            Product.findById(id,function(err,p){
+            Film.findById(id,function(err,fi){
                 if (err) console.log(err);
-                p.title= title;
-                p.slug = slug;
-                p.price=price;
-                p.category = category;
-                p.quantity = quantity;
+                fi.nameEN= nameEN;
+                fi.nameVN= nameVN;
+                fi.time= time;
+                fi.agelimit= agelimit;
+                fi.status= status;
+                fi.director= director;
+                fi.type= type;
+                fi.detail= detail;
+                fi.showdate= showdate;
+                fi.trailerId= trailerId;
+                fi.actor= actor;
+                fi.nameEN= nameEN;
                 if (imageFile != ""){
-                    p.image= imageFile;
+                    fi.photo= imageFile;
                 }
-                p.save(function(err){
+                fi.save(function(err){
                     if (err)
                         console.log(err);
                     if (imageFile != ""){
-                        if (pimage != "" && pimage != imageFile){
-                            fs.remove('public/img/product_imgs/'+id +'/'+ pimage,function(err){
+                        if (pimage != ""){
+                            fs.remove('public/img/films/'+id +'/'+ pimage,function(err){
                                 if (err) console.log(err);
 
                             });
                         }
 
-                        var productImage =req.files.image;
-                        var path= 'public/img/product_imgs/'+ id +'/' + imageFile;
+                        var filmImage =req.files.image;
+                        var path= 'public/img/films/'+ id +'/' + imageFile;
 
-                        productImage.mv(path,function(err){
+                        filmImage.mv(path,function(err){
                             if (err)return console.log(err)
                         });
                         }
                         var imageAjax;
                         if (imageFile==""){
                             if (pimage != ""){
-                                 imageAjax= "/img/product_imgs/"+id+"/"+pimage;
+                                 imageAjax= "/img/films/"+id+"/"+pimage;
                             }
-                            else imageAjax="/img/noimage.jpg"
+                            else imageAjax="/img/noimage.png"
                         }
                         else {
-                            imageAjax= "/img/product_imgs/"+id+"/"+imageFile;
+                            imageAjax= "/img/films/"+id+"/"+imageFile;
                         }
                             
                         res.send({
                             noti : "",
                             imageAjax:imageAjax,
+                            agelimit:agelimit
                     })
-                        req.flash('succsess','Product editted');
                 })
             })
         }

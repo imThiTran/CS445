@@ -49,7 +49,7 @@ var FilmSchema = mongoose.Schema({
         require:true,
     },
     agelimit:{
-        type:Number,
+        type:String,
         require:true,
     },
     trailerId:{

@@ -188,26 +188,28 @@
                     </thead>
                     <tbody>
                         <%films.forEach(function(fi){%>
-                            <tr>
+                            <tr class="trClosest">
                                 <th scope="row" style="width: 15%">
                                     <%if (fi.photo!=""){%>
-                                        <img style="width: 100%" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="">
+                                        <img class="tdImage" style="width: 100%" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="">
                                     <%} else {%>
-                                        <img style="width: 100%" src="/img/noimage.png" alt="">
+                                        <img class="tdImage" style="width: 100%" src="/img/noimage.png" alt="">
                                     <%}%>
                                 </th>
                                 <td style="width: 20%;">
-                                    <div><%=fi.nameEN%></div>
-                                    <div><%=fi.nameVN%></div>
+                                    <div class="tdNameEN"><%=fi.nameEN%></div>
+                                    <div class="tdNameVN"><%=fi.nameVN%></div>
                                 </td>
-                                <td><%=fi.director%></td>
-                                <td><%=fi.showdate%></td>
-                                <td><%=fi.type%></td>
+                                <td class="tdDirector"><%=fi.director%></td>
+                                <% var newDateArr = fi.showdate.split('-') %>
+                                <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                <td class="tdShowdate"><%=newDate%></td>
+                                <td class="tdType"><%=fi.type%></td>
                                 <td>
-                                    <img class="img-cs" style="width:50px" src="/img/cs<%=fi.agelimit%>.png">
+                                    <img class="tdRating img-cs" style="width:50px" src="/img/cs<%=fi.agelimit%>.png">
                                 </td>
                                 <td>
-                                    <div><%=fi.status%></div>
+                                    <div class="tdStatus"><%=fi.status%></div>
                                 </td>
                                 <td>
                                     <div class="ad-btn" style="width:60px">
@@ -230,7 +232,7 @@
                                 <button type="button" class="suaclose"
                                 data-dismiss="modal">&times;</button>
                             </div>
-                            <form action="">
+                            <form class="formEdit" action="">
                                 <div class="modal-body-plus">
                                     <div class="modal-left">
                                         <div class="col-5 img-add">
@@ -272,7 +274,7 @@
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thể loại</label>
-                                            <select class="typeEdit input-sua" name="" id="">
+                                            <select class="typeEdit input-sua" name="type" id="">
                                                 <option value="Kinh dị">Kinh dị</option>
                                                 <option value="Tình cảm">Tình cảm</option>
                                                 <option value="Hành động">Hành động</option>
@@ -285,7 +287,7 @@
                                             <label class="label-chitiet" for="">Rating</label>
                                             <div class="" style="display: flex; justify-content: center;">
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" value="18" type="radio"
+                                                    <input class="form-check-input rating18" value="18" type="radio"
                                                         name="agelimit" id="flexRadioDefault1" checked>
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
@@ -294,7 +296,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" value="16" type="radio"
+                                                    <input class="form-check-input rating16" value="16" type="radio"
                                                         name="agelimit" id="flexRadioDefault1">
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
@@ -303,7 +305,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
-                                                    <input class="form-check-input" value="13" type="radio"
+                                                    <input class="form-check-input rating13" value="13" type="radio"
                                                         name="agelimit" id="flexRadioDefault1">
                                                     <label class="form-check-label"
                                                         for="flexRadioDefault1">
@@ -329,13 +331,16 @@
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Trailer</label>
                                             <input class="input-sua trailerIdEdit" name="trailerId" type="url">
+                                            <input type="hidden" class="pimage" name="pimage">
+                                            <input type="hidden" name="id" class="idFilm">
                                         </div>
                                     </div>
 
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger">Thêm</button>
+                                    <p class="alertEdit" style="color: red;"></p>
+                                    <button type="button" id="btn-save-change-item" class="btn btn-danger">Sửa</button>
                                 </div>
                             </form>
                         </div>
@@ -462,6 +467,15 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
     var detailEdit=$('.detailEdit');
     var trailerIdEdit=$('.trailerIdEdit');
     var typeEdit=$('.typeEdit');
+
+    var tdNameEN;
+    var tdNameVN
+    var tdDirector;
+    var tdShowdate;
+    var tdType;
+    var tdRating;
+    var tdStatus;
+    var tdImage;
     // btn.onclick = function () {
     //     modal.style.display = "block";
     // }
@@ -475,8 +489,12 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
         modalchitiet.style.display = "none";
     }
     window.onclick = function (event) {
+        $('.alertAdd').html(null);
         if (event.target == modal) {
             modal.style.display = "none";
+            $('.imgAddPreview').attr('src','/img/noimage.png');
+            $('.imgChangeAdd').val(null);
+            $('.imgChangeEdit').val(null);
         } else if (event.target == modalchitiet){
             modalchitiet.style.display = "none";
         }
@@ -524,6 +542,14 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
         var $this = $(this);
         var id = $this.attr('id');
         $this.on('click',function(){
+             tdNameEN=$this.closest('.trClosest').find('.tdNameEN');
+             tdNameVN=$this.closest('.trClosest').find('.tdNameVN');
+             tdDirector=$this.closest('.trClosest').find('.tdDirector');
+             tdShowdate=$this.closest('.trClosest').find('.tdShowdate');
+             tdType=$this.closest('.trClosest').find('.tdType');
+             tdRating=$this.closest('.trClosest').find('.tdRating');
+             tdStatus=$this.closest('.trClosest').find('.tdStatus');
+             tdImage=$this.closest('.trClosest').find('.tdImage');
           $.ajax({
             url: "/admin/film/editBtn",
             method: "POST",
@@ -544,7 +570,18 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
                 statusEdit.val(result.film.status);
                 detailEdit.val(result.film.detail);
                 trailerIdEdit.val('https://www.youtube.com/embed/'+result.film.trailerId);
-                agelimitEdit.html(result.agelimitAjax);
+                $('.pimage').val(result.film.photo);
+                $('.idFilm').val(result.film._id);
+                // agelimitEdit.html(result.agelimitAjax);
+                if (($('.rating13').val())==result.film.agelimit) {
+                    $('.rating13').prop('checked',true);
+                }
+                if (($('.rating16').val())==result.film.agelimit) {
+                    $('.rating16').prop('checked',true);
+                }
+                if (($('.rating18').val())==result.film.agelimit) {
+                    $('.rating18').prop('checked',true);
+                }
                 statusEdit.html(result.statusAjax);
                 modal.style.display = "block";
             }
@@ -552,6 +589,38 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
       })
       
       })
+//Sua phim
+
+    $('#btn-save-change-item').on('click',function(e){
+  var formm=$('.formEdit')[0];
+  var data = new FormData(formm);
+  $.ajax({
+    url: "/admin/film/edit-film",
+    type: "POST",
+    enctype: "multipart/form-data",
+    cache:false,
+    processData: false,
+    contentType: false,
+    data: data,
+    success: function (result) {
+          if ( result.noti != "") $('.alertEdit').text(result.noti) ;
+           else {
+            tdNameEN.text(nameENedit.val());
+            tdNameVN.text(nameVNedit.val());
+            tdDirector.text(directorEdit.val());
+            tdShowdate.text(dateshowEdit.val());
+            tdType.text(typeEdit.val());
+            tdStatus.text(statusEdit.val());
+            tdImage.attr('src',result.imageAjax);
+            tdRating.attr('src','/img/cs'+result.agelimit+'.png');
+            modal.style.display = "none";
+        }
+      }
+  });
+  e.preventDefault();
+}) 
+
+//Them phim
 $('#btn-save-new-item').on('click',function(e){
   var formm=$('.formAdd')[0];
   var data = new FormData(formm);
