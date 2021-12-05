@@ -956,3 +956,21 @@ input[type="checkbox"][id^="cb"] {
 .ten-theloai-skc:hover{
   color: #333 !important;
 }
+.btn-outline-success{
+  color: rgb(254 199 88);
+  border-color: rgb(254 199 88);
+  box-shadow: none;
+}
+.btn-outline-success:hover{
+  background: rgb(254 199 88);
+  color: #333;
+}
+.h3-date{
+  background-color: #00000063;;
+  color: rgb(254 199 88);
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}

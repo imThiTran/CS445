@@ -64,7 +64,7 @@
                         <div class="flex-poster">
                             <% var newDateArr = dateRq.split('-') %>
                             <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
-                            <h3 style="color: seashell;"><%=newDate%></h3>
+                            <h3 class="h3-date"><%=newDate%></h3>
                             <% if (films.length !=0){%>
                                 <% films.forEach(function(film){ %>
                                     <div class="poster-movie-div">
