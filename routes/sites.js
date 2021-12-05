@@ -24,8 +24,9 @@ router.get('/',function(req,res){
         dayWeek.push(newMonday);
         monday=monday+daylength;
     }
-    var dateRq=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var dateRq=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()<10?"0"+today.getDate():today.getDate());
     var newFis=[];
+    
     Film.find({status:"Đang khởi chiếu"},function(err,fis){
         for(var i=0;i<fis.length;i++){
             for(var j=0;j<fis[i].showtime.length;j++){
