@@ -291,8 +291,10 @@ html {
   scroll-behavior: smooth;
 }
 .detail-img{
-  width: 100%;
-  max-height: 400px;
+  width: 400px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 60%;
 }
 .detail-title{
   width: 100%;
