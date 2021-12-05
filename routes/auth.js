@@ -13,7 +13,7 @@ var transporter =  nodemailer.createTransport({ // config mail server
     secure: false,
     auth: {
         user: 'doancots445@gmail.com', //Tài khoản gmail
-        pass: 'doancots' //Mật khẩu tài khoản gmail
+        pass: 'fspnbgenkfzdnffh' //Mật khẩu tài khoản gmail
     },
     tls: {        
         rejectUnauthorized: false
@@ -118,9 +118,9 @@ router.post('/forgot',function(req,res){
         if (err) return console.log(err);
         if (user){
             var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
-                from: 'Thi Tran',
+                from: 'doancots445@gmail.com',
                 to: email,
-                subject: 'Quên mật khẩu MEGAS STAR',
+                subject: 'MEGAS STAR',
                 text: `Mật khẩu của bạn là: ${user.password}`
             }
             transporter.sendMail(mainOptions, function(err, info){

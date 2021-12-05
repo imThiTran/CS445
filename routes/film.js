@@ -43,6 +43,17 @@ router.post('/loadTime',function(req,res){
         
 })
 
+router.get('/:type',function(req,res){
+    var type= req.params.type;
+    Film.find({status:"Đang khởi chiếu"},function(err,fis){
+    Film.find({type:type,status:{'$ne':"Đã chiếu xong"}},function(err,fi){
+        res.render('films/category',{
+            filmslide:fis,
+            filmtype:fi
+        });
+        })
+    })
+})
 // router.post('/loadRoom',function(req,res){
 //     var time=req.body.time;
 //     var nameEN= req.body.nameEN;
