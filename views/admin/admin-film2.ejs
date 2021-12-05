@@ -655,14 +655,14 @@ $('.deleteBtn').each(function () {
         $this.on('click',function(){ 
             if (confirm('Bạn có chắc chắn xóa ?')){
                 $.ajax({
-            url: "/admin/film/delete-film",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: id }),
-            success: function (result) {
-                trClosest.remove();
-                    }
-                }) 
+                url: "/admin/film/delete-film",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ id: id }),
+                success: function (result) {
+                    trClosest.remove();
+                        }
+                    }) 
             }
           
       })

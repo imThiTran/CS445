@@ -14,7 +14,11 @@ router.get('/',function(req,res){
     var today = new Date();
     var dayWeek = [];
     var daylength=24*60*60*1000;
+    if (today.getDay()==0){
+    var monday=today.getTime()-6*daylength;
+    } else {
     var monday=today.getTime()-(today.getDay()-1)*daylength;
+    }
     for (var i=0;i<14;i++){
         var newMonday= new Date(monday);
         dayWeek.push(newMonday);
@@ -69,7 +73,11 @@ router.get('/:time',function(req,res){
     if (time.getDate()==(today.getDate())) return res.redirect('/');
         var dayWeek = [];
         var daylength=24*60*60*1000;
-        var monday=today.getTime()-(today.getDay()-1)*daylength;
+        if (today.getDay()==0){
+            var monday=today.getTime()-6*daylength;
+            } else {
+            var monday=today.getTime()-(today.getDay()-1)*daylength;
+            }
         for (var i=0;i<14;i++){
             var newMonday= new Date(monday);
             dayWeek.push(newMonday);
