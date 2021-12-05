@@ -9,11 +9,11 @@ var nodemailer = require('nodemailer')
 //server gmail
 var transporter =  nodemailer.createTransport({ // config mail server
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
-        user: 'testdoan124@gmail.com', //Tài khoản gmail
-        pass: 'anhlavip1' //Mật khẩu tài khoản gmail
+        user: 'doancots445@gmail.com', //Tài khoản gmail
+        pass: 'doancots' //Mật khẩu tài khoản gmail
     },
     tls: {        
         rejectUnauthorized: false
@@ -118,9 +118,9 @@ router.post('/forgot',function(req,res){
         if (err) return console.log(err);
         if (user){
             var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
-                from: 'testdoan124@gmail.com',
+                from: 'Thi Tran',
                 to: email,
-                subject: 'Quên mật khẩu',
+                subject: 'Quên mật khẩu MEGAS STAR',
                 text: `Mật khẩu của bạn là: ${user.password}`
             }
             transporter.sendMail(mainOptions, function(err, info){
