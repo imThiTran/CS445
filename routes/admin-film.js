@@ -245,17 +245,16 @@ router.get('/search-product',function(req,res){
   })
 })
 
-router.get('/delete-product/:id',function(req,res){
-    var id =req.params.id;
-    var path = 'public/img/product_imgs/'+ id;
+router.post('/delete-film',function(req,res){
+    var id =req.body.id;
+    var path = 'public/img/films/'+ id;
     fs.remove(path,function(err){
         if (err) console.log(err);
         else {
-            Product.findByIdAndRemove(id,function(err){
+            Film.findByIdAndRemove(id,function(err){
                 if (err) console.log(err);
             });
-            req.flash('success','Product deleted ');
-            res.redirect('/admin/products');
+            res.send("");
         }
     })
 })

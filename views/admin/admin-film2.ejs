@@ -213,7 +213,7 @@
                                 </td>
                                 <td>
                                     <div class="ad-btn" style="width:60px">
-                                        <button type="button" class="btn-close btn-xoa" aria-label="Close"></button>
+                                        <button type="button" id="<%=fi._id%>" class="deleteBtn btn-close btn-xoa" aria-label="Close"></button>
                                         <button type="button" class="btn btn-danger btn-buy editBtn" id="<%=fi._id%>"
                                             style="width:100%; margin-top: 20px">Sửa</button>
                                         <button type="button" class="btn btn-danger btn-buy detailBtn" id="<%=fi._id%>" style="    margin-top: 20px;
@@ -647,6 +647,27 @@ $('#btn-save-new-item').on('click',function(e){
   e.preventDefault();
 }) 
 
+//xoa phim
+$('.deleteBtn').each(function () {
+        var $this = $(this);
+        var id = $this.attr('id');
+        var trClosest=$this.closest('.trClosest')
+        $this.on('click',function(){ 
+            if (confirm('Bạn có chắc chắn xóa ?')){
+                $.ajax({
+            url: "/admin/film/delete-film",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ id: id }),
+            success: function (result) {
+                trClosest.remove();
+                    }
+                }) 
+            }
+          
+      })
+
+})
 </script>
 <script>
     $('a.confirmDeletion').on('click', function () {
