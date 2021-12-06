@@ -64,12 +64,18 @@
                         <div class="flex-poster">
                             <% var newDateArr = dateRq.split('-') %>
                             <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
-                            <h3 class="h3-date"><%=newDate%></h3>
+                            <% var today = new Date(); %>
+                            <%if (dateRq == today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()<10?"0"+today.getDate():today.getDate())){%>
+                                <h3 class="h3-date">Hôm nay</h3>
+                            <%} else {%>
+                                <h3 class="h3-date"><%=newDate%></h3>
+                            <%}%>
+                           
                             <% if (films.length !=0){%>
                                 <% films.forEach(function(film){ %>
                                     <div class="poster-movie-div">
                                         <div class="flex-title">
-                                            <a href="#">
+                                            <a href="/film/detail/<%=film.slug%>">
                                                 <div class="flex-cs">
                                                     <div class="h6-poster">
                                                         <%=film.nameEN%>
@@ -136,10 +142,10 @@
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <div class="flex-coming" id="psc">
                         <%filmc.forEach(function(film){%>
-                            <a href="#">
+                            <a href="/film/detail/<%=film.slug%>">
                             <div class="title-coming">
 
-                                <a class="item-slide"><img class="poster-movie"
+                                <a href="/film/detail/<%=film.slug%>" class="item-slide"><img class="poster-movie"
                                         src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
                                 <div class="flex-title">
                                     <div class="flex-cs">

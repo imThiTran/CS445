@@ -297,6 +297,7 @@
                         </tr>
                     </thead>
                     <tbody id="containTr">
+                        <%if (showtimes.length!=0){%>
                         <%var i=1%>
                         <%showtimes.forEach(function(st){%>
                             <tr class="trClosest">
@@ -310,7 +311,9 @@
                                     <div><%=st.nameEN%></div>
                                 </td>
                                 <td class="tdDate">
-                                    <%=st.date%>
+                                    <% var newDateArr = st.date.split('-') %>
+                                    <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                    <%=newDate%>
                                 </td>
                                 <td class="tdTime">
                                     <%=st.time%>
@@ -330,7 +333,9 @@
                                     </div>
                                 </td>
                             </tr>
-                        <%})%>
+                        <%})} else {%>
+                            <h1>Không có suất chiếu nào</h1>
+                        <%}%>
                     </tbody>
                     <div id="myModal" class="modal">
                                     

@@ -33,9 +33,16 @@
 
                         <div class="detail-left ">
                             <img class="detail-img" src="/img/films/<%=film._id%>/<%=film.photo%>">
-                            <button type="button" class="btn btn-danger btn-buy" data-toggle="modal" data-target="#myModal">
-                                Mua vé
-                           </button>
+                            <%if (film.status=="Đang khởi chiếu"){ %>
+                                <button type="button" class="btn btn-danger btn-buy" data-toggle="modal" data-target="#myModal">
+                                    Mua vé
+                               </button>
+                            <%} else {%>
+                                <button type="button" class="btn btn-danger btn-buy" data-toggle="modal" data-target="#myModal" disabled>
+                                    <%=film.status%>
+                               </button>
+                            <%}%>
+                            
                      
                            <!-- bảng pop up  -->
                            <div class="modal" id="myModal">
@@ -107,19 +114,7 @@
                                 <div class="subin">
                                     <div class="sub1">Thể loại:</div>
                                     <div class="sub2">
-                                        <%if (film.type=="action" ){%>
-                                            Hành động
-                                            <%}else if (film.type=="honor" ){%>
-                                                Kinh dị
-                                                <%}else if (film.type=="romance" ){%>
-                                                    Tình cảm
-                                                    <%} else if (film.type=="humorous" ){%>
-                                                        Hài hước
-                                                        <%}else if (film.type=="cartoon" ){%>
-                                                            Hoạt hình
-                                                            <%}else {%>
-                                                                Lịch sử
-                                                                <%}%>
+                                        <%=film.type%>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +132,7 @@
                                 <div class="subin">
                                     <div class="sub1">Thời lượng:</div>
                                     <div class="sub2">
-                                        <%=film.time%>
+                                        <%=film.time%> Phút
                                     </div>
                                 </div>
                             </div>

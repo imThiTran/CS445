@@ -33,15 +33,17 @@ router.get('/',function(req,res){
                 if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
             }
         }
+        Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
         Film.find({status:"Sắp khởi chiếu"},function(err,fic){
             if (err) return console.log(err);
             res.render('index',{
-            filmslide:fis,
+            filmslide:filmslide,
             films:newFis,
             filmc:fic,
             dateRq:dateRq,
             dayWeek: dayWeek
-            });
+                });
+            })
         })
     })
 })
@@ -92,6 +94,7 @@ router.get('/:time',function(req,res){
                     if (fis[i].showtime[j].date==dateRq) {newFis.push(fis[i]); break;}
                 }
             }
+        Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
             Film.find({status:"Sắp khởi chiếu"},function(err,fic){
                 if (err) return console.log(err);
             res.render('index',{
@@ -100,7 +103,8 @@ router.get('/:time',function(req,res){
                 filmc:fic,
                 dateRq:dateRq,
                 dayWeek: dayWeek
-                });
+                    });
+                })
             })
         })
 })

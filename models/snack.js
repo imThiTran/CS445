@@ -10,9 +10,11 @@ var SnackSchema = mongoose.Schema({
     },
     price:{
         type:Number,
+        require:true,
     },
     block:{
         type: Number,
+        require:true,
     },
     photo:{
         type:String,

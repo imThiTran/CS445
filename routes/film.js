@@ -7,6 +7,7 @@ router.get('/detail/:slug',function(req,res){
     var slug = req.params.slug;
     var newDate=[];
     Film.findOne({slug:slug},function(err,fi){
+        if (fi){
         newDate=Array.from(new Set(fi.showtime.map(function(result){
             return result.date;
         })));
@@ -15,6 +16,7 @@ router.get('/detail/:slug',function(req,res){
             showtime:fi.showtime,
             date:newDate,
         });
+    }
     })
 })
 
@@ -45,14 +47,14 @@ router.post('/loadTime',function(req,res){
 
 router.get('/:type',function(req,res){
     var type= req.params.type;
-    Film.find({status:"Đang khởi chiếu"},function(err,fis){
+    Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
     Film.find({type:type,status:{'$ne':"Đã chiếu xong"}},function(err,fi){
         res.render('films/category',{
-            filmslide:fis,
+            filmslide:filmslide,
             filmtype:fi
-        });
+                });
+            })
         })
-    })
 })
 // router.post('/loadRoom',function(req,res){
 //     var time=req.body.time;

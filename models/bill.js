@@ -7,6 +7,15 @@ var BillSchema = mongoose.Schema({
     seat:{
         type:Array,
     },
+    email:{
+        type:String,
+    },
+    name:{
+        type:String,
+    },
+    phone:{
+        type:String,
+    },
     snacks:{
         type:Array,
     },
