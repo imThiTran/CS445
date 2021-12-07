@@ -52,28 +52,29 @@
                 <div class="dropdown">
                     <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
                         <div class="noidung_dropdown">
-                            <a class="btn-psc" href="#psc">Phim sắp chiếu</a>
-                            <a class="btn-pdc" href="#pdc">Phim đang chiếu</a>
+                            <a class="btn-all" href="/film/status/all">Tất cả</a>
+                            <a class="btn-psc" href="/film/status/Sắp khởi chiếu">Phim sắp chiếu</a>
+                            <a class="btn-pdc" href="/film/status/Đang khởi chiếu">Phim đang chiếu</a>
                         </div>
                     </li>
                 </div>
                 <div class="dropdown">
                     <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
                         <div class="noidung_dropdown">
-                            <a href="/film/Kinh dị">Kinh dị</a>
-                            <a href="/film/Tình cảm">Tình cảm</a>
-                            <a href="/film/Hành động">Hành động</a>
-                            <a href="/film/Hài hước">Hài hước</a>
-                            <a href="/film/Hoạt hình">Hoạt hình</a>
-                            <a href="/film/Lịch sử">Lịch sử</a>
+                            <a href="/film/type/Kinh dị">Kinh dị</a>
+                            <a href="/film/type/Tình cảm">Tình cảm</a>
+                            <a href="/film/type/Hành động">Hành động</a>
+                            <a href="/film/type/Hài hước">Hài hước</a>
+                            <a href="/film/type/Hoạt hình">Hoạt hình</a>
+                            <a href="/film/type/Lịch sử">Lịch sử</a>
                         </div>
                     </li>
                 </div>
                 <li><a class="menu-a" href="menu.html">GIÁ VÉ</a></li>
                 <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
                 <li style="width: 400px">
-                    <form class="search-form" action="/search" method="GET" style="display:flex; height: 40px;">
-                        <input style="margin-left: 10px;" name="product" class="form-control me-2 input-search" type="text"
+                    <form class="search-form" action="/film/search" method="GET" style="display:flex; height: 40px;">
+                        <input style="margin-left: 10px;" name="film" class="form-control me-2 input-search" type="text"
                             placeholder="Tìm kiếm" aria-label="Search">
                         <button style="    width: 150px;" class="btn btn-outline-success btn-search" type="submit">Tìm kiếm</button>
                     </form>

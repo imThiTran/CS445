@@ -37,21 +37,21 @@
                 <div class="dropdown">
                     <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
                         <div class="noidung_dropdown">
-                            <a href="#">Tất cả</a>
-                            <a href="#">Phim sắp chiếu</a>
-                            <a href="#">Phim đang chiếu</a>
+                            <a href="/film/status/all">Tất cả</a>
+                            <a href="/film/status/Sắp khởi chiếu">Phim sắp chiếu</a>
+                            <a href="/film/status/Đang khởi chiếu">Phim đang chiếu</a>
                         </div>
                     </li>
                 </div>
                 <div class="dropdown">
                     <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
                         <div class="noidung_dropdown">
-                            <a href="/film/Kinh dị">Kinh dị</a>
-                            <a href="/film/Tình cảm">Tình cảm</a>
-                            <a href="/film/Hành động">Hành động</a>
-                            <a href="/film/Hài hước">Hài hước</a>
-                            <a href="/film/Hoạt hình">Hoạt hình</a>
-                            <a href="/film/Lịch sử">Lịch sử</a>
+                            <a href="/film/type/Kinh dị">Kinh dị</a>
+                            <a href="/film/type/Tình cảm">Tình cảm</a>
+                            <a href="/film/type/Hành động">Hành động</a>
+                            <a href="/film/type/Hài hước">Hài hước</a>
+                            <a href="/film/type/Hoạt hình">Hoạt hình</a>
+                            <a href="/film/type/Lịch sử">Lịch sử</a>
                         </div>
                     </li>
                 </div>
@@ -64,32 +64,32 @@
         <div class="poster-index">
             <div id="owl-demo" class="owl-carousel owl-theme">
                 <%filmslide.forEach(function(fi){%>
-                    <a class="item-slide"><img class="poster-slide" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="Owl Image"></a>
+                    <a href="/film/detail/<%=fi.slug%>" class="item-slide"><img class="poster-slide" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="Owl Image"></a>
                 <%})%>
                 
             </div>
         </div>
     </div>
     <div class="theloai-body">
-        <div class="h5-detail">Hành động</div>
+        <div class="h5-detail"><%=type%></div>
         <span class="line-detail"></span>
         <div class="theloai-list">
-            <a href="/film/Kinh dị">
+            <a href="/film/type/Kinh dị">
                 <div class="theloai-sub">Kinh dị</div>
             </a>
-            <a href="/film/Tình cảm">
+            <a href="/film/type/Tình cảm">
                 <div class="theloai-sub">Tình cảm</div>
             </a>
-            <a href="/film/Hành động">
+            <a href="/film/type/Hành động">
                 <div class="theloai-sub">Hành động</div>
             </a>
-            <a href="/film/Hài hước">
+            <a href="/film/type/Hài hước">
                 <div class="theloai-sub">Hài hước</div>
             </a>
-            <a href="/film/Hoạt hình">
+            <a href="/film/type/Hoạt hình">
                 <div class="theloai-sub">Hoạt hình</div>
             </a>
-            <a href="/film/Lịch sử">
+            <a href="/film/type/Lịch sử">
                 <div class="theloai-sub">Lịch sử</div>
             </a>
         </div>

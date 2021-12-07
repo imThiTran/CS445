@@ -45,16 +45,56 @@ router.post('/loadTime',function(req,res){
         
 })
 
-router.get('/:type',function(req,res){
+router.get('/search',function(req,res){
+    var film= req.query.film;
+    Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
+    Film.find({},function(err,fi){
+        var newFi=fi.filter(function(rs){
+            return (rs.nameEN.toLowerCase().indexOf(film.toLowerCase())!==-1) || (rs.nameVN.toLowerCase().indexOf(film.toLowerCase())!==-1);
+        })
+            res.render('films/category',{
+                filmslide:filmslide,
+                filmtype:newFi,
+                type:"Tìm theo tên"
+                    });
+        })
+    })
+})
+
+router.get('/type/:type',function(req,res){
     var type= req.params.type;
     Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
     Film.find({type:type,status:{'$ne':"Đã chiếu xong"}},function(err,fi){
         res.render('films/category',{
             filmslide:filmslide,
-            filmtype:fi
+            filmtype:fi,
+            type:type
                 });
             })
         })
+})
+
+router.get('/status/:status',function(req,res){
+    var status=req.params.status;
+    Film.aggregate([{ $match: {status:"Đang khởi chiếu" }},{ $sample: { size: 4 } }],function(err,filmslide){
+    if (status=="all"){
+        Film.find({status:{'$ne':"Đã chiếu xong"}},function(err,fi){
+            res.render('films/category',{
+                filmslide:filmslide,
+                filmtype:fi,
+                type: "Tất cả phim"
+            })
+        })
+    }else {
+        Film.find({status:status},function(err,fi){
+            res.render('films/category',{
+                filmslide:filmslide,
+                filmtype:fi,
+                type: status
+            })
+        })
+    }
+    })
 })
 // router.post('/loadRoom',function(req,res){
 //     var time=req.body.time;
@@ -76,5 +116,6 @@ router.get('/:type',function(req,res){
 //         res.send({roomCode:roomCode});
 //     },3);
 // })
+
 
 module.exports = router;
