@@ -906,7 +906,7 @@ input[type="checkbox"][id^="cb"] {
     height: 20px;
     position: unset !important;
     margin-top: 0px !important;
-    margin-left: 0px !important;
+    margin-left: 20px !important;
 }
 .form-check-input:checked{
   background-color: rgb(254 199 88) !important;
@@ -989,4 +989,15 @@ input[type="checkbox"][id^="cb"] {
 }
 .form-check{
   padding-left: 2rem !important;
+}
+.form-check-input-del{
+  width: 20px;
+    height: 20px;
+    position: unset !important;
+    margin-top: 0px !important;
+    margin-left: 20px !important;
+}
+.form-check-input-del:checked{
+  background-color: rgb(254 199 88) !important;
+  border-color: rgb(254 199 88) !important;
 }
