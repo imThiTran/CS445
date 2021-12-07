@@ -8,7 +8,10 @@ router.get('/detail/:slug',function(req,res){
     var newDate=[];
     Film.findOne({slug:slug},function(err,fi){
         if (fi){
-        newDate=Array.from(new Set(fi.showtime.map(function(result){
+        var newDate1=fi.showtime.filter(function(result){
+            return (result.closed==0)
+        })
+        newDate=Array.from(new Set(newDate1.map(function(result){
             return result.date;
         })));
         res.render('films/detail',{
@@ -24,7 +27,7 @@ router.post('/loadTime',function(req,res){
     var value=req.body.value;
     var nameEN=req.body.nameEN;
     var timeCode="";
-    Showtime.find({$and:[{nameEN:nameEN},{"date":value}]},function(err,fi){
+    Showtime.find({$and:[{nameEN:nameEN},{"date":value},{closed:0}]},function(err,fi){
         fi.sort(function(a, b){
             if (a.time.toLowerCase() < b.time.toLowerCase()) {return -1;}
             if (a.time.toLowerCase() > b.time.toLowerCase()) {return 1;}
@@ -35,13 +38,13 @@ router.post('/loadTime',function(req,res){
         // })));
         for(var i=0;i<fi.length;i++){
             var Ctime=(fi[i].time.split(':'))[0];
-            timeCode=timeCode+`<input value="`+fi[i].time+`"onclick="handleClick(this);" type="radio" class="choosetime btn-check" name="time" id="`+(i+1)+`-outlined" autocomplete="off">
+            timeCode=timeCode+`<input value="`+fi[i].time+`" type="radio" class="choosetime btn-check" name="time" id="`+(i+1)+`-outlined" autocomplete="off">
             <label class="btn btn-primary  btn-seat1" for="`+(i+1)+`-outlined">`+fi[i].time+(Ctime>=12?` PM`:` AM`)+`</label>`
         }
     })
     setTimeout(() => {
         res.send({timeCode:timeCode});
-    },3);
+    },20);
         
 })
 

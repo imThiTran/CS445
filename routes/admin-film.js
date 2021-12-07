@@ -21,8 +21,8 @@ router.post('/add-film',function(req , res){
     var imageFile =(req.files != null)? req.files.image.name:"";
     if (imageFile=="") res.send({noti:'Bạn chưa thêm hình ảnh'}); 
     else {
-    var nameEN= req.body.nameEN.replace(/\s/g, '');
-    var nameVN= req.body.nameVN.replace(/\s/g, '');
+    var nameEN= req.body.nameEN.trim();
+    var nameVN= req.body.nameVN.trim();
     var time= req.body.time;
     var agelimit=parseInt(req.body.agelimit);
     var status= req.body.status;
@@ -34,7 +34,6 @@ router.post('/add-film',function(req , res){
     var trailerArr = (req.body.trailerId).split('/');
     var trailerId = trailerArr[trailerArr.length-1];
     var actor=req.body.actor;
-    console.log(nameEN,nameVN)
     Film.findOne({$or:[{slug: slug},{nameVN:nameVN}]},function(err,fi){
         if (fi){
             var noti='Phim này đã tồn tại' ;
@@ -152,8 +151,8 @@ router.post('/edit-film',function(req,res){
     var imageFile =  (req.files != null)? req.files.image.name:"";
     var pimage=req.body.pimage;
     var id=req.body.id;
-    var nameEN= req.body.nameEN.replace(/\s/g, '');
-    var nameVN= req.body.nameVN.replace(/\s/g, '');
+    var nameEN= req.body.nameEN.trim();
+    var nameVN= req.body.nameVN.trim();
     var time= req.body.time;
     var agelimit=req.body.agelimit;
     var status= req.body.status;
