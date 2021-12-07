@@ -987,3 +987,6 @@ input[type="checkbox"][id^="cb"] {
   object-fit: cover;
   object-position: 50% 60%;
 }
+.form-check{
+  padding-left: 2rem !important;
+}
