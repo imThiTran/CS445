@@ -40,6 +40,7 @@ router.post('/add-showtime',function(req , res){
                     date:date,
                     time:time,
                     room:room,
+                    closed:0,
                 })
                 fi.showtime = fiShowtime;
                 fi.save(function(err){
@@ -108,6 +109,7 @@ router.post('/add-showtime',function(req , res){
                             date:date,
                             time:time[i],
                             room:room[i],
+                            closed:0
                         })   
                         var newst= new Showtime({
                             idSt:id,

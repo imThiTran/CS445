@@ -109,7 +109,7 @@
                                                 <%});%>
                                                              
                                                     <% film.showtime.forEach(function(st){ %>
-                                                        <%if (st.date==dateRq){ %>
+                                                        <%if (st.date==dateRq && st.closed==0){ %>
                                                             <% check=true %>
                                                                     <a href="/order?date=<%=st.date%>&time=<%=st.time%>&nameEN=<%=st.nameEN%>"
                                                                         class="btn btn-outline-warning btn-time">

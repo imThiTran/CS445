@@ -100,12 +100,13 @@ var adminShowtime = require('./routes/admin-showtime');
 var order = require('./routes/order');
 
 var checkUser = require('./middleware/checkUser.middleware');
+var checkShowtime = require('./middleware/checkShowtime.middleware')
 
 app.use('/auth',auth);
-app.use('/film',checkUser,film);
-app.use('/order',checkUser,order);
-app.use('/admin/film',checkUser,adminFilm);
-app.use('/admin/showtime',checkUser,adminShowtime);
-app.use('/',checkUser,site);
+app.use('/film',checkShowtime,checkUser,film);
+app.use('/order',checkShowtime,checkUser,order);
+app.use('/admin/film',checkShowtime,checkUser,adminFilm);
+app.use('/admin/showtime',checkShowtime,checkUser,adminShowtime);
+app.use('/',checkShowtime,checkUser,site);
 
 
