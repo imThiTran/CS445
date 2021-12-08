@@ -81,7 +81,6 @@ router.post('/ordering',function(req,res){
 } else {
     Chair.findOne({_id:seat},function(err,ch){
         if (err) return console.log(err);
-        console.log(ch.nameEN);
             nameEN=ch.nameEN;
             date=ch.date;
             time=ch.time;

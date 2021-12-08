@@ -3,18 +3,18 @@ var mongoose = require('mongoose')
 var SnackSchema = mongoose.Schema({
     name:{
         type: String,
-        require:true
+        required:true
     },
     slug:{
         type:String,
     },
     price:{
         type:Number,
-        require:true,
+        required:true,
     },
     block:{
         type: Number,
-        require:true,
+        default:0,
     },
     photo:{
         type:String,

@@ -134,6 +134,7 @@ router.post('/edit-film',function(req,res){
                 if (err) console.log(err);
                 fi.nameEN= nameEN;
                 fi.nameVN= nameVN;
+                fi.slug=slug;
                 fi.time= time;
                 fi.agelimit= agelimit;
                 fi.status= status;

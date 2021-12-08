@@ -98,7 +98,7 @@ router.get('/:time',function(req,res){
             Film.find({status:"Sắp khởi chiếu"},function(err,fic){
                 if (err) return console.log(err);
             res.render('index',{
-                filmslide:fis,
+                filmslide:filmslide,
                 films:newFis,
                 filmc:fic,
                 dateRq:dateRq,

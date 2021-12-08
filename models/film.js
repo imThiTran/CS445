@@ -3,11 +3,11 @@ var mongoose = require('mongoose')
 var FilmSchema = mongoose.Schema({
     nameVN:{
         type : String,
-        require:true,
+        required:true,
     },
     nameEN:{
         type: String,
-        require:true,
+        required:true,
     },
     slug:{
         type: String,
@@ -18,39 +18,39 @@ var FilmSchema = mongoose.Schema({
     },
     photo:{
         type: String,
-        require:true,
+        required:true,
     },
     director:{
         type: String,
-        require:true,
+        required:true,
     },
     actor:{
         type:String,
-        require:true,
+        required:true,
     },
     showdate:{
         type:String,
-        require:true,
+        required:true,
     },
     type:{
         type:String,
-        require:true,
+        required:true,
     },
     time:{
         type: String,
-        require:true,
+        required:true,
     },
     detail:{
         type:String,
-        require:true,
+        required:true,
     },
     status:{
         type:String,
-        require:true,
+        required:true,
     },
     agelimit:{
         type:String,
-        require:true,
+        required:true,
     },
     trailerId:{
         type:String

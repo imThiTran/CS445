@@ -32,7 +32,7 @@ router.post('/add-showtime',function(req , res){
         var newDay=new Date(date);
         var timeArr=time.split(':');
         newDay.setHours(timeArr[0],timeArr[1]);
-        if (newDay<today){
+        if (newDay<=today){
             res.send({noti:"Không được phép tạo suất chiếu trước giờ hiện tại"});
         } 
         else {
@@ -108,7 +108,7 @@ router.post('/add-showtime',function(req , res){
             var newDay=new Date(date);
             var timeArr=time[i].split(':');
             newDay.setHours(timeArr[0],timeArr[1]);
-            if (newDay<today){
+            if (newDay<=today){
             checkTime=false;
             } 
         }
@@ -188,12 +188,20 @@ router.post('/editBlock',function(req,res){
     var id = req.body.id;
     var closed = req.body.closed;
     var updateSt=[];
+    var today=new Date();
+    var check=false;
     Showtime.findOne({idSt:id},function(err,st){
         if (err) return console.log(err);
-        st.closed=closed;
-        st.save(function(err){
-            if (err) return console.log(err);
-        })
+        var newDay=new Date(st.date);
+        var timeArr=st.time.split(':');
+        newDay.setHours(timeArr[0],timeArr[1]);
+        if (newDay>today){
+            check=true;
+            st.closed=closed;
+            st.save(function(err){
+                if (err) return console.log(err);
+            })
+        } 
     })
     Film.findOne({"showtime.idSt":id},function(err,fi){
         if (err) return console.log(err);
@@ -207,11 +215,17 @@ router.post('/editBlock',function(req,res){
         } 
     })
     setTimeout(() => {
+        if (check==true){
         Film.updateOne({"showtime.idSt":id},{$set: {  
-            showtime: updateSt, 
-    }},function(err,rs){
-        if(err) return console.log(err);
-    })
+                showtime: updateSt, 
+        }},function(err,rs){
+            if(err) return console.log(err);
+        })
+        res.send({noti:""});
+        } else {
+            res.send({noti:"Không thể mở vì suất chiếu này đã quá hạn"})
+        }
+        
     }, 10);
 
 })
@@ -256,7 +270,7 @@ router.post('/edit-showtime/:id',function(req,res){
     var newDay=new Date(date);
     var timeArr=time.split(':');
     newDay.setHours(timeArr[0],timeArr[1]);
-    if (newDay<today){
+    if (newDay<=today){
         res.send({noti:"Không được phép tạo suất chiếu trước giờ hiện tại"});
     } else {
         Showtime.findOne({$and:[{date:date},{time:time},{room:room},{idSt:{'$ne':id}}]},function(err,st){
@@ -330,8 +344,8 @@ router.post('/load-bynameEN',function(req,res){
             </td>
             <td>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch"
-                                            id="flexSwitchCheckChecked"`+((st[i].closed==0)?` checked`:``)+` 
+                                        <input class="swclosed form-check-input" type="checkbox" role="switch"
+                                            id="`+st[i].idSt+`"`+((st[i].closed==0)?` checked`:``)+` 
                                                 > 
                                         <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                     </div>
@@ -389,7 +403,7 @@ router.get('/delete-showtime/:id',function(req,res){
         }},function(err,rs){
             if(err) return console.log(err);
         })
-        }, 5);
+        }, 10);
     }
     })
     res.redirect('back');
