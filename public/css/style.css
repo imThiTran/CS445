@@ -1001,3 +1001,7 @@ input[type="checkbox"][id^="cb"] {
   background-color: rgb(254 199 88) !important;
   border-color: rgb(254 199 88) !important;
 }
+
+.btn-overtime{
+  opacity: 0.5;
+}

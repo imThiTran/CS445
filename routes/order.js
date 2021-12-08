@@ -28,7 +28,7 @@ router.get('/',function(req,res){
            else if (i<114) chairK.push(ch[i]);
         }
         Chair.countDocuments({$and:[{date:date},{time:time},{nameEN:nameEN},{available:1}]},function(err,ch2){
-        Snack.find({},function(err,sn){
+        Snack.find({block:0},function(err,sn){
         setTimeout(() => {
             res.render('order/orderSeat',{
                 chairA:chairA,
