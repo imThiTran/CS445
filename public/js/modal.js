@@ -119,4 +119,21 @@ var span = document.querySelector(".closeBtn");
         e.preventDefault();
       }) 
  
+$('.swclosed').each(function(){
+  var $this = $(this);
+  var id = $this.attr('id');
+  var i ;
+  $this.change(function(){
+    if ($this.is(':checked')) i=0;
+    else i=1;
+    $.ajax({
+      url: "/admin/showtime/editBlock",
+      method: "POST",
+      contentType: "application/json",
+      timeout: 10000,
+      data: JSON.stringify({ id: id, closed : i }),
+      success: function (result) {}
+    })
+  })
   
+})

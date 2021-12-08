@@ -78,46 +78,6 @@ router.post('/add-film',function(req , res){
     }
 })
 
-//get edit product
-
-// router.get('/edit-product/:id',function(req,res){
-
-//     var errors;
-//     if (req.session.errors) errors =req.session.errors;
-//     req.session.errors = null;
-   
-//     Category.find(function(err,cat){
-//         Product.findById(req.params.id, function(err,p){
-//             if (err) {
-//                 console.log(err);
-//                 res.redirect('admin/products');
-//             } else {
-//                 res.render('admin/edit-product',{
-//                     id: p._id,
-//                     title: p.title,
-//                     categories: cat,
-//                     price: p.price,
-//                     category: p.category.replace(/\s+/g,'-').toLowerCase(),
-//                     image:p.image
-//                 });
-//             }
-//         })
-        
-//     })
-
-// })
-router.post('/editBlock',function(req,res){
-    var id = req.body.id;
-    var block = req.body.block;
-    Product.findById(id,function(err,p){
-        if (err) return console.log(err);
-        p.block=block;
-        p.save(function(err){
-            if (err) return console.log(err);
-        })
-    })
-})
-
 router.post('/editBtn',function(req,res){
     var id = req.body.id;
     var statusAjax="";
