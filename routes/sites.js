@@ -51,22 +51,43 @@ router.get('/',function(req,res){
 router.get('/bill',function(req,res){
     var billid=req.query.billid;
     var chair=[];
-    Bill.findOne({idB:billid},function(err,b){
-        chair=b.seat;
-        b.checkout=1;
-        b.save();
-        res.render('order/ordered',{
-            billid:billid
-        });
+    var checkBill=[];
+        Bill.findOne({idB:billid},function(err,b){
+        Showtime.findOne({date:b.date,time:b.time,room:b.room,closed:1},function(err,st){
+            if (err) return console.log(err);
+            if (st) res.render('order/order-cancel');
+            else {
+                for (var i=0;i<b.seat.length;i++){
+                    Bill.findOne({idB:{'$ne':billid},"seat.idChair":b.seat[i].idChair,checkout:1},function(err,bi){
+                        if (bi) checkBill.push(bi); ;
+                    })
+                }
+                setTimeout(() => {
+                    if (checkBill.length==0){
+                        chair=b.seat;
+                        b.checkout=1;
+                        b.save();
+                        res.render('order/ordered',{
+                        billid:billid
+                });
+                    }
+                    else {
+                        res.render('order/order-cancel');
+                    }
+                }, 10);  
+            }
+        })
+        setTimeout(() => {
+            if (chair.length>0){
+            for(var i=0;i<chair.length;i++){
+                Chair.findOne({_id:chair[i].idChair},function(err,ch){
+                    ch.available=0;
+                    ch.save();
+                    })
+                }
+            }
+        }, 20);
     })
-    setTimeout(() => {
-        for(var i=0;i<chair.length;i++){
-            Chair.findOne({_id:chair[i].idChair},function(err,ch){
-                ch.available=0;
-                ch.save();
-            })
-        }
-    }, 5);
     
 })
 
