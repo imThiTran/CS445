@@ -104,32 +104,32 @@
                             <form action="/user/change-info" enctype="multipart/form-data" method="post">
                                 <div class="infor-frame"
                                     style=" display: flex; align-items: flex-start; flex-direction: row;">
-                                    <div class="left-info">
+                                    <div class="left-info" style="    flex: 1;">
                                         <div class="pass">
                                             <p>Họ và tên</p>
                                             <input name="fullname" class="input-sua" type="text" style="    padding: 7px;
-                                height: 30px;
-                                font-size: 14px;" value="<%=user.fullname%>">
+                                height: 40px;
+                                font-size: 16px;" value="<%=user.fullname%>">
                                             <p>Email</p>
                                             <input value="<%=user.email%>" class="input-sua" type="text" style="    padding: 7px;
-                                height: 30px;
-                                font-size: 14px;" disabled>
+                                height: 40px;
+                                font-size: 16px;     background: #9f9f9f;" disabled>
                                             <p>Số điện thoại</p>
                                             <input name="phone" value="<%=user.phone%>" class="input-sua" type="text" style="    padding: 7px;
-                                height: 30px;
-                                font-size: 14px;">
+                                height: 40px;
+                                font-size: 16px;">
                                             <p>Giới tính</p>
                                             <select class="input-sua" name="gender" id="" style="    padding: 7px;
-                                    height: 35px;
-                                    font-size: 14px;">
+                                    height: 40px;
+                                font-size: 16px;">
                                                 <option value="Nam" <% if(user.gender=="Nam"){%>selected<%}%>>Nam</option>
                                                 <option value="Nữ" <% if(user.gender=="Nữ"){%>selected<%}%>>Nữ</option>
                                                 <option value="Khác" <% if(user.gender=="Khác"){%>selected<%}%>>Khác</option>
                                             </select>
                                             <p>Ngày sinh</p>
                                             <input value="<%=user.birthday%>" name="birthday" class="input-sua" type="date" style="    padding: 7px;
-                                height: 30px;
-                                font-size: 14px;">
+                                height: 40px;
+                                font-size: 16px;">
                                         </div>
                                         <button type="submit" class="btn btn-addimg"
                                             style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
@@ -138,10 +138,14 @@
                                         <div class="col-5 img-add" style="    width: 50%;">
                                             <%if (user.photo!=""){%>
                                                 <img id="img-edit-item" class="imgAddPreview" src="/img/users/<%=user.email%>/<%=user.photo%>"
-                                                style="width: 100%; border-radius: 100px;">
+                                                style="width: 200px;
+                                                border-radius: 100px;
+                                                height: 200px;">
                                             <%} else {%>
                                                 <img id="img-edit-item" class="imgAddPreview" src="/img/user.png"
-                                                style="width: 100%; border-radius: 100px;">
+                                                style="width: 200px;
+                                                border-radius: 100px;
+                                                height: 200px;">
                                             <%}%>
                                             
                                             <input type="file" class="form-control imgChangeAdd" name="image" id="img1"
@@ -161,22 +165,22 @@
                                     <p class="alertSave" style="color: red;"></p>
                                     <p>Mật khẩu hiện tại</p>
                                     <div class="forgot-mk" style=" display: flex;">
-                                        <input name="oldpass" class="passwordBlur input-sua" id="<%=user.email%>" type="text" style="    padding: 7px;
-                                    height: 30px;
-                                    font-size: 14px;">
+                                        <input name="oldpass" class="passwordBlur input-sua" id="<%=user.email%>" type="password" style="    padding: 7px;
+                                    height: 40px;
+                                font-size: 16px;">
                                         <a href="/auth/forgot">
                                             <div style="margin-left: 20px; color: #eee;">Quên mật khẩu?</div>
                                         </a>
                                     </div>
                                     <p class="alertPass" style="color: red;"></p>
                                     <p>Mật khẩu mới</p>
-                                    <input name="newpass" class="input-sua" type="text" style="    padding: 7px;
-                                    height: 30px;
-                                    font-size: 14px;">
+                                    <input name="newpass" class="input-sua" type="password" style="    padding: 7px;
+                                   height: 40px;
+                                font-size: 16px;">
                                     <p>Xác nhận mật khẩu</p>
-                                    <input class="input-sua" type="text" style="    padding: 7px;
-                                    height: 30px;
-                                    font-size: 14px;">
+                                    <input class="input-sua" type="password" style="    padding: 7px;
+                                    height: 40px;
+                                font-size: 16px;">
                                 </div>
                                 <button type="button" class="btn-save btn btn-addimg"
                                     style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
