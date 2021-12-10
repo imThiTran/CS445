@@ -19,13 +19,14 @@ var UserSchema = mongoose.Schema({
         type: Number,
     },
     gender:{
-        type: Number
+        type: String,
     },
     phone:{
         type:String
     },
     photo:{
-        type:String
+        type:String,
+        default:"",
     },
     block:{
         type: Number,

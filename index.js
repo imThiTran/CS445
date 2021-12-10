@@ -95,9 +95,11 @@ app.listen(port,function(){
 var auth = require('./routes/auth');
 var site = require('./routes/sites');
 var film = require('./routes/film');
+var order = require('./routes/order');
+var user= require('./routes/user');
+
 var adminFilm = require('./routes/admin-film');
 var adminShowtime = require('./routes/admin-showtime');
-var order = require('./routes/order');
 var adminSnack=require('./routes/admin-snack');
 
 var checkUser = require('./middleware/checkUser.middleware');
@@ -105,6 +107,7 @@ var checkShowtime = require('./middleware/checkShowtime.middleware')
 
 app.use('/auth',auth);
 app.use('/film',checkShowtime,checkUser,film);
+app.use('/user',checkShowtime,checkUser,user);
 app.use('/order',checkShowtime,checkUser,order);
 app.use('/admin/film',checkShowtime,checkUser,adminFilm);
 app.use('/admin/showtime',checkShowtime,checkUser,adminShowtime);

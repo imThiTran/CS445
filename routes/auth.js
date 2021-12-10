@@ -19,6 +19,8 @@ var transporter =  nodemailer.createTransport({ // config mail server
         rejectUnauthorized: false
     }
 });
+
+
 //get register
 router.get('/register',function(req,res){
     res.render('auth/register',{

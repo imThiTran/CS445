@@ -86,7 +86,7 @@ router.get('/bill',function(req,res){
                     })
                 }
             }
-        }, 20);
+        }, 25);
     })
     
 })
