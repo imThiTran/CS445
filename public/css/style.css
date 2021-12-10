@@ -20,7 +20,8 @@ a{
   color: #333;
 }
 a:hover{
-  color: rgb(254 199 88);
+  color: #eee !important;
+  text-decoration: none !important;
 }
 .wrapper{
   margin: 0 auto;
@@ -1001,7 +1002,50 @@ input[type="checkbox"][id^="cb"] {
   background-color: rgb(254 199 88) !important;
   border-color: rgb(254 199 88) !important;
 }
-
-.btn-overtime{
-  opacity: 0.5;
+.donmua-each{
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+    border: 1px solid rgb(254 199 88);
+    border-radius: 10px;
+    background: #333;
+    flex-direction: column; 
+}
+.img-each{
+  width: 30%;
+}
+.infor-each{
+  font-size: 14px;
+  display: flex;
+  margin-left: 20px;
+  
+}
+.infor-sub{
+  margin-left: 10px;
+  font-style: italic;
+}
+.infor-main{
+  width: 70%;
+}
+.button-each{
+  text-align: end;
+  display: flex;
+}
+.btn-infor{
+  color: #333;
+  background: rgb(254 199 88);
+  border-color: #333;
+}
+.btn-infor:hover{
+  color: rgb(254 199 88);
+  background: #333;
+  border-color: rgb(254 199 88);
+}
+.donmua-up{
+  display: flex;
+  justify-content: flex-start;
+}
+.donmua-down{
+  display: flex;
+  justify-content: flex-end;
 }
