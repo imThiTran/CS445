@@ -269,7 +269,7 @@ object-position: 50% 50%;
     align-items: flex-start;
 }
 .img-cs{
-  width: 10%;
+  width: 15%;
 }
 .flex-coming{
   display: flex;
@@ -371,6 +371,7 @@ footer{
   width: 100%;
 }
 .span-footer{
+  margin-top: 50px;
   height: 3px;
   background: rgb(254 199 88);
   width: 100%;
@@ -965,13 +966,13 @@ input[type="checkbox"][id^="cb"] {
   color: #333 !important;
 }
 .btn-outline-success{
-  color: rgb(254 199 88);
-  border-color: rgb(254 199 88);
-  box-shadow: none;
+  color: rgb(254 199 88) !important;
+  border-color: rgb(254 199 88) !important;
+  box-shadow: none !important;
 }
 .btn-outline-success:hover{
-  background: rgb(254 199 88);
-  color: #333;
+  background: rgb(254 199 88) !important;
+  color: #333 !important;
 }
 .h3-date{
   background-color: #00000063;;

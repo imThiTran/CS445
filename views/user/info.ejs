@@ -1,149 +1,112 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include ('../layouts/header') %>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
     <body>
-        <div class="wrapper">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
-                <div class="collapse navbar-collapse navnav" id="Mainnav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link " href="/auth/register">Đăng ký</a>
-                        </li>
-                        <div class="nav-cach"></div>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auth/login">Đăng nhập</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+
+
         <!-- menu -->
         <div class="wrapper-index">
-            <div class="menu-index" id="menu">
-                <ul class="menu-ul">
-                    <li>
-                        <a href="/"><img class="img-logo" src="/img/MEGAS (2).png" /></a>
-                    </li>
-                    <div class="dropdown">
-                        <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
-                            <div class="noidung_dropdown">
-                                <a href="#">Tất cả</a>
-                                <a href="#">Phim sắp chiếu</a>
-                                <a href="#">Phim đang chiếu</a>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="dropdown">
-                        <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
-                            <div class="noidung_dropdown">
-                                <a href="#">Kinh dị</a>
-                                <a href="#">Tình cảm</a>
-                                <a href="#">Hành động</a>
-                                <a href="#">Hài hước</a>
-                                <a href="#">Hoạt hình</a>
-                                <a href="#">Lịch sử</a>
-                            </div>
-                        </li>
-                    </div>
-                    <li><a class="menu-a" href="menu.html">MUA VÉ</a></li>
-                    <li><a class="menu-a" href="giohang.html">SỰ KIỆN</a></li>
-                    <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
-                </ul>
-            </div>
+
 
 
             <!-- list action bên trái, đưa ra 1 cái ejs để link vào hiển thị nội dung -->
             <div class="account">
                 <div class="menu">
-                    <%if (user.photo!=""){%>
+                    <%if (user.photo!="" ){%>
                         <img class="avt-img" src="/img/users/<%=user.email%>/<%=user.photo%>" alt="">
-                    <%} else {%>
-                        <img class="avt-img" src="/img/user.png" alt="">
-                    <%}%>
-                    <a href="/user" class="myaccount">Tài khoản của tôi</a>
-                    <a href="/user/change-info" class="myaccount">Thay đổi thông tin</a>
-    
-                    <a href="#" class="myaccount">Đơn mua</a>
-                    <a href="#" class="myaccount">Thông báo</a>
+                        <%} else {%>
+                            <img class="avt-img" src="/img/user.png" alt="">
+                            <%}%>
+                                <a href="/user" class="myaccount">Tài khoản của tôi</a>
+                                <a href="/user/change-info" class="myaccount">Thay đổi thông tin</a>
+
+                                <a href="#" class="myaccount">Đơn mua</a>
+                                <a href="#" class="myaccount">Thông báo</a>
                 </div>
 
 
-                
-                <!-- nội dung hiển thị  -->
-        <div class="details">
-            <div class="main1">
-                <h3>Tài khoản của bạn</h3>
-                <p>Thông tin cá nhân của bạn</p>
-            </div>
-            <div class="main2" style="padding: 50px">
-                <form action="">
-                    <div class="infor-frame"
-                        style=" display: flex; align-items: flex-start; flex-direction: row;">
-                        <div class="left-info">
-                            <div class="pass">
-                                <div class="flex-infor">
-                                    <div style="width: 120px;">Họ và tên: </div>
-                                        <label class="label-infor" for=""><%=user.fullname%></label>   
-                                </div>
-                                <div class="flex-infor">
-                                <div style="width: 120px;">Email: </div>
-                                <label class="label-infor" for=""><%=user.email%></label>
-                                </div>
-                                <div class="flex-infor">
-                                <div style="width: 120px;">Số điện thoại: </div>
-                                <%if (typeof user.phone!="undefined"){%>
-                                    <label class="label-infor" for=""><%=user.phone%></label>
-                                <%} else {%>
-                                    <label class="label-infor" for="">Chưa cập nhật</label>
-                                <%}%>
-                                
-                                </div>
-                                <div class="flex-infor">
-                                <div style="width: 120px;">Giới tính: </div>
-                                <%if (typeof user.gender!="undefined"){%>
-                                    <label class="label-infor" for=""><%=user.gender%></label>
-                                <%} else {%>
-                                    <label class="label-infor" for="">Chưa cập nhật</label>
-                                <%}%>
-                                </div>
-                                <div class="flex-infor">
-                                <div style="width: 120px;">Ngày sinh: </div>
-                                <%if (typeof user.birthday!="undefined"){%>
-                                    <% var newDateArr = user.birthday.split('-') %>
-                                    <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
-                                    <label class="label-infor" for=""><%=newDate%></label>
-                                <%} else {%>
-                                    <label class="label-infor" for="">Chưa cập nhật</label>
-                                <%}%>
-                                
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="right-infor" style="    margin-top: 30px;">
-                            <div class="avt">
-                                <%if (user.photo!=""){%>
-                                    <img class="avt-img" src="/img/users/<%=user.email%>/<%=user.photo%>" alt="">
-                                <%} else {%>
-                                    <img class="avt-img" src="/img/user.png" alt="">
-                                <%}%>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </form>
-        </div>
-       
 
-    </div>
-</body>
-<link rel="stylesheet" href="/css/changeinfor.css" />
-</html>
+                <!-- nội dung hiển thị  -->
+                <div class="details">
+                    <div class="main1">
+                        <h3>Tài khoản của bạn</h3>
+                        <p>Thông tin cá nhân của bạn</p>
+                    </div>
+                    <div class="main2" style="padding: 50px">
+                        <form action="">
+                            <div class="infor-frame"
+                                style=" display: flex; align-items: flex-start; flex-direction: row;">
+                                <div class="left-info">
+                                    <div class="pass">
+                                        <div class="flex-infor">
+                                            <div style="width: 120px;">Họ và tên: </div>
+                                            <label class="label-infor" for="">
+                                                <%=user.fullname%>
+                                            </label>
+                                        </div>
+                                        <div class="flex-infor">
+                                            <div style="width: 120px;">Email: </div>
+                                            <label class="label-infor" for="">
+                                                <%=user.email%>
+                                            </label>
+                                        </div>
+                                        <div class="flex-infor">
+                                            <div style="width: 120px;">Số điện thoại: </div>
+                                            <%if (typeof user.phone!="undefined" ){%>
+                                                <label class="label-infor" for="">
+                                                    <%=user.phone%>
+                                                </label>
+                                                <%} else {%>
+                                                    <label class="label-infor" for="">Chưa cập nhật</label>
+                                                    <%}%>
+
+                                        </div>
+                                        <div class="flex-infor">
+                                            <div style="width: 120px;">Giới tính: </div>
+                                            <%if (typeof user.gender!="undefined" ){%>
+                                                <label class="label-infor" for="">
+                                                    <%=user.gender%>
+                                                </label>
+                                                <%} else {%>
+                                                    <label class="label-infor" for="">Chưa cập nhật</label>
+                                                    <%}%>
+                                        </div>
+                                        <div class="flex-infor">
+                                            <div style="width: 120px;">Ngày sinh: </div>
+                                            <%if (typeof user.birthday!="undefined" ){%>
+                                                <% var newDateArr=user.birthday.split('-') %>
+                                                    <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                                        <label class="label-infor" for="">
+                                                            <%=newDate%>
+                                                        </label>
+                                                        <%} else {%>
+                                                            <label class="label-infor" for="">Chưa cập nhật</label>
+                                                            <%}%>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="right-infor" style="    margin-top: 30px;">
+                                    <div class="avt">
+                                        <%if (user.photo!="" ){%>
+                                            <img class="avt-img" src="/img/users/<%=user.email%>/<%=user.photo%>"
+                                                alt="">
+                                            <%} else {%>
+                                                <img class="avt-img" src="/img/user.png" alt="">
+                                                <%}%>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+    <%- include ('../layouts/footer') %>
+    <link rel="stylesheet" href="/css/changeinfor.css" />
+
+    </html>

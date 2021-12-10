@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>MEGAS CINEMA</title>
+</head>
+<!-- navbar -->
+<header>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+            <div class="collapse navbar-collapse navnav" id="Mainnav">
+                <ul class="navbar-nav">
+                    <% if (user==""){ %>
+                    <li class="nav-item active">
+                    <a class="nav-link " href="/auth/register">Đăng ký</a>
+                    </li> 
+                     <div class="nav-cach"></div> 
+                     <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Đăng nhập</a>
+                    </li> 
+                    <% } else { %>
+                        <div class="nav-cach"></div>
+                        <div class="dropdown1">
+                        <li class="nav-item">
+                        <a class="nav-link">Chào <%=user.fullname%></a>
+                        <div class="noidung_dropdown1">
+                            <a href="/user">Hồ sơ</a>
+                            <a href="#">Đơn hàng</a>
+                            <a href="/auth/logout">Đăng xuất</a>
+                        </div>
+                    </li>
+                </div>
+                    <% } %>
+                       
+                </ul>
+            </div>
+        </nav>
+    </div>
+<!-- menu -->
+    <div class="wrapper-index">
+        <div class="menu-index" id="menu">
+            <ul class="menu-ul">
+                <li>
+                    <a href="/"><img class="img-logo" src="../../img/MEGAS (2).png" /></a>
+                </li>
+                <div class="dropdown">
+                    <li class="li1"><a class="menu-a" href="index.html">Phim</a>
+                        
+                    </li>
+                </div>
+                
+                    <li><a class="menu-a" href="index.html">Suất chiếu</a>
+                        
+                    </li>
+                
+                <li><a class="menu-a" href="menu.html">Ăn vặt</a></li>
+                <li><a class="menu-a" href="giohang.html">User</a></li>
+                <li style="width: 400px">
+                    <form class="search-form" action="/film/search" method="GET" style="display:flex; height: 40px;">
+                        <input style="margin-left: 10px;" name="film" class="form-control me-2 input-search" type="text"
+                            placeholder="Tìm kiếm" aria-label="Search">
+                        <button style="    width: 150px;" class="btn btn-outline-success btn-search" type="submit">Tìm kiếm</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+</header>
