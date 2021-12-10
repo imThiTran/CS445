@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(14, 14, 14);
+}
+.account{
+    background-color: rgb(43, 43, 43);
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    border-radius: 40px;
+    padding: 50px;
+    margin-top: 50px;
+}
+.menu{
+    /* display: block; */
+    width: 20%;
+    height: 100%;
+    margin-top: 50px;
+    line-height: 2;
+    
+}
+.account .menu img{
+    margin-left: 30px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(254 199 88);
+    margin-bottom: 20px;
+}
+
+.account .menu .myaccount{
+    display: block;
+    width: 200px;
+    text-decoration: none;
+    /* position: relative; */
+    color: black;
+    border: 2px solid rgb(254 199 88);
+    border-radius: 20px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    background-color: #eee;
+}
+.account .menu .myaccount:hover{
+    color: white;
+    background-color: rgb(254 199 88);
+}
+.account .menu .con{
+    padding-left: 20px;
+    list-style: none;
+}
+.account .menu .myaccount1{ 
+    width: 140px;
+    border: 2px solid rgb(254 199 88);
+    border-radius: 20px;
+    padding-left: 20px;
+    margin-bottom: 3px;
+    background-color: rgb(145, 145, 145);
+    text-decoration: none;
+    color: rgb(22, 22, 22);
+}
+.account .menu .myaccount1:hover{
+    color: rgb(224, 224, 224);
+    background-color: rgb(254 199 88);
+}
+
+
+.account .details{
+    width: 100%;
+    margin-left: 40px;
+    height: 100%;
+    margin-top: 35px;
+    margin-bottom: 40px;
+    line-height: 2;
+}
+.account .details .main1{
+    border: 2px solid rgb(254 199 88);
+    border-radius: 20px;
+    width: 100%;
+    color: white;
+    padding: 20px 20px 5px 30px;
+}
+.account .details .main2{
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid rgb(254 199 88);
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    color: white;
+    padding-right: 50px;
+}
+.link1{
+    color: #eee;
+  }
+  .link1:hover{
+    color: #eee;
+  }
+
+.account .details .main2 .changepass{
+    text-decoration: none;
+    color: #333;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    background: #eee;
+}
+.account .details .main2 .changepass:hover{
+    color: white;
+    background-color: rgb(254 199 88);
+}
+.account .details .main2 .pass{
+    margin-top: 5px;
+}
+.account .details .main2 .pass .sex{
+    margin-left: 40px;
+}
+.account .details .main2 .pass .day{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    border: 2px solid rgb(254 199 88);
+}
+.account .details .main2 .pass .pass1{
+    margin-right: 50px;
+    border-radius: 7px;
+    width: 400px;
+    height: 25px;
+    padding-left: 10px;
+}
+.account .details .main2 .button{
+    margin-top: 10px;
+    display: block;
+}
+.account .details .main2 .button .btn{
+    margin-right: 50px;
+    border-radius: 7px;
+    width: 150px;
+    height: 25px;
+}
+.account .details .main2 .button .btn:hover{
+    color: white;
+    background-color: rgb(254 199 88);
+}
+.account .details .main2 .button .forgotpass{
+    text-decoration: none;
+    color: white;
+}
+.account .details .main2 .button .forgotpass:hover{
+    color: white;
+}
+.fade:not(.show){
+    opacity: 1 !important;
+}
+
+.right-infor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+.btn-addimg:hover{
+    color: rgb(254 199 88);
+    background: #333;
+    border-color: #333;
+}
+.flex-infor{
+    display: flex;
+}
+.label-infor{
+    margin-left: 20px;
+}
+.avt-img{
+    width: 40%;
+    border-radius: 100px;
+}
+.avt{
+    display: contents;
+}
