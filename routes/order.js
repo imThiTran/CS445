@@ -28,7 +28,7 @@ router.get('/',function(req,res){
            else if (i<114) chairK.push(ch[i]);
         }
         Chair.countDocuments({$and:[{date:date},{time:time},{nameEN:nameEN},{available:1}]},function(err,ch2){
-        Snack.find({},function(err,sn){
+        Snack.find({block:0},function(err,sn){
         setTimeout(() => {
             res.render('order/orderSeat',{
                 chairA:chairA,
@@ -81,7 +81,6 @@ router.post('/ordering',function(req,res){
 } else {
     Chair.findOne({_id:seat},function(err,ch){
         if (err) return console.log(err);
-        console.log(ch.nameEN);
             nameEN=ch.nameEN;
             date=ch.date;
             time=ch.time;

@@ -101,7 +101,6 @@
                                             <a href="/film/detail/<%=film.slug%>" class="item-slide"><img
                                                     class="poster-movie" src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
                                             <div class="flex-time-detail">
-                                                <%var check=false;%>
                                                 <%film.showtime.sort(function(a, b){%>
                                                     <%if (a.time.toLowerCase() < b.time.toLowerCase()) {return -1;}%>
                                                     <%if (a.time.toLowerCase() > b.time.toLowerCase()) {return 1;}%>
@@ -110,7 +109,7 @@
                                                              
                                                     <% film.showtime.forEach(function(st){ %>
                                                         <%if (st.date==dateRq && st.closed==0){ %>
-                                                            <% check=true %>
+                                                            
                                                                     <a href="/order?date=<%=st.date%>&time=<%=st.time%>&nameEN=<%=st.nameEN%>"
                                                                         class="btn btn-outline-warning btn-time">
                                                                         <%var Ctime=(st.time.split(':'))[0];%>
@@ -121,11 +120,19 @@
                                                                         <%}%>
                                                                           
                                                                     </a>
-                                                                    <% }%>
+                                                                    <% } else if (st.date==dateRq && st.closed==1){%>
+                                                                        <a class="btn-overtime btn btn-outline-warning btn-time">
+                                                                            <%var Ctime=(st.time.split(':'))[0];%>
+                                                                            <%if (Ctime>=12){%>
+                                                                                <%=st.time%> PM
+                                                                            <%} else {%>
+                                                                                <%=st.time%> AM
+                                                                            <%}%>
+                                                                              
+                                                                        </a>
+                                                                    <%} %>
                                                                         <%})%>
-                                                                            <%if (check==false){%>
-                                                                                <h1>Các suất chiếu đã đóng</h1>
-                                                                                <%}%>
+                                                                            
                                             </div>
                                         </div>
                                     </div>

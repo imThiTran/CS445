@@ -35,6 +35,7 @@ var span = document.querySelector(".closeBtn");
         data: JSON.stringify({ nameEN: name }),
         success: function (result) {
             $('#containTr').html(result.htmlCode);
+            //nua sua sau khi select
             $('.editBtn').each(function () {
               var $this = $(this);
               var id = $this.attr('id');
@@ -60,11 +61,36 @@ var span = document.querySelector(".closeBtn");
             })
             
             })
-
+            //nut xoa sau khi select
             $('a.confirmDeletion').on('click', function () {
               if (!confirm('Confirm Deletion ? '))
                   return false;
           })
+
+          //nut switch sau khi select
+            $('.swclosed').each(function(){
+              var $this = $(this);
+              var id = $this.attr('id');
+              var i ;
+              $this.change(function(){
+                if ($this.is(':checked')) i=0;
+                else i=1;
+                $.ajax({
+                  url: "/admin/showtime/editBlock",
+                  method: "POST",
+                  contentType: "application/json",
+                  timeout: 10000,
+                  data: JSON.stringify({ id: id, closed : i }),
+                  success: function (result) {
+                    if (result.noti!="") {
+                      alert(result.noti);
+                      $this.prop('checked',false);
+                    }
+                  }
+                })
+              })
+              
+            })
         }
     })
   })
@@ -119,4 +145,26 @@ var span = document.querySelector(".closeBtn");
         e.preventDefault();
       }) 
  
+$('.swclosed').each(function(){
+  var $this = $(this);
+  var id = $this.attr('id');
+  var i ;
+  $this.change(function(){
+    if ($this.is(':checked')) i=0;
+    else i=1;
+    $.ajax({
+      url: "/admin/showtime/editBlock",
+      method: "POST",
+      contentType: "application/json",
+      timeout: 10000,
+      data: JSON.stringify({ id: id, closed : i }),
+      success: function (result) {
+        if (result.noti!="") {
+          alert(result.noti);
+          $this.prop('checked',false);
+        }
+      }
+    })
+  })
   
+})
