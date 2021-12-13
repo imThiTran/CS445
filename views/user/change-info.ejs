@@ -8,19 +8,8 @@
 
             <!-- list action bên trái, đưa ra 1 cái ejs để link vào hiển thị nội dung -->
             <div class="account">
-                <div class="menu">
-                    <%if (user.photo!="" ){%>
-                        <img class="avt-img" src="/img/users/<%=user.email%>/<%=user.photo%>" alt="">
-                        <%} else {%>
-                            <img class="avt-img" src="/img/user.png" alt="">
-                            <%}%>
-                                <a href="/user" class="myaccount">Tài khoản của tôi</a>
-                                <a href="/user/change-info" class="myaccount">Thay đổi thông tin</a>
-
-                                <a href="#" class="myaccount">Đơn mua</a>
-                                <a href="#" class="myaccount">Thông báo</a>
-                </div>
-
+                
+                <%- include ('../layouts/user-header') %>
 
                 <!-- thay đổi tài khoản + mk -->
                 <div class="details">
@@ -56,10 +45,10 @@
                                                 <input name="fullname" class="input-sua" type="text" style="    padding: 7px;
                                 height: 40px;
                                 font-size: 16px;" value="<%=user.fullname%>">
-                                                <p>Email</p>
+                                                <!-- <p>Email</p>
                                                 <input value="<%=user.email%>" class="input-sua" type="text" style="    padding: 7px;
                                 height: 40px;
-                                font-size: 16px;     background: #9f9f9f;" disabled>
+                                font-size: 16px;     background: #9f9f9f;" disabled> -->
                                                 <p>Số điện thoại</p>
                                                 <input name="phone" value="<%=user.phone%>" class="input-sua"
                                                     type="text" style="    padding: 7px;

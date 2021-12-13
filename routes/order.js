@@ -8,6 +8,7 @@ var paypal= require('paypal-rest-sdk');
 var Bill =require('../models/bill');
 var shortid= require('shortid');
 var Chair = require('../models/chair');
+var User = require('../models/user');
 
 router.get('/',function(req,res){
     var time= req.query.time;
@@ -62,6 +63,14 @@ router.post('/ordering',function(req,res){
     var time="";
     var room="";
     var photoSn=[];
+    var name="";
+    var phone="";
+    User.findOne({email:req.session.user},function(err,us){
+        if (us) {
+            name = us.fullname;
+            phone= us.phone;
+        }
+    })
     if (typeof seat !="string"){
     Chair.findOne({_id:seat[0]},function(err,ch){
         nameEN=ch.nameEN;
@@ -118,13 +127,17 @@ router.post('/ordering',function(req,res){
             room:room,
             snacks:snacks,
             photoSn:photoSn,
-            seat:seat
+            seat:seat,
+            name:name,
+            phone:phone
         });
     }, 20);
     
 })
 
 router.post('/ordered',function(req,res){
+    var name=req.body.username;
+    var phone=req.body.phone;
     var total=0;
     var totalPrice=req.body.total;
     var snacks=req.body.snacks;
@@ -212,7 +225,10 @@ router.post('/ordered',function(req,res){
             time:time,
             nameEN:nameEN,
             date:date,
-            totalPrice:totalPrice
+            totalPrice:totalPrice,
+            email:req.session.user,
+            name:name,
+            phone:phone,
         })
         bill.save();
     }, 20);

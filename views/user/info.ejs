@@ -10,18 +10,7 @@
 
             <!-- list action bên trái, đưa ra 1 cái ejs để link vào hiển thị nội dung -->
             <div class="account">
-                <div class="menu">
-                    <%if (user.photo!="" ){%>
-                        <img class="avt-img" src="/img/users/<%=user.email%>/<%=user.photo%>" alt="">
-                        <%} else {%>
-                            <img class="avt-img" src="/img/user.png" alt="">
-                            <%}%>
-                                <a href="/user" class="myaccount">Tài khoản của tôi</a>
-                                <a href="/user/change-info" class="myaccount">Thay đổi thông tin</a>
-
-                                <a href="#" class="myaccount">Đơn mua</a>
-                                <a href="#" class="myaccount">Thông báo</a>
-                </div>
+                <%- include ('../layouts/user-header') %>
 
 
 
@@ -46,7 +35,7 @@
                                         <div class="flex-infor">
                                             <div style="width: 120px;">Email: </div>
                                             <label class="label-infor" for="">
-                                                <%=user.email%>
+                                                <%=email%>
                                             </label>
                                         </div>
                                         <div class="flex-infor">

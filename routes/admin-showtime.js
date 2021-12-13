@@ -50,10 +50,13 @@ router.post('/add-showtime',function(req , res){
                         room:room,
                         closed:0,
                     })
-                    fi.showtime = fiShowtime;
-                    fi.save(function(err){
-                        if (err) return console.log(err);
-                    });
+                    setTimeout(() => {
+                        fi.showtime = fiShowtime;
+                        fi.save(function(err){
+                            if (err) return console.log(err);
+                        });
+                    }, 5);
+                    
                     var newst= new Showtime({
                         idSt:id,
                         nameEN:nameEN,

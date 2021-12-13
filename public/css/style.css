@@ -1053,3 +1053,7 @@ input[type="checkbox"][id^="cb"] {
 p{
   margin-bottom: 0rem;
 }
+
+.btn-overtime{
+  opacity: 0.5;
+}
