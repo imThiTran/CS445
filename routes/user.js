@@ -117,7 +117,7 @@ router.post('/change-pass/:email',function(req,res){
     })
 })
  router.get('/purchase',function(req,res){
-     Bill.find({email:req.session.user},function(err,bi){
+     Bill.find({email:req.session.user, type:"uncheck"},function(err,bi){
         var timeArr=[];
         var seatArr=[];
         var snackArr=[];
@@ -143,11 +143,11 @@ router.post('/change-pass/:email',function(req,res){
          }
          setTimeout(() => {
             res.render('user/purchase',{
-                bill:bi,
-                time:timeArr,
-                seat:seatArr,
-                snack:snackArr,
-                photo:photoArr,
+                bill:bi.reverse(),
+                time:timeArr.reverse(),
+                seat:seatArr.reverse(),
+                snack:snackArr.reverse(),
+                photo:photoArr.reverse(),
             });
          }, 10);
         

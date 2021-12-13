@@ -95,59 +95,59 @@
                                             </div>
                                             <div class="donmua-down">
                                                 <div class="button-each">
-                                                    <button type="button" class="btn btn-infor" id="myBtn" style=" padding: 5px;
-                                                    width: 100px;margin-right: 10px;">Sử dụng</button>
+                                                    <button type="button" class="btn btn-infor btnQr" id="<%=bill[i].idB%>" style=" padding: 5px;
+                                                    width: 100px;margin-right: 10px;">Mã QR</button>
                                                     <button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
-                                                    width: 100px;">Hủy</button>
-    
-                                                    <!-- modal mã qr cho button sử dụng -->
-    
-                                                    <div id="myModal" class="modal" style="margin-top: -50px">
-                                                        <div class="modal-content" style="width: 60%; font-size: 16px;">
-    
-                                                            <form action="">
-                                                                <div class="modal-body" style="color: #333;">
-    
-                                                                    <div class="ad-phim">
-                                                                        <h3 style="margin-top: 20px; font-size: 40px;
-                                                                            font-weight: 700;">Mã vé đặt hàng
-                                                                    </div>
-                                                                    <div class="ad-phim"
-                                                                        style="display: block; text-align: left;">
-                                                                        <div style="width:100% ;     padding: 0 100px 0px 200px"
-                                                                            id="qrcode"></div>
-    
-                                                                        <div
-                                                                            style="font-size: 16px; font-style: italic; margin-top: 20px;">
-                                                                            *Vui lòng đưa mã QR cho nhân
-                                                                            viên
-                                                                            khi bạn đến xem phim</div>
-                                                                        <div style="font-size: 16px; font-style: italic; ">
-                                                                            *Mã QR chỉ có giá trị sử dụng 30 phút trước
-                                                                            giờ chiếu
-                                                                            phim</div>
-    
-                                                                    </div>
-    
-    
-                                                                </div>
-    
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="suaclose"
-                                                                        data-dismiss="modal"
-                                                                        style=" color: #333;
-                                                                    background: rgb(254 199 88); padding: 5px 10px; border: 1px; border-radius: 5px;">Đóng</button>
-                                                                </div>
-                                                            </form>
-    
-    
-                                                        </div>
-                                                    </div>
+                                                    width: 100px;">Hủy</button>  
                                                 </div>
                                             </div>
                                         </div>
                                     <%}%>
-                                    
+                                    <!-- modal mã qr cho button sử dụng -->
+    
+                                    <div id="myModal" class="modal" style="margin-top: -50px">
+                                        <div class="modal-content" style="width: 60%; font-size: 16px;">
+
+                                            <form action="">
+                                                <div class="modal-body" style="color: #333;">
+
+                                                    <div class="ad-phim">
+                                                        <h3 style="margin-top: 20px; font-size: 40px;
+                                                            font-weight: 700;">Mã vé đặt hàng
+                                                    </div>
+                                                    <div class="ad-phim"
+                                                        style="display: block; text-align: left;">
+                                                        <div class="containQR">
+                                                            <div style="width:100% ;     padding: 0 100px 0px 200px"
+                                                            id="qrcode"></div>
+                                                        </div>
+
+                                                        <div
+                                                            style="font-size: 16px; font-style: italic; margin-top: 20px;">
+                                                            *Vui lòng đưa mã QR cho nhân
+                                                            viên
+                                                            khi bạn đến xem phim</div>
+                                                        <div style="font-size: 16px; font-style: italic; ">
+                                                            *Mã QR chỉ có giá trị sử dụng 30 phút trước
+                                                            giờ chiếu
+                                                            phim</div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="suaclose"
+                                                        data-dismiss="modal"
+                                                        style=" color: #333;
+                                                    background: rgb(254 199 88); padding: 5px 10px; border: 1px; border-radius: 5px;">Đóng</button>
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+                                    </div>
 
                                 </div>
                             </form>
@@ -286,34 +286,50 @@
 
 </body>
 <script>
+   
+
+</script>
+<link rel="stylesheet" href="/css/changeinfor.css" />
+<script src="/js/bootstrap.js"></script>
+<script src="/js/qrcode.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" 
+integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("suaclose")[0];
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
+    // btn.onclick = function () {
+    //     modal.style.display = "block";
+    // }
     span.onclick = function () {
         modal.style.display = "none";
     }
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            $('.containQR').html(null);
         }
+        
     }
-
-</script>
-<link rel="stylesheet" href="/css/changeinfor.css" />
-<script src="/js/bootstrap.js"></script>
-<script src="/js/qrcode.min.js"></script>
-<script>
-    var qrcode = new QRCode(document.getElementById('qrcode'), {
-        text: 'Welcome to Gextend',
-        width: 300,
-        height: 300,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.H
-    });
+    $('.btnQr').each(function(){
+        $this=$(this);
+        var id=$this.attr('id');
+        $this.on('click',function(){
+            $('.containQR').html(`<div style="width:100% ;     padding: 0 100px 0px 200px"
+                                                            id="qrcode"></div>`)
+            var qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: id,
+            width: 300,
+            height: 300,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+            });
+            modal.style.display = "block";
+        })
+        
+    })
+    
 </script>
 
 </html>
