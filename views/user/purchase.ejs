@@ -45,6 +45,7 @@
                         <div class="tab-pane active infor-change" id="change1" role="tabpanel">
                             <form action="">
                                 <div class="infor-frame">
+                                    <% if (bill.length!=0){%>
                                     <%for (var i=0;i<bill.length;i++){%>
                                         <div class="donmua-each">
                                             <div class="donmua-up">
@@ -97,14 +98,17 @@
                                                 <div class="button-each">
                                                     <button type="button" class="btn btn-infor btnQr" id="<%=bill[i].idB%>" style=" padding: 5px;
                                                     width: 100px;margin-right: 10px;">Mã QR</button>
-                                                    <button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
-                                                    width: 100px;">Hủy</button>  
+                                                    <a class="confirmdelete" href="/user/purchase/cancel/<%=bill[i].idB%>"><button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
+                                                        width: 100px;">Hủy</button></a>  
                                                 </div>
                                             </div>
                                         </div>
                                     <%}%>
+                                    <%} else {%>
+                                        <h1>Không có đơn nào</h1>
+                                    <%}%>
                                     <!-- modal mã qr cho button sử dụng -->
-    
+                                        
                                     <div id="myModal" class="modal" style="margin-top: -50px">
                                         <div class="modal-content" style="width: 60%; font-size: 16px;">
 
@@ -156,49 +160,49 @@
                         <div class="tab-pane" id="change2" role="tabpanel">
                             <form action="">
                                 <div class="infor-frame">
+                                    <%if (billUn.length!=0){%>
+                                    <%for (var i=0;i<billUn.length;i++){%>
                                     <div class="donmua-each">
                                         <div class="donmua-up">
                                             <div class="img-each">
-                                                <img style="width:100%" src="img/trasua.jpg" alt="">
+                                                <img style="width:100%" src="/img/films/<%=photoUn[i].id%>/<%=photoUn[i].photo%>" alt="">
                                             </div>
                                             <div class="infor-main">
                                                 <div class="infor-each">
                                                     <div style="width: 70px;">Tên phim: </div>
                                                     <div class="infor-sub">
-                                                        <div>THE CONJURING: THE DEVIL MADE ME DO IT </div>
-                                                        <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-
+                                                        <div><%=billUn[i].nameEN%> </div>
                                                     </div>
                                                 </div>
                                                 <div class="infor-each">
                                                     <div style="width: 70px;">Thời gian: </div>
                                                     <div class="infor-sub">
-                                                        <div>15/12/2021 15:25 PM</div>
+                                                        <div><%=timeUn[i]%></div>
                                                     </div>
                                                 </div>
                                                 <div class="infor-each">
                                                     <div style="width: 70px;">Số ghế: </div>
                                                     <div class="infor-sub">
-                                                        <div>G6, G7</div>
+                                                        <div><%=seat[i]%></div>
                                                     </div>
                                                 </div>
                                                 <div class="infor-each">
                                                     <div style="width: 70px;">Rạp: </div>
                                                     <div class="infor-sub">
-                                                        <div>CINEMA 1</div>
+                                                        <div>CINEMA <%=billUn[i].room%></div>
                                                     </div>
                                                 </div>
                                                 <div class="infor-each">
                                                     <div style="width: 70px;">COMBO: </div>
                                                     <div class="infor-sub">
-                                                        <div>Combo SINGLE x1, Khoai tây lắc phô mai x1</div>
+                                                        <div><%=snack[i]%></div>
                                                     </div>
                                                 </div>
                                                 <div class="infor-each">
                                                     <div style="width: 70px; font-size: 20px;font-weight: 700;">TỔNG:
                                                     </div>
                                                     <div style="margin-left: 20px; font-size: 20px; font-weight: 700;">
-                                                        <div>175000 VND</div>
+                                                        <div><%=billUn[i].totalPrice%> VND</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,7 +214,10 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                <%}%>
+                                <%} else {%>
+                                    <h1>Không có đơn nào</h1>
+                                <%}%>
                                 </div>
                             </form>
                         </div>
@@ -218,61 +225,66 @@
                         <div class="tab-pane" id="change3" role="tabpanel">
                             <form action="">
                                 <div class="infor-frame">
-                                    <div class="donmua-each">
-                                        <div class="donmua-up">
-                                            <div class="img-each">
-                                                <img style="width:100%" src="img/trasua.jpg" alt="">
+                                    <%if (billCa.length!=0){%>
+                                        <%for (var i=0;i<billCa.length;i++){%>
+                                            <div class="donmua-each">
+                                                <div class="donmua-up">
+                                                    <div class="img-each">
+                                                        <img style="width:100%" src="/img/films/<%=photoCa[i].id%>/<%=photoCa[i].photo%>" alt="">
+                                                    </div>
+                                                    <div class="infor-main">
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px;">Tên phim: </div>
+                                                            <div class="infor-sub">
+                                                                <div><%=billCa[i].nameEN%> </div>
+        
+                                                            </div>
+                                                        </div>
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px;">Thời gian: </div>
+                                                            <div class="infor-sub">
+                                                                <div><%=timeCa[i]%></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px;">Số ghế: </div>
+                                                            <div class="infor-sub">
+                                                                <div><%=seatCa[i]%></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px;">Rạp: </div>
+                                                            <div class="infor-sub">
+                                                                <div>CINEMA <%=billCa[i].room%></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px;">COMBO: </div>
+                                                            <div class="infor-sub">
+                                                                <div><%=snack[i]%></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="infor-each">
+                                                            <div style="width: 70px; font-size: 20px;font-weight: 700;">TỔNG:
+                                                            </div>
+                                                            <div style="margin-left: 20px; font-size: 20px; font-weight: 700;">
+                                                                <div><%=billCa[i].totalPrice%> VND</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="donmua-down">
+                                                    <div class="button-each">
+                                                        <button type="button" class="btn btn-infor" id="myBtn" style=" padding: 5px;
+                                                        width: 120px;margin-right: 10px;" disabled>Đã hủy</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="infor-main">
-                                                <div class="infor-each">
-                                                    <div style="width: 70px;">Tên phim: </div>
-                                                    <div class="infor-sub">
-                                                        <div>THE CONJURING: THE DEVIL MADE ME DO IT </div>
-                                                        <div>THE CONJURING: MA XUI QUỶ KHIẾN</div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="infor-each">
-                                                    <div style="width: 70px;">Thời gian: </div>
-                                                    <div class="infor-sub">
-                                                        <div>15/12/2021 15:25 PM</div>
-                                                    </div>
-                                                </div>
-                                                <div class="infor-each">
-                                                    <div style="width: 70px;">Số ghế: </div>
-                                                    <div class="infor-sub">
-                                                        <div>G6, G7</div>
-                                                    </div>
-                                                </div>
-                                                <div class="infor-each">
-                                                    <div style="width: 70px;">Rạp: </div>
-                                                    <div class="infor-sub">
-                                                        <div>CINEMA 1</div>
-                                                    </div>
-                                                </div>
-                                                <div class="infor-each">
-                                                    <div style="width: 70px;">COMBO: </div>
-                                                    <div class="infor-sub">
-                                                        <div>Combo SINGLE x1, Khoai tây lắc phô mai x1</div>
-                                                    </div>
-                                                </div>
-                                                <div class="infor-each">
-                                                    <div style="width: 70px; font-size: 20px;font-weight: 700;">TỔNG:
-                                                    </div>
-                                                    <div style="margin-left: 20px; font-size: 20px; font-weight: 700;">
-                                                        <div>175000 VND</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="donmua-down">
-                                            <div class="button-each">
-                                                <button type="button" class="btn btn-infor" id="myBtn" style=" padding: 5px;
-                                                width: 120px;margin-right: 10px;" disabled>Đã hủy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                            <%}%>
+                                    <%} else {%>
+                                        <h1 >Không có đơn nào</h1>
+                                    <%}%>
+                                    
                                 </div>
                             </form>
                         </div>
@@ -295,6 +307,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" 
 integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script>
+    $('.confirmdelete').on('click',function(){
+        if (!confirm('Bạn có chắc chắn hủy ?')) return false;
+    })
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("suaclose")[0];
