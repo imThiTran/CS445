@@ -1057,3 +1057,14 @@ p{
 .btn-overtime{
   opacity: 0.5;
 }
+.sl-active{
+
+    margin-left: 10px;
+    border: 1px solid #0000006b;
+
+}
+.span-error{
+  font-size: 14px;
+  color: #f93838;
+  font-style: italic;
+}

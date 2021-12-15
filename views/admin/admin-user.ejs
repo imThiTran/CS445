@@ -22,7 +22,7 @@
                     <tbody>
                         <%var i=1%>
                         <%user.forEach(function(us){%>
-                            <tr>
+                            <tr style="    height: 80px !important;">
                                 <th scope="row" style="width: 5%">
                                     <%=i%>
                                     <%i++%>
@@ -36,14 +36,14 @@
                                 <% var newDateArr = us.birthday.split('-') %>
                                 <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
                                 <td><%=newDate%></td>
-                                <td class="containspan" style="    width: 16%;">
+                                <td class="containspan" style="    width: 17%;">
                                     <div class="active-user" style="    display: flex;">
-                                        <div class="form-check form-switch">
+                                        <div class="form-check form-switch" style="flex: 1;">
                                             <input class="block form-check-input" name="block" type="checkbox" role="switch" 
-                                                id="<%=us.email%>" <%if (us.block.type==0) {%>checked<%}%> style="height: 20px; width: 100%;"  onclick="toggleSelect(this)">
+                                                id="<%=us.email%>" <%if (us.block.type==0) {%>checked<%}%> style="height: 20px; width: 40px;margin-left: -30px !important;"  onclick="toggleSelect(this)">
                                             <label class="form-check-label" for="<%=us.email%>"></label>
                                         </div>
-                                            <div class="selectblock">
+                                            <div class="selectblock" style="flex: 1;">
                                                 <%if (us.block.type!=0){%>
                                                 <select class="blocktime sl-active" name="blocktime" block="<%=us.email%>">
                                                     <option value="non" <%if (us.block.type=='non'){%> selected<%}%> >Đến khi bật lại</option>
