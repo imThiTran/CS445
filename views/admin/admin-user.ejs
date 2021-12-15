@@ -1,0 +1,174 @@
+<%- include ('../layouts/admin-header') %>
+    <body>
+        <div class="ad-movie">
+            <div class="h5-detail">Quản lý người dùng</div>
+            <span class="line-detail"></span>
+            <form action="">
+                <table class="table table-striped  table-bordered" style="font-size: 15px; margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Gmail</th>
+                            <th scope="col">Tên người dùng</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Giới tính</th>
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Hoạt động</th>
+                            <th scope="col" style="width: 1%;">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%user.forEach(function(us){%>
+                            <tr>
+                                <th scope="row" style="width: 5%">
+                                    1
+                                </th>
+                                <td style="width: 20%;">
+                                    <div><%=us.email%></div>
+                                </td>
+                                <td><%=us.fullname%></td>
+                                <td><%=us.phone%></td>
+                                <td><%=us.gender%></td>
+                                <% var newDateArr = us.birthday.split('-') %>
+                                <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                <td><%=newDate%></td>
+                                <td class="containspan" style="    width: 16%;">
+                                    <div class="active-user" style="    display: flex;">
+                                        <div class="form-check form-switch">
+                                            <input class="block form-check-input" name="block" type="checkbox" role="switch" 
+                                                id="<%=us.email%>" <%if (us.block.type==0) {%>checked<%}%> style="height: 20px; width: 100%;"  onclick="toggleSelect(this)">
+                                            <label class="form-check-label" for="<%=us.email%>"></label>
+                                        </div>
+                                            <div class="selectblock">
+                                                <%if (us.block.type!=0){%>
+                                                <select class="blocktime sl-active" name="blocktime" block="<%=us.email%>">
+                                                    <option value="non" <%if (us.block.type=='non'){%> selected<%}%> >Đến khi bật lại</option>
+                                                    <option value="1" <%if (us.block.type==1){%> selected<%}%>>1 ngày</option>
+                                                    <option value="30" <%if (us.block.type==30){%> selected<%}%>>30 ngày</option>
+                                                    <option value="90" <%if (us.block.type==90){%> selected<%}%>>90 ngày</option>  
+                                                </select>
+                                                <%}%>
+                                            </div>   
+                                    </div>
+                                    
+                                    <div class="span-error">
+                                        <%if (us.block.type!=0){%>
+                                            <%if (us.block.type=='non'){%>
+                                        Bị chặn đến khi bật lại
+                                        <%} else {%>
+                                            Bị chặn đến <%=us.block.dateto%>
+                                            <%}%>
+                                        <%}%>
+                                    </div>
+                                        
+                                </td>
+    
+                                <td>
+                                    <div class="ad-btn" style="width:60px">
+                                        <button type="button" class="btn-close btn-xoa" aria-label="Close"></button>
+    
+    
+    
+    
+                                    </div>
+                                </td>
+                            </tr>
+                        <%})%>                   
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </body>
+<%- include ('../layouts/footer') %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" 
+integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    // window.onload = disableSelect();
+    
+    // function disableSelect() {
+    //     const selectPcs = document.querySelectorAll('.sl-active');
+    //     selectPcs.forEach(element => {
+    //         element && (element.disabled = true);
+    //     });
+    // }
+    
+    // function toggleSelect(e) {
+    //     const selectPc = e.parentElement.parentElement.querySelector('.sl-active');
+    //     selectPc && (selectPc.disabled = e.checked);
+    // }
+    $('.blocktime').each(function(){
+        var $this=$(this);
+        var email=$this.attr('block');
+        var spanerror=$this.closest('.containspan').find('.span-error');
+        $this.change(function(e){
+            var value=$this.val();
+            $.ajax({
+            url: "/admin/user/blockbtn",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ email: email, block: value }),
+            success: function (result) {
+                if (value=='non')   spanerror.text('Bị chặn đến khi bật lại');
+                else {
+                    spanerror.text('Bị chặn đến '+result.dateto);
+                    }
+                
+                }
+            }) 
+        })
+    })
+    $('.block').each(function(){
+        var $this=$(this);
+        var email=$this.attr('id');
+        var i;
+        var selectblock=$this.closest('.active-user').find('.selectblock');
+        var spanerror=$this.closest('.containspan').find('.span-error');
+        $this.change(function(){
+            if ($this.is(':checked')) i=0; else i='non';
+            $.ajax({
+            url: "/admin/user/blockbtn",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ email: email, block: i }),
+            success: function (result) {
+                if (i==0){
+                spanerror.text('');
+                selectblock.html(null);
+            }else {
+                selectblock.html(`<select class="blocktime sl-active" name="blocktime" block="`+email+`">
+                                                <option value="non">Đến khi bật lại</option>
+                                                <option value="1">1 ngày</option>
+                                                <option value="30">30 ngày</option>
+                                                <option value="90">90 ngày</option>  
+                                            </select>`);
+                spanerror.text("Bị chặn đến khi bật lại");                            
+                    }
+                    var blocktime=$this.closest('.active-user').find('.blocktime');
+                    blocktime.change(function(){
+                            var value=blocktime.val();
+                            $.ajax({
+                            url: "/admin/user/blockbtn",
+                            method: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify({ email: email, block: value }),
+                            success: function (result) {
+                                if (value=='non')   spanerror.text('Bị chặn đến khi bật lại');
+                                else {
+                                    spanerror.text('Bị chặn đến '+result.dateto);
+                                    } 
+                                }
+                            }) 
+                        })
+                }
+            }) 
+        })
+    })
+    
+    
+    </script>

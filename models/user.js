@@ -29,8 +29,12 @@ var UserSchema = mongoose.Schema({
         default:"",
     },
     block:{
-        type: Number,
-        default: 0,
+        type: Object,
+        default: {
+            type : 0,
+            dateto:"",
+            realdate:"",
+        },
     }
 })
 
