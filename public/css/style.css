@@ -990,7 +990,7 @@ input[type="checkbox"][id^="cb"] {
   object-position: 50% 60%;
 }
 .form-check{
-  padding-left: 2rem !important;
+  padding-left: 0rem !important;
 }
 .form-check-input-del{
   width: 20px;
