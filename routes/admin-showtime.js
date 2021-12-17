@@ -13,7 +13,8 @@ router.get('/',function(req,res){
     Showtime.find({},function(err,st){
         res.render('admin/admin-showtime',{
             films:fi,
-            showtimes:st
+            showtimes:st,
+            nameEN:""
             })
         })
     })
@@ -55,7 +56,7 @@ router.post('/add-showtime',function(req , res){
                         fi.save(function(err){
                             if (err) return console.log(err);
                         });
-                    }, 5);
+                    }, 10);
                     
                     var newst= new Showtime({
                         idSt:id,
@@ -326,9 +327,15 @@ router.post('/load-bynameEN',function(req,res){
     var nameEN=req.body.nameEN;
     var htmlCode="";
     Showtime.find({nameEN:nameEN},function(err,st){
+        if (st.length!=0) htmlCode=`<form class="formDeleteAll" action="/admin/showtime/delete-all" method="post">`;
         for (var i=0;i<st.length;i++){
-            htmlCode=htmlCode+`<tr class="trClosest">
-            <td><input class="form-check-input" type="checkbox" value=""></td>
+            var newDateArr = st[i].date.split('-') 
+            var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
+            htmlCode=htmlCode+`
+            <tr class="trClosest">
+            <td>
+                                    <input class="form-check-input-del itemcheck" name="checkall" type="checkbox" value="`+st[i].idSt+`">
+                                </td>
             <th style="    width: 20px;">`+(i+1)+`</th>
             <th scope="row">
                 `+st[i].idSt+`
@@ -337,7 +344,7 @@ router.post('/load-bynameEN',function(req,res){
                 <div>`+st[i].nameEN+`</div>
             </td>
             <td class="tdDate">
-                `+st[i].date+`
+                `+newDate+`
             </td>
             <td class="tdTime">
                 `+st[i].time+`
@@ -361,28 +368,26 @@ router.post('/load-bynameEN',function(req,res){
                         style="width:100%; margin-top: 20px">Sửa</button>
                 </div>
             </td>
-        </tr>`
+        </tr> 
+        `
         }
     })
     setTimeout(() => {
+        htmlCode=htmlCode+`</form>`
         res.send({htmlCode:htmlCode});
     }, 25);
 })
-router.get('/search-product',function(req,res){
-    var name=req.query.search;
-    Product.find({category:{'$ne':'size'}},function(err,products){
-        if (err) return console.log(err);
-        var newPd= products.filter(function(result){
-            return result.title.toLowerCase().indexOf(name.toLowerCase()) !== -1;
+router.get('/selectfilm/:nameEN',function(req,res){
+    var nameEN=req.params.nameEN;
+    Film.find({status:"Đang khởi chiếu"},function(err,fi){
+        Showtime.find({nameEN:nameEN},function(err,st){
+            res.render('admin/admin-showtime',{
+                films:fi,
+                showtimes:st,
+                nameEN:nameEN
+                })
+            })
         })
-        Category.find({slug:{'$ne':'size'} },function(err,cat){
-        if (err) return console.log(err);
-        res.render('admin/admin-products',{
-            products: newPd,
-            categories: cat
-        })
-    })
-  })
 })
 
 router.get('/delete-showtime/:id',function(req,res){
@@ -412,4 +417,72 @@ router.get('/delete-showtime/:id',function(req,res){
     res.redirect('back');
 })
 
+router.post('/delete-all',function(req,res){  
+    var checkall = req.body.checkall;
+    var updateSt=[];
+    if (typeof checkall == "string"){
+        Showtime.findOneAndRemove({idSt:checkall},function(err,st){
+            if (err) return console.log(err);
+            Film.findOne({"showtime.idSt":checkall},function(err,fi){
+                if (fi){
+                updateSt=fi.showtime.filter(function(rs){
+                    return (rs.idSt!=checkall);
+                });
+         
+                setTimeout(() => {
+                    Film.updateOne({"showtime.idSt":checkall},{$set: {  
+                        showtime: updateSt, 
+                }},function(err,rs){
+                    if(err) return console.log(err);
+                        })
+                    }, 10);
+                }
+            })
+        })
+    } else {
+        for (var i=0;i<checkall.length;i++){
+            Showtime.findOneAndRemove({idSt:checkall[i]},function(err,st){
+                if (err) return console.log(err);
+            })
+        //     Film.findOne({"showtime.idSt":checkall[i]},function(err,fi){
+        //         if (fi){
+        //         updateSt=fi.showtime;
+        //         for (var j=0;j<updateSt.length;j++){
+        //             console.log(updateSt[i]);
+        //             if (checkall.indexOf(updateSt[j])!=-1) console.log('haha');
+        //         }
+        //             setTimeout(() => {
+                        
+        //                 // Film.updateOne({"showtime.idSt":checkall[i]},{$set: {
+        //                 //     showtime: updateSt, 
+        //                 //     }},function(err,rs){
+        //                 // if(err) return console.log(err);
+        //                 //     })
+        //             }, 20);
+                    
+                    
+        //         }
+        //     })
+        }   
+        Film.find({},function(err,fi){
+            if (err) return console.log(err);
+            
+            for(var i=0;i<fi.length;i++){
+                updateSt=[];
+                 for(var j=0;j<fi[i].showtime.length;j++){
+                    if (checkall.indexOf(fi[i].showtime[j].idSt)==-1) {
+                        updateSt.push(fi[i].showtime[j]);
+                        }    
+                }
+                
+                Film.updateOne({nameEN:fi[i].nameEN},{$set: {  
+                            showtime: updateSt, 
+                            }},function(err,rs){
+                                if (err) return console.log(err);
+                })
+            }
+            res.redirect('back');
+        })
+    }
+})
 module.exports = router;

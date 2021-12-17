@@ -106,15 +106,16 @@ var adminSnack=require('./routes/admin-snack');
 var checkUser = require('./middleware/checkUser.middleware');
 var checkShowtime = require('./middleware/checkShowtime.middleware')
 var checkBlock=require('./middleware/checkblock.middleware');
+var checkLogin= require('./middleware/checklogin.middleware');
 
 app.use('/auth',checkBlock,auth);
 app.use('/film',checkShowtime,checkBlock,checkUser,film);
-app.use('/user',checkShowtime,checkBlock,checkUser,user);
-app.use('/order',checkShowtime,checkBlock,checkUser,order);
-app.use('/admin/user',checkShowtime,checkBlock,checkUser,adminUser);
-app.use('/admin/film',checkShowtime,checkBlock,checkUser,adminFilm);
-app.use('/admin/showtime',checkShowtime,checkBlock,checkUser,adminShowtime);
-app.use('/admin/snack',checkShowtime,checkBlock,checkUser,adminSnack);
+app.use('/user',checkShowtime,checkBlock,checkLogin,checkUser,user);
+app.use('/order',checkShowtime,checkBlock,checkLogin,checkUser,order);
+app.use('/admin/user',checkShowtime,checkBlock,checkLogin,checkUser,adminUser);
+app.use('/admin/film',checkShowtime,checkBlock,checkLogin,checkUser,adminFilm);
+app.use('/admin/showtime',checkShowtime,checkBlock,checkLogin,checkUser,adminShowtime);
+app.use('/admin/snack',checkShowtime,checkBlock,checkLogin,checkUser,adminSnack);
 app.use('/',checkShowtime,checkBlock,checkUser,site);
 
 

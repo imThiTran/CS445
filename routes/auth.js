@@ -33,11 +33,17 @@ router.post('/register',function(req,res){
     var email= req.body.email;
     var password= req.body.password;
     var fullname= req.body.fullname;
+    var phone = req.body.phone;
+    var birthday=req.body.birthday;
     User.findOne({email: email},function(err,user){
         if(err) return console.log(err);
         if (user) {
             res.render('auth/register',{
-                mes: 'Email đã tồn tại'
+                mes: 'Email đã tồn tại',
+                email:email,
+                fullname:fullname,
+                phone:phone,
+                birthday:birthday
             })
         }
         else{
@@ -45,7 +51,9 @@ router.post('/register',function(req,res){
                 email:email,
                 password:password,
                 fullname:fullname,
-                admin:0
+                admin:0,
+                phone:phone,
+                birthday:birthday
             });
             user.save(function(err){
                 if (err) return console.log(err);

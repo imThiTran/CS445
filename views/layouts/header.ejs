@@ -25,8 +25,11 @@
                         <a class="nav-link" href="/auth/login">Đăng nhập</a>
                     </li> 
                     <% } else { %>
+                        <%if (user.admin==1){%>
+                            <a style="color: seashell;" href="/admin/showtime">Quản lý</a>
+                        <%}%>
                         <div class="nav-cach"></div>
-                        <div class="dropdown1">
+                <div class="dropdown1">
                         <li class="nav-item">
                         <a class="nav-link">Chào <%=user.fullname%></a>
                         <div class="noidung_dropdown1">

@@ -111,7 +111,7 @@ router.post('/change-pass/:email',function(req,res){
                 res.send("Đổi mật khẩu thành công");
             } 
             else {
-                res.send("Mời nhập lại mật khẩu hiện tại")
+                res.send("Vui lòng nhập lại mật khẩu hiện tại")
             }
         }
     })
