@@ -13,6 +13,7 @@
                             <th scope="col">Số điện thoại</th>
                             <th scope="col">Giới tính</th>
                             <th scope="col">Ngày sinh</th>
+                            <th scope="col">Quyền</th>
                             <th scope="col">Hoạt động</th>
                             <th scope="col" style="width: 1%;">
                                 
@@ -36,6 +37,14 @@
                                 <% var newDateArr = us.birthday.split('-') %>
                                 <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
                                 <td><%=newDate%></td>
+                                <td>
+                                    <select class="decentralize" name="" id="<%=us.email%>">
+                                        <option value="1" 
+                                        <%if (us.admin==1){%> selected <%}%>
+                                        >Admin</option>
+                                        <option value="0" <%if (us.admin==0){%> selected <%}%>>Member</option>
+                                    </select>
+                                </td>
                                 <td class="containspan" style="    width: 17%;">
                                     <div class="active-user" style="    display: flex;">
                                         <div class="form-check form-switch" style="flex: 1;">
@@ -104,6 +113,36 @@ integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnR
     //     const selectPc = e.parentElement.parentElement.querySelector('.sl-active');
     //     selectPc && (selectPc.disabled = e.checked);
     // }
+    $('.decentralize').each(function(){
+        var $this=$(this);
+        var email=$this.attr('id');
+        $this.change(function(e){
+            if (confirm('Bạn chắc chắn muốn thay đổi quyền của tài khoản này?')){
+                var value=$this.val();
+            $.ajax({
+            url: "/admin/user/decentralize",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ email: email, admin: value }),
+            success: function (result) {
+                    }
+                }) 
+            }
+            else {
+                $.ajax({
+                url: "/admin/user/undoselect",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ email: email }),
+                success: function (result) {
+                        $this.html(result);
+                        }
+                })
+                e.preventDefault();
+            }
+            
+        })
+    })
     $('.blocktime').each(function(){
         var $this=$(this);
         var email=$this.attr('block');

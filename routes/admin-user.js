@@ -15,6 +15,35 @@ router.get('/',function(req,res){
         })
     })
 })
+router.post('/decentralize',function(req,res){
+    var email=req.body.email;
+    var admin=req.body.admin;
+    var hmtl="";
+    User.findOne({email:email},function(err,us){
+        if (err) return console.log(err);
+        if (us){
+            us.admin=admin;
+            us.save(function(err){
+                hmtl=`<option value="1"`+((us.admin==1)?`selected`:``)+`>Admin</option>
+                <option value="0" `+((us.admin==0)?`selected`:``)+`>Member</option>`
+                res.send(hmtl);
+            });
+        }
+    })
+})
+
+router.post('/undoselect',function(req,res){
+    var email=req.body.email;
+    var hmtl="";
+    User.findOne({email:email},function(err,us){
+        if (err) return console.log(err);
+        if (us){
+            hmtl=`<option value="1"`+((us.admin==1)?`selected`:``)+`>Admin</option>
+            <option value="0" `+((us.admin==0)?`selected`:``)+`>Member</option>`
+            res.send(hmtl);
+        }
+    })
+})
 
 router.post('/blockbtn',function(req,res){
     var email=req.body.email;
