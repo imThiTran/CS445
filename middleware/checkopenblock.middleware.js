@@ -1,7 +1,7 @@
 var User= require('../models/user');
 
 module.exports = function(req,res,next){
-    var todaymls=(new Date()).getTime();
+    var todaymls=(new Date()).getTime()+20000;
     User.find({},function(err,us){
         if (err) return console.log(err);
         for (var i=0;i<us.length;i++){
