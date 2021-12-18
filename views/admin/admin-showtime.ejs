@@ -22,22 +22,27 @@
                                     <%})%>                  
                             </select>
                         </form>
-                            <form action="" method="POST">
+                            <form class="formSearch" action="/admin/showtime/search-date" method="POST">
                                 <div class="label-date" >
                                     <label class="labeltime">Từ</label>
                                     <div class="input-date">
-                                        <input class="date-lc1" name="datefrom" type="datetime-local" id="time-from">
+                                        <input type="hidden" name="nameEN" value="<%=nameEN%>" id="">
+                                        <input class="date-lc1" name="datefrom" type="datetime-local"
+                                        <%if (typeof datefrom != "undefined"){%> value="<%=datefrom%>" <%}%>
+                                        id="time-from">
                                                 <span class="span-error" id="timefrom_error"></span>
                                     </div>
                                     <label class="labeltime">Đến</label>
                                     <div class="input-date">
-                                        <input class="date-lc1" name="dateto" type="datetime-local" id="time-to">
+                                        <input class="date-lc1" name="dateto" type="datetime-local"
+                                        <%if (typeof dateto != "undefined"){%> value="<%=dateto%>" <%}%>
+                                        id="time-to">
                                            
                                                 <span class="span-error" id="timeto_error">
                                                     
                                     </div>
-                                    <button class="btn btn-danger btn-buy" 
-                                        type="submit" style="max-height:40px; margin:-5px 10px">Tìm kiếm</button>
+                                    <button class="submitsearch btn btn-danger btn-buy" 
+                                        type="button" style="max-height:40px; margin:-5px 10px">Tìm kiếm</button>
                                 </div>
                             </form>
                         </div>
@@ -476,5 +481,15 @@ function toggleSelect(e) {
         }
         e.preventDefault();
     })
+var formSearch= $(('.formSearch'))
+    $('.submitsearch').on('click',function(e){
+        var dateform=new Date($('#time-from').val());
+        var dateto=new Date($('#time-to').val());
+        if (dateform>dateto) alert('Ngày tháng tìm kiếm không hợp lệ');
+        else {
+            formSearch.submit();
+        }
+        e.preventDefault();
+      }) 
 </script>
 </html>

@@ -323,60 +323,60 @@ router.post('/edit-showtime/:id',function(req,res){
     }
 })
 
-router.post('/load-bynameEN',function(req,res){
-    var nameEN=req.body.nameEN;
-    var htmlCode="";
-    Showtime.find({nameEN:nameEN},function(err,st){
-        if (st.length!=0) htmlCode=`<form class="formDeleteAll" action="/admin/showtime/delete-all" method="post">`;
-        for (var i=0;i<st.length;i++){
-            var newDateArr = st[i].date.split('-') 
-            var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
-            htmlCode=htmlCode+`
-            <tr class="trClosest">
-            <td>
-                                    <input class="form-check-input-del itemcheck" name="checkall" type="checkbox" value="`+st[i].idSt+`">
-                                </td>
-            <th style="    width: 20px;">`+(i+1)+`</th>
-            <th scope="row">
-                `+st[i].idSt+`
-            </th>
-            <td class="tdName" style="width: 20%;">
-                <div>`+st[i].nameEN+`</div>
-            </td>
-            <td class="tdDate">
-                `+newDate+`
-            </td>
-            <td class="tdTime">
-                `+st[i].time+`
-            </td>
-            <td class="tdRoom">
-                CINEMA `+st[i].room+`
-            </td>
-            <td>
-                                    <div class="form-check form-switch">
-                                        <input class="swclosed form-check-input" type="checkbox" role="switch"
-                                            id="`+st[i].idSt+`"`+((st[i].closed==0)?` checked`:``)+` 
-                                                > 
-                                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                    </div>
-                                </td>
-            <td>
-                <div class="ad-btn" style="    width: 60px;">
-                <a class="confirmDeletion" href="/admin/showtime/delete-showtime/`+st[i].idSt+`"><button type="button" id="`+st[i].idSt+`" class="btnDelete btn-close btn-xoa" aria-label="Close"
-                style="margin-top: 30px;"></button></a>
-                    <button type="button" class="btn btn-danger btn-buy editBtn" id="`+st[i].idSt+`"
-                        style="width:100%; margin-top: 20px">Sửa</button>
-                </div>
-            </td>
-        </tr> 
-        `
-        }
-    })
-    setTimeout(() => {
-        htmlCode=htmlCode+`</form>`
-        res.send({htmlCode:htmlCode});
-    }, 25);
-})
+// router.post('/load-bynameEN',function(req,res){
+//     var nameEN=req.body.nameEN;
+//     var htmlCode="";
+//     Showtime.find({nameEN:nameEN},function(err,st){
+//         if (st.length!=0) htmlCode=`<form class="formDeleteAll" action="/admin/showtime/delete-all" method="post">`;
+//         for (var i=0;i<st.length;i++){
+//             var newDateArr = st[i].date.split('-') 
+//             var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
+//             htmlCode=htmlCode+`
+//             <tr class="trClosest">
+//             <td>
+//                                     <input class="form-check-input-del itemcheck" name="checkall" type="checkbox" value="`+st[i].idSt+`">
+//                                 </td>
+//             <th style="    width: 20px;">`+(i+1)+`</th>
+//             <th scope="row">
+//                 `+st[i].idSt+`
+//             </th>
+//             <td class="tdName" style="width: 20%;">
+//                 <div>`+st[i].nameEN+`</div>
+//             </td>
+//             <td class="tdDate">
+//                 `+newDate+`
+//             </td>
+//             <td class="tdTime">
+//                 `+st[i].time+`
+//             </td>
+//             <td class="tdRoom">
+//                 CINEMA `+st[i].room+`
+//             </td>
+//             <td>
+//                                     <div class="form-check form-switch">
+//                                         <input class="swclosed form-check-input" type="checkbox" role="switch"
+//                                             id="`+st[i].idSt+`"`+((st[i].closed==0)?` checked`:``)+` 
+//                                                 > 
+//                                         <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+//                                     </div>
+//                                 </td>
+//             <td>
+//                 <div class="ad-btn" style="    width: 60px;">
+//                 <a class="confirmDeletion" href="/admin/showtime/delete-showtime/`+st[i].idSt+`"><button type="button" id="`+st[i].idSt+`" class="btnDelete btn-close btn-xoa" aria-label="Close"
+//                 style="margin-top: 30px;"></button></a>
+//                     <button type="button" class="btn btn-danger btn-buy editBtn" id="`+st[i].idSt+`"
+//                         style="width:100%; margin-top: 20px">Sửa</button>
+//                 </div>
+//             </td>
+//         </tr> 
+//         `
+//         }
+//     })
+//     setTimeout(() => {
+//         htmlCode=htmlCode+`</form>`
+//         res.send({htmlCode:htmlCode});
+//     }, 25);
+// })
 router.get('/selectfilm/:nameEN',function(req,res){
     var nameEN=req.params.nameEN;
     Film.find({status:"Đang khởi chiếu"},function(err,fi){
@@ -388,6 +388,43 @@ router.get('/selectfilm/:nameEN',function(req,res){
                 })
             })
         })
+})
+
+router.post('/search-date',function(req,res){
+    var datefrom=new Date(req.body.datefrom);
+    var dateto=new Date(req.body.dateto);
+    var nameEN= req.body.nameEN;
+    var newSt=[];
+    Film.find({status:"Đang khởi chiếu"},function(err,fi){
+        if (nameEN!=''){
+            Showtime.find({nameEN:nameEN},function(err,st){
+                for (var i=0;i<st.length;i++){
+                    var newDay=new Date(st[i].date);
+                    var timeArr=st[i].time.split(':');
+                    newDay.setHours(timeArr[0],timeArr[1]);
+                    if (datefrom<=newDay && newDay<=dateto) newSt.push(st[i]);
+                } 
+            })
+        } else {
+            Showtime.find({},function(err,st){
+                for (var i=0;i<st.length;i++){
+                    var newDay=new Date(st[i].date);
+                    var timeArr=st[i].time.split(':');
+                    newDay.setHours(timeArr[0],timeArr[1]);
+                    if (datefrom<=newDay && newDay<=dateto) newSt.push(st[i]);
+                }  
+            })
+        }
+        setTimeout(() => {
+            res.render('admin/admin-showtime',{
+                films:fi,
+                showtimes:newSt,
+                nameEN:nameEN,
+                datefrom:req.body.datefrom,
+                dateto:req.body.dateto
+            }) 
+        }, 5);
+    })
 })
 
 router.get('/delete-showtime/:id',function(req,res){
@@ -423,6 +460,9 @@ router.post('/delete-all',function(req,res){
     if (typeof checkall == "string"){
         Showtime.findOneAndRemove({idSt:checkall},function(err,st){
             if (err) return console.log(err);
+            Chair.deleteMany({showtimeId:checkall},function(err,rs){
+                if (err) return console.log(err);
+            });
             Film.findOne({"showtime.idSt":checkall},function(err,fi){
                 if (fi){
                 updateSt=fi.showtime.filter(function(rs){
@@ -444,6 +484,9 @@ router.post('/delete-all',function(req,res){
             Showtime.findOneAndRemove({idSt:checkall[i]},function(err,st){
                 if (err) return console.log(err);
             })
+            Chair.deleteMany({showtimeId:checkall[i]},function(err,rs){
+                if (err) return console.log(err);
+            });
         //     Film.findOne({"showtime.idSt":checkall[i]},function(err,fi){
         //         if (fi){
         //         updateSt=fi.showtime;

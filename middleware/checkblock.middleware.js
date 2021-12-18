@@ -16,4 +16,18 @@ module.exports = function(req,res,next){
             next();
         }, 5);
     })
+    // if (req.session.user){
+    //     User.findOne({email:req.session.user},function(err,us){
+    //         if (err) return console.log(err);
+    //         if (us){
+    //             if (us.block.type!=0) next();
+    //             else {
+    //                 req.session.destroy();
+    //                 next();
+    //             }
+    //         }
+    //     })
+    // } else {
+        
+    // }
 }
