@@ -237,6 +237,7 @@
                             </form>
                         </div>
                         </tr>
+                        <%if (showtimes.length!=0){%>
                         <tr>
                             <th scope="col" style="width: 50px; align-items: center;">
                                 <input class="form-check-input-del" type="checkbox" value="" id="checkAll">
@@ -260,7 +261,6 @@
                     </thead>
                     <tbody id="containTr">
                         <form class="formDeleteAll" action="/admin/showtime/delete-all" method="post">
-                        <%if (showtimes.length!=0){%>
                         <%var i=1%>
                         <%showtimes.forEach(function(st){%>
                             <tr class="trClosest">
@@ -308,11 +308,12 @@
                                     </div>
                                 </td>
                             </tr>
-                        <%})} else {%>
-                            <h1>Không có suất chiếu nào</h1>
-                        <%}%>
                     </form>
                     </tbody>
+                    <%})} else {%>
+                    </thead>
+                        <h1 style="padding-bottom: 150px;margin-top: 150px;">Không có suất chiếu nào</h1>
+                    <%}%>
                     <div id="myModal" class="modal">
                                     
                         <div class="modal-content" style="width: 40%; font-size: 16px;">
@@ -415,12 +416,13 @@
         success: function (result) {
           if ( result.noti != "") $('.alertAdd').html(result.noti) ;
            else {
-             // Set the URL to whatever it was plus "#".
-             url = document.URL+"#";
-             location = "#";
+            //  // Set the URL to whatever it was plus "#".
+            //  url = document.URL+"#";
+            //  location = "#";
 
-             //Reload the page
-              location.reload(true);
+            //  //Reload the page
+            //   location.reload(true);
+            $(location).attr('href','/admin/showtime');
            }
       }
   });
