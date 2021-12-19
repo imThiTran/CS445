@@ -5,8 +5,7 @@ var fs = require('fs-extra');
 var resizeImg = require('resize-img')
 
 var User=require('../models/user');
-var Film= require('../models/film');
-var Snack =require('../models/snack');
+
 
 router.get('/',function(req,res){
     User.find({},function(err,us){

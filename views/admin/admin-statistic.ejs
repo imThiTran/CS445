@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/profile.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <title>Trà sữa Bông</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+            <div class="collapse navbar-collapse navnav" id="Mainnav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="dangky.html">Đăng ký</a>
+                    </li>
+                    <div class="nav-cach"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper-index">
+        <div class="menu-index" id="menu">
+            <ul class="menu-ul">
+                <li>
+                    <a href="index.html"><img class="img-logo" src="/img/MEGAS (2).png" /></a>
+                </li>
+                <div class="dropdown">
+                    <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Tất cả</a>
+                            <a href="#">Phim sắp chiếu</a>
+                            <a href="#">Phim đang chiếu</a>
+                        </div>
+                    </li>
+                </div>
+                <div class="dropdown">
+                    <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
+                        <div class="noidung_dropdown">
+                            <a href="#">Kinh dị</a>
+                            <a href="#">Tình cảm</a>
+                            <a href="#">Hành động</a>
+                            <a href="#">Hài hước</a>
+                            <a href="#">Hoạt hình</a>
+                            <a href="#">Lịch sử</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a class="menu-a" href="menu.html">MUA VÉ</a></li>
+                <li><a class="menu-a" href="giohang.html">SỰ KIỆN</a></li>
+                <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <section>
+        <div class="ad-movie">
+            <div class="wrapper">
+                <div class="body-slide-profile-body">
+                    <div class="main-container">
+                        <div class="col-9 wrap-profile user-admin" style="width: 100%;
+                    background: #eee;">
+                            <div class="profile-frame-ad">
+                                <br />
+                                <div class="head-profile-frame">
+                                    <div class="h5-detail">Quản lý phim</div>
+                                    <span class="line-detail"></span>
+                                </div>
+                                <div class="body-profile-frame-change ad-tk">
+                                    <div class="col-12"> 
+                                        <ul class="nav nav-tabs menu-status " style="    margin-top: 30px;
+                                        justify-content: center; border-bottom: none">
+                                            <li class="stt-list nav-item">
+                                                <a class="nav-link link1 active" href="#change1" style="    color: #333;" data-bs-toggle="tab"
+                                                    data-bs-target="#change1" role="tab" aria-controls="status"
+                                                    aria-selected="true">Thống kế theo ngày</a>
+                                            </li>
+                                            <li class="stt-list nav-item">
+                                                <a class="nav-link link1" href="#change2" style="    color: #333;" data-bs-toggle="tab"
+                                                    data-bs-target="#change2" role="tab" aria-controls="status"
+                                                    aria-selected="true">Thống kế theo tháng</a>
+
+                                            </li>
+                                            <li class="stt-list nav-item">
+                                                <a class="nav-link link1" href="#change3" style="    color: #333;" data-bs-toggle="tab"
+                                                    data-bs-target="#change3" role="tab" aria-controls="status"
+                                                    aria-selected="true">Thống kế theo phim</a>
+
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="change1" role="tabpanel">
+                                                <div class="container">
+                                                    <canvas id="myChart"></canvas>
+                                                </div>
+                                                <form action="" method="" style="    text-align: center;">
+                                                    <input class="ipgetmonth" type="month" name="getmonth">
+                                                    <button class="xemngay" type="button">Xem</button>
+                                                </form>
+                                                <script>
+                                                    let myChart = document.getElementById('myChart').getContext('2d');
+                                                    // Global Options
+                                                    Chart.defaults.global.defaultFontFamily = 'sans-serif';
+                                                    Chart.defaults.global.defaultFontSize = 18;
+                                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                                    let massPopChart = new Chart(myChart, {
+                                                        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12',
+                                                                '07/12', '08/12', '09/12', '10/12'],
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: [
+                                                                    617594,
+                                                                    781045,
+                                                                    653060,
+                                                                    596519,
+                                                                    495162,
+                                                                    395072,
+                                                                    456930,
+                                                                    563244,
+                                                                    493720
+                                                                ],
+                                                                backgroundColor: [
+                                                                    'rgb(254 199 88)',
+                                                                ],
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU THÁNG 12',
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000'
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            }
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                            <div class="tab-pane" id="change2" role="tabpanel">
+                                                <div class="container">
+                                                    <canvas id="myChart1"></canvas>
+                                                </div>
+                                                <form action="" method="" style="    text-align: center;">
+                                                    <input class="ipgetyear" type="number" min="1900" max="2099" step="1" value="2021" name="getyear"/>                                            
+                                                    <button class="xemthang" type="button">Xem</button>
+                                                </form>
+                                                <script>
+                                                    let myChart1 = document.getElementById('myChart1').getContext('2d');
+                                                    // Global Options
+                                                    Chart.defaults.global.defaultFontFamily = 'sans-serif';
+                                                    Chart.defaults.global.defaultFontSize = 18;
+                                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                                    let massPopChart1 = new Chart(myChart1, {
+                                                        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+                                                                'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: [
+                                                                    6617594,
+                                                                    8781045,
+                                                                    7653060,
+                                                                    8596519,
+                                                                    9495162,
+                                                                    6395072,
+                                                                    4456930,
+                                                                    4563244,
+                                                                    5493720,
+                                                                    6395072,
+                                                                    8781045,
+                                                                    4563244,
+                                                                ],
+                                                                backgroundColor: [
+                                                                    'rgb(254 199 88)',
+                                                                ],
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU NĂM 2021',
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000'
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            }
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                            <div class="tab-pane" id="change3" role="tabpanel">
+                                                <div class="container">
+                                                    <canvas id="myChart2"></canvas>
+                                                </div>
+                                                <script>
+                                                    let myChart2 = document.getElementById('myChart2').getContext('2d');
+                                                    // Global Options
+                                                    Chart.defaults.global.defaultFontFamily = 'sans-serif';
+                                                    Chart.defaults.global.defaultFontSize = 10;
+                                                    Chart.defaults.global.defaultFontColor = '#777';
+
+                                                    let massPopChart2 = new Chart(myChart2, {
+                                                        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: ['THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT'],
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: [
+                                                                    617594,
+                                                                    81045,
+                                                                    653060,
+                                                                    96519,
+                                                                    95162,
+                                                                    395072,
+                                                                ],
+                                                                backgroundColor: [
+                                                                    'rgb(254 199 88)',
+                                                                    'rgb(254 199 88)',
+                                                                    'rgb(254 199 88)',
+                                                                    'rgb(254 199 88)',
+                                                                    'rgb(254 199 88)',
+                                                                    'rgb(254 199 88)'
+                                                                ],
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU THEO PHIM',
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000',
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            }
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+<footer>
+    <br />
+    <br />
+    <div class="span-footer"> </div>
+    <div class="text-footer">
+        Mọi thông tin thắc mắc cũng như phản hồi, xin quý khách vui lòng liên hệ đến
+    </div>
+    <div class="img-footer">
+        <a href="#" class="a-footer"><img src="img/face.png" class="img-face"> Bông food & drink</a>
+        <img src="img/call.png" class="img-face"> 0907339982
+    </div>
+</footer>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/profile.js"></script>
+
+
+</html>

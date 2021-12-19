@@ -1,16 +1,14 @@
 var express = require('express')
 var router = express.Router();
 
-// var checkCustomer = require('../middleware/checkCustomer.middleware')
-// var checkUser = require('../middleware/checkUser.middleware');
-// var Product= require('../models/product');
-// var Category= require('../models/category');
+var checkDeleteBill = require('../middleware/checkDeleteBill.middleware');
+
 var Film = require('../models/film');
 var Showtime= require('../models/showtime');
 var Bill=require('../models/bill');
 var Chair= require('../models/chair');
 
-router.get('/',function(req,res){
+router.get('/',checkDeleteBill,function(req,res){
     var today = new Date();
     var dayWeek = [];
     var daylength=24*60*60*1000;
@@ -91,7 +89,7 @@ router.get('/bill',function(req,res){
     
 })
 
-router.get('/:time',function(req,res){
+router.get('/:time',checkDeleteBill,function(req,res){
     var today = new Date();
     var time=new Date(parseInt(req.params.time));
     if (time.getDate()==(today.getDate())) return res.redirect('/');
@@ -129,8 +127,6 @@ router.get('/:time',function(req,res){
             })
         })
 })
-
-
 
 
 

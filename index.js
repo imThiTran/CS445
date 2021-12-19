@@ -51,47 +51,6 @@ app.listen(port,function(){
     console.log('Server started on port '+ port);
 })
 
-// app.post('/pay',function(req,res){
-//   var create_payment_json = {
-//     "intent": "sale",
-//     "payer": {
-//         "payment_method": "paypal"
-//     },
-//     "redirect_urls": {
-//         "return_url": "http://localhost:3000",
-//         "cancel_url": "http://localhost:3000/cancle"
-//     },
-//     "transactions": [{
-//         "item_list": {
-//             "items": [{
-//                 "name": "item",
-//                 "sku": "item",
-//                 "price": "1.00",
-//                 "currency": "USD",
-//                 "quantity": 1
-//             }]
-//         },
-//         "amount": {
-//             "currency": "USD",
-//             "total": "1.00"
-//         },
-//         "description": "This is the payment description."
-//     }]
-// };
-
-
-// paypal.payment.create(create_payment_json, function (error, payment) {
-//     if (error) {
-//         throw error;
-//     } else {
-//         for(let i=0;i<payment.links.length;i++){
-//             if(payment.links[i].rel==='approval_url'){
-//                 res.redirect(payment.links[i].href);
-//             }
-//         }
-//     }
-// });
-// })
 var auth = require('./routes/auth');
 var site = require('./routes/sites');
 var film = require('./routes/film');
@@ -102,6 +61,7 @@ var adminUser=require('./routes/admin-user');
 var adminFilm = require('./routes/admin-film');
 var adminShowtime = require('./routes/admin-showtime');
 var adminSnack=require('./routes/admin-snack');
+var adminStatistic=require('./routes/admin-statistic');
 
 var checkUser = require('./middleware/checkUser.middleware');
 var checkShowtime = require('./middleware/checkShowtime.middleware')
@@ -110,14 +70,16 @@ var checkBlock=require('./middleware/checkblock.middleware');
 var checkLogin= require('./middleware/checklogin.middleware');
 var checkAdmin = require('./middleware/checkadmin.middleware');
 var checkDeleteBill = require('./middleware/checkDeleteBill.middleware');
+
 app.use('/auth',checkDeleteBill,checkopenBlock,checkBlock,auth);
 app.use('/film',checkDeleteBill,checkShowtime,checkopenBlock,checkBlock,checkUser,film);
 app.use('/user',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,user);
 app.use('/order',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,order);
 app.use('/admin/user',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminUser);
+app.use('/admin/statistic',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminStatistic);
 app.use('/admin/film',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminFilm);
 app.use('/admin/showtime',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminShowtime);
 app.use('/admin/snack',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminSnack);
-app.use('/',checkDeleteBill,checkShowtime,checkopenBlock,checkBlock,checkUser,site);
+app.use('/',checkShowtime,checkopenBlock,checkBlock,checkUser,site);
 
 
