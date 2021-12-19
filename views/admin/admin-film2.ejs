@@ -5,7 +5,15 @@
     <div class="wrapper-index">
         
         <div class="ad-movie">
+            <div style="    display: flex;
+            justify-content: space-between;">
             <div class="h5-detail">Quản lý phim</div>
+            <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
+                                        data-target=".bd-example-modal-lg"
+                                        style="    width: 70px;
+                                        margin-top: 10px;
+                                        height: 40px; margin-right: 7px;">+</button>
+                                    </div>
             <span class="line-detail"></span>
                 <table class="table table-striped  table-bordered" style="font-size: 15px;">
                     <thead>
@@ -19,8 +27,7 @@
                             <th scope="col">Tình trạng</th>
                             <th scope="col" style="width: 1%;">
                                 <div class="btn-admin">
-                                    <button type="button" class="btn btn-danger btn-buy btn-sua" data-toggle="modal" data-target=".bd-example-modal-lg" 
-                                    >+</button>
+                                   
                                     
                                         <form action="" class="formAdd">
                                             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

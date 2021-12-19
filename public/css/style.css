@@ -872,7 +872,7 @@ input[type="checkbox"][id^="cb"] {
   background: none;
 }
 .date-lc1{
-  width: 400px;
+  width: 250px;
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 5px;
@@ -951,7 +951,7 @@ input[type="checkbox"][id^="cb"] {
     flex-direction: row;
     padding-top: 30px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .ten-theloai-skc{
   position: absolute;
@@ -1067,4 +1067,7 @@ p{
   font-size: 14px;
   color: #f93838;
   font-style: italic;
+}
+.item-slide{
+  padding: 0px 37px;
 }
