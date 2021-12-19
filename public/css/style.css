@@ -696,7 +696,7 @@ input[type="checkbox"][id^="cb"] {
   display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 80%;
+    width: 90%;
 }
 .ad-phim1{
   display: flex;
@@ -910,7 +910,7 @@ input[type="checkbox"][id^="cb"] {
     height: 20px;
     position: unset !important;
     margin-top: 0px !important;
-    margin-left: 20px !important;
+    margin-left: 0px !important;
 }
 .form-check-input:checked{
   background-color: rgb(254 199 88) !important;
@@ -1000,6 +1000,10 @@ input[type="checkbox"][id^="cb"] {
     position: unset !important;
     margin-top: 0px !important;
     margin-left: 20px !important;
+   
+}
+.form-check .form-check-input{
+  float: inherit !important ;
 }
 .form-check-input-del:checked{
   background-color: rgb(254 199 88) !important;
@@ -1072,4 +1076,14 @@ p{
 }
 .item-slide{
   padding: 0px 37px;
+}
+.chitietclose{
+  background: white;
+  border: none;
+  -webkit-text-stroke-width: medium;
+}
+.suaclose{
+  background: white;
+  border: none;
+  -webkit-text-stroke-width: medium;
 }
