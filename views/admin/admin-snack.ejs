@@ -1,19 +1,75 @@
 <%- include ('../layouts/admin-header') %>
-<body>
-    
-    <div class="wrapper-index">
-        
-        <div class="ad-movie">
-            <div style="    display: flex;
+
+    <body>
+
+        <div class="wrapper-index">
+
+            <div class="ad-movie">
+                <div style="    display: flex;
             justify-content: space-between;">
-            <div class="h5-detail">Quản lý ăn vặt</div>
-            <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg"
-                                        style="    width: 70px;
+                    <div class="h5-detail">Quản lý ăn vặt</div>
+                    <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
+                        data-target=".bd-example-modal-lg" style="    width: 70px;
                                         margin-top: 10px;
                                         height: 40px; margin-right: 7px;">+</button>
+                </div>
+                <div class="btn-admin">
+
+
+                    <form action="/admin/snack/add-snack" class="formAdd">
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Thêm món</h4>
+                                        <button type="button" class="close"
+                                            data-dismiss="modal">&times;</button>
                                     </div>
-            <span class="line-detail"></span>
+
+                                    <div class="modal-body-plus" style="    align-items: center;">
+                                        <div class="modal-left">
+                                            <div class="col-5 img-add">
+                                                <img id="img-edit-item" class="imgAddPreview"
+                                                    src="/img/noimage.png" style="width: 60%;">
+                                                <input type="file" class="form-control imgChangeAdd"
+                                                    name="image" id="img1"
+                                                    accept="image/png, image/jpeg, image/jpg"
+                                                    style="display: none;">
+                                                <label class="btn-addimg" id="btn-edit-img-item"
+                                                    for="img1">Chọn ảnh</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-right">
+                                            <div class="ad-phim">
+                                                <label class="label-chitiet" for="">Tên món</label>
+                                                <div class="input-ten">
+                                                    <input class="input-sua" name="name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="ad-phim">
+                                                <label class="label-chitiet" for="">Giá tiền</label>
+                                                <input class="input-sua" name="price" type="text">
+                                            </div>
+                                            <div class="ad-phim">
+                                                <label class="label-chitiet" for="">Số lượng</label>
+                                                <input class="input-sua" type="number">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="alertAdd" style="color: red;"> </p>
+                                        <button type="button"
+                                            class="btnAdd btn btn-danger">Thêm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <span class="line-detail"></span>
                 <table class="table table-striped  table-bordered" style="font-size: 15px;">
                     <thead>
                         <tr>
@@ -23,59 +79,7 @@
                             <th scope="col">Số lượng</th>
                             <th scope="col">Tình trạng</th>
                             <th scope="col" style="width: 1%;">
-                                <div class="btn-admin">
-                                   
-
-                                    <form action="/admin/snack/add-snack" class="formAdd">
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Thêm món</h4>
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    </div>
-
-                                                    <div class="modal-body-plus" style="    align-items: center;">
-                                                        <div class="modal-left">
-                                                            <div class="col-5 img-add">
-                                                                <img id="img-edit-item" class="imgAddPreview"
-                                                                    src="/img/noimage.png" style="width: 60%;">
-                                                                <input type="file" class="form-control imgChangeAdd"
-                                                                    name="image" id="img1"
-                                                                    accept="image/png, image/jpeg, image/jpg"
-                                                                    style="display: none;">
-                                                                <label class="btn-addimg" id="btn-edit-img-item"
-                                                                    for="img1">Chọn ảnh</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-right">
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Tên món</label>
-                                                                <div class="input-ten">
-                                                                    <input class="input-sua" name="name" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Giá tiền</label>
-                                                                <input class="input-sua" name="price" type="text">
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Số lượng</label>
-                                                                <input class="input-sua" type="number">
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <p class="alertAdd" style="color: red;"> </p>
-                                                        <button type="button" class="btnAdd btn btn-danger">Thêm</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </form>
+                             
                             </th>
                         </tr>
                     </thead>
@@ -83,263 +87,270 @@
                         <%snacks.forEach(function(sn){%>
                             <tr class="trClosest">
                                 <th scope="row" style="width: 10%">
-                                    <img class="tdImage" style="width: 100%" src="/img/snacks/<%=sn._id%>/<%=sn.photo%>" alt="">
+                                    <img class="tdImage" style="width: 100%" src="/img/snacks/<%=sn._id%>/<%=sn.photo%>"
+                                        alt="">
                                 </th>
                                 <td class="tdName" style="width: 20%;">
-                                    <div><%=sn.name%></div>
+                                    <div>
+                                        <%=sn.name%>
+                                    </div>
                                 </td>
-                                <td class="tdPrice"><%=sn.price%> VND</td>
+                                <td class="tdPrice">
+                                    <%=sn.price%> VND
+                                </td>
                                 <td>100</td>
                                 <td>
                                     <div class="form-check form-switch">
                                         <input class="swclosed form-check-input" type="checkbox" role="switch"
                                             id="<%=sn._id%>" <%if (sn.block==0){%>checked<%}%>>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                     </div>
                                 </td>
-    
+
                                 <td>
                                     <div class="ad-btn" style="width:60px">
-                                        <button type="button" id="<%=sn._id%>" class="deleteBtn btn-close btn-xoa" aria-label="Close"></button>
+                                        <button type="button" id="<%=sn._id%>" class="deleteBtn btn-close btn-xoa"
+                                            aria-label="Close"></button>
                                         <button type="button" class="editBtn btn btn-danger btn-buy" id="<%=sn._id%>"
                                             style="width:100%; margin-top: 20px">Sửa</button>
                                     </div>
                                 </td>
                             </tr>
-                        <%})%>   
-                        <!-- form nút sửa -->
-                        <div id="myModal" class="modal" style="margin-top: -50px">
-                            <div class="modal-content" style="width: 70%; font-size: 16px;">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Sửa phim</h4>
-                                    <button type="button" class="suaclose"
-                                        data-dismiss="modal">&times;</button>
-                                </div>
-                                <form class="formEdit" action="">
-                                    <div class="modal-body-plus" style="    align-items: center;">
-                                        <div class="modal-left">
-                                            <div class="col-5 img-add">
-                                                <img id="img-edit-item" class="imgEditPreview"
-                                                    src="img/trasua.jpg" style="width: 50%;">
-                                                <input type="file" class="form-control imgChangeAdd"
-                                                    name="image" id="img2"
-                                                    accept="image/png, image/jpeg, image/jpg"
-                                                    style="display: none;">
-                                                <label style="font-weight: 700;" class="btn-addimg"
-                                                    id="btn-edit-img-item" for="img2">Chọn ảnh</label>
-                                            </div>
+                            <%})%>
+                                <!-- form nút sửa -->
+                                <div id="myModal" class="modal" style="margin-top: -50px">
+                                    <div class="modal-content" style="width: 70%; font-size: 16px;">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Sửa phim</h4>
+                                            <button type="button" class="suaclose" data-dismiss="modal">&times;</button>
                                         </div>
-                                        <div class="modal-right">
-                                            <div class="ad-phim">
-                                                <label class="label-chitiet" for="">Tên món</label>
-                                                <div class="input-ten">
-                                                    <input name="name" class="nameEdit input-sua" type="text">
+                                        <form class="formEdit" action="">
+                                            <div class="modal-body-plus" style="    align-items: center;">
+                                                <div class="modal-left">
+                                                    <div class="col-5 img-add">
+                                                        <img id="img-edit-item" class="imgEditPreview"
+                                                            src="img/trasua.jpg" style="width: 50%;">
+                                                        <input type="file" class="form-control imgChangeAdd"
+                                                            name="image" id="img2"
+                                                            accept="image/png, image/jpeg, image/jpg"
+                                                            style="display: none;">
+                                                        <label style="font-weight: 700;" class="btn-addimg"
+                                                            id="btn-edit-img-item" for="img2">Chọn ảnh</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="ad-phim">
-                                                <label class="label-chitiet" for="">Giá tiền</label>
-                                                <input name="price" class="priceEdit input-sua" type="text">
-                                            </div>
-                                            <div class="ad-phim">
-                                                <label class="label-chitiet" for="">Số lượng</label>
-                                                <input class="input-sua" type="number">
-                                                <input type="hidden" name="idSnack" class="idSnack">
-                                                <input type="hidden" name="pimage" class="pimage" id="">
+                                                <div class="modal-right">
+                                                    <div class="ad-phim">
+                                                        <label class="label-chitiet" for="">Tên món</label>
+                                                        <div class="input-ten">
+                                                            <input name="name" class="nameEdit input-sua" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ad-phim">
+                                                        <label class="label-chitiet" for="">Giá tiền</label>
+                                                        <input name="price" class="priceEdit input-sua" type="text">
+                                                    </div>
+                                                    <div class="ad-phim">
+                                                        <label class="label-chitiet" for="">Số lượng</label>
+                                                        <input class="input-sua" type="number">
+                                                        <input type="hidden" name="idSnack" class="idSnack">
+                                                        <input type="hidden" name="pimage" class="pimage" id="">
+                                                    </div>
+
+                                                </div>
+
                                             </div>
 
-                                        </div>
-
+                                            <div class="modal-footer">
+                                                <p class="alertEdit" style="color: red;"></p>
+                                                <button type="button" id="btn-save-change-item"
+                                                    class="btn btn-danger">Sửa</button>
+                                            </div>
+                                        </form>
                                     </div>
-
-                                    <div class="modal-footer">
-                                        <p class="alertEdit" style="color: red;"></p>
-                                        <button type="button" id="btn-save-change-item" class="btn btn-danger">Sửa</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                                </div>
                     </tbody>
                 </table>
 
-        </div>
-</body>
-<%- include ('../layouts/footer') %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-    $('a.confirmDeletion').on('click', function () {
-        if (!confirm('Confirm Deletion ? '))
-            return false;
-    })
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            </div>
+    </body>
+    <%- include ('../layouts/footer') %>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script>
+            $('a.confirmDeletion').on('click', function () {
+                if (!confirm('Confirm Deletion ? '))
+                    return false;
+            })
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $(".imgEditPreview").attr('src', e.target.result);
-                $(".imgAddPreview").attr('src', e.target.result);
+                    reader.onload = function (e) {
+                        $(".imgEditPreview").attr('src', e.target.result);
+                        $(".imgAddPreview").attr('src', e.target.result);
 
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
 
 
-    $(".imgChangeAdd").change(function () {
-        readURL(this);
-    })
+            $(".imgChangeAdd").change(function () {
+                readURL(this);
+            })
 
-    $(".imgChangeEdit").change(function () {
-        readURL(this);
-    })
+            $(".imgChangeEdit").change(function () {
+                readURL(this);
+            })
 
-</script>
-<script>
-    var modal = document.getElementById('myModal');
-    // var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("suaclose")[0];
+        </script>
+        <script>
+            var modal = document.getElementById('myModal');
+            // var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("suaclose")[0];
 
-    var tdName;
-    var tdImage;
-    var tdPrice;
-    // btn.onclick = function () {
-    //     modal.style.display = "block";
-    // }
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            $('.imgAddPreview').attr('src','/img/noimage.png');
-            $('.imgChangeAdd').val(null);
-            $('.imgChangeEdit').val(null);
-        }
-        $('.alertAdd').text("");
-    }
-   $('.btnAdd').click(function(e){
-    var formm=$('.formAdd')[0];
-    var data = new FormData(formm);
-    $.ajax({
-        url: "/admin/snack/add-snack/",
-        type: "POST",
-        enctype: "multipart/form-data",
-        cache:false,
-        processData: false,
-        contentType: false,
-        data: data,
-        success: function (result) {
-            if ( result.noti != "") $('.alertAdd').text(result.noti) ;
-            else {
-                // Set the URL to whatever it was plus "#".
-                url = document.URL+"#";
-                location = "#";
-
-                //Reload the page
-                location.reload(true);
+            var tdName;
+            var tdImage;
+            var tdPrice;
+            // btn.onclick = function () {
+            //     modal.style.display = "block";
+            // }
+            span.onclick = function () {
+                modal.style.display = "none";
             }
-        }
-    });
-        e.preventDefault();
-   })
-
-$('.swclosed').each(function(){
-  var $this = $(this);
-  var id = $this.attr('id');
-  var i ;
-  $this.change(function(){
-    if ($this.is(':checked')) i=0;
-    else i=1;
-    $.ajax({
-      url: "/admin/snack/editBlock",
-      method: "POST",
-      contentType: "application/json",
-      timeout: 10000,
-      data: JSON.stringify({ id: id, block : i }),
-      success: function (result) {
-      }
-    })
-  })
-  
-})
-//load nut sua
-var nameEdit=$('.nameEdit');
-var priceEdit=$('.priceEdit')
-$('.editBtn').each(function () {
-        var $this = $(this);
-        var id = $this.attr('id');
-        $this.on('click',function(){
-             tdName=$this.closest('.trClosest').find('.tdName');
-             tdImage=$this.closest('.trClosest').find('.tdImage');
-             tdPrice=$this.closest('.trClosest').find('.tdPrice');
-             
-          $.ajax({
-            url: "/admin/snack/editBtn",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: id }),
-            success: function (result) {  
-                 $('.imgEditPreview').attr('src','/img/snacks/'+id+'/'+result.snack.photo);
-                nameEdit.val(result.snack.name);
-                priceEdit.val(result.snack.price);
-                $('.pimage').val(result.snack.photo);
-                $('.idSnack').val(id);
-                modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    $('.imgAddPreview').attr('src', '/img/noimage.png');
+                    $('.imgChangeAdd').val(null);
+                    $('.imgChangeEdit').val(null);
+                }
+                $('.alertAdd').text("");
             }
-        }) 
-      })
-      
-      })
-
-//sua snack
-$('#btn-save-change-item').on('click',function(e){
-  var formm=$('.formEdit')[0];
-  var data = new FormData(formm);
-  $.ajax({
-    url: "/admin/snack/edit-snack",
-    type: "POST",
-    enctype: "multipart/form-data",
-    cache:false,
-    processData: false,
-    contentType: false,
-    data: data,
-    success: function (result) {
-          if ( result.noti != "") $('.alertEdit').text(result.noti) ;
-           else {
-            tdName.text(nameEdit.val());
-            tdPrice.text(priceEdit.val()+' VND');
-            tdImage.attr('src',result.imageAjax);
-            modal.style.display = "none";
-        }
-      }
-  });
-  e.preventDefault();
-}) 
-//xoa snack
-$('.deleteBtn').each(function () {
-        var $this = $(this);
-        var id = $this.attr('id');
-        var trClosest=$this.closest('.trClosest')
-        $this.on('click',function(){ 
-            if (confirm('Bạn có chắc chắn xóa ?')){
+            $('.btnAdd').click(function (e) {
+                var formm = $('.formAdd')[0];
+                var data = new FormData(formm);
                 $.ajax({
-                url: "/admin/snack/delete-snack",
-                method: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({ id: id }),
-                success: function (result) {
-                    trClosest.remove();
-                        }
-                    }) 
-            }
-          
-      })
+                    url: "/admin/snack/add-snack/",
+                    type: "POST",
+                    enctype: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (result) {
+                        if (result.noti != "") $('.alertAdd').text(result.noti);
+                        else {
+                            // Set the URL to whatever it was plus "#".
+                            url = document.URL + "#";
+                            location = "#";
 
-})
-</script>
-</html>
+                            //Reload the page
+                            location.reload(true);
+                        }
+                    }
+                });
+                e.preventDefault();
+            })
+
+            $('.swclosed').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                var i;
+                $this.change(function () {
+                    if ($this.is(':checked')) i = 0;
+                    else i = 1;
+                    $.ajax({
+                        url: "/admin/snack/editBlock",
+                        method: "POST",
+                        contentType: "application/json",
+                        timeout: 10000,
+                        data: JSON.stringify({ id: id, block: i }),
+                        success: function (result) {
+                        }
+                    })
+                })
+
+            })
+            //load nut sua
+            var nameEdit = $('.nameEdit');
+            var priceEdit = $('.priceEdit')
+            $('.editBtn').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                $this.on('click', function () {
+                    tdName = $this.closest('.trClosest').find('.tdName');
+                    tdImage = $this.closest('.trClosest').find('.tdImage');
+                    tdPrice = $this.closest('.trClosest').find('.tdPrice');
+
+                    $.ajax({
+                        url: "/admin/snack/editBtn",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ id: id }),
+                        success: function (result) {
+                            $('.imgEditPreview').attr('src', '/img/snacks/' + id + '/' + result.snack.photo);
+                            nameEdit.val(result.snack.name);
+                            priceEdit.val(result.snack.price);
+                            $('.pimage').val(result.snack.photo);
+                            $('.idSnack').val(id);
+                            modal.style.display = "block";
+                        }
+                    })
+                })
+
+            })
+
+            //sua snack
+            $('#btn-save-change-item').on('click', function (e) {
+                var formm = $('.formEdit')[0];
+                var data = new FormData(formm);
+                $.ajax({
+                    url: "/admin/snack/edit-snack",
+                    type: "POST",
+                    enctype: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (result) {
+                        if (result.noti != "") $('.alertEdit').text(result.noti);
+                        else {
+                            tdName.text(nameEdit.val());
+                            tdPrice.text(priceEdit.val() + ' VND');
+                            tdImage.attr('src', result.imageAjax);
+                            modal.style.display = "none";
+                        }
+                    }
+                });
+                e.preventDefault();
+            })
+            //xoa snack
+            $('.deleteBtn').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                var trClosest = $this.closest('.trClosest')
+                $this.on('click', function () {
+                    if (confirm('Bạn có chắc chắn xóa ?')) {
+                        $.ajax({
+                            url: "/admin/snack/delete-snack",
+                            method: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify({ id: id }),
+                            success: function (result) {
+                                trClosest.remove();
+                            }
+                        })
+                    }
+
+                })
+
+            })
+        </script>
+
+        </html>
