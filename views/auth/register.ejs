@@ -11,35 +11,41 @@
 <body>
 
     <div class="container">
-        <form action="/auth/register" method="post" class="form " id="createAccount">
+        <form action="/auth/register" method="post" class="form" id="createAccount">
             <div class="logo-auth">
                 <a href="/"><img class="logo" src="/img/MEGAS (2).png" alt=""></a></div>
             <h1 class="form-title">Đăng ký</h1>
             <div class="form-message form-message-error"><%=mes%></div>
             <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Họ tên" name="fullname" <%if (typeof fullname !="undefined"){%> value="<%=fullname%>"<%}%>>
+                <input type="text" id="name" class="form-input" autofocus placeholder="Họ tên" name="fullname" <%if (typeof fullname !="undefined"){%> value="<%=fullname%>"<%}%>>
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="name_error"></span>
             </div>
             <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Email" name="email" <%if (typeof email !="undefined"){%> value="<%=email%>"<%}%>>
+                <input type="text"id="email" class="form-input" autofocus placeholder="Email" name="email" <%if (typeof email !="undefined"){%> value="<%=email%>"<%}%>>
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="email_error"></span>
             </div>
           
             <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Số điện thoại" name="phone" <%if (typeof phone !="undefined"){%> value="<%=phone%>"<%}%>>
+                <input type="text" id="phone" class="form-input" autofocus placeholder="Số điện thoại" name="phone" <%if (typeof phone !="undefined"){%> value="<%=phone%>"<%}%>>
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="phone_error"></span>
             </div>
             <div class="form-input-group">
-                <input type="date" class="form-input" autofocus placeholder="Ngày sinh" name="birthday" <%if (typeof birthday !="undefined"){%> value="<%=birthday%>"<%}%>>
+                <input type="date" id="birth" class="form-input" autofocus placeholder="Ngày sinh" name="birthday" <%if (typeof birthday !="undefined"){%> value="<%=birthday%>"<%}%>>
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="birth_error"></span>
             </div>
             <div class="form-input-group">
-                <input type="password" name="password" class="form-input" autofocus placeholder="Mật khẩu">
+                <input type="password" id="pass" name="password" class="form-input" autofocus placeholder="Mật khẩu">
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="pass_error"></span>
             </div>
             <div class="form-input-group">
-                <input type="password" class="form-input" autofocus placeholder="Nhập lại mật khẩu">
+                <input type="password" id="repass" class="form-input" autofocus placeholder="Nhập lại mật khẩu">
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="repass_error"></span>
             </div>
             <button class="form-button" type="Submit">Đăng ký</button>
             <p class="form-text">
@@ -49,4 +55,27 @@
     </div>
 
 </body>
+<script src="/js/validate.js"></script>
+<script>
+    Validator({
+        form: '#createAccount',
+        errorSelect: '.span-error',
+        rules: [
+            Validator.isRequired('#name'),
+            Validator.isName('#name'),
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#phone'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#birth'),
+            Validator.isRequired('#pass'),
+            Validator.minLength('#pass'),
+            Validator.isRequired('#repass'),
+            Validator.isConfirm('#repass', function(){
+                return document.querySelector('#createAccount #pass').value;
+            })
+        ]
+    });
+
+</script>
 </html>

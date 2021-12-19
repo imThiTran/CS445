@@ -8,7 +8,7 @@ body{
     justify-content: center;
     font-size: 18px;
     background: url(/img/h1.jpg);
-    background-size: cover;
+
 }
 .container{
     width: 400px;
@@ -120,3 +120,8 @@ body{
 a:hover{
     color: rgb(254 199 88);
 }
+.span-error{
+    font-size: 14px;
+    color: #f93838;
+    font-style: italic;
+  }
