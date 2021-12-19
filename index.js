@@ -109,15 +109,15 @@ var checkopenBlock=require('./middleware/checkopenblock.middleware');
 var checkBlock=require('./middleware/checkblock.middleware');
 var checkLogin= require('./middleware/checklogin.middleware');
 var checkAdmin = require('./middleware/checkadmin.middleware');
-
-app.use('/auth',checkopenBlock,checkBlock,auth);
-app.use('/film',checkShowtime,checkopenBlock,checkBlock,checkUser,film);
-app.use('/user',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,user);
-app.use('/order',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,order);
-app.use('/admin/user',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminUser);
-app.use('/admin/film',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminFilm);
-app.use('/admin/showtime',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminShowtime);
-app.use('/admin/snack',checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminSnack);
-app.use('/',checkShowtime,checkopenBlock,checkBlock,checkUser,site);
+var checkDeleteBill = require('./middleware/checkDeleteBill.middleware');
+app.use('/auth',checkDeleteBill,checkopenBlock,checkBlock,auth);
+app.use('/film',checkDeleteBill,checkShowtime,checkopenBlock,checkBlock,checkUser,film);
+app.use('/user',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,user);
+app.use('/order',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkUser,order);
+app.use('/admin/user',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminUser);
+app.use('/admin/film',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminFilm);
+app.use('/admin/showtime',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminShowtime);
+app.use('/admin/snack',checkDeleteBill,checkShowtime,checkopenBlock,checkLogin,checkBlock,checkAdmin,checkUser,adminSnack);
+app.use('/',checkDeleteBill,checkShowtime,checkopenBlock,checkBlock,checkUser,site);
 
 
