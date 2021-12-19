@@ -341,10 +341,12 @@ html {
 }
 .sub2{
   padding-left: 10px;
+  flex: 6;
   
 }
 .sub1{
   font-weight: 700;
+  flex: 1;
 }
 .sub2-chitiet{
   display: contents;

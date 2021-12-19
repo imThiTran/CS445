@@ -31,8 +31,10 @@
                     </div>
                     <div class="detail-noidung">
 
-                        <div class="detail-left ">
+                        <div class="detail-left " style="align-items: flex-start;">
                             <img class="detail-img" src="/img/films/<%=film._id%>/<%=film.photo%>">
+                            <div style="display: flex; max-width: 400px;
+                            width: 100%;justify-content: center;">
                             <%if (film.status=="Đang khởi chiếu"){ %>
                                 <button type="button" class="btn btn-danger btn-buy" data-toggle="modal" data-target="#myModal">
                                     Mua vé
@@ -42,6 +44,7 @@
                                     <%=film.status%>
                                </button>
                             <%}%>
+                        </div> 
                             
                      
                            <!-- bảng pop up  -->

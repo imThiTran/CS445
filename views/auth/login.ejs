@@ -17,12 +17,14 @@
             <h1 class="form-title">Đăng nhập</h1>
             <div class="form-message form-message-error"><%=mes%></div>
             <div class="form-input-group">
-                <input type="text" class="form-input" autofocus placeholder="Email" name="email" <%if (value!="") { %> value=<%=value%> <%}%> >
+                <input type="text" id="email" class="form-input" autofocus placeholder="Email" name="email" <%if (value!="") { %> value=<%=value%> <%}%> >
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="emaillogin_error"></span>
             </div>
             <div class="form-input-group">
-                <input type="password" class="form-input" autofocus placeholder="Mật khẩu" name="password">
+                <input type="password" id="pass" class="form-input" autofocus placeholder="Mật khẩu" name="password">
                 <div class="form-input-error-message"></div>
+                <span class="span-error" id="passlogin_error"></span>
             </div>
             <button class="form-button" type="Submit">Đăng nhập</button>
             <p class="form-text">
@@ -37,4 +39,17 @@
     </div>
 
 </body>
+<script src="/js/validate.js"></script>
+<script>
+    Validator({
+        form: '#login',
+        errorSelect: '.span-error',
+        rules: [
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#pass')
+        ]
+    });
+
+</script>
 </html>
