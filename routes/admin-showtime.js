@@ -478,6 +478,7 @@ router.post('/delete-all',function(req,res){
                     }, 10);
                 }
             })
+            res.redirect('back');
         })
     } else {
         for (var i=0;i<checkall.length;i++){
