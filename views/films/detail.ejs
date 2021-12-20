@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             
                                             <select name="date" id="dateShow" film="<%=film.nameEN%>" class="form-select" aria-label="Default select example">
-                                                <option selected>Chọn ngày chiếu</option>
+                                                <option value="none" selected>Chọn ngày chiếu</option>
                                                 <%date.forEach(function(dt){%>
                                                     <% var newDateArr = dt.split('-') %>
                                                     <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
@@ -80,7 +80,8 @@
                                         </div>
                                      </div>
                                      <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger" >Tiếp tục</button>
+                                         <p style="color: red; font-weight: bold;" class="alert"></p>
+                                        <button type="submit" class="btn btn-danger btn-submit" >Tiếp tục</button>
                                      </div>
                                      <%} else { %>
                                         <p style="    padding: 20px;">Phim này hiện chưa có suất chiếu</p>
@@ -180,6 +181,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $('#dateShow').change(function(e){
+            $('.alert').html(null);
             var value= $(this).val();
             var nameEN= $(this).attr('film');
             $.ajax({
@@ -192,7 +194,23 @@
                      }
                 })
         })
-
+        
+        $('.btn-submit').click(function(e){
+            var date=$('#dateShow').val();
+            var timeChecked=$('.choosetime:checked').length;
+            if (date=="none"){
+                e.preventDefault();
+                $('.alert').text('Chưa chọn ngày chiếu')
+            } else {
+                    if (timeChecked==0){
+                    e.preventDefault();
+                    $('.alert').text('Chưa chọn suất chiếu')
+                } 
+            }
+        })
+        function clearAlert(){
+            $('.alert').html(null);
+        }
         // function handleClick(myrdo){
         //     var date=$('#dateShow').val();
         //     var nameEN= $('#dateShow').attr('film');
