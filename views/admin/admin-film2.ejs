@@ -1,126 +1,160 @@
 <%- include ('../layouts/admin-header') %>
 
-<body>
-    
-    <div class="wrapper-index">
-        
-        <div class="ad-movie">
-            <div style="    display: flex;
+    <body>
+
+        <div class="wrapper-index">
+
+            <div class="ad-movie">
+                <div style="    display: flex;
             justify-content: space-between;">
-            <div class="h5-detail">Quản lý phim</div>
-            <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg"
-                                        style="    width: 70px;
+                    <div class="h5-detail">Quản lý phim</div>
+                    <button type="button" class="btn btn-danger btn-buy" data-toggle="modal"
+                        data-target=".bd-example-modal-lg" style="    width: 70px;
                                         margin-top: 10px;
                                         height: 40px; margin-right: 7px;">+</button>
+                </div>
+                <form action="" class="formAdd" id="form-add">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Thêm phim</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body-plus">
+                                    <div class="modal-left">
+                                        <div class="col-5 img-add">
+                                            <img id="img-edit-item" class="imgAddPreview" src="/img/noimage.png"
+                                                style="width: 100%;">
+                                            <input type="file" class="form-control imgChangeAdd" name="image" id="img1"
+                                                accept="image/png, image/jpeg, image/jpg" style="display: none;">
+                                            <label class="btn-addimg" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
+                                            <p style="color: red;" class="alertAdd"></p>
+                                        </div>
                                     </div>
-                                    <form action="" class="formAdd">
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                              <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Thêm phim</h4>
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    </div>
-    
-                                                    <div class="modal-body-plus">
-                                                        <div class="modal-left">
-                                                            <div class="col-5 img-add">
-                                                                <img id="img-edit-item" class="imgAddPreview"
-                                                                    src="/img/noimage.png" style="width: 100%;">
-                                                                <input type="file" class="form-control imgChangeAdd" name="image"
-                                                                    id="img1" accept="image/png, image/jpeg, image/jpg"
-                                                                    style="display: none;">
-                                                                <label class="btn-addimg" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-right">
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Tên phim</label>
-                                                                <div class="input-ten">
-                                                                    <input class="input-sua" placeholder="Tên tiếng anh" name="nameEN" type="text">
-                                                                    <input class="input-sua" placeholder="Tên tiếng việt" name="nameVN" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Đạo diễn</label>
-                                                                <input class="input-sua" name="director" type="text">
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Diễn viên</label>
-                                                                <input class="input-sua" name="actor" type="text">
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Khởi chiếu</label>
-                                                                <input class="input-sua" name="showdate" type="date">
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Thời gian</label>
-                                                                <input class="input-sua" name="time" type="number">
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Thể loại</label>
-                                                                <select class="input-sua" name="type" id="">
-                                                                    <option value="Kinh dị">Kinh dị</option>
-                                                                    <option value="Tình cảm">Tình cảm</option>
-                                                                    <option value="Hành động">Hành động</option>
-                                                                    <option value="Hài hước">Hài hước</option>
-                                                                    <option value="Hoạt hình">Hoạt hình</option>
-                                                                    <option value="Lịch sử">Lịch sử</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Rating</label>
-                                                                <div style="display: flex; justify-content: center;">
-                                                                <div class="form-check rating">
-                                                                    <input checked class="form-check-input" value="18" type="radio" name="agelimit" id="flexRadioDefault1">
-                                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                                        <img class="img-cs" style="width: 50%;" src="/img/cs18.png">
-                                                                    </label>
-                                                                  </div>
-                                                                  <div class="form-check rating">
-                                                                    <input class="form-check-input" value="16" type="radio" name="agelimit" id="flexRadioDefault1">
-                                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                                        <img class="img-cs" style="width: 50%;" src="/img/cs16.png">
-                                                                    </label>
-                                                                  </div>
-                                                                  <div class="form-check rating">
-                                                                    <input class="form-check-input" value="13" type="radio" name="agelimit" id="flexRadioDefault1">
-                                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                                        <img class="img-cs" style="width: 50%;" src="/img/cs13.png">
-                                                                    </label>
-                                                                  </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Tình trạng</label>
-                                                                <select class="input-sua" name="status" id="">
-                                                                    <option value="Đang khởi chiếu">Đang khởi chiếu</option>
-                                                                    <option value="Sắp khởi chiếu">Sắp khởi chiếu</option>
-                                                                    <option value="Đã chiếu xong">Đã chiếu xong</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Chi tiết</label>
-                                                                <textarea class="input-sua-area" name="detail" id="" cols="20" rows="10"></textarea>
-                                                            </div>
-                                                            <div class="ad-phim">
-                                                                <label class="label-chitiet" for="">Link Trailer</label>
-                                                                <input class="input-sua" name="trailerId" type="url">
-                                                            </div>
-                                                        </div>
-                                                            
-                                                        </div>
-                                                    <div class="modal-footer">
-                                                        <p style="color: red;" class="alertAdd"></p>
-                                                        <button type="button" id="btn-save-new-item" class="btn btn-danger">Thêm</button>
-                                                    </div>
+                                    <div class="modal-right">
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tên phim</label>
+                                            <div class="input-ten">
+                                                <div class="form-user">
+                                                    <input class="input-sua" id="nameEN" placeholder="Tên tiếng anh"
+                                                        name="nameEN" type="text">
+                                                    <span class="span-error"></span>
+                                                </div>
+                                                <div class="form-user">
+                                                    <input class="input-sua" id="nameVN" placeholder="Tên tiếng việt"
+                                                        name="nameVN" type="text">
+                                                    <span class="span-error"></span>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-            <span class="line-detail"></span>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Đạo diễn</label>
+                                            <div class="form-user">
+                                                <input class="input-sua" id="director" name="director" type="text">
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Diễn viên</label>
+                                            <div class="form-user">
+                                                <input class="input-sua" id="actor" name="actor" type="text">
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Khởi chiếu</label>
+                                            <div class="form-user">
+                                                <input class="input-sua" id="date" name="showdate" type="date">
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thời gian</label>
+                                            <div class="form-user">
+                                                <input class="input-sua" id="time" name="time" type="number">
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Thể loại</label>
+                                            <div class="form-user">
+                                                <select class="input-sua" name="type" id="">
+                                                    <option value="Kinh dị">Kinh dị</option>
+                                                    <option value="Tình cảm">Tình cảm</option>
+                                                    <option value="Hành động">Hành động</option>
+                                                    <option value="Hài hước">Hài hước</option>
+                                                    <option value="Hoạt hình">Hoạt hình</option>
+                                                    <option value="Lịch sử">Lịch sử</option>
+                                                </select>
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Rating</label>
+                                            <div style="display: flex; justify-content: center;">
+                                                <div class="form-check rating">
+                                                    <input checked class="form-check-input" value="18" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs18.png">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check rating">
+                                                    <input class="form-check-input" value="16" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs16.png">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check rating">
+                                                    <input class="form-check-input" value="13" type="radio"
+                                                        name="agelimit" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs13.png">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Tình trạng</label>
+                                            <div class="form-user">
+                                                <select class="input-sua" name="status" id="">
+                                                    <option value="Đang khởi chiếu">Đang khởi chiếu</option>
+                                                    <option value="Sắp khởi chiếu">Sắp khởi chiếu</option>
+                                                    <option value="Đã chiếu xong">Đã chiếu xong</option>
+                                                </select>
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Chi tiết</label>
+                                            <div class="form-user">
+                                                <textarea class="input-sua-area" id="detail" name="detail" id=""
+                                                    cols="20" rows="10"></textarea>
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="ad-phim">
+                                            <label class="label-chitiet" for="">Link Trailer</label>
+                                            <div class="form-user">
+                                                <input class="input-sua" id="trailer" name="trailerId" type="url">
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" id="btn-save-new-item" class="btn btn-danger">Thêm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <span class="line-detail"></span>
                 <table class="table table-striped  table-bordered" style="font-size: 15px;">
                     <thead>
                         <tr>
@@ -133,9 +167,9 @@
                             <th scope="col">Tình trạng</th>
                             <th scope="col" style="width: 1%;">
                                 <div class="btn-admin">
-                                   
-                                    
-                                        
+
+
+
                             </th>
                         </tr>
                     </thead>
@@ -143,87 +177,120 @@
                         <%films.forEach(function(fi){%>
                             <tr class="trClosest">
                                 <th scope="row" style="width: 15%">
-                                    <%if (fi.photo!=""){%>
-                                        <img class="tdImage" style="width: 100%" src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="">
-                                    <%} else {%>
-                                        <img class="tdImage" style="width: 100%" src="/img/noimage.png" alt="">
-                                    <%}%>
+                                    <%if (fi.photo!="" ){%>
+                                        <img class="tdImage" style="width: 100%"
+                                            src="/img/films/<%=fi._id%>/<%=fi.photo%>" alt="">
+                                        <%} else {%>
+                                            <img class="tdImage" style="width: 100%" src="/img/noimage.png" alt="">
+                                            <%}%>
                                 </th>
                                 <td style="width: 20%;">
-                                    <div class="tdNameEN"><%=fi.nameEN%></div>
-                                    <div class="tdNameVN"><%=fi.nameVN%></div>
-                                </td>
-                                <td class="tdDirector"><%=fi.director%></td>
-                                <% var newDateArr = fi.showdate.split('-') %>
-                                <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
-                                <td class="tdShowdate"><%=newDate%></td>
-                                <td class="tdType"><%=fi.type%></td>
-                                <td>
-                                    <img class="tdRating img-cs" style="width:50px" src="/img/cs<%=fi.agelimit%>.png">
-                                </td>
-                                <td>
-                                    <div class="tdStatus"><%=fi.status%></div>
-                                </td>
-                                <td>
-                                    <div class="ad-btn" style="width:60px">
-                                        <button type="button" id="<%=fi._id%>" class="deleteBtn btn-close btn-xoa" aria-label="Close"></button>
-                                        <button type="button" class="btn btn-danger btn-buy editBtn" id="<%=fi._id%>"
-                                            style="width:100%; margin-top: 20px">Sửa</button>
-                                        <button type="button" class="btn btn-danger btn-buy detailBtn" id="<%=fi._id%>" style="    margin-top: 20px;
-                                            padding: 5px;
-                                            width: 80px;">Chi tiết</button>
+                                    <div class="tdNameEN">
+                                        <%=fi.nameEN%>
+                                    </div>
+                                    <div class="tdNameVN">
+                                        <%=fi.nameVN%>
                                     </div>
                                 </td>
+                                <td class="tdDirector">
+                                    <%=fi.director%>
+                                </td>
+                                <% var newDateArr=fi.showdate.split('-') %>
+                                    <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                        <td class="tdShowdate">
+                                            <%=newDate%>
+                                        </td>
+                                        <td class="tdType">
+                                            <%=fi.type%>
+                                        </td>
+                                        <td>
+                                            <img class="tdRating img-cs" style="width:50px"
+                                                src="/img/cs<%=fi.agelimit%>.png">
+                                        </td>
+                                        <td>
+                                            <div class="tdStatus">
+                                                <%=fi.status%>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ad-btn" style="width:60px">
+                                                <button type="button" id="<%=fi._id%>"
+                                                    class="deleteBtn btn-close btn-xoa" aria-label="Close"></button>
+                                                <button type="button" class="btn btn-danger btn-buy editBtn"
+                                                    id="<%=fi._id%>" style="width:100%; margin-top: 20px">Sửa</button>
+                                                <button type="button" class="btn btn-danger btn-buy detailBtn"
+                                                    id="<%=fi._id%>" style="    margin-top: 20px;
+                                            padding: 5px;
+                                            width: 80px;">Chi tiết</button>
+                                            </div>
+                                        </td>
                             </tr>
-                        <%})%>
+                            <%})%>
                     </tbody>
                     <!-- form nút sửa -->
-                    <div id="myModal" class="modal" style="margin-top: -50px">
+                    <div id="myModal" class="modal" style="margin-top: -50px; height: 1000px;">
                         <div class="modal-content" style="width: 70%; font-size: 16px;">
                             <div class="modal-header">
                                 <h4 class="modal-title">Sửa phim</h4>
-                                <button type="button" class="suaclose"
-                                data-dismiss="modal">&times;</button>
+                                <button type="button" class="suaclose" data-dismiss="modal">&times;</button>
                             </div>
-                            <form class="formEdit" action="">
+                            <form class="formEdit" action="" id="form-edit">
                                 <div class="modal-body-plus">
                                     <div class="modal-left">
                                         <div class="col-5 img-add">
                                             <img id="img-edit-item" class="photoEdit imgEditPreview"
                                                 src="/img/noimage.png" style="width: 100%;">
-                                            <input type="file" class="form-control imgChangeEdit"
-                                                name="image" id="img2"
-                                                accept="image/png, image/jpeg, image/jpg"
-                                                style="display: none;">
-                                            <label style="font-weight: 700;" class="btn-addimg"
-                                                id="btn-edit-img-item" for="img2">Chọn ảnh</label>
+                                            <input type="file" class="form-control imgChangeEdit" name="image" id="img2"
+                                                accept="image/png, image/jpeg, image/jpg" style="display: none;">
+                                            <label style="font-weight: 700;" class="btn-addimg" id="btn-edit-img-item"
+                                                for="img2">Chọn ảnh</label>
                                         </div>
                                     </div>
                                     <div class="modal-right">
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Tên phim</label>
                                             <div class="input-ten">
-                                                <input class="nameENedit input-sua" name="nameEN" placeholder="Tên tiếng anh"
-                                                    type="text">
-                                                <input class="nameVNedit input-sua" name="nameVN" placeholder="Tên tiếng việt"
-                                                    type="text">
+                                                <div class="form-user">
+                                                    <input class="nameENedit input-sua" id="nameEN" name="nameEN"
+                                                        placeholder="Tên tiếng anh" type="text">
+                                                    <span class="span-error"></span>
+                                                </div>
+                                                <div class="form-user">
+                                                    <input class="nameVNedit input-sua" id="nameVN" name="nameVN"
+                                                        placeholder="Tên tiếng việt" type="text">
+                                                    <span class="span-error"></span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Đạo diễn</label>
-                                            <input class="directorEdit input-sua" name="director" type="text">
+                                            <div class="form-user">
+                                                <input class="directorEdit input-sua" id="director" name="director"
+                                                    type="text">
+                                                <span class="span-error"></span>
+                                            </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Diễn viên</label>
-                                            <input class="actorEdit input-sua" name="actor" type="text">
+                                            <div class="form-user">
+                                                <input class="actorEdit input-sua" id="actor" name="actor" type="text">
+                                                <span class="span-error"></span>
+                                            </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Khởi chiếu</label>
-                                            <input class="showdateEdit input-sua" name="showdate" type="date">
+                                            <div class="form-user">
+                                                <input class="showdateEdit input-sua" id="date" name="showdate"
+                                                    type="date">
+                                                <span class="span-error"></span>
+                                            </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thời gian</label>
-                                            <input class="timeEdit input-sua" name="time" type="number">
+                                            <div class="form-user">
+                                                <input class="timeEdit input-sua" id="time" name="time" type="number">
+                                                <span class="span-error"></span>
+                                            </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thể loại</label>
@@ -242,28 +309,22 @@
                                                 <div class="form-check rating">
                                                     <input class="form-check-input rating18" value="18" type="radio"
                                                         name="agelimit" id="flexRadioDefault1" checked>
-                                                    <label class="form-check-label"
-                                                        for="flexRadioDefault1">
-                                                        <img class="img-cs" style="width: 50%;"
-                                                            src="/img/cs18.png">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs18.png">
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
                                                     <input class="form-check-input rating16" value="16" type="radio"
                                                         name="agelimit" id="flexRadioDefault1">
-                                                    <label class="form-check-label"
-                                                        for="flexRadioDefault1">
-                                                        <img class="img-cs" style="width: 50%;"
-                                                            src="/img/cs16.png">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs16.png">
                                                     </label>
                                                 </div>
                                                 <div class="form-check rating">
                                                     <input class="form-check-input rating13" value="13" type="radio"
                                                         name="agelimit" id="flexRadioDefault1">
-                                                    <label class="form-check-label"
-                                                        for="flexRadioDefault1">
-                                                        <img class="img-cs" style="width: 50%;"
-                                                            src="/img/cs13.png">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        <img class="img-cs" style="width: 50%;" src="/img/cs13.png">
                                                     </label>
                                                 </div>
                                             </div>
@@ -278,12 +339,19 @@
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Chi tiết</label>
-                                            <textarea class="input-sua-area detailEdit" name="detail" id="" cols="20"
-                                                rows="10"></textarea>
+                                            <div class="form-user">
+                                                <textarea class="input-sua-area detailEdit" name="detail" id="detail"
+                                                    cols="20" rows="10"></textarea>
+                                                <span class="span-error"></span>
+                                            </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Trailer</label>
-                                            <input class="input-sua trailerIdEdit" name="trailerId" type="url">
+                                            <div class="form-user">
+                                                <input class="input-sua trailerIdEdit" id="trailer" name="trailerId"
+                                                    type="url">
+                                                <span class="span-error"></span>
+                                            </div>
                                             <input type="hidden" class="pimage" name="pimage">
                                             <input type="hidden" name="id" class="idFilm">
                                         </div>
@@ -293,369 +361,405 @@
 
                                 <div class="modal-footer">
                                     <p class="alertEdit" style="color: red;"></p>
-                                    <button type="button" id="btn-save-change-item" class="btn btn-danger">Sửa</button>
+                                    <button type="submit" id="btn-save-change-item" class="btn btn-danger">Sửa</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <!-- form nút chi tiết -->
-                    <div id="chitietModal" class="modal" style="margin-top: -50px">
-                        <div class="modal-content" style="width: 70%; font-size: 16px;">
+                    <div id="chitietModal" class="modal" style="margin-top: -50px;  height: 1000px;">
+                        <div class="modal-content" style="width: 70%; font-size: 16px; height: 600px;">
                             <div class="modal-header">
                                 <h4 class="modal-title">Chi tiết phim</h4>
-                                <button type="button" class="chitietclose"
-                                    data-dismiss="modal">&times;</button>
+                                <button type="button" class="chitietclose" data-dismiss="modal">&times;</button>
                             </div>
-                                <div class="modal-body-plus">
-                                    <div class="modal-left">
-                                        <div class="col-5 img-add">
-                                            <img id="img-edit-item" class="photoDetail"
-                                                src="" style="width: 100%;">
+                            <div class="modal-body-plus">
+                                <div class="modal-left">
+                                    <div class="col-5 img-add">
+                                        <img id="img-edit-item" class="photoDetail" src="" style="width: 100%;">
 
+                                    </div>
+                                </div>
+                                <div class="modal-right">
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Tên phim</label>
+                                        <div>
+                                            <div class="nameENdetail">THE DEVIL MADE ME DO IT</div>
+                                            <div class="nameVNdetail">THE CONJURING: MA XUI QUỶ KHIẾN</div>
                                         </div>
                                     </div>
-                                    <div class="modal-right">
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Tên phim</label>
-                                            <div>
-                                                <div class="nameENdetail">THE DEVIL MADE ME DO IT</div>
-                                                <div class="nameVNdetail">THE CONJURING: MA XUI QUỶ KHIẾN</div>
-                                            </div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Đạo diễn</label>
-                                            <div class="directorDetail">Taylor Sheridan</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Diễn viên</label>
-                                            <div class="actorDetail">Taylor Sheridan, Angelina Jolie</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Khởi chiếu</label>
-                                            <div class="dateshowDetail">15/11/2021</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Thời gian</label>
-                                            <div class="timeDetail">100 phút</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Thể loại</label>
-                                            <div class="typeDetail">Hành động</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Rating</label>
-                                            <div>
-                                                <img class="agelimitDetail img-cs" style="width:50px"
-                                                    src="">
-                                            </div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Tình trạng</label>
-                                            <div class="statusDetail">Đang khởi chiếu</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Chi tiết</label>
-                                            <div class="detailDetail" style="width: 75%">Angelina Jolie tái xuất với siêu
-                                                phẩm
-                                                hành động nghẹt thở cùng biên kịch được đề cử Oscar -
-                                                Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy
-                                                sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor
-                                                -
-                                                nhân chứng cuối cùng của một vụ trọng án.</div>
-                                        </div>
-                                        <div class="ad-phim">
-                                            <label class="label-chitiet" for="">Trailer</label>
-                                            <iframe class="trailerIdDetail" width="560" height="315"
-                                                src="https://www.youtube.com/embed/i71pUqFLZis"
-                                                title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                            </iframe>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Đạo diễn</label>
+                                        <div class="directorDetail">Taylor Sheridan</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" style="flex: 1;" for="">Diễn viên</label>
+                                        <div class="actorDetail" style="flex: 3.2;">Taylor Sheridan, Angelina Jolie
                                         </div>
                                     </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Khởi chiếu</label>
+                                        <div class="dateshowDetail">15/11/2021</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Thời gian</label>
+                                        <div class="timeDetail">100 phút</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Thể loại</label>
+                                        <div class="typeDetail">Hành động</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Rating</label>
+                                        <div>
+                                            <img class="agelimitDetail img-cs" style="width:50px" src="">
+                                        </div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Tình trạng</label>
+                                        <div class="statusDetail">Đang khởi chiếu</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Chi tiết</label>
+                                        <div class="detailDetail" style="width: 75%">Angelina Jolie tái xuất với siêu
+                                            phẩm
+                                            hành động nghẹt thở cùng biên kịch được đề cử Oscar -
+                                            Taylor Sheridan Kẻ Nguyền Ta Chết xoay quanh cuộc truy
+                                            sát kinh hoàng giữa băng đảng giết thuê và cậu bé Connor
+                                            -
+                                            nhân chứng cuối cùng của một vụ trọng án.</div>
+                                    </div>
+                                    <div class="ad-phim">
+                                        <label class="label-chitiet" for="">Trailer</label>
+                                        <iframe class="trailerIdDetail" width="560" height="315"
+                                            src="https://www.youtube.com/embed/i71pUqFLZis" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                        </iframe>
+                                    </div>
+                                </div>
 
-                                </div>
-                                <div class="modal-footer">
-                                  
-                                </div>
+                            </div>
+
 
                         </div>
                     </div>
                 </table>
 
-        </div>
-</body>
-<%- include ('../layouts/footer') %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" 
-integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-    var modal = document.getElementById('myModal');
-    var modalchitiet = document.getElementById('chitietModal');
-    var span = document.getElementsByClassName("suaclose")[0];
-    var spanchitiet = document.getElementsByClassName("chitietclose")[0];
-    var photoDetail=$('.photoDetail')
-    var nameENdetail=$('.nameENdetail');
-    var nameVNdetail=$('.nameVNdetail');
-    var directorDetail=$('.directorDetail');
-    var actorDetail=$('.actorDetail');
-    var dateshowDetail=$('.dateshowDetail');
-    var timeDetail=$('.timeDetail');
-    var statusDetail=$('.statusDetail');
-    var agelimitDetail=$('.agelimitDetail');
-    var detailDetail=$('.detailDetail');
-    var trailerIdDetail=$('.trailerIdDetail');
-    var typeDetail=$('.typeDetail');
+            </div>
+    </body>
+    <%- include ('../layouts/footer') %>
+        <script src="/js/validate.js"></script>
+        <script>
+            Validator({
+                form: '#form-add',
+                errorSelect: '.span-error',
+                rules: [
+                    Validator.isRequired('#nameEN'),
+                    Validator.isName('#nameEN'),
+                    Validator.isRequired('#nameVN'),
+                    Validator.isName('#nameVN'),
+                    Validator.isRequired('#director'),
+                    Validator.isName('#director'),
+                    Validator.isRequired('#actor'),
+                    Validator.isName('#actor'),
+                    Validator.isRequired('#date'),
+                    Validator.isRequired('#time'),
+                    Validator.isRequired('#detail'),
+                    Validator.isRequired('#trailer')
+                ]
+            });
+            Validator({
+                form: '#form-edit',
+                errorSelect: '.span-error',
+                rules: [
+                    Validator.isRequired('#nameEN'),
+                    Validator.isName('#nameEN'),
+                    Validator.isRequired('#nameVN'),
+                    Validator.isName('#nameVN'),
+                    Validator.isRequired('#director'),
+                    Validator.isName('#director'),
+                    Validator.isRequired('#actor'),
+                    Validator.isName('#actor'),
+                    Validator.isRequired('#date'),
+                    Validator.isRequired('#time'),
+                    Validator.isRequired('#detail'),
+                    Validator.isRequired('#trailer')
+                ]
+            });
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script>
+            var modal = document.getElementById('myModal');
+            var modalchitiet = document.getElementById('chitietModal');
+            var span = document.getElementsByClassName("suaclose")[0];
+            var spanchitiet = document.getElementsByClassName("chitietclose")[0];
+            var photoDetail = $('.photoDetail')
+            var nameENdetail = $('.nameENdetail');
+            var nameVNdetail = $('.nameVNdetail');
+            var directorDetail = $('.directorDetail');
+            var actorDetail = $('.actorDetail');
+            var dateshowDetail = $('.dateshowDetail');
+            var timeDetail = $('.timeDetail');
+            var statusDetail = $('.statusDetail');
+            var agelimitDetail = $('.agelimitDetail');
+            var detailDetail = $('.detailDetail');
+            var trailerIdDetail = $('.trailerIdDetail');
+            var typeDetail = $('.typeDetail');
 
-    var photoEdit=$('.photoEdit')
-    var nameENedit=$('.nameENedit');
-    var nameVNedit=$('.nameVNedit');
-    var directorEdit=$('.directorEdit');
-    var actorEdit=$('.actorEdit');
-    var dateshowEdit=$('.showdateEdit');
-    var timeEdit=$('.timeEdit');
-    var statusEdit=$('.statusEdit');
-    var agelimitEdit=$('.agelimitEdit');
-    var detailEdit=$('.detailEdit');
-    var trailerIdEdit=$('.trailerIdEdit');
-    var typeEdit=$('.typeEdit');
+            var photoEdit = $('.photoEdit')
+            var nameENedit = $('.nameENedit');
+            var nameVNedit = $('.nameVNedit');
+            var directorEdit = $('.directorEdit');
+            var actorEdit = $('.actorEdit');
+            var dateshowEdit = $('.showdateEdit');
+            var timeEdit = $('.timeEdit');
+            var statusEdit = $('.statusEdit');
+            var agelimitEdit = $('.agelimitEdit');
+            var detailEdit = $('.detailEdit');
+            var trailerIdEdit = $('.trailerIdEdit');
+            var typeEdit = $('.typeEdit');
 
-    var tdNameEN;
-    var tdNameVN
-    var tdDirector;
-    var tdShowdate;
-    var tdType;
-    var tdRating;
-    var tdStatus;
-    var tdImage;
-    // btn.onclick = function () {
-    //     modal.style.display = "block";
-    // }
-    // btnchitiet.onclick = function () {
-    //     modalchitiet.style.display = "block";
-    // }
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    spanchitiet.onclick = function () {
-        modalchitiet.style.display = "none";
-    }
-    window.onclick = function (event) {
-        $('.alertAdd').html(null);
-        if (event.target == modal) {
-            modal.style.display = "none";
-            $('.imgAddPreview').attr('src','/img/noimage.png');
-            $('.imgChangeAdd').val(null);
-            $('.imgChangeEdit').val(null);
-        } else if (event.target == modalchitiet){
-            modalchitiet.style.display = "none";
-        }
-    }
-
-    //nut chi tiet ajax
-    
-    $('.detailBtn').each(function () {
-        var $this = $(this);
-        var id = $this.attr('id');
-        $this.on('click',function(){
-          $.ajax({
-            url: "/admin/film/detailBtn",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: id }),
-            success: function (result) {
-                if (result.film.photo!=""){
-                photoDetail.attr('src','/img/films/'+id+'/'+result.film.photo)
-                } else {
-                photoDetail.attr('src','/img/noimage.png')
-                }
-                nameENdetail.text(result.film.nameEN);
-                nameVNdetail.text(result.film.nameVN);
-                directorDetail.text(result.film.director);
-                actorDetail.text(result.film.actor);
-                typeDetail.text(result.film.type);
-                var newDateArr = result.film.showdate.split('-') ;
-                var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
-                dateshowDetail.text(newDate);
-                timeDetail.text(result.film.time);
-                statusDetail.text(result.film.status);
-                agelimitDetail.attr('src','/img/'+'cs'+result.film.agelimit+'.png');
-                detailDetail.text(result.film.detail);
-                trailerIdDetail.attr('src','https://www.youtube.com/embed/'+result.film.trailerId);
-                modalchitiet.style.display = "block";
+            var tdNameEN;
+            var tdNameVN
+            var tdDirector;
+            var tdShowdate;
+            var tdType;
+            var tdRating;
+            var tdStatus;
+            var tdImage;
+            // btn.onclick = function () {
+            //     modal.style.display = "block";
+            // }
+            // btnchitiet.onclick = function () {
+            //     modalchitiet.style.display = "block";
+            // }
+            span.onclick = function () {
+                modal.style.display = "none";
             }
-        }) 
-      })
-      
-      })
-      
-      //nut sua ajax
-      $('.editBtn').each(function () {
-        var $this = $(this);
-        var id = $this.attr('id');
-        $this.on('click',function(){
-             tdNameEN=$this.closest('.trClosest').find('.tdNameEN');
-             tdNameVN=$this.closest('.trClosest').find('.tdNameVN');
-             tdDirector=$this.closest('.trClosest').find('.tdDirector');
-             tdShowdate=$this.closest('.trClosest').find('.tdShowdate');
-             tdType=$this.closest('.trClosest').find('.tdType');
-             tdRating=$this.closest('.trClosest').find('.tdRating');
-             tdStatus=$this.closest('.trClosest').find('.tdStatus');
-             tdImage=$this.closest('.trClosest').find('.tdImage');
-          $.ajax({
-            url: "/admin/film/editBtn",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: id }),
-            success: function (result) {
-                 if (result.film.photo!=""){
-                 photoEdit.attr('src','/img/films/'+id+'/'+result.film.photo)
-                 } else {
-                 photoEdit.attr('src','/img/noimage.png')
-             }
-                nameENedit.val(result.film.nameEN);
-                nameVNedit.val(result.film.nameVN);
-                directorEdit.val(result.film.director);
-                actorEdit.val(result.film.actor);
-                dateshowEdit.val(result.film.showdate);
-                timeEdit.val(result.film.time);
-                statusEdit.val(result.film.status);
-                detailEdit.val(result.film.detail);
-                trailerIdEdit.val('https://www.youtube.com/embed/'+result.film.trailerId);
-                $('.pimage').val(result.film.photo);
-                $('.idFilm').val(result.film._id);
-                // agelimitEdit.html(result.agelimitAjax);
-                if (($('.rating13').val())==result.film.agelimit) {
-                    $('.rating13').prop('checked',true);
-                }
-                if (($('.rating16').val())==result.film.agelimit) {
-                    $('.rating16').prop('checked',true);
-                }
-                if (($('.rating18').val())==result.film.agelimit) {
-                    $('.rating18').prop('checked',true);
-                }
-                statusEdit.html(result.statusAjax);
-                modal.style.display = "block";
+            spanchitiet.onclick = function () {
+                modalchitiet.style.display = "none";
             }
-        }) 
-      })
-      
-      })
-//Sua phim
+            window.onclick = function (event) {
+                $('.alertAdd').html(null);
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    $('.imgAddPreview').attr('src', '/img/noimage.png');
+                    $('.imgChangeAdd').val(null);
+                    $('.imgChangeEdit').val(null);
+                } else if (event.target == modalchitiet) {
+                    modalchitiet.style.display = "none";
+                }
+            }
 
-    $('#btn-save-change-item').on('click',function(e){
-  var formm=$('.formEdit')[0];
-  var data = new FormData(formm);
-  $.ajax({
-    url: "/admin/film/edit-film",
-    type: "POST",
-    enctype: "multipart/form-data",
-    cache:false,
-    processData: false,
-    contentType: false,
-    data: data,
-    success: function (result) {
-          if ( result.noti != "") $('.alertEdit').text(result.noti) ;
-           else {
-            tdNameEN.text(nameENedit.val());
-            tdNameVN.text(nameVNedit.val());
-            tdDirector.text(directorEdit.val());
-            var newDateArr = dateshowEdit.val().split('-') ;
-            var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
-            tdShowdate.text(newDate);
-            tdType.text(typeEdit.val());
-            tdStatus.text(statusEdit.val());
-            tdImage.attr('src',result.imageAjax);
-            tdRating.attr('src','/img/cs'+result.agelimit+'.png');
-            modal.style.display = "none";
-        }
-      }
-  });
-  e.preventDefault();
-}) 
+            //nut chi tiet ajax
 
-//Them phim
-$('#btn-save-new-item').on('click',function(e){
-  var formm=$('.formAdd')[0];
-  var data = new FormData(formm);
-  $.ajax({
-    url: "/admin/film/add-film/",
-    type: "POST",
-    enctype: "multipart/form-data",
-    cache:false,
-    processData: false,
-    contentType: false,
-    data: data,
-    success: function (result) {
-          if ( result.noti != "") $('.alertAdd').text(result.noti) ;
-           else {
-             // Set the URL to whatever it was plus "#".
-             url = document.URL+"#";
-             location = "#";
-
-             //Reload the page
-              location.reload(true);
-           }
-      }
-  });
-  e.preventDefault();
-}) 
-
-//xoa phim
-$('.deleteBtn').each(function () {
-        var $this = $(this);
-        var id = $this.attr('id');
-        var trClosest=$this.closest('.trClosest')
-        $this.on('click',function(){ 
-            if (confirm('Bạn có chắc chắn xóa ?')){
-                $.ajax({
-                url: "/admin/film/delete-film",
-                method: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({ id: id }),
-                success: function (result) {
-                    trClosest.remove();
+            $('.detailBtn').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                $this.on('click', function () {
+                    $.ajax({
+                        url: "/admin/film/detailBtn",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ id: id }),
+                        success: function (result) {
+                            if (result.film.photo != "") {
+                                photoDetail.attr('src', '/img/films/' + id + '/' + result.film.photo)
+                            } else {
+                                photoDetail.attr('src', '/img/noimage.png')
+                            }
+                            nameENdetail.text(result.film.nameEN);
+                            nameVNdetail.text(result.film.nameVN);
+                            directorDetail.text(result.film.director);
+                            actorDetail.text(result.film.actor);
+                            typeDetail.text(result.film.type);
+                            var newDateArr = result.film.showdate.split('-');
+                            var newDate = newDateArr[2] + '/' + newDateArr[1] + '/' + newDateArr[0];
+                            dateshowDetail.text(newDate);
+                            timeDetail.text(result.film.time);
+                            statusDetail.text(result.film.status);
+                            agelimitDetail.attr('src', '/img/' + 'cs' + result.film.agelimit + '.png');
+                            detailDetail.text(result.film.detail);
+                            trailerIdDetail.attr('src', 'https://www.youtube.com/embed/' + result.film.trailerId);
+                            modalchitiet.style.display = "block";
                         }
-                    }) 
+                    })
+                })
+
+            })
+
+            //nut sua ajax
+            $('.editBtn').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                $this.on('click', function () {
+                    tdNameEN = $this.closest('.trClosest').find('.tdNameEN');
+                    tdNameVN = $this.closest('.trClosest').find('.tdNameVN');
+                    tdDirector = $this.closest('.trClosest').find('.tdDirector');
+                    tdShowdate = $this.closest('.trClosest').find('.tdShowdate');
+                    tdType = $this.closest('.trClosest').find('.tdType');
+                    tdRating = $this.closest('.trClosest').find('.tdRating');
+                    tdStatus = $this.closest('.trClosest').find('.tdStatus');
+                    tdImage = $this.closest('.trClosest').find('.tdImage');
+                    $.ajax({
+                        url: "/admin/film/editBtn",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ id: id }),
+                        success: function (result) {
+                            if (result.film.photo != "") {
+                                photoEdit.attr('src', '/img/films/' + id + '/' + result.film.photo)
+                            } else {
+                                photoEdit.attr('src', '/img/noimage.png')
+                            }
+                            nameENedit.val(result.film.nameEN);
+                            nameVNedit.val(result.film.nameVN);
+                            directorEdit.val(result.film.director);
+                            actorEdit.val(result.film.actor);
+                            dateshowEdit.val(result.film.showdate);
+                            timeEdit.val(result.film.time);
+                            statusEdit.val(result.film.status);
+                            detailEdit.val(result.film.detail);
+                            trailerIdEdit.val('https://www.youtube.com/embed/' + result.film.trailerId);
+                            $('.pimage').val(result.film.photo);
+                            $('.idFilm').val(result.film._id);
+                            // agelimitEdit.html(result.agelimitAjax);
+                            if (($('.rating13').val()) == result.film.agelimit) {
+                                $('.rating13').prop('checked', true);
+                            }
+                            if (($('.rating16').val()) == result.film.agelimit) {
+                                $('.rating16').prop('checked', true);
+                            }
+                            if (($('.rating18').val()) == result.film.agelimit) {
+                                $('.rating18').prop('checked', true);
+                            }
+                            statusEdit.html(result.statusAjax);
+                            modal.style.display = "block";
+                        }
+                    })
+                })
+
+            })
+            //Sua phim
+
+            $('#btn-save-change-item').on('click', function (e) {
+                var formm = $('.formEdit')[0];
+                var data = new FormData(formm);
+                $.ajax({
+                    url: "/admin/film/edit-film",
+                    type: "POST",
+                    enctype: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (result) {
+                        if (result.noti != "") $('.alertEdit').text(result.noti);
+                        else {
+                            tdNameEN.text(nameENedit.val());
+                            tdNameVN.text(nameVNedit.val());
+                            tdDirector.text(directorEdit.val());
+                            var newDateArr = dateshowEdit.val().split('-');
+                            var newDate = newDateArr[2] + '/' + newDateArr[1] + '/' + newDateArr[0];
+                            tdShowdate.text(newDate);
+                            tdType.text(typeEdit.val());
+                            tdStatus.text(statusEdit.val());
+                            tdImage.attr('src', result.imageAjax);
+                            tdRating.attr('src', '/img/cs' + result.agelimit + '.png');
+                            modal.style.display = "none";
+                        }
+                    }
+                });
+                e.preventDefault();
+            })
+
+            //Them phim
+            $('#btn-save-new-item').on('click', function (e) {
+                var formm = $('.formAdd')[0];
+                var data = new FormData(formm);
+                $.ajax({
+                    url: "/admin/film/add-film/",
+                    type: "POST",
+                    enctype: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (result) {
+                        if (result.noti != "") $('.alertAdd').text(result.noti);
+                        else {
+                            // Set the URL to whatever it was plus "#".
+                            url = document.URL + "#";
+                            location = "#";
+
+                            //Reload the page
+                            location.reload(true);
+                        }
+                    }
+                });
+                e.preventDefault();
+            })
+
+            //xoa phim
+            $('.deleteBtn').each(function () {
+                var $this = $(this);
+                var id = $this.attr('id');
+                var trClosest = $this.closest('.trClosest')
+                $this.on('click', function () {
+                    if (confirm('Bạn có chắc chắn xóa ?')) {
+                        $.ajax({
+                            url: "/admin/film/delete-film",
+                            method: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify({ id: id }),
+                            success: function (result) {
+                                trClosest.remove();
+                            }
+                        })
+                    }
+
+                })
+
+            })
+        </script>
+        <script>
+            $('a.confirmDeletion').on('click', function () {
+                if (!confirm('Confirm Deletion ? '))
+                    return false;
+            })
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $(".imgEditPreview").attr('src', e.target.result);
+                        $(".imgAddPreview").attr('src', e.target.result);
+
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-          
-      })
-
-})
-</script>
-<script>
-    $('a.confirmDeletion').on('click', function () {
-        if (!confirm('Confirm Deletion ? '))
-            return false;
-    })
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $(".imgEditPreview").attr('src', e.target.result);
-                $(".imgAddPreview").attr('src', e.target.result);
-
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
 
 
-    $(".imgChangeAdd").change(function () {
-        readURL(this);
-    })
+            $(".imgChangeAdd").change(function () {
+                readURL(this);
+            })
 
-    $(".imgChangeEdit").change(function () {
-        readURL(this);
-    })
+            $(".imgChangeEdit").change(function () {
+                readURL(this);
+            })
 
 
 
 
-</script>
+        </script>
 
-</html>
+        </html>

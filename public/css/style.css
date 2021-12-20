@@ -273,7 +273,7 @@ object-position: 50% 50%;
 }
 .flex-coming{
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start;
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
@@ -281,8 +281,7 @@ object-position: 50% 50%;
 }
 .title-coming{
   flex-grow: 1;
-  max-width: 392px;
-  width: 100%;
+  width: 360px;
   padding-bottom: 20px;
 }
 .nav-tabs{
@@ -1086,4 +1085,13 @@ p{
   background: white;
   border: none;
   -webkit-text-stroke-width: medium;
+}
+.form-user{
+  display: flex;
+  flex-direction: column;
+}
+.alertAdd{
+  font-size: 14px;
+  color: #f93838;
+  font-style: italic;
 }

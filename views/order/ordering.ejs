@@ -8,15 +8,17 @@
             <span class="line-detail"></span>
             <div class="dathang-left">
                 <div class="input-dathang">
-                    <form action="/order/ordered" method="post">
+                    <form action="/order/ordered" id="ordering" method="post">
                         <input type="hidden" name="seat" value="<%=seat%>">
                         <div class="ad-phim">
                             <label class="label-dathang" for="">Tên khách hàng</label>
-                            <input class="input-sua" name="username" value="<%=name%>" type="text">
+                            <input class="input-sua" id="name" name="username" value="<%=name%>" type="text" style="    margin-right: 10px;">
+                            <span class="span-error"></span>
                         </div>
                         <div class="ad-phim">
                             <label class="label-dathang" for="">Số điện thoại</label>
-                            <input class="input-sua" name="phone" value="<%=phone%>" type="text">
+                            <input class="input-sua" id="phone" name="phone" value="<%=phone%>" type="text" style="    margin-right: 10px;">
+                            <span class="span-error"></span>
                         </div>
                         <div class="ad-phim">
                             <label class="label-dathang" for="">Tên phim</label>
@@ -107,6 +109,20 @@
         </div>
     </body>
     <%- include ('../layouts/footer') %>
+    <script src="/js/validate.js"></script>
+<script>
+    Validator({
+        form: '#ordering',
+        errorSelect: '.span-error',
+        rules: [
+            Validator.isRequired('#name'),
+            Validator.isName('#name'),
+            Validator.isRequired('#phone'),
+            Validator.isPhone('#phone')
+        ]
+    });
+
+</script>
         <script src="/js/qrcode.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"
             integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"

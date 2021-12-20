@@ -8,213 +8,278 @@
 
             <!-- list action bên trái, đưa ra 1 cái ejs để link vào hiển thị nội dung -->
             <div class="account">
-                
+
                 <%- include ('../layouts/user-header') %>
 
-                <!-- thay đổi tài khoản + mk -->
-                <div class="details">
-                    <div class="main1">
-                        <h3>Thay đổi thông tin cá nhân</h3>
-                        <p>Quản lý thông tin cá nhân hồ sơ để bảo mật và dễ dàng đặt vé</p>
-                    </div>
-                    <div class="main2">
-                        <ul class="nav nav-tabs menu-status ">
-                            <li class="stt-list nav-item">
-                                <a class="nav-link link1 active" href="#change1" data-bs-toggle="tab"
-                                    data-bs-target="#change1" role="tab" aria-controls="status"
-                                    aria-selected="true">Thay
-                                    đổi thông
-                                    tin</a>
-                            </li>
-                            <li class="stt-list nav-item">
-                                <a class="nav-link link1" href="#change2" data-bs-toggle="tab" data-bs-target="#change2"
-                                    role="tab" aria-controls="status" aria-selected="true">Thay đổi mật khẩu</a>
+                    <!-- thay đổi tài khoản + mk -->
+                    <div class="details">
+                        <div class="main1">
+                            <h3>Thay đổi thông tin cá nhân</h3>
+                            <p>Quản lý thông tin cá nhân hồ sơ để bảo mật và dễ dàng đặt vé</p>
+                        </div>
+                        <div class="main2">
+                            <ul class="nav nav-tabs menu-status ">
+                                <li class="stt-list nav-item">
+                                    <a class="nav-link link1 active" href="#change1" data-bs-toggle="tab"
+                                        data-bs-target="#change1" role="tab" aria-controls="status"
+                                        aria-selected="true">Thay
+                                        đổi thông
+                                        tin</a>
+                                </li>
+                                <li class="stt-list nav-item">
+                                    <a class="nav-link link1" href="#change2" data-bs-toggle="tab"
+                                        data-bs-target="#change2" role="tab" aria-controls="status"
+                                        aria-selected="true">Thay đổi mật khẩu</a>
 
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
 
-                        <div class="tab-content">
-                            <!-- thay đổi tài khoản -->
-                            <div class="tab-pane active infor-change" id="change1" role="tabpanel">
-                                <form action="/user/change-info" enctype="multipart/form-data" method="post">
-                                    <div class="infor-frame"
-                                        style=" display: flex; align-items: flex-start; flex-direction: row;">
-                                        <div class="left-info" style="    flex: 1;">
-                                            <div class="pass">
-                                                <p>Họ và tên</p>
-                                                <input name="fullname" class="input-sua" type="text" style="    padding: 7px;
+                            <div class="tab-content">
+                                <!-- thay đổi tài khoản -->
+                                <div class="tab-pane active infor-change" id="change1" role="tabpanel">
+                                    <form action="/user/change-info" enctype="multipart/form-data" method="post"
+                                        id="form-user">
+                                        <div class="infor-frame"
+                                            style=" display: flex; align-items: flex-start; flex-direction: row;">
+                                            <div class="left-info" style="    flex: 1;">
+                                                <div class="pass">
+                                                    <div class="form-user">
+                                                        <p>Họ và tên</p>
+                                                        <input name="fullname" id="name" class="input-sua" type="text"
+                                                            style="    padding: 7px;
                                 height: 40px;
                                 font-size: 16px;" value="<%=user.fullname%>">
-                                                <!-- <p>Email</p>
-                                                <input value="<%=user.email%>" class="input-sua" type="text" style="    padding: 7px;
+                                                        <span class="span-error"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p>Email</p>
+                                                        <input value="<%=user.email%>" class="input-sua" type="text"
+                                                            style="    padding: 7px;
                                 height: 40px;
-                                font-size: 16px;     background: #9f9f9f;" disabled> -->
-                                                <p>Số điện thoại</p>
-                                                <input name="phone" value="<%=user.phone%>" class="input-sua"
-                                                    type="text" style="    padding: 7px;
+                                font-size: 16px;     background: #9f9f9f;" disabled>
+                                                    </div>
+                                                    <div class="form-user">
+                                                        <p>Số điện thoại</p>
+                                                        <input name="phone" id="phone" value="<%=user.phone%>"
+                                                            class="input-sua" type="text" style="    padding: 7px;
                                 height: 40px;
                                 font-size: 16px;">
-                                                <p>Giới tính</p>
-                                                <select class="input-sua" name="gender" id="" style="    padding: 7px;
+                                                        <span class="span-error"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p>Giới tính</p>
+                                                        <select class="input-sua" name="gender" id="" style="    padding: 7px;
                                     height: 40px;
                                 font-size: 16px;">
-                                                    <option value="Nam" <% if(user.gender=="Nam" ){%>selected<%}%>>Nam
-                                                    </option>
-                                                    <option value="Nữ" <% if(user.gender=="Nữ" ){%>selected<%}%>>Nữ
-                                                    </option>
-                                                    <option value="Khác" <% if(user.gender=="Khác" ){%>selected<%}%>
-                                                            >Khác</option>
-                                                </select>
-                                                <p>Ngày sinh</p>
-                                                <input value="<%=user.birthday%>" name="birthday" class="input-sua"
-                                                    type="date" style="    padding: 7px;
+                                                            <option value="Nam" <% if(user.gender=="Nam" ){%>selected
+                                                                <%}%>
+                                                                    >Nam
+                                                            </option>
+                                                            <option value="Nữ" <% if(user.gender=="Nữ" ){%>selected<%}%>
+                                                                    >Nữ
+                                                            </option>
+                                                            <option value="Khác" <% if(user.gender=="Khác" ){%>selected
+                                                                <%}%>
+                                                                    >Khác
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-user">
+                                                        <p>Ngày sinh</p>
+                                                        <input value="<%=user.birthday%>" id="birth" name="birthday"
+                                                            class="input-sua" type="date" style="    padding: 7px;
                                 height: 40px;
                                 font-size: 16px;">
+                                                        <span class="span-error"></span>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-addimg"
+                                                    style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
                                             </div>
-                                            <button type="submit" class="btn btn-addimg"
-                                                style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
-                                        </div>
-                                        <div class="right-infor">
-                                            <div class="col-5 img-add" style="    width: 50%;">
-                                                <%if (user.photo!="" ){%>
-                                                    <img id="img-edit-item" class="imgAddPreview"
-                                                        src="/img/users/<%=user.email%>/<%=user.photo%>" style="width: 200px;
-                                                border-radius: 100px;
-                                                height: 200px;">
-                                                    <%} else {%>
+                                            <div class="right-infor">
+                                                <div class="col-5 img-add" style="    width: 50%;">
+                                                    <%if (user.photo!="" ){%>
                                                         <img id="img-edit-item" class="imgAddPreview"
-                                                            src="/img/user.png" style="width: 200px;
+                                                            src="/img/users/<%=user.email%>/<%=user.photo%>" style="width: 200px;
                                                 border-radius: 100px;
                                                 height: 200px;">
-                                                        <%}%>
+                                                        <%} else {%>
+                                                            <img id="img-edit-item" class="imgAddPreview"
+                                                                src="/img/user.png" style="width: 200px;
+                                                border-radius: 100px;
+                                                height: 200px;">
+                                                            <%}%>
 
-                                                            <input type="file" class="form-control imgChangeAdd"
-                                                                name="image" id="img1"
-                                                                accept="image/png, image/jpeg, image/jpg"
-                                                                style="display: none;">
-                                                            <label class="btn-addimg" id="btn-edit-img-item" for="img1"
-                                                                style="    width: 100px;
+                                                                <input type="file" class="form-control imgChangeAdd"
+                                                                    name="image" id="img1"
+                                                                    accept="image/png, image/jpeg, image/jpg"
+                                                                    style="display: none;">
+                                                                <label class="btn-addimg" id="btn-edit-img-item"
+                                                                    for="img1" style="    width: 100px;
                                         text-align: center;">Chọn ảnh</label>
-                                                            <input type="hidden" name="pimage" value="<%=user.photo%>"
-                                                                id="">
+                                                                <input type="hidden" name="pimage"
+                                                                    value="<%=user.photo%>" id="">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- thay đổi mk -->
-                            <div class="tab-pane" id="change2" role="tabpanel">
-                                <form class="formEdit" action="">
-                                    <div class="pass">
-                                        <p class="alertSave" style="color: red;"></p>
-                                        <p>Mật khẩu hiện tại</p>
-                                        <div class="forgot-mk" style=" display: flex;">
-                                            <input name="oldpass" class="passwordBlur input-sua" id="<%=user.email%>"
-                                                type="password" style="    padding: 7px;
+                                    </form>
+                                </div>
+                                <!-- thay đổi mk -->
+                                <div class="tab-pane" id="change2" role="tabpanel">
+                                    <form class="formEdit" action="" id="form-pass">
+                                        <div class="pass">
+                                            <p class="alertSave" style="color: red;"></p>
+                                            <p>Mật khẩu hiện tại</p>
+                                            <div class="forgot-mk" style=" display: flex;">
+                                                <div class="form-user">
+                                                    <input name="oldpass" id="oldpass" class="passwordBlur input-sua"
+                                                        id="<%=user.email%>" type="password" style="    padding: 7px;
                                     height: 40px;
                                 font-size: 16px;">
-                                            <a href="/auth/forgot">
-                                                <div style="margin-left: 20px; color: #eee;">Quên mật khẩu?</div>
-                                            </a>
-                                        </div>
-                                        <p class="alertPass" style="color: red;"></p>
-                                        <p>Mật khẩu mới</p>
-                                        <input name="newpass" class="input-sua" type="password" style="    padding: 7px;
+                                                    <span class="span-error"></span>
+                                                </div>
+                                                <a href="/auth/forgot">
+                                                    <div style="margin-left: 20px; color: #eee;">Quên mật khẩu?</div>
+                                                </a>
+
+                                            </div>
+                                            <p class="alertPass" style="color: red;"></p>
+                                            <p>Mật khẩu mới</p>
+                                            <div class="form-user">
+                                                <input name="newpass" id="newpass" class="input-sua" type="password" style="    padding: 7px;
                                    height: 40px;
                                 font-size: 16px;">
-                                        <p>Xác nhận mật khẩu</p>
-                                        <input class="input-sua" type="password" style="    padding: 7px;
+                                                <span class="span-error"></span>
+                                            </div>
+                                           
+                                                <p>Xác nhận mật khẩu</p>
+                                                <div class="form-user">
+                                                <input class="input-sua" id="repass" type="password" style="    padding: 7px;
                                     height: 40px;
                                 font-size: 16px;">
-                                    </div>
-                                    <button type="button" class="btn-save btn btn-addimg"
-                                        style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
-                                </form>
+                                                <span class="span-error"></span>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-addimg"
+                                                    style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
-                </div>
             </div>
         </div>
-       
+
     </body>
     <%- include ('../layouts/footer') %>
-    <link rel="stylesheet" href="/css/changeinfor.css" />
-    <script src="/js/bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-        crossorigin="anonymous"></script>
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $(".imgAddPreview").attr('src', e.target.result);
-
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-
-
-        $(".imgChangeAdd").change(function () {
-            readURL(this);
-        })
-
-
-        $('.passwordBlur').blur(function (e) {
-            var value = $(this).val();
-            var email = $(this).attr('id');
-            if (value == "") {
-                $('.alertPass').text("");
-            } else {
-                $.ajax({
-                    url: "/user/check-pass",
-                    method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({ email: email, password: value }),
-                    success: function (result) {
-                        $('.alertPass').text(result);
-                    }
-                })
-            }
-        })
-
-        $('.passwordBlur').on('input', function () {
-            $('.alertPass').text("");
-            $('.alertSave').text("");
-        })
-        //nut luu mat khau
-        $('.btn-save').click(function (e) {
-            var formm = $('.formEdit')[0];
-            var data = new FormData(formm);
-            var email = $('.passwordBlur').attr('id');
-            $.ajax({
-                url: "/user/change-pass/" + email,
-                type: "POST",
-                enctype: "multipart/form-data",
-                cache: false,
-                processData: false,
-                contentType: false,
-                data: data,
-                success: function (result) {
-                    if (result == "Đổi mật khẩu thành công") {
-                        $('.alertSave').css('color', 'green');
-                        $('.alertSave').text(result);
-                    } else {
-                        $('.alertPass').text("");
-                        $('.alertSave').css('color', 'red');
-                        $('.alertSave').text(result);
-                    }
-                }
+        <script src="/js/validate.js"></script>
+        <script>
+            Validator({
+                form: '#form-user',
+                errorSelect: '.span-error',
+                rules: [
+                    Validator.isRequired('#name'),
+                    Validator.isName('#name'),
+                    Validator.isRequired('#phone'),
+                    Validator.isPhone('#phone'),
+                    Validator.isRequired('#birth')
+                ]
             });
-            e.preventDefault();
-        })
+            Validator({
+                form: '#form-pass',
+                errorSelect: '.span-error',
+                rules: [
+                    Validator.isRequired('#oldpass'),
+                    Validator.isRequired('#newpass'),
+                    Validator.minLength('#newpass'),
+                    Validator.isRequired('#repass'),
+                    Validator.isConfirm('#repass', function () {
+                        return document.querySelector('#form-pass #newpass').value;
+                    }),
+                    Validator.isNotConfirm('#newpass', function () {
+                        return document.querySelector('#form-pass #oldpass').value;
+                    })
 
-    </script>
+                ],
+            });
 
-    </html>
+        </script>
+        <link rel="stylesheet" href="/css/changeinfor.css" />
+        <script src="/js/bootstrap.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $(".imgAddPreview").attr('src', e.target.result);
+
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+
+            $(".imgChangeAdd").change(function () {
+                readURL(this);
+            })
+
+
+            $('.passwordBlur').blur(function (e) {
+                var value = $(this).val();
+                var email = $(this).attr('id');
+                if (value == "") {
+                    $('.alertPass').text("");
+                } else {
+                    $.ajax({
+                        url: "/user/check-pass",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ email: email, password: value }),
+                        success: function (result) {
+                            $('.alertPass').text(result);
+                        }
+                    })
+                }
+            })
+
+            $('.passwordBlur').on('input', function () {
+                $('.alertPass').text("");
+                $('.alertSave').text("");
+            })
+            //nut luu mat khau
+            $('.btn-save').click(function (e) {
+                var formm = $('.formEdit')[0];
+                var data = new FormData(formm);
+                var email = $('.passwordBlur').attr('id');
+                $.ajax({
+                    url: "/user/change-pass/" + email,
+                    type: "POST",
+                    enctype: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (result) {
+                        if (result == "Đổi mật khẩu thành công") {
+                            $('.alertSave').css('color', 'green');
+                            $('.alertSave').text(result);
+                        } else {
+                            $('.alertPass').text("");
+                            $('.alertSave').css('color', 'red');
+                            $('.alertSave').text(result);
+                        }
+                    }
+                });
+                e.preventDefault();
+            })
+
+        </script>
+
+        </html>

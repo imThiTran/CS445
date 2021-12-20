@@ -150,9 +150,10 @@
                     <div class="flex-coming" id="psc">
                         <%filmc.forEach(function(film){%>
                             <a href="/film/detail/<%=film.slug%>">
+                                <div class="item-slide">
                             <div class="title-coming">
 
-                                <a href="/film/detail/<%=film.slug%>" class="item-slide"><img class="poster-movie"
+                                <a href="/film/detail/<%=film.slug%>" ><img class="poster-movie"
                                         src="/img/films/<%=film._id%>/<%=film.photo%>"></a>
                                 <div class="flex-title">
                                     <div class="flex-cs">
@@ -165,6 +166,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </a>
                             <%})%>
 

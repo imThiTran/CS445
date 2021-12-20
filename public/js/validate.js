@@ -194,6 +194,29 @@ function validate()
         showError('timeto','');
         flag = true;
     }
+
+    var suatchieu = document.getElementById('dateShow').value;
+    if (suatchieu == ''){
+        showError('date', 'Vui lòng chọn ngày');
+        flag = false;
+    }
+   
+    else{
+        showError('date','');
+        flag = true;
+    }
+
+    
+    var seat = document.getElementsByName('seat').value;
+    if (seat == ''){
+        showError('seat', 'Vui lòng chọn ghế');
+        flag = false;
+    }
+   
+    else{
+        showError('seat','');
+        flag = true;
+    }
 }
 
 
