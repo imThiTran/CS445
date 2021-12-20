@@ -221,7 +221,7 @@
                     </div>
                     <div class="btn-dathang">
                         <button type="button" class="btn btn-danger btn-buy btn-back">Trở lại</button>
-                        <button type="submit" class="btn btn-danger btn-buy">Đặt vé</button>
+                        <button type="submit" class="submit-ticket btn btn-danger btn-buy">Đặt vé</button>
                     </div>
                 </div>
             </form>
@@ -254,4 +254,12 @@
                     if ($this.val() == "") $this.val(0);
                 })
             });
+
+            $('.submit-ticket').click(function(e){
+                var seatLength= $('.btn-check:checked').length;
+                if (seatLength==0){
+                    e.preventDefault();
+                    alert('Bạn chưa chọn chỗ ngồi');
+                }
+            })
         </script>

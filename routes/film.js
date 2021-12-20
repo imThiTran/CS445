@@ -38,7 +38,7 @@ router.post('/loadTime',function(req,res){
         // })));
         for(var i=0;i<fi.length;i++){
             var Ctime=(fi[i].time.split(':'))[0];
-            timeCode=timeCode+`<input value="`+fi[i].time+`" type="radio" class="choosetime btn-check" name="time" id="`+(i+1)+`-outlined" autocomplete="off">
+            timeCode=timeCode+`<input value="`+fi[i].time+`" onclick="clearAlert()" type="radio" class="choosetime btn-check" name="time" id="`+(i+1)+`-outlined" autocomplete="off">
             <label class="btn btn-primary  btn-seat1" for="`+(i+1)+`-outlined">`+fi[i].time+(Ctime>=12?` PM`:` AM`)+`</label>`
         }
     })
