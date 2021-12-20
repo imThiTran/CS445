@@ -175,7 +175,7 @@ function validate()
 
     var timefrom = document.getElementById('time-from').value;
     if (timefrom == ''){
-        showError('timefrom', 'Vui lòng chọn ngày');
+        showError('timefrom', 'Vui lòng chọn ngày bắt đầu');
         flag = false;
     }
    
@@ -186,7 +186,7 @@ function validate()
 
     var timeto = document.getElementById('time-to').value;
     if (timeto == ''){
-        showError('timeto', 'Vui lòng chọn ngày');
+        showError('timeto', 'Vui lòng chọn ngày kết thúc');
         flag = false;
     }
    

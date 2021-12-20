@@ -1095,3 +1095,7 @@ p{
   color: #f93838;
   font-style: italic;
 }
+.input-date{
+  display: flex;
+  flex-direction: column;
+}
