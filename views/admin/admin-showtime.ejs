@@ -492,9 +492,10 @@ function toggleSelect(e) {
     })
 var formSearch= $(('.formSearch'))
     $('.submitsearch').on('click',function(e){
-        var dateform=new Date($('#time-from').val());
+        var datefrom=new Date($('#time-from').val());
         var dateto=new Date($('#time-to').val());
-        if (dateform>dateto) alert('Ngày tháng tìm kiếm không hợp lệ');
+        if (datefrom=="Invalid Date" || dateto=="Invalid Date" ) alert('Vui lòng chọn ngày tháng đầy đủ');
+        else if (datefrom>dateto) alert('Ngày tháng tìm kiếm không hợp lệ');
         else {
             formSearch.submit();
         }
