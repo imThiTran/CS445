@@ -14,7 +14,7 @@
                                         height: 40px; margin-right: 7px;">+</button>
                 </div>
                 <form action="" class="formAdd" id="form-add">
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    <div class="modal-add modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -31,7 +31,7 @@
                                             <input type="file" class="form-control imgChangeAdd" name="image" id="img1"
                                                 accept="image/png, image/jpeg, image/jpg" style="display: none;">
                                             <label class="btn-addimg" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
-                                            <p style="color: red;" class="alertAdd"></p>
+                                            <p class="span-error-add"></p>
                                         </div>
                                     </div>
                                     <div class="modal-right">
@@ -39,43 +39,43 @@
                                             <label class="label-chitiet" for="">Tên phim</label>
                                             <div class="input-ten">
                                                 <div class="form-user">
-                                                    <input class="input-sua" id="nameEN" placeholder="Tên tiếng anh"
+                                                    <input class="input-sua nameENadd" id="nameEN" placeholder="Tên tiếng anh"
                                                         name="nameEN" type="text">
-                                                    <span class="span-error"></span>
+                                                    <span class="span-error-add"></span>
                                                 </div>
                                                 <div class="form-user">
-                                                    <input class="input-sua" id="nameVN" placeholder="Tên tiếng việt"
+                                                    <input class="input-sua nameVNadd" id="nameVN" placeholder="Tên tiếng việt"
                                                         name="nameVN" type="text">
-                                                    <span class="span-error"></span>
+                                                    <span class="span-error-add"></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Đạo diễn</label>
                                             <div class="form-user">
-                                                <input class="input-sua" id="director" name="director" type="text">
-                                                <span class="span-error"></span>
+                                                <input class="input-sua directorAdd" id="director" name="director" type="text">
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Diễn viên</label>
                                             <div class="form-user">
-                                                <input class="input-sua" id="actor" name="actor" type="text">
-                                                <span class="span-error"></span>
+                                                <input class="input-sua actorAdd" id="actor" name="actor" type="text">
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Khởi chiếu</label>
                                             <div class="form-user">
-                                                <input class="input-sua" id="date" name="showdate" type="date">
-                                                <span class="span-error"></span>
+                                                <input class="input-sua showdateAdd" id="date" name="showdate" type="date">
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thời gian</label>
                                             <div class="form-user">
-                                                <input class="input-sua" id="time" name="time" type="number">
-                                                <span class="span-error"></span>
+                                                <input class="input-sua timeAdd" id="time" name="time" type="number">
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
@@ -126,22 +126,22 @@
                                                     <option value="Sắp khởi chiếu">Sắp khởi chiếu</option>
                                                     <option value="Đã chiếu xong">Đã chiếu xong</option>
                                                 </select>
-                                                <span class="span-error"></span>
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Chi tiết</label>
                                             <div class="form-user">
-                                                <textarea class="input-sua-area" id="detail" name="detail" id=""
+                                                <textarea class="input-sua-area  detailAdd" id="detail" name="detail" id=""
                                                     cols="20" rows="10"></textarea>
-                                                <span class="span-error"></span>
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Link Trailer</label>
                                             <div class="form-user">
-                                                <input class="input-sua" id="trailer" name="trailerId" type="url">
-                                                <span class="span-error"></span>
+                                                <input class="input-sua trailerIdAdd" id="trailer" name="trailerId" type="url">
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -253,12 +253,12 @@
                                                 <div class="form-user">
                                                     <input class="nameENedit input-sua" id="nameENEdit" name="nameEN"
                                                         placeholder="Tên tiếng anh" type="text">
-                                                    <span class="span-error"></span>
+                                                    <span class="span-error-edit"></span>
                                                 </div>
                                                 <div class="form-user">
                                                     <input class="nameVNedit input-sua" id="nameVN" name="nameVN"
                                                         placeholder="Tên tiếng việt" type="text">
-                                                    <span class="span-error"></span>
+                                                    <span class="span-error-edit"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,14 +267,14 @@
                                             <div class="form-user">
                                                 <input class="directorEdit input-sua" id="director" name="director"
                                                     type="text">
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Diễn viên</label>
                                             <div class="form-user">
                                                 <input class="actorEdit input-sua" id="actor" name="actor" type="text">
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
@@ -282,14 +282,14 @@
                                             <div class="form-user">
                                                 <input class="showdateEdit input-sua" id="date" name="showdate"
                                                     type="date">
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
                                             <label class="label-chitiet" for="">Thời gian</label>
                                             <div class="form-user">
                                                 <input class="timeEdit input-sua" id="time" name="time" type="number">
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
@@ -342,7 +342,7 @@
                                             <div class="form-user">
                                                 <textarea class="input-sua-area detailEdit" name="detail" id="detail"
                                                     cols="20" rows="10"></textarea>
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                         </div>
                                         <div class="ad-phim">
@@ -350,7 +350,7 @@
                                             <div class="form-user">
                                                 <input class="input-sua trailerIdEdit" id="trailer" name="trailerId"
                                                     type="url">
-                                                <span class="span-error"></span>
+                                                <span class="span-error-edit"></span>
                                             </div>
                                             <input type="hidden" class="pimage" name="pimage">
                                             <input type="hidden" name="id" class="idFilm">
@@ -450,52 +450,56 @@
             </div>
     </body>
     <%- include ('../layouts/footer') %>
-        <script src="/js/validate.js"></script>
-        <script>
-            Validator({
-                form: '#form-add',
-                errorSelect: '.span-error',
-                rules: [
-                    Validator.isRequired('#nameEN'),
-                    Validator.isName('#nameEN'),
-                    Validator.isRequired('#nameVN'),
-                    Validator.isName('#nameVN'),
-                    Validator.isRequired('#director'),
-                    Validator.isName('#director'),
-                    Validator.isRequired('#actor'),
-                    Validator.isName('#actor'),
-                    Validator.isRequired('#date'),
-                    Validator.isRequired('#time'),
-                    Validator.isRequired('#detail'),
-                    Validator.isRequired('#trailer')
-                ]
-            });
-            Validator({
-                form: '#form-edit',
-                errorSelect: '.span-error',
-                rules: [
-                    Validator.isRequired('#nameEN'),
-                    Validator.isName('#nameEN'),
-                    Validator.isRequired('#nameVN'),
-                    Validator.isName('#nameVN'),
-                    Validator.isRequired('#director'),
-                    Validator.isName('#director'),
-                    Validator.isRequired('#actor'),
-                    Validator.isName('#actor'),
-                    Validator.isRequired('#date'),
-                    Validator.isRequired('#time'),
-                    Validator.isRequired('#detail'),
-                    Validator.isRequired('#trailer')
-                ]
-            });
-        </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"
             integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="/js/validate-thitran.js"></script>
         <script>
+            //validate
+            var nameENadd=$('.nameENadd');
+            var nameVNadd=$('.nameVNadd');
+            var directorAdd=$('.directorAdd');
+            var actorAdd=$('.actorAdd');
+            var showdateAdd=$('.showdateAdd');
+            var detailAdd=$('.detailAdd');
+            var trailerIdAdd=$('.trailerIdAdd');
+            var timeAdd=$('.timeAdd');
+            var imageAdd=$('.imgChangeAdd');
+
+            var nameENedit=$('.nameENedit');
+            var nameVNedit=$('.nameVNedit');
+            var directorEdit=$('.directorEdit');
+            var actorEdit=$('.actorEdit');
+            var showdateEdit=$('.showdateEdit');
+            var detailEdit=$('.detailEdit');
+            var trailerIdEdit=$('.trailerIdEdit');
+            var timeEdit=$('.timeEdit');
+
+            isRequired(nameENadd,'add');
+            isRequired(nameVNadd,'add');
+            isRequired(directorAdd,'add');
+            isRequired(actorAdd,'add');
+            isRequired(showdateAdd,'add');
+            isRequired(detailAdd,'add');
+            isRequired(trailerIdAdd,'add');
+            isRequired(timeAdd,'add');
+            isRequired(imageAdd,'add');
+            
+            isRequired(nameENedit,'edit');
+            isRequired(nameVNedit,'edit');
+            isRequired(directorEdit,'edit');
+            isRequired(actorEdit,'edit');
+            isRequired(showdateEdit,'edit');
+            isRequired(trailerIdEdit,'edit');
+            isRequired(detailEdit,'edit');
+            isRequired(timeEdit,'edit');
+
+        </script>
+        <script>
+            var modalAdd = document.querySelector('.modal-add');
             var modal = document.getElementById('myModal');
             var modalchitiet = document.getElementById('chitietModal');
             var span = document.getElementsByClassName("suaclose")[0];
@@ -547,9 +551,14 @@
                 modalchitiet.style.display = "none";
             }
             window.onclick = function (event) {
-                $('.alertAdd').html(null);
-                if (event.target == modal) {
+                if (event.target == modalAdd) {
+                    $('.span-error-add').html(null);
+                    $('.imgAddPreview').attr('src', '/img/noimage.png');
+                    $('.imgChangeAdd').val(null);
+                }
+                else if (event.target == modal) {
                     modal.style.display = "none";
+                    $('.span-error-edit').html(null);
                     $('.imgAddPreview').attr('src', '/img/noimage.png');
                     $('.imgChangeAdd').val(null);
                     $('.imgChangeEdit').val(null);
@@ -650,60 +659,77 @@
             //Sua phim
 
             $('#btn-save-change-item').on('click', function (e) {
-                var formm = $('.formEdit')[0];
-                var data = new FormData(formm);
-                $.ajax({
-                    url: "/admin/film/edit-film",
-                    type: "POST",
-                    enctype: "multipart/form-data",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: data,
-                    success: function (result) {
-                        if (result.noti != "") $('.alertEdit').text(result.noti);
-                        else {
-                            tdNameEN.text(nameENedit.val());
-                            tdNameVN.text(nameVNedit.val());
-                            tdDirector.text(directorEdit.val());
-                            var newDateArr = dateshowEdit.val().split('-');
-                            var newDate = newDateArr[2] + '/' + newDateArr[1] + '/' + newDateArr[0];
-                            tdShowdate.text(newDate);
-                            tdType.text(typeEdit.val());
-                            tdStatus.text(statusEdit.val());
-                            tdImage.attr('src', result.imageAjax);
-                            tdRating.attr('src', '/img/cs' + result.agelimit + '.png');
-                            modal.style.display = "none";
+                var check=true;
+                var mes='Vui lòng nhập';
+                // checkform([nameENedit,nameVNedit,directorEdit,actorEdit,showdateEdit,timeEdit,detailEdit,trailerIdEdit],'edit',mes);
+                $('.span-error-edit').each(function(){
+                    if ($(this).text()!="") check=false;
+                })
+                if (check==true){
+                    var formm = $('.formEdit')[0];
+                    var data = new FormData(formm);
+                    $.ajax({
+                        url: "/admin/film/edit-film",
+                        type: "POST",
+                        enctype: "multipart/form-data",
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.noti != "") $('.alertEdit').text(result.noti);
+                            else {
+                                tdNameEN.text(nameENedit.val());
+                                tdNameVN.text(nameVNedit.val());
+                                tdDirector.text(directorEdit.val());
+                                var newDateArr = dateshowEdit.val().split('-');
+                                var newDate = newDateArr[2] + '/' + newDateArr[1] + '/' + newDateArr[0];
+                                tdShowdate.text(newDate);
+                                tdType.text(typeEdit.val());
+                                tdStatus.text(statusEdit.val());
+                                tdImage.attr('src', result.imageAjax);
+                                tdRating.attr('src', '/img/cs' + result.agelimit + '.png');
+                                modal.style.display = "none";
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 e.preventDefault();
             })
 
             //Them phim
             $('#btn-save-new-item').on('click', function (e) {
-                var formm = $('.formAdd')[0];
-                var data = new FormData(formm);
-                $.ajax({
-                    url: "/admin/film/add-film/",
-                    type: "POST",
-                    enctype: "multipart/form-data",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: data,
-                    success: function (result) {
-                        if (result.noti != "") $('.alertAdd').text(result.noti);
-                        else {
-                            // Set the URL to whatever it was plus "#".
-                            url = document.URL + "#";
-                            location = "#";
+                var mes ='Vui lòng nhập trường này';
+                var check=true;
+                checkform([nameENadd,nameVNadd,directorAdd,actorAdd,showdateAdd,timeAdd,detailAdd,trailerIdAdd],'add',mes);
+                checkform([imageAdd],'add','Vui lòng thêm hình ảnh');
+                $('.span-error-add').each(function(){
+                    if ($(this).text()!="") check=false;
+                })
+                if (check==true){
+                    var formm = $('.formAdd')[0];
+                    var data = new FormData(formm);
+                    $.ajax({
+                        url: "/admin/film/add-film/",
+                        type: "POST",
+                        enctype: "multipart/form-data",
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (result) {
+                            // if (result.noti != "") $('.alertAdd').text(result.noti);
+                            // else {
+                                // Set the URL to whatever it was plus "#".
+                                url = document.URL + "#";
+                                location = "#";
 
-                            //Reload the page
-                            location.reload(true);
-                        }
+                                //Reload the page
+                                location.reload(true);
+                                // }
+                            }
+                        });
                     }
-                });
                 e.preventDefault();
             })
 

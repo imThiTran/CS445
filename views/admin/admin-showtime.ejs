@@ -457,68 +457,56 @@
 //     }
 // })
 
-        </script>
-        <script>
-            window.onload = disableSelect();
+</script>
+<script>
+window.onload = disableSelect();
 
-            function disableSelect() {
-                const selectPcs = document.querySelectorAll('.select-pc');
-                selectPcs.forEach(element => {
-                    element && (element.disabled = true);
-                });
-            }
+function disableSelect() {
+    const selectPcs = document.querySelectorAll('.select-pc');
+    selectPcs.forEach(element => {
+        element && (element.disabled = true);
+    });
+}
 
-            function toggleSelect(e) {
-                const selectPc = e.parentElement.parentElement.querySelector('.select-pc');
-                selectPc && (selectPc.disabled = !e.checked);
-            }
+function toggleSelect(e) {
+    const selectPc = e.parentElement.parentElement.querySelector('.select-pc');
+    selectPc && (selectPc.disabled = !e.checked);
+}
 
 
-        </script>
-        <script>
-            $("#checkAll").change(function () {
-                $(".form-check-input-del").prop('checked', $(this).prop("checked"));
-                if ($('.itemcheck:checked').length > 0) {
-                    $('.delete-all').prop('disabled', false);
-                } else $('.delete-all').prop('disabled', true);
-            });
+</script>
+<script>
+    $("#checkAll").change(function () {
+    $(".form-check-input-del").prop('checked', $(this).prop("checked"));
+    if ($('.itemcheck:checked').length>0){
+            $('.delete-all').prop('disabled',false);
+        } else $('.delete-all').prop('disabled',true);
+});
 
-            $('.itemcheck').change(function () {
-                var isCheckAll = $('.itemcheck').length == $('.itemcheck:checked').length;
-                $('#checkAll').prop('checked', isCheckAll);
-                if ($('.itemcheck:checked').length > 0) {
-                    $('.delete-all').prop('disabled', false);
-                } else $('.delete-all').prop('disabled', true);
-            })
+    $('.itemcheck').change(function(){
+        var isCheckAll = $('.itemcheck').length == $('.itemcheck:checked').length;
+        $('#checkAll').prop('checked',isCheckAll);
+        if ($('.itemcheck:checked').length>0){
+            $('.delete-all').prop('disabled',false);
+        } else $('.delete-all').prop('disabled',true);
+    })
 
-            $('.delete-all').click(function () {
-                if (confirm('Bạn chắc chắn xóa ?')) {
-                    $('.formDeleteAll').submit();
-                }
-                e.preventDefault();
-            })
-            var formSearch = $(('.formSearch'))
-            $('.submitsearch').on('click', function (e) {
-                var dateform = new Date($('#time-from').val());
-                var dateto = new Date($('#time-to').val());
-                if (dateform > dateto) alert('Ngày tháng tìm kiếm không hợp lệ');
-                else {
-                    formSearch.submit();
-                }
-                e.preventDefault();
-            }) 
-        </script>
-          <script src="/js/validate.js"></script>
-          <script>
-              Validator({
-                  form: '#form-add',
-                  errorSelect: '.span-error',
-                  rules: [
-                      Validator.isRequired('#phim'),
-                      Validator.isRequired('#date')
-  
-                  ]
-              });
-          </script>
-
-        </html>
+    $('.delete-all').click(function(){
+        if (confirm('Bạn chắc chắn xóa ?')){
+            $('.formDeleteAll').submit();
+        }
+        e.preventDefault();
+    })
+var formSearch= $(('.formSearch'))
+    $('.submitsearch').on('click',function(e){
+        var datefrom=new Date($('#time-from').val());
+        var dateto=new Date($('#time-to').val());
+        if (datefrom=="Invalid Date" || dateto=="Invalid Date" ) alert('Vui lòng chọn ngày tháng đầy đủ');
+        else if (datefrom>dateto) alert('Thứ tự ngày tìm kiếm không hợp lệ');
+        else {
+            formSearch.submit();
+        }
+        e.preventDefault();
+      }) 
+</script>
+</html>

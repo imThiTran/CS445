@@ -1069,11 +1069,15 @@ p{
     border: 1px solid #0000006b;
 
 }
-.span-error{
+.alertAdd,
+.span-error,
+.span-error-edit,
+.span-error-add{
   font-size: 14px;
   color: #f93838;
   font-style: italic;
 }
+
 .item-slide{
   padding: 0px 37px;
 }
@@ -1091,11 +1095,7 @@ p{
   display: flex;
   flex-direction: column;
 }
-.alertAdd{
-  font-size: 14px;
-  color: #f93838;
-  font-style: italic;
-}
+
 .input-date{
   display: flex;
   flex-direction: column;
