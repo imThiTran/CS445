@@ -30,8 +30,13 @@
                                                 style="width: 100%;">
                                             <input type="file" class="form-control imgChangeAdd" name="image" id="img1"
                                                 accept="image/png, image/jpeg, image/jpg" style="display: none;">
-                                            <label class="btn-addimg" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
-                                            <p class="span-error-add"></p>
+                                            <label class="btn-addimg" onclick="clearImage()" id="btn-edit-img-item" for="img1">Chọn ảnh</label>
+                                            <script>
+                                                function clearImage(){
+                                                    $('.imgAddPreview').attr('src', '/img/noimage.png');
+                                                }
+                                            </script>
+                                            <p class="span-error-add alertAdd"></p>
                                         </div>
                                     </div>
                                     <div class="modal-right">
@@ -477,7 +482,11 @@
             var detailEdit=$('.detailEdit');
             var trailerIdEdit=$('.trailerIdEdit');
             var timeEdit=$('.timeEdit');
-
+            var photoEdit = $('.photoEdit')
+            var dateshowEdit = $('.showdateEdit');
+            var statusEdit = $('.statusEdit');
+            var agelimitEdit = $('.agelimitEdit');
+            var typeEdit = $('.typeEdit');
             isRequired(nameENadd,'add');
             isRequired(nameVNadd,'add');
             isRequired(directorAdd,'add');
@@ -497,8 +506,8 @@
             isRequired(detailEdit,'edit');
             isRequired(timeEdit,'edit');
 
-        </script>
-        <script>
+      
+        
             var modalAdd = document.querySelector('.modal-add');
             var modal = document.getElementById('myModal');
             var modalchitiet = document.getElementById('chitietModal');
@@ -516,19 +525,6 @@
             var detailDetail = $('.detailDetail');
             var trailerIdDetail = $('.trailerIdDetail');
             var typeDetail = $('.typeDetail');
-
-            var photoEdit = $('.photoEdit')
-            var nameENedit = $('.nameENedit');
-            var nameVNedit = $('.nameVNedit');
-            var directorEdit = $('.directorEdit');
-            var actorEdit = $('.actorEdit');
-            var dateshowEdit = $('.showdateEdit');
-            var timeEdit = $('.timeEdit');
-            var statusEdit = $('.statusEdit');
-            var agelimitEdit = $('.agelimitEdit');
-            var detailEdit = $('.detailEdit');
-            var trailerIdEdit = $('.trailerIdEdit');
-            var typeEdit = $('.typeEdit');
 
             var tdNameEN;
             var tdNameVN
@@ -718,15 +714,15 @@
                         contentType: false,
                         data: data,
                         success: function (result) {
-                            // if (result.noti != "") $('.alertAdd').text(result.noti);
-                            // else {
+                            if (result.noti != "") $('.alertAdd').text(result.noti);
+                            else {
                                 // Set the URL to whatever it was plus "#".
                                 url = document.URL + "#";
                                 location = "#";
 
                                 //Reload the page
                                 location.reload(true);
-                                // }
+                                }
                             }
                         });
                     }
