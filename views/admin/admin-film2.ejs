@@ -20,7 +20,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Thêm phim</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <button type="button" class="close closeAdd" data-dismiss="modal">&times;</button>
                                 </div>
 
                                 <div class="modal-body-plus">
@@ -496,6 +496,7 @@
             isRequired(showdateAdd,'add');
             isRequired(detailAdd,'add');
             isRequired(trailerIdAdd,'add');
+            isNumberLength(timeAdd,'add');
             isRequired(timeAdd,'add');
             isRequired(imageAdd,'add');
             
@@ -506,6 +507,7 @@
             isRequired(showdateEdit,'edit');
             isRequired(trailerIdEdit,'edit');
             isRequired(detailEdit,'edit');
+            isNumberLength(timeEdit,'edit');
             isRequired(timeEdit,'edit');
 
       
@@ -542,7 +544,11 @@
             // btnchitiet.onclick = function () {
             //     modalchitiet.style.display = "block";
             // }
+            $('.closeAdd').click(function(){
+                $('.span-error-add').html(null);
+            })
             span.onclick = function () {
+                $('.span-error-edit').html(null);
                 modal.style.display = "none";
             }
             spanchitiet.onclick = function () {

@@ -1,4 +1,5 @@
 var modal = document.getElementById('myModal');
+var modalAdd= document.querySelector('.modal-add');
 var btn = document.getElementById("myBtn");
 var span = document.querySelector(".closeBtn");
     // btn.onclick = function () {
@@ -13,9 +14,13 @@ var span = document.querySelector(".closeBtn");
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        else if (event.modalAdd == modal){
+
+        }
         $('.alertEdit').html(null);
         $('.alertAdd').html(null);
     }
+    var dateAdd=$('.dateAdd');
     var nameEN= $('.nameEN');
     var date= $('.date');
     var time= $('.time');
@@ -143,27 +148,35 @@ var span = document.querySelector(".closeBtn");
       })
       
       $('#btn-save-change-item').on('click',function(e){
-        var formm=formEdit[0];
-        var id= formEdit.attr('id');
-        var data = new FormData(formm);
-        $.ajax({
-          url: "/admin/showtime/edit-showtime/"+id,
-          type: "POST",
-          enctype: "multipart/form-data",
-          cache:false,
-          processData: false,
-          contentType: false,
-          data: data,
-          success: function (result) {
-                if ( result.noti != "") $('.alertEdit').text(result.noti) ;
-                 else {
-                   tdTime.text(time.val());
-                   tdRoom.text("CINEMA "+room.val());
-                   tdDate.text(date.val());   
-                   modal.style.display = "none";
-                 }
-            }
-        });
+        var check=true;
+        $('.span-error-edit').each(function(){
+          if ($(this).text()!="") check=false;
+        })
+        if (check==true){
+          var formm=formEdit[0];
+          var id= formEdit.attr('id');
+          var data = new FormData(formm);
+          $.ajax({
+            url: "/admin/showtime/edit-showtime/"+id,
+            type: "POST",
+            enctype: "multipart/form-data",
+            cache:false,
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (result) {
+                  if ( result.noti != "") $('.alertEdit').text(result.noti) ;
+                   else {
+                     tdTime.text(time.val());
+                     tdRoom.text("CINEMA "+room.val());
+                     var newDateArr=date.val().split('-') 
+                     var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; 
+                     tdDate.text(newDate);   
+                     modal.style.display = "none";
+                   }
+              }
+          });
+        } 
         e.preventDefault();
       }) 
  

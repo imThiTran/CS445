@@ -14,7 +14,7 @@
                                         height: 40px; margin-right: 7px;">+</button>
                 </div>
                 <form class="formAdd" id="form-add" action="/admin/showtime/add-showtime" method="POST">
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    <div class="modal modal-add fade bd-example-modal-lg" tabindex="-1" role="dialog"
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -40,8 +40,8 @@
                                     <div class="ad-phim1">
                                         <label style="width: 150px;" for="">Ngày chiếu</label>
                                         <div class="form-user">
-                                        <input name="date" id="date" class="date-lc" type="date" style="width:100%">
-                                        <span class="span-error"></span>
+                                        <input name="date" id="date" class="date-lc dateAdd" type="date" style="width:100%">
+                                        <span class="span-error-add"></span>
                                     </div>
                                     </div>
                                     <div class="ad-phim1" style="    margin-top: 20px;">
@@ -50,7 +50,7 @@
                                             <div class="lc-suatchieu">
                                                 <div class="sc-check">
                                                     <div class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="09:00" id="flexCheckDefault"
                                                             onclick="toggleSelect(this)">
                                                         <label name="suat1" class="form-check-label"
@@ -66,7 +66,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="11:00" id="flexCheckDefault1"
                                                             onclick="toggleSelect(this)">
                                                         <label name="suat2" class="form-check-label"
@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="13:00" id="flexCheckDefault2"
                                                             onclick="toggleSelect(this)">
                                                         <label name="suat3" class="form-check-label"
@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="15:00" id="flexCheckDefault3"
                                                             onclick="toggleSelect(this)">
                                                         <label name="suat4" class="form-check-label"
@@ -114,7 +114,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div name="suat5" class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="17:00" id="flexCheckDefault4"
                                                             onclick="toggleSelect(this)">
                                                         <label class="form-check-label" for="flexCheckDefault4">
@@ -129,7 +129,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div name="suat6" class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="19:00" id="flexCheckDefault5"
                                                             onclick="toggleSelect(this)">
                                                         <label class="form-check-label" for="flexCheckDefault5">
@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div name="suat7" class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="21:00" id="flexCheckDefault6"
                                                             onclick="toggleSelect(this)">
                                                         <label class="form-check-label" for="flexCheckDefault6">
@@ -159,7 +159,7 @@
                                                 </div>
                                                 <div class="sc-check">
                                                     <div name="suat8" class="form-check">
-                                                        <input name="time" class="form-check-input" type="checkbox"
+                                                        <input name="time" class="form-check-input checktime" type="checkbox"
                                                             value="23:00" id="flexCheckDefault7"
                                                             onclick="toggleSelect(this)">
                                                         <label class="form-check-label" for="flexCheckDefault7">
@@ -174,7 +174,7 @@
                                                 </div>
                                             </div>
 
-                                            <span class="span-error"></span>
+                                            <span class="span-error-add time-error"></span>
                                         </div>
 
                                     </div>
@@ -277,7 +277,7 @@
                                         </td>
                                         <td class="tdDate">
                                             <% var newDateArr=st.date.split('-') %>
-                                                <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
+                                            <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
                                                     <%=newDate%>
                                         </td>
                                         <td class="tdTime">
@@ -338,6 +338,7 @@
                                             <label class="label-chitiet" for="">Ngày chiếu</label>
                                             <input name="date" class="date date-lc1" type="date"
                                                 style="    font-size: 18px;">
+                                                <span class="span-error-edit"></span>
                                         </div>
                                         <div class="ad-phim1">
                                             <label class="label-chitiet " for="">Suất chiếu</label>
@@ -403,39 +404,59 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="/js/modal.js"></script>
+        <script src="/js/validate-thitran.js"></script>
         <script>
+
+            isRequired(dateAdd,'add');
+            isRequired(date,'edit');         
             $('a.confirmDeletion').on('click', function () {
                 if (!confirm('Confirm Deletion ? '))
                     return false;
             })
 
             $('.btnAdd').on('click', function (e) {
-                var formm = $('.formAdd')[0];
-                var data = new FormData(formm);
-                $.ajax({
-                    url: "/admin/showtime/add-showtime/",
-                    type: "POST",
-                    enctype: "multipart/form-data",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: data,
-                    success: function (result) {
-                        if (result.noti != "") $('.alertAdd').html(result.noti);
-                        else {
-                            //  // Set the URL to whatever it was plus "#".
-                            //  url = document.URL+"#";
-                            //  location = "#";
+                var check=true;
+                var timeChecked=$('.checktime:checked').length;
+                if (timeChecked==0){
+                    $('.time-error').html('Chưa chọn suất chiếu');
+                }
+                checkform([dateAdd],'add','Vui lòng nhập trường này')
+                $('.span-error-add').each(function(){
+                    if ($(this).text()!="") check=false;
+                })
+                if (check==true){
+                    var formm = $('.formAdd')[0];
+                    var data = new FormData(formm);
+                    $.ajax({
+                        url: "/admin/showtime/add-showtime/",
+                        type: "POST",
+                        enctype: "multipart/form-data",
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.noti != "") $('.alertAdd').html(result.noti);
+                            else {
+                                //  // Set the URL to whatever it was plus "#".
+                                //  url = document.URL+"#";
+                                //  location = "#";
 
-                            //  //Reload the page
-                            //   location.reload(true);
-                            $(location).attr('href', '/admin/showtime');
+                                //  //Reload the page
+                                //   location.reload(true);
+                                $(location).attr('href', '/admin/showtime');
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 e.preventDefault();
             })
 
+            $('.checktime').each(function(){
+                $(this).click(function(){
+                    $('.time-error').html(null);
+                })
+            })
 // $('.btnDelete').on('click',function(e){
 //     var id=$(this).attr('id');
 //     var trContain=$(this).closest('.trClosest')

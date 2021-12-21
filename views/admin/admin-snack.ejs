@@ -17,13 +17,13 @@
 
 
                     <form action="/admin/snack/add-snack" class="formAdd">
-                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                        <div class="modal modal-add fade bd-example-modal-lg" tabindex="-1" role="dialog"
                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title">Thêm món</h4>
-                                        <button type="button" class="close"
+                                        <button type="button" class="closeAdd close"
                                             data-dismiss="modal">&times;</button>
                                     </div>
 
@@ -37,19 +37,29 @@
                                                     accept="image/png, image/jpeg, image/jpg"
                                                     style="display: none;">
                                                 <label class="btn-addimg" id="btn-edit-img-item"
-                                                    for="img1">Chọn ảnh</label>
+                                                    for="img1" onclick="clearImage();">Chọn ảnh</label>
+                                                    <script>
+                                                        function clearImage(){
+                                                            setTimeout(() => {
+                                                                $('.imgAddPreview').attr('src', '/img/noimage.png');
+                                                            }, 1000);
+                                                        }
+                                                    </script>
+                                                <span class="span-error-add"></span>
                                             </div>
                                         </div>
                                         <div class="modal-right">
                                             <div class="ad-phim">
                                                 <label class="label-chitiet" for="">Tên món</label>
                                                 <div class="input-ten">
-                                                    <input class="input-sua" name="name" type="text">
+                                                    <input class="input-sua nameAdd" name="name" type="text">
+                                                    <span class="span-error-add"></span>
                                                 </div>
                                             </div>
                                             <div class="ad-phim">
                                                 <label class="label-chitiet" for="">Giá tiền</label>
-                                                <input class="input-sua" name="price" type="text">
+                                                <input class="input-sua priceAdd" name="price" type="text">
+                                                <span class="span-error-add"></span>
                                             </div>
                                             <div class="ad-phim">
                                                 <label class="label-chitiet" for="">Số lượng</label>
@@ -143,11 +153,13 @@
                                                         <label class="label-chitiet" for="">Tên món</label>
                                                         <div class="input-ten">
                                                             <input name="name" class="nameEdit input-sua" type="text">
+                                                            <span class="span-error-edit"></span>
                                                         </div>
                                                     </div>
                                                     <div class="ad-phim">
                                                         <label class="label-chitiet" for="">Giá tiền</label>
                                                         <input name="price" class="priceEdit input-sua" type="text">
+                                                        <span class="span-error-edit"></span>
                                                     </div>
                                                     <div class="ad-phim">
                                                         <label class="label-chitiet" for="">Số lượng</label>
@@ -180,7 +192,20 @@
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="/js/validate-thitran.js"></script>
         <script>
+            var nameAdd= $('.nameAdd');
+            var priceAdd= $('.priceAdd');
+            var nameEdit= $('.nameEdit');
+            var priceEdit= $('.priceEdit');
+            var imageAdd=$('.imgChangeAdd');
+
+            isRequired(imageAdd,'add');
+            isRequired(nameAdd,'add');
+            isRequired(priceAdd,'add');
+            isRequired(nameEdit,'edit');
+            isRequired(priceEdit,'edit');
+
             $('a.confirmDeletion').on('click', function () {
                 if (!confirm('Confirm Deletion ? '))
                     return false;
@@ -211,6 +236,7 @@
         </script>
         <script>
             var modal = document.getElementById('myModal');
+            var modalAdd=document.querySelector('.modal-add');
             // var btn = document.getElementById("myBtn");
             var span = document.getElementsByClassName("suaclose")[0];
 
@@ -220,41 +246,59 @@
             // btn.onclick = function () {
             //     modal.style.display = "block";
             // }
+            $('.closeAdd').click(function(){
+                $('.span-error-add').html(null);
+            })
             span.onclick = function () {
+                $('.span-error-edit').html(null);
                 modal.style.display = "none";
             }
             window.onclick = function (event) {
-                if (event.target == modal) {
+                if (event.target == modalAdd){
+                    $('.imgAddPreview').attr('src', '/img/noimage.png');
+                    $('.imgChangeAdd').val(null);
+                    $('.span-error-add').html(null);
+                }
+                else if (event.target == modal) {
+                    $('.span-error-edit').html(null);
                     modal.style.display = "none";
                     $('.imgAddPreview').attr('src', '/img/noimage.png');
                     $('.imgChangeAdd').val(null);
                     $('.imgChangeEdit').val(null);
                 }
-                $('.alertAdd').text("");
             }
             $('.btnAdd').click(function (e) {
-                var formm = $('.formAdd')[0];
-                var data = new FormData(formm);
-                $.ajax({
-                    url: "/admin/snack/add-snack/",
-                    type: "POST",
-                    enctype: "multipart/form-data",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: data,
-                    success: function (result) {
-                        if (result.noti != "") $('.alertAdd').text(result.noti);
-                        else {
-                            // Set the URL to whatever it was plus "#".
-                            url = document.URL + "#";
-                            location = "#";
+                var mes ='Vui lòng nhập trường này';
+                var check=true;
+                checkform([nameAdd,priceAdd],'add',mes);
+                checkform([imageAdd],'add','Vui lòng thêm hình ảnh');
+                $('.span-error-add').each(function(){
+                    if ($(this).text()!="") check=false;
+                })
+                if (check==true){
+                    var formm = $('.formAdd')[0];
+                    var data = new FormData(formm);
+                    $.ajax({
+                        url: "/admin/snack/add-snack/",
+                        type: "POST",
+                        enctype: "multipart/form-data",
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.noti != "") $('.alertAdd').text(result.noti);
+                            else {
+                                // Set the URL to whatever it was plus "#".
+                                url = document.URL + "#";
+                                location = "#";
 
-                            //Reload the page
-                            location.reload(true);
+                                //Reload the page
+                                location.reload(true);
+                            }
                         }
-                    }
-                });
+                    });
+                }               
                 e.preventDefault();
             })
 
@@ -278,8 +322,6 @@
 
             })
             //load nut sua
-            var nameEdit = $('.nameEdit');
-            var priceEdit = $('.priceEdit')
             $('.editBtn').each(function () {
                 var $this = $(this);
                 var id = $this.attr('id');
@@ -308,26 +350,33 @@
 
             //sua snack
             $('#btn-save-change-item').on('click', function (e) {
-                var formm = $('.formEdit')[0];
-                var data = new FormData(formm);
-                $.ajax({
-                    url: "/admin/snack/edit-snack",
-                    type: "POST",
-                    enctype: "multipart/form-data",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: data,
-                    success: function (result) {
-                        if (result.noti != "") $('.alertEdit').text(result.noti);
-                        else {
-                            tdName.text(nameEdit.val());
-                            tdPrice.text(priceEdit.val() + ' VND');
-                            tdImage.attr('src', result.imageAjax);
-                            modal.style.display = "none";
+                var mes ='Vui lòng nhập trường này';
+                var check=true;
+                $('.span-error-edit').each(function(){
+                    if ($(this).text()!="") check=false;
+                })
+                if (check==true){
+                    var formm = $('.formEdit')[0];
+                    var data = new FormData(formm);
+                    $.ajax({
+                        url: "/admin/snack/edit-snack",
+                        type: "POST",
+                        enctype: "multipart/form-data",
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.noti != "") $('.alertEdit').text(result.noti);
+                            else {
+                                tdName.text(nameEdit.val());
+                                tdPrice.text(priceEdit.val() + ' VND');
+                                tdImage.attr('src', result.imageAjax);
+                                modal.style.display = "none";
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 e.preventDefault();
             })
             //xoa snack

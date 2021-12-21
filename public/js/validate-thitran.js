@@ -8,6 +8,16 @@ function isRequired(elements,methodd){
     })
 }
 
+function isNumberLength(elements,methodd){
+    var spanerror=elements.parent().find('.span-error-'+methodd);
+    elements.blur(function(e){
+        if (elements.val()<30 || elements.val()>1000) spanerror.text('Thời lượng phim không phù hợp');
+    })
+    elements.on('input',function(e){
+        spanerror.html(null);
+    })
+}
+
 function checkform(array,methodd,mes){
     for (var i=0;i<array.length;i++)
     {
