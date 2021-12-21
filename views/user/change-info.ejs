@@ -51,13 +51,13 @@
                                 font-size: 16px;" value="<%=user.fullname%>">
                                                         <span class="span-error"></span>
                                                     </div>
-                                                    <div>
+                                                    <!-- <div>
                                                         <p>Email</p>
                                                         <input value="<%=user.email%>" class="input-sua" type="text"
                                                             style="    padding: 7px;
                                 height: 40px;
                                 font-size: 16px;     background: #9f9f9f;" disabled>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="form-user">
                                                         <p>Số điện thoại</p>
                                                         <input name="phone" id="phone" value="<%=user.phone%>"
@@ -143,7 +143,7 @@
                                                 </a>
 
                                             </div>
-                                            <p class="alertOldPass" style="color: red;"></p>
+                                            <p class="alertOldPass span-error" style="color: red;"></p>
                                             <p>Mật khẩu mới</p>
                                             <div class="form-user">
                                                 <input name="newpass" class="newpass input-sua" type="password" style="    padding: 7px;
@@ -151,7 +151,7 @@
                                 font-size: 16px;">
                                                 <span class="span-error"></span>
                                             </div>
-                                            <p class="alertNewPass" style="color: red;"></p>
+                                            <p class="alertNewPass span-error" style="color: red;"></p>
                                                 <p>Xác nhận mật khẩu</p>
                                                 <div class="form-user">
                                                 <input class="input-sua repass" type="password" style="    padding: 7px;
@@ -159,7 +159,7 @@
                                 font-size: 16px;">
                                                 <span class="span-error"></span>
                                             </div>
-                                            <p class="alertRePass" style="color: red;"></p>
+                                            <p class="alertRePass span-error" style="color: red;"></p>
                                         </div>
                                         <button type="button" class="btn-save btn btn-addimg"
                                                     style="box-shadow: none; padding: 10px;">Lưu thay đổi</button>
@@ -175,7 +175,7 @@
 
     </body>
     <%- include ('../layouts/footer') %>
-        <!-- <script src="/js/validate.js"></script>
+        <script src="/js/validate.js"></script>
         <script>
             Validator({
                 form: '#form-user',
@@ -188,25 +188,25 @@
                     Validator.isRequired('#birth')
                 ]
             });
-            Validator({
-                form: '#form-pass',
-                errorSelect: '.span-error',
-                rules: [
-                    Validator.isRequired('#oldpass'),
-                    Validator.isRequired('#newpass'),
-                    Validator.minLength('#newpass'),
-                    Validator.isRequired('#repass'),
-                    Validator.isConfirm('#repass', function () {
-                        return document.querySelector('#form-pass #newpass').value;
-                    }),
-                    Validator.isNotConfirm('#newpass', function () {
-                        return document.querySelector('#form-pass #oldpass').value;
-                    })
+            // Validator({
+            //     form: '#form-pass',
+            //     errorSelect: '.span-error',
+            //     rules: [
+            //         Validator.isRequired('#oldpass'),
+            //         Validator.isRequired('#newpass'),
+            //         Validator.minLength('#newpass'),
+            //         Validator.isRequired('#repass'),
+            //         Validator.isConfirm('#repass', function () {
+            //             return document.querySelector('#form-pass #newpass').value;
+            //         }),
+            //         Validator.isNotConfirm('#newpass', function () {
+            //             return document.querySelector('#form-pass #oldpass').value;
+            //         })
 
-                ],
-            });
+            //     ],
+            // });
 
-        </script> -->
+        </script>
         <link rel="stylesheet" href="/css/changeinfor.css" />
         <script src="/js/bootstrap.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"
