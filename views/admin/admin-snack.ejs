@@ -248,6 +248,8 @@
             // }
             $('.closeAdd').click(function(){
                 $('.span-error-add').html(null);
+                $('.imgAddPreview').attr('src', '/img/noimage.png');
+                $('.imgChangeAdd').val(null);
             })
             span.onclick = function () {
                 $('.span-error-edit').html(null);

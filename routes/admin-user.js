@@ -8,7 +8,7 @@ var User=require('../models/user');
 
 
 router.get('/',function(req,res){
-    User.find({},function(err,us){
+    User.find({email:{'$ne':req.session.user}},function(err,us){
         res.render('admin/admin-user',{
             user:us
         })

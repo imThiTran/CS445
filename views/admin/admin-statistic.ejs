@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/profile.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-    <title>Trà sữa Bông</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+    <title>MEGAS STAR</title>
 </head>
 
 <body>
@@ -102,11 +105,29 @@
                                                 <div class="container">
                                                     <canvas id="myChart"></canvas>
                                                 </div>
-                                                <form action="" method="" style="    text-align: center;">
+                                                <form action="/admin/statistic/dayinmonth" method="" style="    text-align: center;">
+                                                    <input type="hidden" class="dayNumbers" value="<%=dayNumbers%>">
+                                                   
+                                                    <input type="hidden" class="salesDay" value="<%=salesDay%>">
+                                                    <input type="hidden" class="salesMonth" value="<%=salesMonth%>">
+                                                    <input type="hidden" class="listFilm" value="<%=listFilm%>"> 
+                                                    <input type="hidden" class="salesFilm" value="<%=salesFilm%>">
                                                     <input class="ipgetmonth" type="month" name="getmonth">
                                                     <button class="xemngay" type="button">Xem</button>
                                                 </form>
                                                 <script>
+                                                    var daysArr=[];
+                                                    var thisMonth=(new Date()).getMonth()+1;
+                                                    var thisYear=(new Date()).getFullYear();
+                                                    var dayNumbers=$('.dayNumbers').val();
+                                                    var listFilm=$('.listFilm').val();
+                                                    var salesFilm=$('.salesFilm').val();
+                                                    for (var i=1;i<=dayNumbers;i++){
+                                                        daysArr.push(i+'/'+thisMonth);
+                                                    }
+                                                    var salesDay=$('.salesDay').val();
+                                                    var salesMonth=$('.salesMonth').val();
+                                                   
                                                     let myChart = document.getElementById('myChart').getContext('2d');
                                                     // Global Options
                                                     Chart.defaults.global.defaultFontFamily = 'sans-serif';
@@ -116,21 +137,10 @@
                                                     let massPopChart = new Chart(myChart, {
                                                         type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                                         data: {
-                                                            labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12',
-                                                                '07/12', '08/12', '09/12', '10/12'],
+                                                            labels: daysArr,
                                                             datasets: [{
                                                                 label: 'Doanh thu',
-                                                                data: [
-                                                                    617594,
-                                                                    781045,
-                                                                    653060,
-                                                                    596519,
-                                                                    495162,
-                                                                    395072,
-                                                                    456930,
-                                                                    563244,
-                                                                    493720
-                                                                ],
+                                                                data: salesDay.split(','),
                                                                 backgroundColor: [
                                                                     'rgb(254 199 88)',
                                                                 ],
@@ -139,7 +149,7 @@
                                                         options: {
                                                             title: {
                                                                 display: true,
-                                                                text: 'DOANH THU THÁNG 12',
+                                                                text: 'DOANH THU THÁNG '+thisMonth+'/'+thisYear,
                                                                 fontSize: 25
                                                             },
                                                             legend: {
@@ -168,7 +178,7 @@
                                                 <div class="container">
                                                     <canvas id="myChart1"></canvas>
                                                 </div>
-                                                <form action="" method="" style="    text-align: center;">
+                                                <form action="/admin/statistic/monthinyear" method="" style="    text-align: center;">
                                                     <input class="ipgetyear" type="number" min="1900" max="2099" step="1" value="2021" name="getyear"/>                                            
                                                     <button class="xemthang" type="button">Xem</button>
                                                 </form>
@@ -186,20 +196,7 @@
                                                                 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                                                             datasets: [{
                                                                 label: 'Doanh thu',
-                                                                data: [
-                                                                    6617594,
-                                                                    8781045,
-                                                                    7653060,
-                                                                    8596519,
-                                                                    9495162,
-                                                                    6395072,
-                                                                    4456930,
-                                                                    4563244,
-                                                                    5493720,
-                                                                    6395072,
-                                                                    8781045,
-                                                                    4563244,
-                                                                ],
+                                                                data: salesMonth.split(','),
                                                                 backgroundColor: [
                                                                     'rgb(254 199 88)',
                                                                 ],
@@ -208,7 +205,7 @@
                                                         options: {
                                                             title: {
                                                                 display: true,
-                                                                text: 'DOANH THU NĂM 2021',
+                                                                text: 'DOANH THU NĂM '+thisYear,
                                                                 fontSize: 25
                                                             },
                                                             legend: {
@@ -228,7 +225,7 @@
                                                             },
                                                             tooltips: {
                                                                 enabled: true
-                                                            }
+                                                            },
                                                         }
                                                     });
                                                 </script>
@@ -243,46 +240,23 @@
                                                     Chart.defaults.global.defaultFontFamily = 'sans-serif';
                                                     Chart.defaults.global.defaultFontSize = 10;
                                                     Chart.defaults.global.defaultFontColor = '#777';
-
+                                                    var lengFilm=listFilm.split(',').length;
+                                                    var backgroundArr=new Array(lengFilm);
+                                                    for (var i=0;i<lengFilm;i++){
+                                                        backgroundArr[i]='rgb(254 199 88)';
+                                                    }
                                                     let massPopChart2 = new Chart(myChart2, {
                                                         type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                                         data: {
-                                                            labels: ['THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT', 'THE DEVIL MADE ME DO IT','b','c','d','e','g','h','i'],
+                                                            labels: listFilm.split(','),
                                                             datasets: [{
                                                                 label: 'Doanh thu',
-                                                                data: [
-                                                                    617594,
-                                                                    81045,
-                                                                    653060,
-                                                                    96519,
-                                                                    95162,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072,
-                                                                    395072
-                                                                ],
-                                                                backgroundColor: [
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)',
-                                                                    'rgb(254 199 88)'
-                                                                ],
+                                                                data: salesFilm.split(','),
+                                                                backgroundColor: backgroundArr,
                                                             }]
                                                         },
                                                         options: {
+                                                            indexAxis: 'l',
                                                             title: {
                                                                 display: true,
                                                                 text: 'DOANH THU THEO PHIM',
@@ -305,7 +279,7 @@
                                                             },
                                                             tooltips: {
                                                                 enabled: true
-                                                            }
+                                                            },
                                                         }
                                                     });
                                                 </script>
@@ -340,6 +314,114 @@
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/profile.js"></script>
+<script>
+    $('.xemngay').click(function(){
+        var month=$('.ipgetmonth').val();
+        $.ajax({
+                url:"/admin/statistic/day-in-month",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({month:month}),
+                success: function(result){
+                    var daysArr=[];
+                    for (var i=1;i<=result.dayNumbers;i++){
+                        daysArr.push(i+'/'+result.thisMonth);
+                    }
+                    
+                        massPopChart.destroy();
+                        massPopChart = new Chart(myChart, {
+                                                        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: daysArr,
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: result.salesDay,
+                                                                backgroundColor: [
+                                                                    'rgb(254 199 88)',
+                                                                ],
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU THÁNG '+result.thisMonth+'/'+result.thisYear,
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000'
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            }
+                                                        }
+                                                    });
+                      }
+        })
+    })
 
+    $('.xemthang').click(function(){
+        var year=$('.ipgetyear').val();
+        $.ajax({
+                url:"/admin/statistic/month-in-year",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({year:year}),
+                success: function(result){
+                        massPopChart1.destroy();
+                        massPopChart1 = new Chart(myChart1, {
+                                                        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+                                                                'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: result.salesMonth,
+                                                                backgroundColor: [
+                                                                    'rgb(254 199 88)',
+                                                                ],
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU NĂM '+result.thisYear,
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000'
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            },
+                                                        }
+                                                    });
+                      }
+        })
+    })
+</script>
 
 </html>
