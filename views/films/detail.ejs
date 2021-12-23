@@ -60,7 +60,7 @@
                                     <div class="modal-body">
                                         <h6 class="modal-title">Chọn ngày</h6>
                                         <div class="form-group">
-                                            
+                                            <%date.sort()%>
                                             <select name="date" id="dateShow" film="<%=film.nameEN%>" class="form-select" aria-label="Default select example">
                                                 <option value="none" selected>Chọn ngày chiếu</option>
                                                 <%date.forEach(function(dt){%>
