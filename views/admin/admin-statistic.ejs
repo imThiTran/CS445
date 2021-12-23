@@ -1,69 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/profile.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-            crossorigin="anonymous"></script>
-    <title>MEGAS STAR</title>
-</head>
-
-<body>
-    <div class="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
-            <div class="collapse navbar-collapse navnav" id="Mainnav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link " href="dangky.html">Đăng ký</a>
-                    </li>
-                    <div class="nav-cach"></div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Đăng nhập</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="wrapper-index">
-        <div class="menu-index" id="menu">
-            <ul class="menu-ul">
-                <li>
-                    <a href="index.html"><img class="img-logo" src="/img/MEGAS (2).png" /></a>
-                </li>
-                <div class="dropdown">
-                    <li class="li1"><a class="menu-a" href="index.html">PHIM</a>
-                        <div class="noidung_dropdown">
-                            <a href="#">Tất cả</a>
-                            <a href="#">Phim sắp chiếu</a>
-                            <a href="#">Phim đang chiếu</a>
-                        </div>
-                    </li>
-                </div>
-                <div class="dropdown">
-                    <li><a class="menu-a" href="index.html">THỂ LOẠI</a>
-                        <div class="noidung_dropdown">
-                            <a href="#">Kinh dị</a>
-                            <a href="#">Tình cảm</a>
-                            <a href="#">Hành động</a>
-                            <a href="#">Hài hước</a>
-                            <a href="#">Hoạt hình</a>
-                            <a href="#">Lịch sử</a>
-                        </div>
-                    </li>
-                </div>
-                <li><a class="menu-a" href="menu.html">MUA VÉ</a></li>
-                <li><a class="menu-a" href="giohang.html">SỰ KIỆN</a></li>
-                <li><a class="menu-a" href="giohang.html">HỖ TRỢ</a></li>
-            </ul>
-        </div>
-    </div>
-
+<%- include ('../layouts/admin-header') %>
+    <body>
     <section>
         <div class="ad-movie">
             <div class="wrapper">
@@ -74,7 +10,11 @@
                             <div class="profile-frame-ad">
                                 <br />
                                 <div class="head-profile-frame">
-                                    <div class="h5-detail">Quản lý phim</div>
+                                    <div class="h5-detail">Quản lý thống kê</div>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+                                    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                                            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+                                            crossorigin="anonymous"></script>
                                     <span class="line-detail"></span>
                                 </div>
                                 <div class="body-profile-frame-change ad-tk">
@@ -98,6 +38,12 @@
                                                     aria-selected="true">Thống kế theo phim</a>
 
                                             </li>
+                                            <li class="stt-list nav-item">
+                                                <a class="nav-link link1" href="#change4" style="    color: #333;" data-bs-toggle="tab"
+                                                    data-bs-target="#change4" role="tab" aria-controls="status"
+                                                    aria-selected="true">Thống kế theo đồ ăn vặt</a>
+
+                                            </li>
                                         </ul>
 
                                         <div class="tab-content">
@@ -112,6 +58,8 @@
                                                     <input type="hidden" class="salesMonth" value="<%=salesMonth%>">
                                                     <input type="hidden" class="listFilm" value="<%=listFilm%>"> 
                                                     <input type="hidden" class="salesFilm" value="<%=salesFilm%>">
+                                                    <input type="hidden" class="listSnack" value="<%=listSnack%>"> 
+                                                    <input type="hidden" class="salesSnack" value="<%=salesSnack%>">
                                                     <input class="ipgetmonth" type="month" name="getmonth">
                                                     <button class="xemngay" type="button">Xem</button>
                                                 </form>
@@ -122,6 +70,8 @@
                                                     var dayNumbers=$('.dayNumbers').val();
                                                     var listFilm=$('.listFilm').val();
                                                     var salesFilm=$('.salesFilm').val();
+                                                    var listSnack=$('.listSnack').val();
+                                                    var salesSnack=$('.salesSnack').val();
                                                     for (var i=1;i<=dayNumbers;i++){
                                                         daysArr.push(i+'/'+thisMonth);
                                                     }
@@ -178,7 +128,7 @@
                                                 <div class="container">
                                                     <canvas id="myChart1"></canvas>
                                                 </div>
-                                                <form action="/admin/statistic/monthinyear" method="" style="    text-align: center;">
+                                                <form action=""  style="    text-align: center;">
                                                     <input class="ipgetyear" type="number" min="1900" max="2099" step="1" value="2021" name="getyear"/>                                            
                                                     <button class="xemthang" type="button">Xem</button>
                                                 </form>
@@ -246,7 +196,7 @@
                                                         backgroundArr[i]='rgb(254 199 88)';
                                                     }
                                                     let massPopChart2 = new Chart(myChart2, {
-                                                        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        type: 'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                                                         data: {
                                                             labels: listFilm.split(','),
                                                             datasets: [{
@@ -256,7 +206,55 @@
                                                             }]
                                                         },
                                                         options: {
-                                                            indexAxis: 'l',
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DOANH THU THEO ĐỒ ĂN VẶT',
+                                                                fontSize: 25
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'right',
+                                                                labels: {
+                                                                    fontColor: '#000',
+                                                                }
+                                                            },
+                                                            layout: {
+                                                                padding: {
+                                                                    left: 50,
+                                                                    right: 0,
+                                                                    bottom: 0,
+                                                                    top: 0
+                                                                }
+                                                            },
+                                                            tooltips: {
+                                                                enabled: true
+                                                            },
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                            <div class="tab-pane" id="change4" role="tabpanel">
+                                                <div class="container">
+                                                    <canvas id="myChart3"></canvas>
+                                                </div>
+                                                <script>
+                                                    let myChart3 = document.getElementById('myChart3').getContext('2d');
+                                                    // Global Options
+                                                    Chart.defaults.global.defaultFontFamily = 'sans-serif';
+                                                    Chart.defaults.global.defaultFontSize = 10;
+                                                    Chart.defaults.global.defaultFontColor = '#777';
+                                                    
+                                                    let massPopChart3 = new Chart(myChart3, {
+                                                        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                                                        data: {
+                                                            labels: listSnack.split(','),
+                                                            datasets: [{
+                                                                label: 'Doanh thu',
+                                                                data: salesSnack.split(','),
+                                                                backgroundColor: backgroundArr,
+                                                            }]
+                                                        },
+                                                        options: {
                                                             title: {
                                                                 display: true,
                                                                 text: 'DOANH THU THEO PHIM',
@@ -299,23 +297,13 @@
 
 
 </body>
-<footer>
-    <br />
-    <br />
-    <div class="span-footer"> </div>
-    <div class="text-footer">
-        Mọi thông tin thắc mắc cũng như phản hồi, xin quý khách vui lòng liên hệ đến
-    </div>
-    <div class="img-footer">
-        <a href="#" class="a-footer"><img src="/img/face.png" class="img-face"> Bông food & drink</a>
-        <img src="/img/call.png" class="img-face"> 0907339982
-    </div>
-</footer>
+<%- include ('../layouts/footer') %>
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/profile.js"></script>
 <script>
-    $('.xemngay').click(function(){
+    $('.xemngay').click(function(e){
+        e.preventDefault();
         var month=$('.ipgetmonth').val();
         $.ajax({
                 url:"/admin/statistic/day-in-month",
@@ -371,7 +359,8 @@
         })
     })
 
-    $('.xemthang').click(function(){
+    $('.xemthang').click(function(e){
+        e.preventDefault();
         var year=$('.ipgetyear').val();
         $.ajax({
                 url:"/admin/statistic/month-in-year",
