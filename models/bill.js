@@ -50,6 +50,10 @@ var BillSchema = mongoose.Schema({
         type:Date,
         default:Date.now
     },
+    expired:{
+        type:Number,
+        default:0
+    }
 })
 
 var Bill = module.exports = mongoose.model('bills',BillSchema);

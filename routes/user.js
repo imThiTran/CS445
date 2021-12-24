@@ -9,6 +9,8 @@ var Chair= require('../models/chair');
 var User= require('../models/user');
 var fs=require('fs-extra');
 
+var checkExpired = require('../middleware/checkExpiredBill.middleware');
+
 router.get('/',function(req,res){
     User.findOne({email:req.session.user},function(err,us){
         var newUs=us.email;
@@ -116,7 +118,7 @@ router.post('/change-pass/:email',function(req,res){
         }
     })
 })
- router.get('/purchase',function(req,res){
+ router.get('/purchase',checkExpired,function(req,res){
      Bill.find({email:req.session.user, type:"uncheck"},function(err,bi){
         Bill.find({email:req.session.user, type:"checked"},function(err,biUn){
             Bill.find({email:req.session.user, type:"cancel"},function(err,biCa){
@@ -134,7 +136,10 @@ router.post('/change-pass/:email',function(req,res){
                 var photoArrCa=[];
                 for (var i=0;i<bi.length;i++){
                     Film.findOne({nameEN:bi[i].nameEN},function(err,fi){
-                        if (fi){ photoArr.push({id:fi.id, photo:fi.photo})};
+                        if (fi){ photoArr.push({id:fi.id, photo:fi.photo})}
+                        else {
+                            photoArr.push({id:"", photo:""});
+                        }
                     })
                     var newSeat="";
                     var newSnack="";
@@ -153,7 +158,11 @@ router.post('/change-pass/:email',function(req,res){
                 }
                 for (var i=0;i<biUn.length;i++){
                     Film.findOne({nameEN:biUn[i].nameEN},function(err,fi){
-                        if (fi){ photoArrUn.push({id:fi.id, photo:fi.photo})};
+                        if (fi){ photoArrUn.push({id:fi.id, photo:fi.photo})}
+                        else {
+                            photoArrUn.push({id:"", photo:""});
+                        }
+                        
                     })
                     var newSeat="";
                     var newSnack="";
@@ -172,7 +181,10 @@ router.post('/change-pass/:email',function(req,res){
                 }
                 for (var i=0;i<biCa.length;i++){
                     Film.findOne({nameEN:biCa[i].nameEN},function(err,fi){
-                        if (fi){ photoArrCa.push({id:fi.id, photo:fi.photo})};
+                        if (fi){ photoArrCa.push({id:fi.id, photo:fi.photo})}
+                        else {
+                            photoArrCa.push({id:"", photo:""});
+                        }
                     })
                     var newSeat="";
                     var newSnack="";
@@ -213,16 +225,29 @@ router.post('/change-pass/:email',function(req,res){
         })
     })
  })
-router.get('/purchase/cancel/:idB',function(req,res){
+router.get('/purchase/cancel/:idB',checkExpired,function(req,res){
     var idB=req.params.idB;
     Bill.findOne({idB:idB},function(err,bi){
         if (err) return console.log(err);
         if (bi){
-            bi.type="cancel";
-            bi.save(function(err){
-                if (err) return console.log(err);
-                res.redirect('back');
-            })
+            if (bi.expired==1){
+                res.render('error',{
+                    mes : 'Đã hết hạn để thực hiện thao tác này'
+                })
+            }
+            else {
+                for (var i=0;i<bi.seat.length;i++){
+                    Chair.findById(bi.seat[i].idChair,function(err,ch){
+                        ch.available=1;
+                        ch.save();
+                    })
+                }
+                bi.type="cancel";
+                bi.save(function(err){
+                    if (err) return console.log(err);
+                    res.redirect('back');
+                })
+            }
         }
     })
 })

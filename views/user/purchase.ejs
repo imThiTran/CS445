@@ -50,7 +50,12 @@
                                         <div class="donmua-each">
                                             <div class="donmua-up">
                                                 <div class="img-each">
-                                                    <img class="img-donmua" src="/img/films/<%=photo[i].id%>/<%=photo[i].photo%>" alt="">
+                                                    <%if (photo[i].id!=""){%>
+                                                        <img class="img-donmua" src="/img/films/<%=photo[i].id%>/<%=photo[i].photo%>" alt="">
+                                                    <%} else {%>
+                                                        <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                    <%}%>
+                                                    
                                                 </div>
                                                 <div class="infor-main">
                                                     <div class="infor-each">
@@ -99,7 +104,8 @@
                                                     <button type="button" class="btn btn-infor btnQr" id="<%=bill[i].idB%>" style=" padding: 5px;
                                                     width: 100px;margin-right: 10px;">Mã QR</button>
                                                     <a class="confirmdelete" href="/user/purchase/cancel/<%=bill[i].idB%>"><button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
-                                                        width: 100px;">Hủy</button></a>  
+                                                        width: 100px;" 
+                                                        <%if (bill[i].expired==1){%> disabled<%}%>>Hủy</button></a>  
                                                 </div>
                                             </div>
                                         </div>
@@ -165,7 +171,12 @@
                                     <div class="donmua-each">
                                         <div class="donmua-up">
                                             <div class="img-each">
-                                                <img class="img-donmua" src="/img/films/<%=photoUn[i].id%>/<%=photoUn[i].photo%>" alt="">
+                                                <%if (photoUn[i].id!=""){%>
+                                                    <img class="img-donmua" src="/img/films/<%=photoUn[i].id%>/<%=photoUn[i].photo%>" alt="">
+                                                <%} else {%>
+                                                    <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                <%}%>
+                                                
                                             </div>
                                             <div class="infor-main">
                                                 <div class="infor-each">
@@ -230,7 +241,12 @@
                                             <div class="donmua-each">
                                                 <div class="donmua-up">
                                                     <div class="img-each">
-                                                        <img class="img-donmua" src="/img/films/<%=photoCa[i].id%>/<%=photoCa[i].photo%>" alt="">
+                                                        <%if (photoCa[i].id!=""){%>
+                                                            <img class="img-donmua" src="/img/films/<%=photoCa[i].id%>/<%=photoCa[i].photo%>" alt="">
+                                                        <%} else {%>
+                                                            <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                        <%}%>
+                                                        
                                                     </div>
                                                     <div class="infor-main">
                                                         <div class="infor-each">

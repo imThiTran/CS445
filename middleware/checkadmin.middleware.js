@@ -5,7 +5,9 @@ module.exports = function(req,res,next){
         if (err) return console.log(err);
         if (us){
             if (us.admin==1) next();
-            else res.render('error');
+            else res.render('error',{
+                mes:'Bạn không có quyền truy cập'
+            });
         }
     })  
 }

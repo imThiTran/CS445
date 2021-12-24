@@ -20,8 +20,8 @@ router.get('/',function(req,res){
         var salesMonth=new Array(12);
         var listFilm=[];
         var listSnack=[];
-        Bill.find({},function(err,bi){
-                Film.find({},function(err,fi){
+        Bill.find({type:{'$ne':'cancel'}},function(err,bi){
+                Film.find({$or:[{status:'Đang khởi chiếu'},{status:'Đã chiếu xong'}]},function(err,fi){
                         Snack.find({},function(err,sn){
                                 
                                 var salesSnack=new Array(sn.length);
@@ -90,7 +90,7 @@ router.post('/day-in-month',function(req,res){
         // var from=new Date(thisYear,thisMonth,1);
         // var to=new Date(thisYear,thisMonth,days);
         var salesDay=new Array(days);
-        Bill.find({},function(err,bi){
+        Bill.find({type:{'$ne':'cancel'}},function(err,bi){
                 for (var j=0;j<days;j++){
                         salesDay[j]=0;
                         for (var i=0;i<bi.length;i++){
@@ -115,7 +115,7 @@ router.post('/month-in-year',function(req,res){
         // var from=new Date(thisYear,thisMonth,1);
         // var to=new Date(thisYear,thisMonth,days);
         var salesMonth=new Array(12);
-        Bill.find({},function(err,bi){
+        Bill.find({type:{'$ne':'cancel'}},function(err,bi){
                 for(var i=0;i<12;i++){
                         salesMonth[i]=0;
                         for (var j=0;j<bi.length;j++){

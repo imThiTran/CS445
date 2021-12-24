@@ -266,7 +266,7 @@ router.post('/ordered',function(req,res){
                 }
             }
         });
-    }, 30);
+    }, 40);
     
 })
 // router.post('/loadTime',function(req,res){
