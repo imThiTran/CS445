@@ -56,7 +56,7 @@ router.get('/bill',function(req,res){
             if (st) res.render('order/order-cancel');
             else {
                 for (var i=0;i<b.seat.length;i++){
-                    Bill.findOne({idB:{'$ne':billid},"seat.idChair":b.seat[i].idChair,checkout:1},function(err,bi){
+                    Bill.findOne({idB:{'$ne':billid},"seat.idChair":b.seat[i].idChair,checkout:1,type:{'$ne':'cancel'}},function(err,bi){
                         if (bi) checkBill.push(bi); ;
                     })
                 }
