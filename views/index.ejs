@@ -65,7 +65,8 @@
                             <% var newDateArr = dateRq.split('-') %>
                             <%var newDate=newDateArr[2]+'/'+newDateArr[1]+'/'+newDateArr[0]; %>
                             <% var today = new Date(); %>
-                            <%if (dateRq == today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()<10?"0"+today.getDate():today.getDate())){%>
+                            <%if (dateRq == today.getFullYear()+'-'+(today.getMonth()<9?("0"+(today.getMonth()+1)):
+                            (today.getMonth()+1))+'-'+(today.getDate()<10?"0"+today.getDate():today.getDate())){%>
                                 <h3 class="h3-date">Hôm nay</h3>
                             <%} else {%>
                                 <h3 class="h3-date"><%=newDate%></h3>
