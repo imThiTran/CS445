@@ -53,7 +53,7 @@
                                                     <%if (photo[i].id!=""){%>
                                                         <img class="img-donmua" src="/img/films/<%=photo[i].id%>/<%=photo[i].photo%>" alt="">
                                                     <%} else {%>
-                                                        <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                        <img class="img-donmua" src="/img/deleted.jpg" alt="">
                                                     <%}%>
                                                     
                                                 </div>
@@ -102,7 +102,7 @@
                                             <div class="donmua-down">
                                                 <div class="button-each">
                                                     <button type="button" class="btn btn-infor btnQr" id="<%=bill[i].idB%>" style=" padding: 5px;
-                                                    width: 100px;margin-right: 10px;" <%if (bill[i].expired==1){%> disabled<%}%>>Mã QR</button>
+                                                    width: 100px;margin-right: 10px;" >Mã QR</button>
                                                     <%if (bill[i].expired==1){%>
                                                     <a class="" style="opacity: 0.6;"><button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
                                                         width: 100px;" >Hủy</button></a>   <%} else {%>
@@ -179,7 +179,7 @@
                                                 <%if (photoUn[i].id!=""){%>
                                                     <img class="img-donmua" src="/img/films/<%=photoUn[i].id%>/<%=photoUn[i].photo%>" alt="">
                                                 <%} else {%>
-                                                    <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                    <img class="img-donmua" src="/img/deleted.jpg" alt="">
                                                 <%}%>
                                                 
                                             </div>
@@ -249,7 +249,7 @@
                                                         <%if (photoCa[i].id!=""){%>
                                                             <img class="img-donmua" src="/img/films/<%=photoCa[i].id%>/<%=photoCa[i].photo%>" alt="">
                                                         <%} else {%>
-                                                            <img class="img-donmua" src="/img/noimage.png" alt="">
+                                                            <img class="img-donmua" src="/img/deleted.jpg" alt="">
                                                         <%}%>
                                                         
                                                     </div>
