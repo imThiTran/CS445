@@ -219,7 +219,7 @@ router.post('/change-pass/:email',function(req,res){
                         snackCa:snackArrCa.reverse(),
                         photoCa:photoArrCa.reverse(),
                     });
-                }, 25);
+                }, 40);
                 
             })
         })
