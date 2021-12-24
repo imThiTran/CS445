@@ -102,10 +102,15 @@
                                             <div class="donmua-down">
                                                 <div class="button-each">
                                                     <button type="button" class="btn btn-infor btnQr" id="<%=bill[i].idB%>" style=" padding: 5px;
-                                                    width: 100px;margin-right: 10px;">Mã QR</button>
+                                                    width: 100px;margin-right: 10px;" <%if (bill[i].expired==1){%> disabled<%}%>>Mã QR</button>
+                                                    <%if (bill[i].expired==1){%>
+                                                    <a class="" style="opacity: 0.6;"><button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
+                                                        width: 100px;" >Hủy</button></a>   <%} else {%>
                                                     <a class="confirmdelete" href="/user/purchase/cancel/<%=bill[i].idB%>"><button type="button" class="btn btn-infor" id="huybtn" style=" padding: 5px;
                                                         width: 100px;" 
-                                                        <%if (bill[i].expired==1){%> disabled<%}%>>Hủy</button></a>  
+                                                        >Hủy</button></a>  
+                                                    <%}%>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
