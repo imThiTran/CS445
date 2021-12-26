@@ -216,7 +216,7 @@ router.post('/ordered',function(req,res){
             for (var i=0;i<items.length;i++){
             total=(total+(parseFloat(items[i].price)*items[i].quantity));
         }
-        }, 5);
+        }, 10);
         var bill =new Bill({
             idB:idB,
             seat:seatB,
@@ -266,7 +266,7 @@ router.post('/ordered',function(req,res){
                 }
             }
         });
-    }, 40);
+    }, 50);
     
 })
 // router.post('/loadTime',function(req,res){

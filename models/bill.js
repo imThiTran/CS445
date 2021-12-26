@@ -36,7 +36,7 @@ var BillSchema = mongoose.Schema({
         type:String,
     },
     totalPrice:{
-        type:String
+        type:Number
     },
     checkout:{
         type:Number,
