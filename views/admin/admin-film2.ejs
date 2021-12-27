@@ -249,8 +249,8 @@
                                                 src="/img/noimage.png" style="width: 100%;">
                                             <input type="file" class="form-control imgChangeEdit" name="image" id="img2"
                                                 accept="image/png, image/jpeg, image/jpg" style="display: none;">
-                                            <label style="font-weight: 700;" class="btn-addimg" id="btn-edit-img-item"
-                                                for="img2">Chọn ảnh</label>
+                                            <label style="font-weight: 700;" class="btn-addimg label-imgEdit" id="btn-edit-img-item"
+                                                for="img2" >Chọn ảnh</label>
                                         </div>
                                     </div>
                                     <div class="modal-right">
@@ -633,7 +633,7 @@
                                 photoEdit.attr('src', '/img/films/' + id + '/' + result.film.photo)
                             } else {
                                 photoEdit.attr('src', '/img/noimage.png')
-                            }
+                            }       
                             nameENedit.val(result.film.nameEN);
                             nameVNedit.val(result.film.nameVN);
                             directorEdit.val(result.film.director);
@@ -656,6 +656,11 @@
                                 $('.rating18').prop('checked', true);
                             }
                             statusEdit.html(result.statusAjax);
+                            $('.label-imgEdit').click(function(e){
+                                    setTimeout(() => {
+                                        photoEdit.attr('src', '/img/films/' + id + '/' + result.film.photo);
+                                    }, 1000);
+                            })
                             modal.style.display = "block";          
                         }
                     })
