@@ -1107,3 +1107,39 @@ p{
   object-fit: cover;
   object-position: 50% 20%;
 }
+.gia-price{
+  padding: 50px 100px;
+}
+.sukien{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.sukien-img{
+  width: 400px;
+    flex: 1;
+}
+.sukien-sub{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  opacity: 0.5;
+}
+.sukien-title{
+  font-size: 24px;
+  font-weight: 700;
+}
+.sukien-text{
+  flex: 3;
+  padding: 0 30px;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sukien:hover{
+  opacity: .7;
+  transition: .3s;
+}
