@@ -123,8 +123,8 @@ router.post('/add-showtime',function(req , res){
                 Film.findOne({nameEN:nameEN},function(err,fi){
                     if (check.length>0) res.send({noti:"trong các suất này có suất chiếu đã tồn tại"});
                     else {
+                            var fiShowtime = fi.showtime;
                             for(var i=0;i<time.length;i++){
-                                var fiShowtime = fi.showtime;
                                 var id =shortid.generate();
                                 fiShowtime.push({
                                     idSt:id,
@@ -172,10 +172,12 @@ router.post('/add-showtime',function(req , res){
                                     })
                                 }
                             }
-                                fi.showtime=fiShowtime;
-                                fi.save(function(err){
-                                    if (err) return console.log(err);
-                                });
+                                setTimeout(() => {
+                                    fi.showtime=fiShowtime;
+                                    fi.save(function(err){
+                                        if (err) return console.log(err);
+                                    });
+                                }, 10);
                                 setTimeout(() => {
                                     res.send({noti:""});
                                 }, 20);
@@ -478,7 +480,9 @@ router.post('/delete-all',function(req,res){
                     }, 10);
                 }
             })
-            res.redirect('back');
+            setTimeout(() => {
+                res.send('');
+            }, 20);
         })
     } else {
         for (var i=0;i<checkall.length;i++){
@@ -525,7 +529,9 @@ router.post('/delete-all',function(req,res){
                                 if (err) return console.log(err);
                 })
             }
-            res.redirect('back');
+            setTimeout(() => {
+                res.send('');
+            }, 20);
         })
     }
 })

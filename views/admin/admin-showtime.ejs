@@ -511,8 +511,22 @@ function toggleSelect(e) {
     })
 
     $('.delete-all').click(function(){
+        var checkall=[];
         if (confirm('Bạn chắc chắn xóa ?')){
-            $('.formDeleteAll').submit();
+            $('.itemcheck:checked').each(function(){
+                checkall.push($(this).val());
+            })
+            $.ajax({
+                url: "/admin/showtime/delete-all",
+                method: "POST",
+                contentType: "application/json",
+                timeout: 10000,
+                data: JSON.stringify({ checkall:checkall }),
+                success: function (result) {
+                    location.reload(true);
+                }
+                })
+            // $('.formDeleteAll').submit();
         }
         e.preventDefault();
     })
