@@ -144,7 +144,7 @@
                                                             name="image" id="img2"
                                                             accept="image/png, image/jpeg, image/jpg"
                                                             style="display: none;">
-                                                        <label style="font-weight: 700;" class="btn-addimg"
+                                                        <label style="font-weight: 700;" class="btn-addimg label-imgEdit"
                                                             id="btn-edit-img-item" for="img2">Chọn ảnh</label>
                                                     </div>
                                                 </div>
@@ -343,6 +343,11 @@
                             priceEdit.val(result.snack.price);
                             $('.pimage').val(result.snack.photo);
                             $('.idSnack').val(id);
+                            $('.label-imgEdit').click(function(e){
+                                    setTimeout(() => {
+                                        $('.imgEditPreview').attr('src', '/img/snacks/' + id + '/' + result.snack.photo);
+                                    }, 1000);
+                            })
                             modal.style.display = "block";
                         }
                     })
