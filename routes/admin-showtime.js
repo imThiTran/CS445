@@ -106,7 +106,7 @@ router.post('/add-showtime',function(req , res){
     } else {
         var checkTime=true;
         for(var i=0;i<time.length;i++){
-            Showtime.findOne({$or:[{$and:[{date:date},{time:time[i]},{room:room}]},{$and:[{date:date},{time:time[i]},{nameEN:nameEN}]}]},function(err,st){   
+            Showtime.findOne({$or:[{$and:[{date:date},{time:time[i]},{room:room[i]}]},{$and:[{date:date},{time:time[i]},{nameEN:nameEN}]}]},function(err,st){
                 if (st)  check.push(st);
             })
             var newDay=new Date(date);

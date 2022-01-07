@@ -89,7 +89,7 @@ router.post('/login',function(req,res){
             if (user.block.type!=0) {
                 var mes="Tài khoản của bạn bị chặn đến "+user.block.dateto+" vì vi phạm chính sách, liên hệ MEGAS để được hỗ trợ";
                 if (user.block.type=='non') 
-                mes="Tài khoản của bạn bị chặn không thời hạn vì vi phạm chính sách, liên hệ MEGAS để được hỗ trợ";
+                mes="Tài khoản của bạn bị chặn vì vi phạm chính sách, liên hệ MEGAS để được hỗ trợ";
                 res.render('auth/login',{
                     value: email,
                     mes: mes

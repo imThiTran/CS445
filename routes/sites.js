@@ -90,6 +90,14 @@ router.get('/bill',function(req,res){
     
 })
 
+router.get('/event',function(req,res){
+    res.render('event');
+})
+
+router.get('/ticket-price',function(req,res){
+    res.render('ticket-price');
+})
+
 router.get('/:time',checkDeleteBill,function(req,res){
     var today = new Date();
     var time=new Date(parseInt(req.params.time));
@@ -129,7 +137,5 @@ router.get('/:time',checkDeleteBill,function(req,res){
             })
         })
 })
-
-
 
 module.exports = router;
